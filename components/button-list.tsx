@@ -1,10 +1,9 @@
-import { Resume } from "@/data/resume";
 import Button from "./button";
 
-export default function ButtonList({ data }: { data: Resume }) {
+export default function ButtonList() {
   return (
     <section>
-      <Button data={data} />
+      <Button />
     </section>
   );
 }

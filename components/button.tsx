@@ -1,10 +1,14 @@
-import { Resume } from "@/data/resume";
+import { getButtonTitle } from "@/data/resume";
+import Link from "next/link";
 
-export default function Button({ data }: { data: Resume }) {
+export default function Button() {
+  const title = getButtonTitle();
   return (
     <>
-      {data.buttonName.map((data, index) => (
-        <button key={index}>{data}</button>
+      {title.map((title, index) => (
+        <Link className="block" href={`/resume/${title}`} key={index}>
+          {title}
+        </Link>
       ))}
     </>
   );

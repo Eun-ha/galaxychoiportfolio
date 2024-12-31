@@ -1,4 +1,4 @@
-import resume from "@/data/resume";
+import { resume } from "@/data/resume";
 import { NextResponse } from "next/server";
 
 export async function GET() {

@@ -1,12 +1,11 @@
-import { Resume } from "@/data/resume";
 import ButtonList from "./button-list";
-import { TitlesDescs } from "./titles-descs";
+import { TitlesDescriptions } from "./titles-descriptions";
 
-export const ResumeAside = ({ data }: { data: Resume }) => {
+export function ResumeAside() {
   return (
     <aside className="bg-orange-400">
-      <TitlesDescs data={data} theme="resume" />
-      <ButtonList data={data} />
+      <TitlesDescriptions category="resume" />
+      <ButtonList />
     </aside>
   );
-};
+}
