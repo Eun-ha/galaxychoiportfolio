@@ -23,6 +23,7 @@ export type TitlesDescriptions = {
   title: string;
   desc: string;
   slug: string;
+  button: string;
 };
 
 export type Category = {
@@ -33,7 +34,6 @@ export type Category = {
 
 export type Resume = {
   contents: TitlesDescriptions[];
-  buttonTitle: string[];
   category: Category[];
 };
 
@@ -43,25 +43,28 @@ export const resume: Resume[] = [
       {
         title: "메인 레쥬메 타이틀 입니다.",
         desc: "메인 레쥬메 설명 입니다.",
-        slug: "resume",
+        slug: "",
+        button: "resume",
       },
       {
         title: "경험 타이틀 입니다.",
         desc: "경험 설명 입니다.",
         slug: "experiences",
+        button: "experiences",
       },
       {
         title: "교육 타이틀 입니다.",
         desc: "교육 설명 입니다.",
         slug: "educations",
+        button: "educations",
       },
       {
         title: "스킬 타이틀 입니다.",
         desc: "스킬 설명 입니다.",
         slug: "skills",
+        button: "skills",
       },
     ],
-    buttonTitle: ["experiences", "educations", "skills"],
     category: [
       {
         experiences: [
@@ -130,6 +133,6 @@ export function getContents(category: string): TitlesDescriptions[] {
   );
 }
 
-export function getButtonTitle() {
-  return resume.flatMap((button) => button.buttonTitle);
+export function getButtonTitle(): TitlesDescriptions[] {
+  return resume.flatMap((button) => button.contents);
 }

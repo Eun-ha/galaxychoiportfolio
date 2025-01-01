@@ -1,6 +1,6 @@
-import ResumeSection from "./resume-section";
+import { ResumeSection } from "./resume-section";
 
-export default function ResumeMain() {
+export function ResumeMain() {
   return (
     <main className="bg-orange-600">
       <ResumeSection />
