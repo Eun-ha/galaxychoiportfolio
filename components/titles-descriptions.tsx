@@ -1,9 +1,5 @@
 import { getContents } from "@/data/resume";
 
-export type Theme1 = {
-  theme: "resume" | "experiences" | "education" | "skill";
-};
-
 interface Theme {
   category: string;
 }
@@ -11,6 +7,8 @@ interface Theme {
 export const TitlesDescriptions = (Props: Theme) => {
   const { category } = Props;
   const content = getContents(category);
+
+  //console.log(content);
 
   return (
     <section>

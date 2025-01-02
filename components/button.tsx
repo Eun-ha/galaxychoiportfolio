@@ -27,8 +27,6 @@ export const Button = ({
   const segment = useSelectedLayoutSegment();
   const href = category.slug ? path + "/" + category.slug : path;
 
-  console.log(category);
-
   const isActive =
     (!category.slug && segment === null) ||
     segment === category.segment ||

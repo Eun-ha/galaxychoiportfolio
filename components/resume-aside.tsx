@@ -1,4 +1,4 @@
-import { getButtonTitle } from "@/data/resume";
+import { getAll } from "@/data/resume";
 import { ButtonList } from "./button-list";
 
 // export function ResumeAside() {
@@ -11,13 +11,13 @@ import { ButtonList } from "./button-list";
 // }
 
 export function ResumeAside() {
-  const buttons = getButtonTitle();
+  const content = getAll();
   return (
     <div>
       <ButtonList
         path="/resume"
         categories={[
-          ...buttons.map((x) => ({
+          ...content.map((x) => ({
             button: x.button,
             slug: x.slug,
           })),

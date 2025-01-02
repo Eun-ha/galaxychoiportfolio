@@ -3,38 +3,31 @@ export type Experience = {
   title: string;
   date: string;
   description: string;
-  slug: string;
 };
 
 export type Education = {
   school: string;
   degree: string;
   date: string;
-  slug: string;
 };
 
 export type Skill = {
   name: string;
   level: number;
-  slug: string;
 };
 
-export type TitlesDescriptions = {
+export type Contents = {
   title: string;
   desc: string;
   slug: string;
   button: string;
 };
 
-export type Category = {
-  experiences?: Experience[];
-  educations?: Education[];
-  skills?: Skill[];
-};
-
 export type Resume = {
-  contents: TitlesDescriptions[];
-  category: Category[];
+  contents: Contents[];
+  experiences: Experience[];
+  educations: Education[];
+  skills: Skill[];
 };
 
 export const resume: Resume[] = [
@@ -65,74 +58,74 @@ export const resume: Resume[] = [
         button: "skills",
       },
     ],
-    category: [
+    experiences: [
       {
-        experiences: [
-          {
-            company: "Samsung Electronics",
-            title: "Software Engineer",
-            date: "2018.07 - 2020.07",
-            description:
-              "Developed and maintained Android applications for Samsung Smart TV. Worked on various projects including SmartThings, Samsung Health, and Samsung Pay.",
-            slug: "experiences",
-          },
-          {
-            company: "Samsung Electronics",
-            title: "Software Engineer Intern",
-            date: "2017.07 - 2017.12",
-            description:
-              "Developed and maintained Android applications for Samsung Smart TV. Worked on various projects including SmartThings, Samsung Health, and Samsung Pay.",
-            slug: "experiences",
-          },
-          {
-            company: "Samsung Electronics",
-            title: "Software Engineer Intern",
-            date: "2016.07 - 2016.12",
-            description:
-              "Developed and maintained Android applications for Samsung Smart TV. Worked on various projects including SmartThings, Samsung Health, and Samsung Pay.",
-            slug: "experiences",
-          },
-        ],
+        company: "Samsung Electronics",
+        title: "Software Engineer",
+        date: "2018.07 - 2020.07",
+        description:
+          "Developed and maintained Android applications for Samsung Smart TV. Worked on various projects including SmartThings, Samsung Health, and Samsung Pay.",
       },
       {
-        educations: [
-          {
-            school: "University of California, San Diego",
-            degree: "Bachelor of Science in Computer Science",
-            date: "2014.09 - 2018.06",
-            slug: "educations",
-          },
-        ],
+        company: "Samsung Electronics",
+        title: "Software Engineer Intern",
+        date: "2017.07 - 2017.12",
+        description:
+          "Developed and maintained Android applications for Samsung Smart TV. Worked on various projects including SmartThings, Samsung Health, and Samsung Pay.",
       },
       {
-        skills: [
-          {
-            name: "Java",
-            level: 4,
-            slug: "skills",
-          },
-          {
-            name: "Kotlin",
-            level: 4,
-            slug: "skills",
-          },
-          {
-            name: "Android",
-            level: 4,
-            slug: "skills",
-          },
-        ],
+        company: "Samsung Electronics",
+        title: "Software Engineer Intern",
+        date: "2016.07 - 2016.12",
+        description:
+          "Developed and maintained Android applications for Samsung Smart TV. Worked on various projects including SmartThings, Samsung Health, and Samsung Pay.",
+      },
+    ],
+    educations: [
+      {
+        school: "University of California, San Diego",
+        degree: "Bachelor of Science in Computer Science",
+        date: "2014.09 - 2018.06",
+      },
+    ],
+    skills: [
+      {
+        name: "Java",
+        level: 4,
+      },
+      {
+        name: "Kotlin",
+        level: 4,
+      },
+      {
+        name: "Android",
+        level: 4,
       },
     ],
   },
 ];
 
-export function getContents(category: string): TitlesDescriptions[] {
-  return resume.flatMap((resumecontents) =>
-    resumecontents.contents.filter((content) => content.slug === category)
+// 전체 데이터를 가져옵니다.
+export function getAll(): Contents[] {
+  return resume.flatMap((content) => content.contents);
+}
+
+// 슬러그에 기반한 경험, 교육, 스킬 제목 및 설명을 반환합니다.
+export function getContents(category: string): Contents[] {
+  return resume.flatMap((contents) =>
+    contents.contents.filter((content) => content.slug === category)
   );
 }
 
-export function getButtonTitle(): TitlesDescriptions[] {
-  return resume.flatMap((button) => button.contents);
+// 슬러그에 기반한 경험, 교육, 스킬 제목 및 설명을 반환합니다.
+export function getExperiences(): Experience[] {
+  return resume.flatMap((contents) => contents.experiences);
+}
+
+export function getEducations(): Education[] {
+  return resume.flatMap((contents) => contents.educations);
+}
+
+export function getSkills(): Skill[] {
+  return resume.flatMap((contents) => contents.skills);
 }
