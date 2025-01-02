@@ -117,7 +117,6 @@ export function getContents(category: string): Contents[] {
   );
 }
 
-// 슬러그에 기반한 경험, 교육, 스킬 제목 및 설명을 반환합니다.
 export function getExperiences(): Experience[] {
   return resume.flatMap((contents) => contents.experiences);
 }

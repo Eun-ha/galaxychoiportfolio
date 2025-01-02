@@ -1,10 +1,10 @@
 import { getContents } from "@/data/resume";
 
-interface Theme {
+interface Category {
   category: string;
 }
 
-export const TitlesDescriptions = (Props: Theme) => {
+export const TitlesDescriptions = (Props: Category) => {
   const { category } = Props;
   const content = getContents(category);
 

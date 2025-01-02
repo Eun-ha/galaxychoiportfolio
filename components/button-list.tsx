@@ -6,14 +6,6 @@ export type Categories = {
   segment?: string;
 };
 
-// export default function ButtonList() {
-//   return (
-//     <section>
-//       <Button />
-//     </section>
-//   );
-// }
-
 export const ButtonList = ({
   path,
   categories,

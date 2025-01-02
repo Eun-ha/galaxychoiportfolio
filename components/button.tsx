@@ -4,19 +4,6 @@ import Link from "next/link";
 import { useSelectedLayoutSegment } from "next/navigation";
 import { Categories } from "./button-list";
 
-// export default function Button() {
-//   const title = getButtonTitle();
-//   return (
-//     <>
-//       {title.map((title, index) => (
-//         <Link className="block" href={`/resume/${title}`} key={index}>
-//           {title}
-//         </Link>
-//       ))}
-//     </>
-//   );
-// }
-
 export const Button = ({
   path,
   category,
