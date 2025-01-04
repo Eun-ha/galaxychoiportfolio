@@ -11,13 +11,13 @@ export const TitlesDescriptions = (Props: Category) => {
   //console.log(content);
 
   return (
-    <section className="bg-rose-700">
+    <>
       {content.map((content, index) => (
-        <div key={index}>
+        <section key={index}>
           <h2>{content.title}</h2>
           <p>{content.desc}</p>
-        </div>
+        </section>
       ))}
-    </section>
+    </>
   );
 };

@@ -6,7 +6,7 @@ export default async function Layout({
   children: React.ReactNode;
 }>) {
   return (
-    <div className="lg:flex">
+    <div className="wrapper lg:flex">
       <ResumeAside />
       {children}
     </div>

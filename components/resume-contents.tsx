@@ -10,7 +10,7 @@ export const ResumeContents = (Props: Category) => {
   //console.log(category);
 
   return (
-    <section className="bg-rose-200">
+    <>
       {category === "experiences" ? (
         <ResumeContent type="experiences" />
       ) : category === "educations" ? (
@@ -18,6 +18,6 @@ export const ResumeContents = (Props: Category) => {
       ) : (
         <ResumeContent type="skills" />
       )}
-    </section>
+    </>
   );
 };

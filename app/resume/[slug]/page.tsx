@@ -4,9 +4,9 @@ import { TitlesDescriptions } from "@/components/titles-descriptions";
 export default async function Page({ params }: { params: { slug: string } }) {
   const id = await params;
   return (
-    <div className="block">
+    <main className="block">
       <TitlesDescriptions category={id.slug} />
       <ResumeContents category={id.slug} />
-    </div>
+    </main>
   );
 }

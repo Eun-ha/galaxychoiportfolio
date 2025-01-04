@@ -16,6 +16,14 @@ export type Skill = {
   level: number;
 };
 
+export type Descriptions = {
+  title: string;
+  date: string;
+  performance: string;
+  role: string;
+  skills: string;
+};
+
 export type Contents = {
   title: string;
   desc: string;
@@ -28,6 +36,7 @@ export type Resume = {
   experiences: Experience[];
   educations: Education[];
   skills: Skill[];
+  descriptions: Descriptions[];
 };
 
 export const resume: Resume[] = [
@@ -102,6 +111,24 @@ export const resume: Resume[] = [
         level: 4,
       },
     ],
+    descriptions: [
+      {
+        title: "Software Engineer",
+        date: "2018.07 - 2020.07",
+        performance:
+          "Developed and maintained Android applications for Samsung Smart TV. Worked on various projects including SmartThings, Samsung Health, and Samsung Pay.",
+        role: "UI 개발",
+        skills: "Java, Kotlin, Android",
+      },
+      {
+        title: "Software Engineer",
+        date: "2018.07 - 2020.07",
+        performance:
+          "Developed and maintained Android applications for Samsung Smart TV. Worked on various projects including SmartThings, Samsung Health, and Samsung Pay.",
+        role: "UI 개발",
+        skills: "Java, Kotlin, Android",
+      },
+    ],
   },
 ];
 
@@ -110,7 +137,7 @@ export function getAll(): Contents[] {
   return resume.flatMap((content) => content.contents);
 }
 
-// 슬러그에 기반한 경험, 교육, 스킬 제목 및 설명을 반환합니다.
+// 동적 파라미터에 기반한 경험, 교육, 스킬 제목 및 설명을 반환합니다.
 export function getContents(category: string): Contents[] {
   return resume.flatMap((contents) =>
     contents.contents.filter((content) => content.slug === category)
@@ -127,4 +154,8 @@ export function getEducations(): Education[] {
 
 export function getSkills(): Skill[] {
   return resume.flatMap((contents) => contents.skills);
+}
+
+export function getDescriptions(): Descriptions[] {
+  return resume.flatMap((contents) => contents.descriptions);
 }

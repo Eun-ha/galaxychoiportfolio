@@ -38,28 +38,28 @@ export const ResumeContent = ({
   return (
     <section>
       {contents.map((content, index) => (
-        <div key={index}>
+        <article key={index}>
           {type === "educations" && (
             <>
-              <p>{(content as Education).school}</p>
+              <h3>{(content as Education).school}</h3>
               <p>{(content as Education).date}</p>
               <p>{(content as Education).degree}</p>
             </>
           )}
           {type === "experiences" && (
             <>
-              <p>{(content as Experience).company}</p>
+              <h3>{(content as Experience).company}</h3>
               <p>{(content as Experience).date}</p>
               <p>{(content as Experience).description}</p>
             </>
           )}
           {type === "skills" && (
             <>
-              <p>{(content as Skill).name}</p>
+              <h3>{(content as Skill).name}</h3>
               <p>{(content as Skill).level}</p>
             </>
           )}
-        </div>
+        </article>
       ))}
     </section>
   );
