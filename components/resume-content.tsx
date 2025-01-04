@@ -1,3 +1,4 @@
+"use client";
 import {
   Education,
   Experience,
@@ -6,12 +7,17 @@ import {
   getSkills,
   Skill,
 } from "@/data/resume";
+import { useEffect, useState } from "react";
 
 export const ResumeContent = ({
   type,
 }: {
   type: "educations" | "experiences" | "skills";
 }) => {
+  const [contents, setContents] = useState<
+    Experience[] | Education[] | Skill[]
+  >([]);
+
   const getData = () => {
     switch (type) {
       case "educations":
@@ -25,7 +31,9 @@ export const ResumeContent = ({
     }
   };
 
-  const contents = getData();
+  useEffect(() => {
+    setContents(getData());
+  }, [type]); // 빈 배열을 넣으면 한 번만 실행됨
 
   return (
     <section>

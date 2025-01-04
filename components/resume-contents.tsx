@@ -7,10 +7,10 @@ interface Category {
 export const ResumeContents = (Props: Category) => {
   const { category } = Props;
 
-  console.log(category);
+  //console.log(category);
 
   return (
-    <section>
+    <section className="bg-rose-200">
       {category === "experiences" ? (
         <ResumeContent type="experiences" />
       ) : category === "educations" ? (

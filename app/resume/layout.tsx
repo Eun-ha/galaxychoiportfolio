@@ -1,6 +1,6 @@
 import { ResumeAside } from "@/components/resume-aside";
 
-export default async function RootLayout({
+export default async function Layout({
   children,
 }: Readonly<{
   children: React.ReactNode;

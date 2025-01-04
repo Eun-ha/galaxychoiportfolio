@@ -14,7 +14,7 @@ export const ButtonList = ({
   categories: Categories[];
 }) => {
   return (
-    <div>
+    <div className="bg-rose-900">
       {categories.map((category) => (
         <Button key={path + category.slug} category={category} path={path} />
       ))}

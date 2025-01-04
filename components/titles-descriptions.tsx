@@ -11,7 +11,7 @@ export const TitlesDescriptions = (Props: Category) => {
   //console.log(content);
 
   return (
-    <section>
+    <section className="bg-rose-700">
       {content.map((content, index) => (
         <div key={index}>
           <h2>{content.title}</h2>

@@ -4,7 +4,7 @@ import { ButtonList } from "./button-list";
 export function ResumeAside() {
   const content = getAll();
   return (
-    <div>
+    <div className="bg-rose-500">
       <ButtonList
         path="/resume"
         categories={[
