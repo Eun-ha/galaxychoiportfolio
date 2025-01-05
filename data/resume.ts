@@ -128,6 +128,38 @@ export const resume: Resume[] = [
         role: "UI 개발",
         skills: "Java, Kotlin, Android",
       },
+      {
+        title: "Software Engineer",
+        date: "2018.07 - 2020.07",
+        performance:
+          "Developed and maintained Android applications for Samsung Smart TV. Worked on various projects including SmartThings, Samsung Health, and Samsung Pay.",
+        role: "UI 개발",
+        skills: "Java, Kotlin, Android",
+      },
+      {
+        title: "Software Engineer",
+        date: "2018.07 - 2020.07",
+        performance:
+          "Developed and maintained Android applications for Samsung Smart TV. Worked on various projects including SmartThings, Samsung Health, and Samsung Pay.",
+        role: "UI 개발",
+        skills: "Java, Kotlin, Android",
+      },
+      {
+        title: "Software Engineer",
+        date: "2018.07 - 2020.07",
+        performance:
+          "Developed and maintained Android applications for Samsung Smart TV. Worked on various projects including SmartThings, Samsung Health, and Samsung Pay.",
+        role: "UI 개발",
+        skills: "Java, Kotlin, Android",
+      },
+      {
+        title: "Software Engineer",
+        date: "2018.07 - 2020.07",
+        performance:
+          "Developed and maintained Android applications for Samsung Smart TV. Worked on various projects including SmartThings, Samsung Health, and Samsung Pay.",
+        role: "UI 개발",
+        skills: "Java, Kotlin, Android",
+      },
     ],
   },
 ];
