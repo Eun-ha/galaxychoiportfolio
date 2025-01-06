@@ -11,6 +11,8 @@ export default {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
+        subbackground: "var(--sub-background)",
+        subfontcolor: "var(--sub-font-color)",
         point: {
           pink: "#FF0080",
           blue: "#d3e5ff",

@@ -26,12 +26,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-gray-200`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <div className="wrapper w-auto lg:w-[1080px] my-0 mx-auto">
-          <header className="flex h-[50px] bg-rose-300 justify-between">
+        <div className="wrapper">
+          <header className="flex h-[50px] justify-between">
             <h1>Choi Logo</h1>
-            <nav className="flex justify-evenly bg-rose-450">
+            <nav className="flex justify-evenly">
               <Link className="px-4" href="/">
                 Home
               </Link>
