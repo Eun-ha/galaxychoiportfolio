@@ -3,7 +3,7 @@ import { ResumeDescription } from "./resume-description";
 
 export function ResumeMain() {
   return (
-    <main>
+    <main className="w-full">
       <ResumeDescription />
     </main>
   );

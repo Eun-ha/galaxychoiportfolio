@@ -19,7 +19,7 @@ export type Skill = {
 export type Descriptions = {
   title: string;
   date: string;
-  performance: string;
+  performance: string[];
   role: string;
   skills: string;
 };
@@ -113,52 +113,103 @@ export const resume: Resume[] = [
     ],
     descriptions: [
       {
-        title: "Software Engineer",
-        date: "2018.07 - 2020.07",
-        performance:
-          "Developed and maintained Android applications for Samsung Smart TV. Worked on various projects including SmartThings, Samsung Health, and Samsung Pay.",
+        title: "엔씨소프트 블레이드&소울 2 랭킹 신규 페이지 UI 개발",
+        date: "2023.6 ~ 2 주(실작업 및 검수 1 주 + 기획팀 및 디자인팀 피드백 반영 1 주)",
+        performance: [
+          "반응형 디자인 적용",
+          "다크모드 반영",
+          "컴포넌트 별 UI 개발",
+          "데이터 케이스별 react-select UI 개발",
+          "시멘틱 마크업 작업",
+          "Figma 를 활용한 기획팀 및 디자인팀 협업",
+          "Git 을 통한 FE, BE 협업",
+          "Jira 를 통한 작업 스케죿 관리",
+        ],
+
         role: "UI 개발",
-        skills: "Java, Kotlin, Android",
+        skills:
+          "시맨틱 태그 마크업, Styled-component, Pure css, React-select, React",
       },
       {
-        title: "Software Engineer",
-        date: "2018.07 - 2020.07",
-        performance:
-          "Developed and maintained Android applications for Samsung Smart TV. Worked on various projects including SmartThings, Samsung Health, and Samsung Pay.",
+        title: "엔씨소프트 쓰롞 앤 리버티 일정표 신규 페이지 UI 개발",
+        date: "2023.10 ~ 2 주(실작업 및 검수 1 주 + 기획팀 및 디자인팀 피드백 반영 1 주)",
+        performance: [
+          "반응형 디자인 적용",
+          "다크모드 반영",
+          "스크롤에 반응하는 UI 동작을 위한 Javascript 작업",
+          "시멘틱 마크업 작업",
+          "Figma 를 활용한 기획팀 및 디자인팀 협업",
+          "Git 을 통한 FE, BE 협업",
+          "Jira 를 통한 작업 스케죿 관리",
+        ],
         role: "UI 개발",
-        skills: "Java, Kotlin, Android",
+        skills: "시맨틱 태그 마크업, tailwind css, pure css, Javascript, React",
       },
       {
-        title: "Software Engineer",
-        date: "2018.07 - 2020.07",
-        performance:
-          "Developed and maintained Android applications for Samsung Smart TV. Worked on various projects including SmartThings, Samsung Health, and Samsung Pay.",
+        title: "엔씨소프트 블레이드&소울 2 랭킹 신규 페이지 UI 개발",
+        date: "2023.6 ~ 2 주(실작업 및 검수 1 주 + 기획팀 및 디자인팀 피드백 반영 1 주)",
+        performance: [
+          "반응형 디자인 적용",
+          "다크모드 반영",
+          "컴포넌트 별 UI 개발",
+          "데이터 케이스별 react-select UI 개발",
+          "시멘틱 마크업 작업",
+          "Figma 를 활용한 기획팀 및 디자인팀 협업",
+          "Git 을 통한 FE, BE 협업",
+          "Jira 를 통한 작업 스케죿 관리",
+        ],
+
         role: "UI 개발",
-        skills: "Java, Kotlin, Android",
+        skills:
+          "시맨틱 태그 마크업, Styled-component, Pure css, React-select, React",
       },
       {
-        title: "Software Engineer",
-        date: "2018.07 - 2020.07",
-        performance:
-          "Developed and maintained Android applications for Samsung Smart TV. Worked on various projects including SmartThings, Samsung Health, and Samsung Pay.",
+        title: "엔씨소프트 쓰롞 앤 리버티 일정표 신규 페이지 UI 개발",
+        date: "2023.10 ~ 2 주(실작업 및 검수 1 주 + 기획팀 및 디자인팀 피드백 반영 1 주)",
+        performance: [
+          "반응형 디자인 적용",
+          "다크모드 반영",
+          "스크롤에 반응하는 UI 동작을 위한 Javascript 작업",
+          "시멘틱 마크업 작업",
+          "Figma 를 활용한 기획팀 및 디자인팀 협업",
+          "Git 을 통한 FE, BE 협업",
+          "Jira 를 통한 작업 스케죿 관리",
+        ],
         role: "UI 개발",
-        skills: "Java, Kotlin, Android",
+        skills: "시맨틱 태그 마크업, tailwind css, pure css, Javascript, React",
       },
       {
-        title: "Software Engineer",
-        date: "2018.07 - 2020.07",
-        performance:
-          "Developed and maintained Android applications for Samsung Smart TV. Worked on various projects including SmartThings, Samsung Health, and Samsung Pay.",
+        title: "엔씨소프트 블레이드&소울 2 랭킹 신규 페이지 UI 개발",
+        date: "2023.6 ~ 2 주(실작업 및 검수 1 주 + 기획팀 및 디자인팀 피드백 반영 1 주)",
+        performance: [
+          "반응형 디자인 적용",
+          "다크모드 반영",
+          "컴포넌트 별 UI 개발",
+          "데이터 케이스별 react-select UI 개발",
+          "시멘틱 마크업 작업",
+          "Figma 를 활용한 기획팀 및 디자인팀 협업",
+          "Git 을 통한 FE, BE 협업",
+          "Jira 를 통한 작업 스케죿 관리",
+        ],
+
         role: "UI 개발",
-        skills: "Java, Kotlin, Android",
+        skills:
+          "시맨틱 태그 마크업, Styled-component, Pure css, React-select, React",
       },
       {
-        title: "Software Engineer",
-        date: "2018.07 - 2020.07",
-        performance:
-          "Developed and maintained Android applications for Samsung Smart TV. Worked on various projects including SmartThings, Samsung Health, and Samsung Pay.",
+        title: "엔씨소프트 쓰롞 앤 리버티 일정표 신규 페이지 UI 개발",
+        date: "2023.10 ~ 2 주(실작업 및 검수 1 주 + 기획팀 및 디자인팀 피드백 반영 1 주)",
+        performance: [
+          "반응형 디자인 적용",
+          "다크모드 반영",
+          "스크롤에 반응하는 UI 동작을 위한 Javascript 작업",
+          "시멘틱 마크업 작업",
+          "Figma 를 활용한 기획팀 및 디자인팀 협업",
+          "Git 을 통한 FE, BE 협업",
+          "Jira 를 통한 작업 스케죿 관리",
+        ],
         role: "UI 개발",
-        skills: "Java, Kotlin, Android",
+        skills: "시맨틱 태그 마크업, tailwind css, pure css, Javascript, React",
       },
     ],
   },

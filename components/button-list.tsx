@@ -34,7 +34,7 @@ export const ButtonList = ({
   return (
     <aside
       className={clsx(
-        "bg-rose-100 flex place-content-evenly lg:block lg:place-content-start",
+        "bg-rose-100 z-10 flex place-content-evenly lg:block lg:place-content-start lg:w-[200px]",
         {
           "fixed-none": !stickyClass,
           "fixed top-0 w-full lg:static lg:w-auto": stickyClass,

@@ -28,21 +28,23 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <header className="flex h-[50px] bg-rose-300 justify-between">
-          <h1>Choi Logo</h1>
-          <nav className="flex justify-evenly bg-rose-450">
-            <Link className="px-4" href="/">
-              Home
-            </Link>
-            <Link className="px-4" href="/resume">
-              resume
-            </Link>
-            <Link className="px-4" href="/work">
-              work
-            </Link>
-          </nav>
-        </header>
-        {children}
+        <div className="wrapper w-auto lg:w-[1080px] my-0 mx-auto">
+          <header className="flex h-[50px] bg-rose-300 justify-between">
+            <h1>Choi Logo</h1>
+            <nav className="flex justify-evenly bg-rose-450">
+              <Link className="px-4" href="/">
+                Home
+              </Link>
+              <Link className="px-4" href="/resume">
+                resume
+              </Link>
+              <Link className="px-4" href="/work">
+                work
+              </Link>
+            </nav>
+          </header>
+          {children}
+        </div>
       </body>
     </html>
   );
