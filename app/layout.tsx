@@ -28,11 +28,20 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <div>
-          <Link href="/">Home</Link>
-          <Link href="/resume">resume</Link>
-          <Link href="/work">work</Link>
-        </div>
+        <header className="flex h-[50px] bg-rose-300 justify-between">
+          <h1>Choi Logo</h1>
+          <nav className="flex justify-evenly bg-rose-450">
+            <Link className="px-4" href="/">
+              Home
+            </Link>
+            <Link className="px-4" href="/resume">
+              resume
+            </Link>
+            <Link className="px-4" href="/work">
+              work
+            </Link>
+          </nav>
+        </header>
         {children}
       </body>
     </html>

@@ -8,6 +8,7 @@ import {
   Skill,
 } from "@/data/resume";
 import { useEffect, useState } from "react";
+import { Boundary } from "./boundary";
 
 export const ResumeContent = ({
   type,
@@ -39,26 +40,28 @@ export const ResumeContent = ({
     <section>
       {contents.map((content, index) => (
         <article key={index}>
-          {type === "educations" && (
-            <>
-              <h3>{(content as Education).school}</h3>
-              <p>{(content as Education).date}</p>
-              <p>{(content as Education).degree}</p>
-            </>
-          )}
-          {type === "experiences" && (
-            <>
-              <h3>{(content as Experience).company}</h3>
-              <p>{(content as Experience).date}</p>
-              <p>{(content as Experience).description}</p>
-            </>
-          )}
-          {type === "skills" && (
-            <>
-              <h3>{(content as Skill).name}</h3>
-              <p>{(content as Skill).level}</p>
-            </>
-          )}
+          <Boundary category={type}>
+            {type === "educations" && (
+              <>
+                <h3>{(content as Education).school}</h3>
+                <p>{(content as Education).date}</p>
+                <p>{(content as Education).degree}</p>
+              </>
+            )}
+            {type === "experiences" && (
+              <>
+                <h3>{(content as Experience).company}</h3>
+                <p>{(content as Experience).date}</p>
+                <p>{(content as Experience).description}</p>
+              </>
+            )}
+            {type === "skills" && (
+              <>
+                <h3>{(content as Skill).name}</h3>
+                <p>{(content as Skill).level}</p>
+              </>
+            )}
+          </Boundary>
         </article>
       ))}
     </section>

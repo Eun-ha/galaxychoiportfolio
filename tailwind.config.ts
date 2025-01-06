@@ -11,23 +11,30 @@ export default {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
+        point: {
+          pink: "#FF0080",
+          blue: "#d3e5ff",
+          cyan: "#50E3C2",
+          orange: "#F5A623",
+          violet: "#7928CA",
+        },
       },
       keyframes: ({ theme }) => ({
         rerender: {
           "0%": {
-            ["border-color"]: theme("colors.vercel.pink"),
+            ["border-color"]: theme("colors.point.blue"),
           },
           "40%": {
-            ["border-color"]: theme("colors.vercel.pink"),
+            ["border-color"]: theme("colors.point.blue"),
           },
         },
         highlight: {
           "0%": {
-            background: theme("colors.vercel.pink"),
+            background: theme("colors.point.pink"),
             color: theme("colors.white"),
           },
           "40%": {
-            background: theme("colors.vercel.pink"),
+            background: theme("colors.point.pink"),
             color: theme("colors.white"),
           },
         },

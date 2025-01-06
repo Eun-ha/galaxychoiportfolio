@@ -1,3 +1,4 @@
+import { Boundary } from "@/components/boundary";
 import { ResumeContents } from "@/components/resume-contents";
 import { TitlesDescriptions } from "@/components/titles-descriptions";
 
