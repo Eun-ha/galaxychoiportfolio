@@ -9,6 +9,7 @@ import {
 } from "@/data/resume";
 import { useEffect, useState } from "react";
 import { Boundary } from "./boundary";
+import clsx from "clsx";
 
 export const ResumeContent = ({
   type,
@@ -36,10 +37,25 @@ export const ResumeContent = ({
     setContents(getData());
   }, [type]); // 빈 배열을 넣으면 한 번만 실행됨
 
+  const checkCategory = type;
+
+  console.log(checkCategory);
+
   return (
-    <section>
+    <section
+      className={clsx("", {
+        "lg:flex lg:flex-wrap lg:justify-start":
+          checkCategory === "educations" || checkCategory === "skills",
+      })}
+    >
       {contents.map((content, index) => (
-        <article key={index}>
+        <article
+          key={index}
+          className={clsx("mb-2 lg:mb-4", {
+            "lg:mt-0 lg:basis-1/2":
+              checkCategory === "educations" || checkCategory === "skills",
+          })}
+        >
           <Boundary category={type}>
             {type === "educations" && (
               <>

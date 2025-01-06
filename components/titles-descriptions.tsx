@@ -13,9 +13,9 @@ export const TitlesDescriptions = (Props: Category) => {
   return (
     <>
       {content.map((content, index) => (
-        <section key={index}>
-          <h2>{content.title}</h2>
-          <p>{content.desc}</p>
+        <section key={index} className="p-4">
+          <h2 className="text-xl">{content.title}</h2>
+          <p className="text-lg">{content.desc}</p>
         </section>
       ))}
     </>

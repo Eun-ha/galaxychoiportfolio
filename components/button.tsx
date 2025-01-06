@@ -19,17 +19,17 @@ export const Button = ({
     segment === category.segment ||
     segment === category.slug;
 
-  const checkType = category.button;
+  const checkCategory = category.button;
 
   return (
     <Link
       href={href}
       className={clsx("inline-block p-4 z-10 lg:block", {
         "text-black": !isActive,
-        "text-point-pink": isActive && checkType === "resume",
-        "text-point-cyan": isActive && checkType === "experiences",
-        "text-point-orange": isActive && checkType === "educations",
-        "text-point-violet": isActive && checkType === "skills",
+        "text-point-pink": isActive && checkCategory === "resume",
+        "text-point-cyan": isActive && checkCategory === "experiences",
+        "text-point-orange": isActive && checkCategory === "educations",
+        "text-point-violet": isActive && checkCategory === "skills",
       })}
     >
       {category.button}

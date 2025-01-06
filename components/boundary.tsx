@@ -26,7 +26,7 @@ export const Boundary = (Props: Category) => {
         "border-point-cyan  [&_h3]:text-point-cyan": category === "experiences",
         "border-point-orange [&_h3]:text-point-orange":
           category === "educations",
-        "border-point-violet [&_h3]:text-point-violet": category === "skills",
+        "border-point-violet h3:text-point-violet": category === "skills",
       })}
     >
       {children}

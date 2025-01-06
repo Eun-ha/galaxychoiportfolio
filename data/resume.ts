@@ -89,6 +89,34 @@ export const resume: Resume[] = [
         description:
           "Developed and maintained Android applications for Samsung Smart TV. Worked on various projects including SmartThings, Samsung Health, and Samsung Pay.",
       },
+      {
+        company: "Samsung Electronics",
+        title: "Software Engineer Intern",
+        date: "2017.07 - 2017.12",
+        description:
+          "Developed and maintained Android applications for Samsung Smart TV. Worked on various projects including SmartThings, Samsung Health, and Samsung Pay.",
+      },
+      {
+        company: "Samsung Electronics",
+        title: "Software Engineer Intern",
+        date: "2016.07 - 2016.12",
+        description:
+          "Developed and maintained Android applications for Samsung Smart TV. Worked on various projects including SmartThings, Samsung Health, and Samsung Pay.",
+      },
+      {
+        company: "Samsung Electronics",
+        title: "Software Engineer Intern",
+        date: "2017.07 - 2017.12",
+        description:
+          "Developed and maintained Android applications for Samsung Smart TV. Worked on various projects including SmartThings, Samsung Health, and Samsung Pay.",
+      },
+      {
+        company: "Samsung Electronics",
+        title: "Software Engineer Intern",
+        date: "2016.07 - 2016.12",
+        description:
+          "Developed and maintained Android applications for Samsung Smart TV. Worked on various projects including SmartThings, Samsung Health, and Samsung Pay.",
+      },
     ],
     educations: [
       {
@@ -96,8 +124,40 @@ export const resume: Resume[] = [
         degree: "Bachelor of Science in Computer Science",
         date: "2014.09 - 2018.06",
       },
+      {
+        school: "University of California, San Diego",
+        degree: "Bachelor of Science in Computer Science",
+        date: "2014.09 - 2018.06",
+      },
+      {
+        school: "University of California, San Diego",
+        degree: "Bachelor of Science in Computer Science",
+        date: "2014.09 - 2018.06",
+      },
+      {
+        school: "University of California, San Diego",
+        degree: "Bachelor of Science in Computer Science",
+        date: "2014.09 - 2018.06",
+      },
+      {
+        school: "University of California, San Diego",
+        degree: "Bachelor of Science in Computer Science",
+        date: "2014.09 - 2018.06",
+      },
     ],
     skills: [
+      {
+        name: "Java",
+        level: 4,
+      },
+      {
+        name: "Kotlin",
+        level: 4,
+      },
+      {
+        name: "Android",
+        level: 4,
+      },
       {
         name: "Java",
         level: 4,

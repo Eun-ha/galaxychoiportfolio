@@ -7,7 +7,7 @@ export function ResumeDescription() {
   return (
     <section>
       {content.map((x, index) => (
-        <article key={index}>
+        <article key={index} className="mb-2 lg:mb-4">
           <Boundary>
             <h3>-업무명: {x.title}</h3>
             <p>-기간: {x.date}</p>
