@@ -20,7 +20,7 @@ export const ButtonList = ({
 
   function stickNavbar() {
     const windowHeight = window.scrollY;
-    windowHeight > 50 ? setStickyClass(true) : setStickyClass(false);
+    windowHeight > 80 ? setStickyClass(true) : setStickyClass(false);
   }
 
   useEffect(() => {

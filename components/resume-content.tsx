@@ -43,8 +43,6 @@ export const ResumeContent = ({
 
   const checkCategory = type;
 
-  console.log(checkCategory);
-
   return (
     <section
       className={clsx({
