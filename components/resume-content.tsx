@@ -1,7 +1,9 @@
 "use client";
 import {
+  Descriptions,
   Education,
   Experience,
+  getDescriptions,
   getEducations,
   getExperiences,
   getSkills,
@@ -14,14 +16,16 @@ import clsx from "clsx";
 export const ResumeContent = ({
   type,
 }: {
-  type: "educations" | "experiences" | "skills";
+  type: "educations" | "experiences" | "skills" | "descriptions";
 }) => {
   const [contents, setContents] = useState<
-    Experience[] | Education[] | Skill[]
+    Experience[] | Education[] | Skill[] | Descriptions[]
   >([]);
 
   const getData = () => {
     switch (type) {
+      case "descriptions":
+        return getDescriptions();
       case "educations":
         return getEducations();
       case "experiences":
@@ -43,7 +47,7 @@ export const ResumeContent = ({
 
   return (
     <section
-      className={clsx("", {
+      className={clsx({
         "lg:flex lg:flex-wrap lg:justify-start":
           checkCategory === "educations" || checkCategory === "skills",
       })}
@@ -57,6 +61,20 @@ export const ResumeContent = ({
           })}
         >
           <Boundary category={type}>
+            {type === "descriptions" && (
+              <>
+                <h3>-업무명: {(content as Descriptions).title}</h3>
+                <p>-기간: {(content as Descriptions).date}</p>
+                <ul>
+                  -성과:
+                  {(content as Descriptions).performance.map((y, index) => (
+                    <li key={index}>{y}</li>
+                  ))}
+                </ul>
+                <p>-역할: {(content as Descriptions).role}</p>
+                <p>-기술: {(content as Descriptions).skills}</p>
+              </>
+            )}
             {type === "educations" && (
               <>
                 <h3>{(content as Education).school}</h3>

@@ -28,7 +28,7 @@ export const Button = ({
         "inline-block p-4 z-10 lg:mb-2 lg:block rounded-lg lg:border lg:border-subbackground border-transparent bg-transparent lg:bg-subbackground",
         {
           "text-foreground": !isActive,
-          "text-point-pink": isActive && checkCategory === "resume",
+          "text-point-pink": isActive && checkCategory === "descriptions",
           "text-point-cyan": isActive && checkCategory === "experiences",
           "text-point-orange": isActive && checkCategory === "educations",
           "text-point-violet": isActive && checkCategory === "skills",

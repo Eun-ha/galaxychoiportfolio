@@ -22,7 +22,7 @@ export const Boundary = (Props: Category) => {
         "p-3 lg:p-5": size === "small",
         "p-4 lg:p-9": size === "default",
         "animate-[rerender_1s_ease-in-out_1]": animateRerendering,
-        "border-point-pink [&_h3]:text-point-pink": category === "",
+        "border-point-pink [&_h3]:text-point-pink": category === "descriptions",
         "border-point-cyan  [&_h3]:text-point-cyan": category === "experiences",
         "border-point-orange [&_h3]:text-point-orange":
           category === "educations",

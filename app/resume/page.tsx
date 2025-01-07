@@ -1,5 +1,3 @@
-import { ResumeMain } from "@/components/resume-main";
-
 export default async function Page() {
-  return <ResumeMain />;
+  return <div>Resume 페이지 입니다.</div>;
 }

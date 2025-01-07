@@ -15,8 +15,10 @@ export const ResumeContents = (Props: Category) => {
         <ResumeContent type="experiences" />
       ) : category === "educations" ? (
         <ResumeContent type="educations" />
-      ) : (
+      ) : category === "skills" ? (
         <ResumeContent type="skills" />
+      ) : (
+        <ResumeContent type="descriptions" />
       )}
     </>
   );

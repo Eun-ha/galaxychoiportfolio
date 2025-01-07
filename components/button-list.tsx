@@ -19,7 +19,7 @@ export const ButtonList = ({
   const [stickyClass, setStickyClass] = useState(false);
 
   function stickNavbar() {
-    let windowHeight = window.scrollY;
+    const windowHeight = window.scrollY;
     windowHeight > 50 ? setStickyClass(true) : setStickyClass(false);
   }
 

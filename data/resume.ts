@@ -43,10 +43,10 @@ export const resume: Resume[] = [
   {
     contents: [
       {
-        title: "메인 레쥬메 타이틀 입니다.",
-        desc: "메인 레쥬메 설명 입니다.",
-        slug: "",
-        button: "resume",
+        title: "경력기술서 타이틀 입니다.",
+        desc: "경력기술서 설명 입니다.",
+        slug: "descriptions",
+        button: "descriptions",
       },
       {
         title: "경험 타이틀 입니다.",
