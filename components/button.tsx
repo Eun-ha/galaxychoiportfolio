@@ -25,7 +25,7 @@ export const Button = ({
     <Link
       href={href}
       className={clsx(
-        "inline-block p-4 lg:mb-2 lg:block rounded-lg lg:border lg:border-subbackground border-transparent bg-transparent lg:bg-subbackground",
+        "inline-block p-4 lg:mb-2 lg:block rounded-lg lg:border lg:border-subbackground border-transparent bg-transparent lg:bg-subbackground hover:bg-gray-600",
         {
           "text-foreground": !isActive,
           "text-point-pink": isActive && checkCategory === "descriptions",

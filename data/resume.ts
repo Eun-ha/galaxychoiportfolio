@@ -37,6 +37,16 @@ export type Resume = {
   educations: Education[];
   skills: Skill[];
   descriptions: Descriptions[];
+  works: Works[];
+};
+
+export type Works = {
+  title: string;
+  desc: string;
+  skill: string;
+  path: string;
+  url?: string;
+  download?: string;
 };
 
 export const resume: Resume[] = [
@@ -272,6 +282,40 @@ export const resume: Resume[] = [
         skills: "시맨틱 태그 마크업, tailwind css, pure css, Javascript, React",
       },
     ],
+    works: [
+      {
+        title: "한국마사회",
+        desc: "한국마사회 말병원 프로젝트",
+        skill: "html, css, jquery",
+        path: "01",
+        url: "www.naver.com",
+        download: "www.naver.com",
+      },
+      {
+        title: "엔씨",
+        desc: "유지보수",
+        skill: "html, css, jquery",
+        path: "02",
+        url: "www.naver.com",
+        download: "www.naver.com",
+      },
+      {
+        title: "한국마사회2",
+        desc: "한국마사회 말병원 프로젝트",
+        skill: "html, css, jquery",
+        path: "03",
+        url: "www.naver.com",
+        download: "www.naver.com",
+      },
+      {
+        title: "엔씨2",
+        desc: "유지보수",
+        skill: "html, css, jquery",
+        path: "03",
+        url: "www.naver.com",
+        download: "www.naver.com",
+      },
+    ],
   },
 ];
 
@@ -301,4 +345,8 @@ export function getSkills(): Skill[] {
 
 export function getDescriptions(): Descriptions[] {
   return resume.flatMap((contents) => contents.descriptions);
+}
+
+export function getWorks(): Works[] {
+  return resume.flatMap((contents) => contents.works);
 }

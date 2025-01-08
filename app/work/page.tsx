@@ -1,3 +1,9 @@
+import { Carousel } from "@/components/carousel";
+
 export default function Work() {
-  return <div>Work 페이지 입니다.</div>;
+  return (
+    <div>
+      <Carousel />
+    </div>
+  );
 }
