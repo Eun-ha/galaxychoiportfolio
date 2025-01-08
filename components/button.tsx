@@ -28,10 +28,10 @@ export const Button = ({
         "inline-block p-4 lg:mb-2 lg:block rounded-lg lg:border lg:border-subbackground border-transparent bg-transparent lg:bg-subbackground hover:bg-gray-600",
         {
           "text-foreground": !isActive,
-          "text-point-pink": isActive && checkCategory === "descriptions",
-          "text-point-cyan": isActive && checkCategory === "experiences",
+          "text-point-red": isActive && checkCategory === "descriptions",
+          "text-point-green": isActive && checkCategory === "experiences",
           "text-point-orange": isActive && checkCategory === "educations",
-          "text-point-violet": isActive && checkCategory === "skills",
+          "text-point-blue": isActive && checkCategory === "skills",
         }
       )}
     >

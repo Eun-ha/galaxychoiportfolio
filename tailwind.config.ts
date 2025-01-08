@@ -14,20 +14,21 @@ export default {
         subbackground: "var(--sub-background)",
         subfontcolor: "var(--sub-font-color)",
         point: {
-          pink: "#FF0080",
-          blue: "#d3e5ff",
-          cyan: "#50E3C2",
-          orange: "#F5A623",
+          red: "#f85149",
+          blue: "#4493f8",
+          green: "#3fb950",
+          orange: "#ffa657",
           violet: "#7928CA",
+          cyan: "#50E3C2",
         },
       },
       keyframes: ({ theme }) => ({
         rerender: {
           "0%": {
-            ["border-color"]: theme("colors.point.blue"),
+            ["border-color"]: theme("colors.subfontcolor"),
           },
           "40%": {
-            ["border-color"]: theme("colors.point.blue"),
+            ["border-color"]: theme("colors.subfontcolor"),
           },
         },
         highlight: {

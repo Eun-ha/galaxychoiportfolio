@@ -106,9 +106,9 @@ export function Nav() {
             href={item.url}
             onClick={close}
             className={clsx(
-              "text-xl mt-5 flex items-center justify-center lg:mt-0 lg:pl-6 hover:text-red-500",
+              "text-xl mt-5 flex items-center justify-center lg:mt-0 lg:pl-6 hover:text-point-red",
               {
-                "text-red-500": segment === item.slug,
+                "text-point-red": segment === item.slug,
               }
             )}
           >

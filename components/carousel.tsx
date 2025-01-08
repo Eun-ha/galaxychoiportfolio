@@ -8,8 +8,8 @@ export function Carousel() {
   return (
     <section>
       <MultiCarousel>
-        {data.map((data) => (
-          <CarouselCard content={data} />
+        {data.map((data, index) => (
+          <CarouselCard key={index} content={data} />
         ))}
       </MultiCarousel>
     </section>
