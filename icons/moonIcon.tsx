@@ -1,5 +1,5 @@
 import { BsMoonStarsFill } from "react-icons/bs";
 
-export default function Moon() {
+export default function MoonIcon() {
   return <BsMoonStarsFill size={30} />;
 }

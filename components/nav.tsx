@@ -1,9 +1,9 @@
 "use client";
-import Astronaut from "@/icons/astronaut";
-import Close from "@/icons/close";
-import Ham from "@/icons/ham";
-import Moon from "@/icons/moon";
-import Star from "@/icons/star";
+import AstronautIcon from "@/icons/astronautIcon";
+import CloseIcon from "@/icons/closeIcon";
+import HamIcon from "@/icons/hamIcon";
+import MoonIcon from "@/icons/moonIcon";
+import StarIcon from "@/icons/starIcon";
 
 import clsx from "clsx";
 import Link from "next/link";
@@ -24,19 +24,19 @@ export function Nav() {
     {
       url: "/",
       text: "Home",
-      icon: <Star />,
+      icon: <StarIcon />,
       slug: null,
     },
     {
       url: "/resume",
       text: "Resume",
-      icon: <Moon />,
+      icon: <MoonIcon />,
       slug: "resume",
     },
     {
       url: "/work",
       text: "Work",
-      icon: <Astronaut />,
+      icon: <AstronautIcon />,
       slug: "work",
     },
   ];
@@ -90,7 +90,7 @@ export function Nav() {
         })}
         onClick={() => setIsOpen(!isOpen)}
       >
-        {isOpen ? <Close /> : <Ham />}
+        {isOpen ? <CloseIcon /> : <HamIcon />}
       </button>
 
       <nav
