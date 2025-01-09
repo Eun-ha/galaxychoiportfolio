@@ -30,6 +30,10 @@ body {
   }
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 .react-multiple-carousel__arrow {
   position: absolute;
   top: 25%;

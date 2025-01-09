@@ -74,8 +74,6 @@ export function Nav() {
 
   const segment = useSelectedLayoutSegment();
 
-  console.log(segment);
-
   return (
     <div
       className={clsx({
