@@ -54,9 +54,9 @@ export default function HomeMain() {
       </div>
       <motion.div
         className="relative w-[300px] h-[400px] bg-slate-500 shrink-0"
-        initial={{ opacity: 0, transform: "translateX(200px)" }}
+        initial={{ opacity: 0, transform: "translateX(20px)" }}
         animate={{ opacity: 1, transform: "translateX(0px)" }}
-        transition={{ type: "spring" }}
+        transition={{ type: "linear" }}
       >
         <Image
           src={`/images/works/01.png`}

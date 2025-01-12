@@ -2,6 +2,7 @@ import Decoration from "@/components/decoration";
 import HomeAbout from "@/components/home-about";
 import HomeContact from "@/components/home-contact";
 import HomeMain from "@/components/home-main";
+import { HomeParticles } from "@/components/home-particles";
 import HomeSkills from "@/components/home-skills";
 
 export default function Home() {
@@ -9,6 +10,7 @@ export default function Home() {
     <div className="relative z-0 mx-[80px]">
       <div id="01" className="px-[80px] py-[120px]">
         <HomeMain />
+        <HomeParticles />
       </div>
       <div id="21" className="h-[1000px] bg-red-700">
         <HomeAbout />
