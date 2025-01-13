@@ -36,152 +36,47 @@ export const HomeParticles = () => {
 
   const options: ISourceOptions = useMemo(
     () => ({
-      autoPlay: true,
       background: {
         color: {
-          value: "#transparent",
+          value: "transparent",
         },
-        image: "",
-        position: "",
-        repeat: "",
-        size: "",
-        opacity: 1,
       },
-      clear: true,
-      defaultThemes: {},
-      delay: 0,
-      fullScreen: {
-        enable: true,
-        zIndex: 0,
-      },
-      detectRetina: true,
-      duration: 0,
       fpsLimit: 120,
-      manualParticles: [],
       particles: {
-        bounce: {
-          horizontal: {
-            value: 1,
-          },
-          vertical: {
-            value: 1,
-          },
-        },
-        collisions: {
-          absorb: {
-            speed: 2,
-          },
-          bounce: {
-            horizontal: {
-              value: 1,
-            },
-            vertical: {
-              value: 1,
-            },
-          },
-          enable: false,
-          maxSpeed: 50,
-          mode: "bounce",
-          overlap: {
-            enable: true,
-            retries: 0,
-          },
-        },
         color: {
           value: "#fde68a",
-          animation: {
-            h: {
-              count: 0,
-              enable: false,
-              speed: 1,
-              decay: 0,
-              delay: 0,
-              sync: true,
-              offset: 0,
-            },
-            s: {
-              count: 0,
-              enable: false,
-              speed: 1,
-              decay: 0,
-              delay: 0,
-              sync: true,
-              offset: 0,
-            },
-            l: {
-              count: 0,
-              enable: false,
-              speed: 1,
-              decay: 0,
-              delay: 0,
-              sync: true,
-              offset: 0,
-            },
+        },
+        move: {
+          direction: MoveDirection.none,
+          enable: true,
+          outModes: {
+            default: OutMode.out,
           },
+          random: false,
+          speed: 0.1,
+          straight: false,
         },
-        effect: {
-          close: true,
-          fill: true,
-          options: {},
-          type: {},
-        },
-        groups: [],
         number: {
           density: {
             enable: true,
-            width: 1920,
-            height: 1080,
           },
-          limit: {
-            mode: "delete",
-            value: 0,
-          },
-          value: 40,
+          value: 50,
         },
         opacity: {
           value: {
             min: 0.1,
-            max: 0.6,
-          },
-          animation: {
-            count: 0,
-            enable: true,
-            speed: 0,
-            decay: 0,
-            delay: 0,
-            sync: false,
-            mode: "auto",
-            startValue: "random",
-            destroy: "none",
-          },
-        },
-        reduceDuplicates: false,
-        shadow: {
-          blur: 5,
-          color: {
-            value: "#fde68a",
-          },
-          enable: false,
-          offset: {
-            x: 0,
-            y: 0,
+            max: 0.8,
           },
         },
         shape: {
-          close: true,
-          fill: true,
-          options: {},
           type: "circle",
         },
         size: {
-          value: {
-            min: 0.1,
-            max: 5,
-          },
+          value: { min: 0.1, max: 4 },
           animation: {
             count: 0,
             enable: true,
-            speed: 6,
+            speed: 4,
             decay: 0,
             delay: 0,
             sync: false,
@@ -190,50 +85,8 @@ export const HomeParticles = () => {
             destroy: "none",
           },
         },
-        stroke: {
-          width: 0,
-        },
-        zIndex: {
-          value: 0,
-          opacityRate: 1,
-          sizeRate: 1,
-          velocityRate: 1,
-        },
-        destroy: {
-          bounds: {},
-          mode: "none",
-          split: {
-            count: 1,
-            factor: {
-              value: 3,
-            },
-            rate: {
-              value: {
-                min: 4,
-                max: 9,
-              },
-            },
-            sizeOffset: true,
-            particles: {},
-          },
-        },
       },
-      pauseOnBlur: true,
-      pauseOnOutsideViewport: true,
-      responsive: [],
-      smooth: false,
-      style: {},
-      themes: [],
-      zLayers: 100,
-      key: "twinkle",
-      name: "Twinkle",
-      motion: {
-        disable: false,
-        reduce: {
-          factor: 4,
-          value: true,
-        },
-      },
+      detectRetina: true,
     }),
     []
   );

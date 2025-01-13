@@ -8,7 +8,7 @@ import HomeSkills from "@/components/home-skills";
 export default function Home() {
   return (
     <div className="relative z-0 mx-[80px]">
-      <div id="01" className="px-[80px] py-[120px]">
+      <div id="01" className="h-[1000px] px-[80px] py-[120px]">
         <HomeMain />
         <HomeParticles />
       </div>

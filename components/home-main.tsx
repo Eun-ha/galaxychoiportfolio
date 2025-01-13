@@ -1,39 +1,74 @@
 "use client";
 import Image from "next/image";
 import * as motion from "motion/react-client";
+import { Variant } from "motion/react";
 
 export default function HomeMain() {
+  const effectsY = {
+    offscreen: (index: number) => ({
+      opacity: 0,
+      y: index,
+    }),
+    onscreen: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        type: "linear",
+        duration: 0.8,
+        delay: 1,
+      },
+    },
+  };
+  const effectsX = {
+    offscreen: (index: number) => ({
+      opacity: 0,
+      x: index,
+    }),
+    onscreen: {
+      opacity: 1,
+      x: 0,
+      transition: {
+        type: "linear",
+        duration: 0.8,
+        delay: 1,
+      },
+    },
+  };
   return (
     <div className="lg:flex">
       <div className="pr-5">
         <motion.h3
-          initial={{ opacity: 0, transform: "translateY(-5px)" }}
-          animate={{ opacity: 1, transform: "translateY(0px)" }}
-          transition={{ type: "linear" }}
+          custom={-15}
+          initial="offscreen"
+          whileInView="onscreen"
+          variants={effectsY}
           className="text-6xl"
         >
           Hello, It's Me
         </motion.h3>
         <motion.p
-          initial={{ opacity: 0, transform: "translateY(-10px)" }}
-          animate={{ opacity: 1, transform: "translateY(0px)" }}
-          transition={{ type: "linear" }}
+          custom={-30}
+          initial="offscreen"
+          whileInView="onscreen"
+          variants={effectsY}
           className="text-5xl mt-6"
         >
           EunHa Choi
         </motion.p>
         <motion.p
-          initial={{ opacity: 0, transform: "translateY(-15px)" }}
-          animate={{ opacity: 1, transform: "translateY(0px)" }}
-          transition={{ type: "linear" }}
+          custom={-45}
+          initial="offscreen"
+          whileInView="onscreen"
+          variants={effectsY}
           className="text-4xl mt-6"
         >
           and I'm a front end engineer
         </motion.p>
         <motion.p
-          initial={{ opacity: 0, transform: "translateY(-20px)" }}
-          animate={{ opacity: 1, transform: "translateY(0px)" }}
-          transition={{ type: "linear" }}
+          custom={-60}
+          initial="offscreen"
+          whileInView="onscreen"
+          variants={effectsY}
           className="text3xl mt-6"
         >
           "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
@@ -45,18 +80,21 @@ export default function HomeMain() {
           culpa qui officia deserunt mollit anim id est laborum."
         </motion.p>
         <motion.button
-          initial={{ opacity: 0, transform: "translateY(-25px)" }}
-          animate={{ opacity: 1, transform: "translateY(0px)" }}
+          custom={-75}
+          initial="offscreen"
+          whileInView="onscreen"
+          variants={effectsY}
           className="mt-6 p-2 bg-slate-500"
         >
           Download CV
         </motion.button>
       </div>
       <motion.div
-        className="relative w-[300px] h-[400px] bg-slate-500 shrink-0"
-        initial={{ opacity: 0, transform: "translateX(20px)" }}
-        animate={{ opacity: 1, transform: "translateX(0px)" }}
-        transition={{ type: "linear" }}
+        className="relative w-full lg:w-[500px] h-[400px] shrink-0 mt-6 lg:mt-0"
+        custom={20}
+        initial="offscreen"
+        whileInView="onscreen"
+        variants={effectsX}
       >
         <Image
           src={`/images/works/01.png`}
