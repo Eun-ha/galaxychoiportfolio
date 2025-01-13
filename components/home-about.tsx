@@ -14,7 +14,6 @@ export default function HomeAbout() {
       transition: {
         type: "linear",
         duration: 0.8,
-        delay: 1,
       },
     },
   };
@@ -29,7 +28,6 @@ export default function HomeAbout() {
       transition: {
         type: "linear",
         duration: 0.8,
-        delay: 1,
       },
     },
   };
@@ -53,7 +51,7 @@ export default function HomeAbout() {
           className="object-cover"
         />
       </motion.div>
-      <div className="pl-0 lg:pl-5">
+      <div className="pl-0 lg:pl-5 mt-6 lg:mt-0">
         <motion.span
           custom={15}
           initial="offscreen"
