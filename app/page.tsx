@@ -8,29 +8,29 @@ import HomeSkills from "@/components/home-skills";
 export default function Home() {
   return (
     <div className="relative z-0 mx-[80px]">
-      <div id="01" className="h-[1000px] px-[80px] py-[120px]">
+      <div id="01" className="px-[80px] py-[150px]">
         <HomeMain />
         <HomeParticles />
       </div>
-      <div id="21" className="h-[1000px] bg-red-700">
+      <div id="02" className="px-[80px] py-[150px]">
         <HomeAbout />
       </div>
-      <div id="03" className="h-[1000px] bg-red-800">
+      <div id="03" className="h-[1000px]">
         <HomeSkills />
       </div>
-      <div id="04" className="h-[1000px] bg-red-900">
+      <div id="04" className="h-[1000px]">
         <HomeContact />
       </div>
       <div className="fixed bottom-4 left-1/2 -ml-[70px] bg-red-600">
-        <a href="#01">main</a>
+        <a href="#01">Main</a>
         <a href="#02" className="pl-1">
-          about
+          About
         </a>
         <a href="#03" className="pl-1">
-          skills
+          Skills
         </a>
         <a href="#04" className="pl-1">
-          contact
+          Contact
         </a>
       </div>
       <Decoration />

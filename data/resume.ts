@@ -336,7 +336,7 @@ export function getContents(category: string): Contents[] {
   );
 }
 
-export function getExperiences(): Experience[] {
+export function get(): Experience[] {
   return resume.flatMap((contents) => contents.experiences);
 }
 

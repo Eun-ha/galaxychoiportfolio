@@ -1,13 +1,12 @@
 "use client";
 import Image from "next/image";
 import * as motion from "motion/react-client";
-import { Variant } from "motion/react";
 
 export default function HomeMain() {
   const effectsY = {
     offscreen: (index: number) => ({
       opacity: 0,
-      y: index,
+      y: index * 3,
     }),
     onscreen: {
       opacity: 1,
@@ -34,9 +33,10 @@ export default function HomeMain() {
       },
     },
   };
+
   return (
     <div className="lg:flex">
-      <div className="pr-5">
+      <div className="pr-0 lg:pr-5">
         <motion.h3
           custom={-15}
           initial="offscreen"
@@ -102,7 +102,7 @@ export default function HomeMain() {
           width={0}
           height={0}
           fill
-          sizes="100% 300px"
+          sizes="100% auto"
           className="object-cover"
         />
       </motion.div>
