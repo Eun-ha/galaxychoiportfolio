@@ -53,7 +53,7 @@ export default function HomeAbout() {
       </motion.div>
       <div className="pl-0 lg:pl-5 mt-6 lg:mt-0">
         <motion.span
-          custom={15}
+          custom={25}
           initial="offscreen"
           whileInView="onscreen"
           variants={effectsY}
@@ -62,7 +62,7 @@ export default function HomeAbout() {
           Let me introduce myself
         </motion.span>
         <motion.h3
-          custom={30}
+          custom={20}
           initial="offscreen"
           whileInView="onscreen"
           variants={effectsY}
@@ -71,7 +71,7 @@ export default function HomeAbout() {
           About Me
         </motion.h3>
         <motion.p
-          custom={45}
+          custom={15}
           initial="offscreen"
           whileInView="onscreen"
           variants={effectsY}
@@ -80,7 +80,7 @@ export default function HomeAbout() {
           Frontend Developer
         </motion.p>
         <motion.p
-          custom={60}
+          custom={10}
           initial="offscreen"
           whileInView="onscreen"
           variants={effectsY}
@@ -95,7 +95,7 @@ export default function HomeAbout() {
           culpa qui officia deserunt mollit anim id est laborum."
         </motion.p>
         <motion.button
-          custom={75}
+          custom={5}
           initial="offscreen"
           whileInView="onscreen"
           variants={effectsY}

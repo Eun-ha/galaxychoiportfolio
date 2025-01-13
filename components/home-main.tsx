@@ -38,7 +38,7 @@ export default function HomeMain() {
     <div className="lg:flex">
       <div className="pr-0 lg:pr-5">
         <motion.h3
-          custom={-15}
+          custom={-5}
           initial="offscreen"
           whileInView="onscreen"
           variants={effectsY}
@@ -47,7 +47,7 @@ export default function HomeMain() {
           Hello, It's Me
         </motion.h3>
         <motion.p
-          custom={-30}
+          custom={-10}
           initial="offscreen"
           whileInView="onscreen"
           variants={effectsY}
@@ -56,7 +56,7 @@ export default function HomeMain() {
           EunHa Choi
         </motion.p>
         <motion.p
-          custom={-45}
+          custom={-15}
           initial="offscreen"
           whileInView="onscreen"
           variants={effectsY}
@@ -65,7 +65,7 @@ export default function HomeMain() {
           and I'm a front end engineer
         </motion.p>
         <motion.p
-          custom={-60}
+          custom={-20}
           initial="offscreen"
           whileInView="onscreen"
           variants={effectsY}
@@ -80,7 +80,7 @@ export default function HomeMain() {
           culpa qui officia deserunt mollit anim id est laborum."
         </motion.p>
         <motion.button
-          custom={-75}
+          custom={-25}
           initial="offscreen"
           whileInView="onscreen"
           variants={effectsY}
