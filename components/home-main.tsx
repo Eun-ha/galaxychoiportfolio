@@ -42,7 +42,7 @@ export default function HomeMain() {
           initial="offscreen"
           whileInView="onscreen"
           variants={effectsY}
-          className="text-6xl"
+          className="text-6xl text-point-red"
         >
           Hello, It's Me
         </motion.h3>

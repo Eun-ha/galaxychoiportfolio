@@ -66,7 +66,7 @@ export default function HomeAbout() {
           initial="offscreen"
           whileInView="onscreen"
           variants={effectsY}
-          className="text-6xl mt-6"
+          className="text-6xl mt-6 text-point-red"
         >
           About Me
         </motion.h3>

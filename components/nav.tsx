@@ -69,7 +69,7 @@ export function Nav() {
     return windowSize;
   };
 
-  const { width, height } = useWindowSize();
+  const { width } = useWindowSize();
   const isMobile = width < 1024;
 
   const segment = useSelectedLayoutSegment();
