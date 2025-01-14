@@ -8,17 +8,17 @@ import HomeSkills from "@/components/home-skills";
 export default function Home() {
   return (
     <div className="relative z-0 mx-[80px]">
-      <div id="01" className="px-[80px] py-[150px]">
+      <div id="01" className="min-h-screen px-[80px] py-[150px]">
         <HomeMain />
         <HomeParticles />
       </div>
-      <div id="02" className="px-[80px] py-[150px]">
+      <div id="02" className="min-h-screen px-[80px] py-[150px]">
         <HomeAbout />
       </div>
-      <div id="03" className="h-[1000px]">
+      <div id="03" className="min-h-screen px-[80px] py-[150px]">
         <HomeSkills />
       </div>
-      <div id="04" className="h-[1000px]">
+      <div id="04" className="min-h-screen ">
         <HomeContact />
       </div>
       <div className="fixed bottom-4 left-1/2 -ml-[70px] bg-red-600">

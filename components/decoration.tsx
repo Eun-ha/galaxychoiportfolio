@@ -68,7 +68,7 @@ export default function Decoration() {
         initial="offscreen"
         whileInView="onscreen"
         variants={fadeIn}
-        className="block absolute right-24 top-1/4 -z-10 -rotate-12"
+        className="block absolute right-24 top-1/4 mt-[300px] -z-10 -rotate-12"
       >
         <JavascriptIcon />
       </motion.span>
