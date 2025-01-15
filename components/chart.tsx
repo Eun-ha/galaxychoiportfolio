@@ -1,7 +1,5 @@
 "use client";
 
-import { TrendingUp } from "lucide-react";
-
 import {
   Label,
   PolarGrid,
@@ -10,37 +8,36 @@ import {
   RadialBarChart,
 } from "recharts";
 
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
-
 import { ChartConfig, ChartContainer } from "@/components/ui/chart";
-const chartData = [
-  { browser: "safari", visitors: 100, fill: "var(--color-safari)" },
-];
 
-const chartConfig = {
-  visitors: {
-    label: "Visitors",
-  },
-  safari: {
-    label: "Safari",
-    color: "hsl(var(--chart-2))",
-  },
-} satisfies ChartConfig;
+type Skills = {
+  color: number;
+  skills: number;
+  angle: number;
+  name: string;
+};
 
-export function Chart() {
+export function Chart(Props: Skills) {
+  const { color, skills, angle, name } = Props;
+  const chartConfig = {
+    skills: {
+      label: "Skills",
+    },
+    fill: {
+      label: "Skills",
+      color: `hsl(var(--chart-${color}))`,
+    },
+  } satisfies ChartConfig;
+  const chartData = [
+    { browser: "skills", skills: `${skills}`, fill: "var(--color-fill)" },
+  ];
+
   return (
     <ChartContainer config={chartConfig} className="wi-[172px] h-[172px]">
       <RadialBarChart
         data={chartData}
         startAngle={0}
-        endAngle={120}
+        endAngle={angle}
         innerRadius={80}
         outerRadius={110}
       >
@@ -51,7 +48,7 @@ export function Chart() {
           className="first:fill-muted last:fill-background"
           polarRadius={[86, 74]}
         />
-        <RadialBar dataKey="visitors" background cornerRadius={10} />
+        <RadialBar dataKey="skills" background cornerRadius={10} />
         <PolarRadiusAxis tick={false} tickLine={false} axisLine={false}>
           <Label
             content={({ viewBox }) => {
@@ -61,21 +58,21 @@ export function Chart() {
                     x={viewBox.cx}
                     y={viewBox.cy}
                     textAnchor="middle"
-                    dominantBaseline="middle"
+                    dominantBaseline="top"
                   >
                     <tspan
                       x={viewBox.cx}
                       y={viewBox.cy}
                       className="fill-foreground text-4xl font-bold"
                     >
-                      {chartData[0].visitors.toLocaleString()}
+                      {chartData[0].skills.toLocaleString()}
                     </tspan>
                     <tspan
                       x={viewBox.cx}
                       y={(viewBox.cy || 0) + 24}
-                      className="fill-muted-foreground"
+                      className="fill-muted-foreground text-lg"
                     >
-                      Visitors
+                      {name}
                     </tspan>
                   </text>
                 );

@@ -2,8 +2,8 @@
 
 import { animate, stagger } from "motion";
 import { Chart } from "./chart";
-import { motion, useAnimate, usePresence } from "motion/react";
-import { useEffect } from "react";
+import { motion } from "motion/react";
+import { Opacity } from "@tsparticles/engine";
 
 export default function HomeSkills() {
   const effectsY = {
@@ -21,6 +21,73 @@ export default function HomeSkills() {
     },
   };
 
+  const container = {
+    hidden: { opacity: 0 },
+    show: {
+      opacity: 1,
+      transition: {
+        type: "linear",
+        staggerChildren: 0.2,
+      },
+    },
+  };
+
+  const listItem = {
+    hidden: { opacity: 0, y: 20 },
+    show: { opacity: 1, y: 0 },
+  };
+
+  const data = [
+    {
+      color: 1,
+      skills: 80,
+      name: "HTML5",
+      angle: 200,
+    },
+    {
+      color: 2,
+      skills: 70,
+      name: "CSS3",
+      angle: 300,
+    },
+    {
+      color: 3,
+      skills: 60,
+      name: "React",
+      angle: 270,
+    },
+    {
+      color: 4,
+      skills: 70,
+      name: "Nextjs",
+      angle: 230,
+    },
+    {
+      color: 1,
+      skills: 80,
+      name: "HTML5",
+      angle: 200,
+    },
+    {
+      color: 2,
+      skills: 70,
+      name: "CSS3",
+      angle: 300,
+    },
+    {
+      color: 3,
+      skills: 60,
+      name: "React",
+      angle: 270,
+    },
+    {
+      color: 4,
+      skills: 70,
+      name: "Nextjs",
+      angle: 230,
+    },
+  ];
+
   return (
     <div className="text-center">
       <motion.h3
@@ -33,24 +100,21 @@ export default function HomeSkills() {
         My Skills
       </motion.h3>
       <motion.ul
-        custom={5}
-        initial="offscreen"
-        whileInView="onscreen"
-        variants={effectsY}
+        variants={container}
+        initial="hidden"
+        whileInView="show"
         className="flex flex-wrap justify-evenly mt-24"
       >
-        <li>
-          <Chart />
-        </li>
-        <li>
-          <Chart />
-        </li>
-        <li>
-          <Chart />
-        </li>
-        <li>
-          <Chart />
-        </li>
+        {data.map((data, index) => (
+          <motion.li key={index} variants={listItem}>
+            <Chart
+              color={data.color}
+              skills={data.skills}
+              name={data.name}
+              angle={data.angle}
+            />
+          </motion.li>
+        ))}
       </motion.ul>
     </div>
   );
