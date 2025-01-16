@@ -84,7 +84,7 @@ export default function HomeAbout() {
           initial="offscreen"
           whileInView="onscreen"
           variants={effectsY}
-          className="text-base lg:text-3xl mt-6"
+          className="text-base lg:text-xl mt-6"
         >
           "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
           eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad

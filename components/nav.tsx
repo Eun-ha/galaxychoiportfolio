@@ -77,7 +77,7 @@ export function Nav() {
   return (
     <div
       className={clsx({
-        "fixed top-0 right-0 w-60 h-full z-20 bg-background p-5":
+        "fixed top-0 right-0 w-full h-full z-20 bg-background p-5 overflow-y-hidden":
           isMobile && isOpen,
       })}
     >

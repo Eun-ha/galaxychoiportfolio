@@ -21,7 +21,7 @@ export default function Home() {
       <div id="04" className="lg:min-h-screen py-10 lg:px-[80px] lg:py-[150px]">
         <HomeContact />
       </div>
-      <div className="fixed bottom-4 left-1/2 -ml-[70px] bg-red-600">
+      <div className="fixed bottom-4 left-1/2 -translate-x-2/4 bg-red-600">
         <a href="#01">Main</a>
         <a href="#02" className="pl-1">
           About
