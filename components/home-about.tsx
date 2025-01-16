@@ -57,7 +57,7 @@ export default function HomeAbout() {
           initial="offscreen"
           whileInView="onscreen"
           variants={effectsY}
-          className="text-xl"
+          className="text-sm lg:text-xl"
         >
           Let me introduce myself
         </motion.span>
@@ -66,7 +66,7 @@ export default function HomeAbout() {
           initial="offscreen"
           whileInView="onscreen"
           variants={effectsY}
-          className="text-6xl mt-6 text-point-red"
+          className="text-4xl lg:text-6xl mt-6 text-point-red"
         >
           About Me
         </motion.h3>
@@ -75,7 +75,7 @@ export default function HomeAbout() {
           initial="offscreen"
           whileInView="onscreen"
           variants={effectsY}
-          className="text-5xl mt-6"
+          className="text-3xl lg:text-5xl mt-6"
         >
           Frontend Developer
         </motion.p>
@@ -84,7 +84,7 @@ export default function HomeAbout() {
           initial="offscreen"
           whileInView="onscreen"
           variants={effectsY}
-          className="text3xl mt-6"
+          className="text-base lg:text-3xl mt-6"
         >
           "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
           eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
@@ -99,7 +99,7 @@ export default function HomeAbout() {
           initial="offscreen"
           whileInView="onscreen"
           variants={effectsY}
-          className="mt-6 p-2 bg-slate-500"
+          className="text-base mt-6 p-2 bg-slate-500"
         >
           Read More!
         </motion.button>

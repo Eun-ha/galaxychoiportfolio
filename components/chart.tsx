@@ -63,14 +63,14 @@ export function Chart(Props: Skills) {
                     <tspan
                       x={viewBox.cx}
                       y={viewBox.cy}
-                      className="fill-foreground text-4xl font-bold"
+                      className="fill-foreground text-2xl lg:text-4xl font-bold"
                     >
                       {chartData[0].skills.toLocaleString()}
                     </tspan>
                     <tspan
                       x={viewBox.cx}
                       y={(viewBox.cy || 0) + 24}
-                      className="fill-muted-foreground text-lg"
+                      className="fill-muted-foreground text-sm lg:text-lg"
                     >
                       {name}
                     </tspan>

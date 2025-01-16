@@ -95,7 +95,7 @@ export default function HomeSkills() {
         initial="offscreen"
         whileInView="onscreen"
         variants={effectsY}
-        className="inline-block text-6xl text-point-red"
+        className="inline-block text-4xl lg:text-6xl text-point-red"
       >
         My Skills
       </motion.h3>
@@ -103,10 +103,10 @@ export default function HomeSkills() {
         variants={container}
         initial="hidden"
         whileInView="show"
-        className="flex flex-wrap justify-evenly mt-24"
+        className="flex flex-wrap justify-evenly mt-12 lg:mt-24"
       >
         {data.map((data, index) => (
-          <motion.li key={index} variants={listItem}>
+          <motion.li className="mb-8" key={index} variants={listItem}>
             <Chart
               color={data.color}
               skills={data.skills}

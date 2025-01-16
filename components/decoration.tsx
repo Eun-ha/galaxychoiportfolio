@@ -40,14 +40,14 @@ export default function Decoration() {
         initial={{ opacity: 0, scale: 0.5 }}
         animate={{ opacity: 1, scale: 1, y: [0, 50, 0] }}
         transition={bounceTransition}
-        className="block w-48 h-48 bg-zinc-900 absolute left-2 top-24 rounded-full -z-10"
+        className="block w-48 h-48 bg-zinc-900 absolute left-2 top-10 lg:top-24 rounded-full -z-10"
       ></motion.span>
 
       <motion.span
         initial={{ opacity: 0, scale: 0.5 }}
-        animate={{ opacity: 1, scale: 1, y: [0, 50, 0] }}
+        animate={{ opacity: 1, scale: 1, y: [0, 70, 0] }}
         transition={bounceTransition}
-        className="block w-28 h-28 bg-zinc-900 absolute right-2 top-4 rounded-full -z-10"
+        className="block w-28 h-28 bg-zinc-900 absolute right-2 top-2 lg:top-4 rounded-full -z-10"
       ></motion.span>
 
       <motion.span
@@ -61,7 +61,7 @@ export default function Decoration() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 0.5, y: [0, 70, 0] }}
         transition={bounceTransition2}
-        className="block absolute left-[30%] top-[140px] -z-10 w-[400px] h-[400px] bg-[url('/images/astronaut.png')] bg-repeat bg-left-top bg-cover"
+        className="block absolute left-[10%] lg:left-[30%] top-[140px] -z-10 w-[400px] h-[400px] bg-[url('/images/astronaut.png')] bg-repeat bg-left-top bg-cover"
       ></motion.span>
 
       <motion.span

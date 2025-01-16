@@ -42,7 +42,7 @@ export default function HomeMain() {
           initial="offscreen"
           whileInView="onscreen"
           variants={effectsY}
-          className="text-6xl text-point-red"
+          className="text-4xl lg:text-6xl text-point-red"
         >
           Hello, It's Me
         </motion.h3>
@@ -51,7 +51,7 @@ export default function HomeMain() {
           initial="offscreen"
           whileInView="onscreen"
           variants={effectsY}
-          className="text-5xl mt-6"
+          className="text-3xl lg:text-5xl mt-6"
         >
           EunHa Choi
         </motion.p>
@@ -60,7 +60,7 @@ export default function HomeMain() {
           initial="offscreen"
           whileInView="onscreen"
           variants={effectsY}
-          className="text-4xl mt-6"
+          className="text-2xl lg:text-4xl mt-6"
         >
           and I'm a front end engineer
         </motion.p>
@@ -69,7 +69,7 @@ export default function HomeMain() {
           initial="offscreen"
           whileInView="onscreen"
           variants={effectsY}
-          className="text3xl mt-6"
+          className="text-base lg:text-3xl mt-6"
         >
           "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
           eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
@@ -84,7 +84,7 @@ export default function HomeMain() {
           initial="offscreen"
           whileInView="onscreen"
           variants={effectsY}
-          className="inline-block mt-6 p-2 bg-slate-500"
+          className="text-base inline-block mt-6 p-2 bg-slate-500"
         >
           <a href="files/CV.pdf" download>
             Download CV
