@@ -79,15 +79,17 @@ export default function HomeMain() {
           pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
           culpa qui officia deserunt mollit anim id est laborum."
         </motion.p>
-        <motion.button
+        <motion.span
           custom={-25}
           initial="offscreen"
           whileInView="onscreen"
           variants={effectsY}
-          className="mt-6 p-2 bg-slate-500"
+          className="inline-block mt-6 p-2 bg-slate-500"
         >
-          Download CV
-        </motion.button>
+          <a href="files/CV.pdf" download>
+            Download CV
+          </a>
+        </motion.span>
       </div>
       <motion.div
         className="relative w-full lg:w-[500px] h-[400px] shrink-0 mt-6 lg:mt-0"
