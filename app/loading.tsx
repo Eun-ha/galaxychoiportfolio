@@ -1,9 +1,9 @@
 export default function Loading() {
   return (
-    <div className="space-y-4">
-      <h1 className="text-xl font-medium text-gray-400/80">
-        app loading 로딩 중...
-      </h1>
+    <div className="space-y-4 text-center mt-[25%]">
+      <span className="text-xl font-medium text-gray-400/80">
+        App loading 로딩 중...
+      </span>
     </div>
   );
 }

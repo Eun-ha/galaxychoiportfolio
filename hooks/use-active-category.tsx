@@ -24,23 +24,6 @@ export function UseActiveCategory() {
     const topContact = contact.getBoundingClientRect().top;
 
     const handleScroll = () => {
-      /*
-      console.log("==========스크롤 수치====");
-      console.log("scroll");
-      console.log(window.scrollY);
-      console.log("==============");
-
-      console.log("about");
-      console.log(topAbout);
-      console.log("skills");
-      console.log(topSkills);
-      console.log("contact");
-      console.log(topContact);
-      */
-
-      console.log(window.innerHeight);
-      console.log(window.scrollY);
-
       /**
        * 0:main
        * 1:about

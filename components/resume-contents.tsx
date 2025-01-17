@@ -7,8 +7,6 @@ interface Category {
 export const ResumeContents = (Props: Category) => {
   const { category } = Props;
 
-  //console.log(category);
-
   return (
     <>
       {category === "experiences" ? (
