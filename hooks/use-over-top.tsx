@@ -7,8 +7,6 @@ export function UseOverTop(offset = 0) {
 
   useEffect(() => {
     const handleScroll = () => {
-      console.log(window.scrollY);
-
       SetIsOvertop(window.scrollY > offset);
     };
 

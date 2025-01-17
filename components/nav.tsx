@@ -28,7 +28,7 @@ export function Nav() {
       slug: null,
     },
     {
-      url: "/resume",
+      url: "/resume/descriptions",
       text: "Resume",
       icon: <MoonIcon />,
       slug: "resume",

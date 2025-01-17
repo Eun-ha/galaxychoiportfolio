@@ -5,7 +5,6 @@ import HomeMain from "@/components/home-main";
 import { HomeParticles } from "@/components/home-particles";
 import HomeSkills from "@/components/home-skills";
 import ScrollTrackerNav from "@/components/scroll-tracker-nav";
-import { UseOverTop } from "@/hooks/use-over-top";
 
 export default function Home() {
   return (
@@ -24,7 +23,6 @@ export default function Home() {
         <HomeContact />
       </div>
       <ScrollTrackerNav />
-
       <Decoration />
     </div>
   );
