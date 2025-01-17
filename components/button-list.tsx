@@ -4,9 +4,9 @@ import { Button } from "./button";
 import clsx from "clsx";
 
 export type Categories = {
-  //button: string;
+  button: string;
   slug?: string;
-  //segment?: string;
+  segment?: string;
 };
 
 export const ButtonList = ({
