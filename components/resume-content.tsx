@@ -22,22 +22,21 @@ export const ResumeContent = ({
     Experience[] | Education[] | Skill[] | Descriptions[]
   >([]);
 
-  const getData = () => {
-    switch (type) {
-      case "descriptions":
-        return getDescriptions();
-      case "educations":
-        return getEducations();
-      case "experiences":
-        return getExperiences();
-      case "skills":
-        return getSkills();
-      default:
-        return [];
-    }
-  };
-
   useEffect(() => {
+    const getData = () => {
+      switch (type) {
+        case "descriptions":
+          return getDescriptions();
+        case "educations":
+          return getEducations();
+        case "experiences":
+          return getExperiences();
+        case "skills":
+          return getSkills();
+        default:
+          return [];
+      }
+    };
     setContents(getData());
   }, [type]); // 빈 배열을 넣으면 한 번만 실행됨
 

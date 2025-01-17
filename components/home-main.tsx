@@ -44,7 +44,7 @@ export default function HomeMain() {
           variants={effectsY}
           className="text-4xl lg:text-6xl text-point-red"
         >
-          Hello, It's Me
+          Hello, It&apos;s Me
         </motion.h3>
         <motion.p
           custom={-10}
@@ -62,7 +62,7 @@ export default function HomeMain() {
           variants={effectsY}
           className="text-2xl lg:text-4xl mt-6"
         >
-          and I'm a front end engineer
+          and I&apos;m a front end engineer
         </motion.p>
         <motion.p
           custom={-20}
@@ -71,13 +71,15 @@ export default function HomeMain() {
           variants={effectsY}
           className="text-base lg:text-xl mt-6"
         >
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat. Duis aute irure dolor in
-          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-          culpa qui officia deserunt mollit anim id est laborum."
+          Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum
+          dolor sit ametLorem ipsum dolor sit ametLorem ipsum dolor sit
+          ametLorem ipsum dolor sit ametLorem ipsum dolor sit ametLorem ipsum
+          dolor sit ametLorem ipsum dolor sit ametLorem ipsum dolor sit
+          ametLorem ipsum dolor sit ametLorem ipsum dolor sit ametLorem ipsum
+          dolor sit ametLorem ipsum dolor sit ametLorem ipsum dolor sit
+          ametLorem ipsum dolor sit ametLorem ipsum dolor sit ametLorem ipsum
+          dolor sit ametLorem ipsum dolor sit ametLorem ipsum dolor sit
+          ametLorem ipsum dolor sit ametLorem ipsum dolor sit amet
         </motion.p>
         <motion.span
           custom={-25}

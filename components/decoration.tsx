@@ -3,7 +3,6 @@
 import GithubIcon from "@/icons/githubIcon";
 import Html5Icon from "@/icons/html5Icon";
 import JavascriptIcon from "@/icons/javascriptIcon";
-import { inertia } from "motion";
 import * as motion from "motion/react-client";
 
 export default function Decoration() {

@@ -1,9 +1,7 @@
 "use client";
 
-import { animate, stagger } from "motion";
 import { Chart } from "./chart";
 import { motion } from "motion/react";
-import { Opacity } from "@tsparticles/engine";
 
 export default function HomeSkills() {
   const effectsY = {

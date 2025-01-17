@@ -4,9 +4,9 @@ import { Button } from "./button";
 import clsx from "clsx";
 
 export type Categories = {
-  button: string;
+  //button: string;
   slug?: string;
-  segment?: string;
+  //segment?: string;
 };
 
 export const ButtonList = ({
@@ -18,10 +18,10 @@ export const ButtonList = ({
 }) => {
   const [stickyClass, setStickyClass] = useState(false);
 
-  function stickNavbar() {
+  const stickNavbar = () => {
     const windowHeight = window.scrollY;
-    windowHeight > 80 ? setStickyClass(true) : setStickyClass(false);
-  }
+    return windowHeight > 80 ? setStickyClass(true) : setStickyClass(false);
+  };
 
   useEffect(() => {
     window.addEventListener("scroll", stickNavbar);
