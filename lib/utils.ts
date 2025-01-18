@@ -1,12 +1,8 @@
 import {
-  Descriptions,
-  Education,
-  Experience,
   getDescriptions,
   getEducations,
   getExperiences,
   getSkills,
-  Skill,
 } from "@/data/resume";
 import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
