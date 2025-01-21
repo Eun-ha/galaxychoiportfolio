@@ -31,7 +31,7 @@ export const Button = ({
           "text-point-red": isActive && checkCategory === "descriptions",
           "text-point-green": isActive && checkCategory === "experiences",
           "text-point-orange": isActive && checkCategory === "educations",
-          "text-point-blue": isActive && checkCategory === "skills",
+          "text-point-blue": isActive && checkCategory === "certificates",
         }
       )}
     >
