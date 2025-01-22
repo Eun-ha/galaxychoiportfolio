@@ -14,7 +14,6 @@ export default function HomeMain() {
       transition: {
         type: "linear",
         duration: 0.8,
-        delay: 1,
       },
     },
   };
@@ -29,7 +28,6 @@ export default function HomeMain() {
       transition: {
         type: "linear",
         duration: 0.8,
-        delay: 1,
       },
     },
   };

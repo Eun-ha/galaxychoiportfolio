@@ -72,8 +72,8 @@ export const resume: Resume[] = [
         button: "educations",
       },
       {
-        title: "스킬 타이틀 입니다.",
-        desc: "스킬 설명 입니다.",
+        title: "자격증 타이틀 입니다.",
+        desc: "자격증 설명 입니다.",
         slug: "certificates",
         button: "certificates",
       },
