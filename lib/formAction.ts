@@ -19,6 +19,7 @@ const TextareaSchema = z
   .string()
   .min(1, { message: "문의사항을 작성해 주세요." });
 
+/* eslint-disable  @typescript-eslint/no-explicit-any */
 export const sendEmail = async (prevState: any, formData: FormData) => {
   const nameValidation = NameSchema.safeParse(formData.get("name"));
   const emailValidation = EmailSchema.safeParse(formData.get("email"));
