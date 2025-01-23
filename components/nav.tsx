@@ -78,7 +78,7 @@ export function Nav() {
     <div
       className={clsx({
         "fixed top-0 right-0 w-full h-full z-20 bg-background p-5 overflow-y-hidden":
-          isMobile && isOpen,
+          isOpen && isMobile,
       })}
     >
       <button
@@ -94,8 +94,8 @@ export function Nav() {
       <nav
         className={clsx("flex justify-evenly", {
           block: !isMobile,
-          hidden: isMobile && !isOpen,
-          "flex-col items-start": isMobile && isOpen,
+          hidden: !isOpen && isMobile,
+          "flex-col items-start": isOpen && isMobile,
         })}
       >
         {menu.map((item, index) => (
