@@ -1,7 +1,6 @@
 import type { Config } from "tailwindcss";
 
 export default {
-  //darkMode: ["class"],
   content: [
     "./pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
@@ -14,6 +13,16 @@ export default {
         foreground: "var(--foreground)",
         subbackground: "var(--sub-background)",
         subfontcolor: "var(--sub-font-color)",
+        text: {
+          default: "var(--text-default)",
+          emphasis: "var(--text-emphasis)",
+        },
+        bg: {
+          default: "var(--bg-default)",
+          hover: "var(--bg-hover)",
+          active: "var(--bg-active)",
+        },
+        border: "var(--border)",
         point: {
           red: "#f85149",
           blue: "#4493f8",
@@ -50,7 +59,7 @@ export default {
           DEFAULT: "hsl(var(--destructive))",
           foreground: "hsl(var(--destructive-foreground))",
         },
-        border: "hsl(var(--border))",
+
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
         chart: {
@@ -61,6 +70,12 @@ export default {
           "5": "hsl(var(--chart-5))",
         },
       },
+      fontSize: {
+        sm: "12px",
+        default: "14px",
+        lg: "24px",
+      },
+
       keyframes: ({ theme }) => ({
         rerender: {
           "0%": {

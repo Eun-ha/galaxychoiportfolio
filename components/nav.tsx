@@ -77,7 +77,7 @@ export function Nav() {
   return (
     <div
       className={clsx({
-        "fixed top-0 right-0 w-full h-full z-20 bg-background p-5 overflow-y-hidden":
+        "fixed top-0 right-0 w-full h-full z-20 bg-bg-default p-5 overflow-y-hidden":
           isOpen && isMobile,
       })}
     >
@@ -104,13 +104,13 @@ export function Nav() {
             href={item.url}
             onClick={close}
             className={clsx(
-              "text-xl mt-5 flex items-center justify-center lg:mt-0 lg:pl-6 hover:text-point-red",
+              "mt-5 flex items-center justify-center lg:mt-0 lg:pl-6 hover:text-point-red",
               {
                 "text-point-red": segment === item.slug,
               }
             )}
           >
-            <span>{item.icon}</span>
+            <span className="text-text-emphasis">{item.icon}</span>
             <p className="pl-1">{item.text}</p>
           </Link>
         ))}

@@ -1,5 +1,5 @@
 import { BsStarFill } from "react-icons/bs";
 
 export default function StarIcon() {
-  return <BsStarFill size={30} />;
+  return <BsStarFill size={14} />;
 }

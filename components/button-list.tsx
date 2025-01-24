@@ -34,10 +34,11 @@ export const ButtonList = ({
   return (
     <aside
       className={clsx(
-        "z-10 flex place-content-evenly lg:block lg:place-content-start lg:shrink-0 lg:w-[200px] rounded-lg border border-subbackground lg:border-transparent lg:border-none bg-subbackground lg:bg-transparent",
+        "z-10 flex place-content-evenly lg:block lg:place-content-start lg:shrink-0 lg:w-[200px] rounded-lg bg-bg-active lg:bg-transparent",
         {
           "fixed-none": !stickyClass,
-          "fixed left-0 top-0 w-full lg:fixed-none lg:static": stickyClass,
+          "fixed left-0 top-0 w-full bg-bg-default lg:fixed-none lg:static":
+            stickyClass,
         }
       )}
     >

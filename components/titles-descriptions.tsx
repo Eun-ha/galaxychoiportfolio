@@ -12,8 +12,8 @@ export const TitlesDescriptions = (Props: Category) => {
     <>
       {content.map((content, index) => (
         <section key={index} className="my-4 lg:my-0 lg:mb-4">
-          <h2 className="text-2xl">{content.title}</h2>
-          <p className="text-xl text-subfontcolor">{content.desc}</p>
+          <h2 className="text-lg font-medium">{content.title}</h2>
+          <p className="text-text-emphasis">{content.desc}</p>
         </section>
       ))}
     </>

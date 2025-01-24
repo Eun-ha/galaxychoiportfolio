@@ -22,7 +22,6 @@
   --accent-foreground: 0 0% 9%;
   --destructive: 0 84.2% 60.2%;
   --destructive-foreground: 0 0% 98%;
-  --border: 0 0% 89.8%;
   --input: 0 0% 89.8%;
   --ring: 0 0% 3.9%;
   --chart-1: 12 76% 61%;
@@ -30,7 +29,22 @@
   --chart-3: 197 37% 24%;
   --chart-4: 43 74% 66%;
   --chart-5: 27 87% 67%;
-  --radius: 0.5rem;
+
+  --text-default: rgb(31, 35, 40);
+  --text-emphasis: rgb(89, 99, 110);
+  --bg-default: rgb(255, 255, 255);
+  --bg-hover: rgba(129, 139, 152, 0.1);
+  --bg-active: rgba(123, 139, 152, 0.15);
+  --border: rgb(209, 217, 224);
+}
+
+body.dark {
+  --text-default: rgb(240, 246, 252);
+  --text-emphasis: rgb(145, 152, 161);
+  --bg-default: rgb(13, 17, 23);
+  --bg-hover: rgba(101, 108, 118, 0.2);
+  --bg-active: rgba(101, 108, 118, 0.1);
+  --border: rgb(61, 68, 77);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -54,7 +68,7 @@
     --accent-foreground: 0 0% 98%;
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 0 0% 98%;
-    --border: 0 0% 14.9%;
+
     --input: 0 0% 14.9%;
     --ring: 0 0% 83.1%;
     --chart-1: 220 70% 50%;
@@ -62,12 +76,22 @@
     --chart-3: 30 80% 55%;
     --chart-4: 280 65% 60%;
     --chart-5: 340 75% 55%;
+
+    /*
+    --text-default: rgb(145, 152, 161);
+    --text-emphasis: rgb(240, 246, 252);
+    --bg-default: rgb(13, 17, 23);
+    --bg-hover: rgba(101, 108, 118, 0.2);
+    --bg-active: rgba(101, 108, 118, 0.1);
+    --border: rgb(61, 68, 77);
+    */
   }
 }
 
 body {
   font-family: Arial, Helvetica, sans-serif;
-  color: var(--foreground);
+  color: var(--text-default);
+  font-size: 14px;
 }
 
 html {
@@ -76,7 +100,7 @@ html {
 
 /**
   캐러셀 커스텀
-**/
+*/
 
 @media (min-width: 1024px) {
   .react-multiple-carousel__arrow {
@@ -200,6 +224,7 @@ html {
 }
 */
 
+/*
 @layer base {
   :root {
     --background: 0 0% 100%;
@@ -264,3 +289,4 @@ html {
     @apply bg-background text-foreground;
   }
 }
+*/

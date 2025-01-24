@@ -25,11 +25,11 @@ export const Button = ({
     <Link
       href={href}
       className={clsx(
-        "inline-block py-4 lg:pl-4 lg:mb-2 lg:block rounded-lg lg:border lg:border-subbackground border-transparent bg-transparent lg:bg-subbackground lg:hover:bg-gray-600",
+        "inline-block py-4 lg:pl-4 lg:block lg:rounded-lg lg:hover:bg-bg-hover",
         {
-          "text-foreground": !isActive,
-          "text-point-red": isActive && checkCategory === "descriptions",
-          "text-point-green": isActive && checkCategory === "experiences",
+          "lg:bg-bg-active": isActive,
+          "text-point-red ": isActive && checkCategory === "descriptions",
+          "text-point-green ": isActive && checkCategory === "experiences",
           "text-point-orange": isActive && checkCategory === "educations",
           "text-point-blue": isActive && checkCategory === "certificates",
         }

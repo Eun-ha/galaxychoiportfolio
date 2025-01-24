@@ -9,8 +9,6 @@ export default function Form() {
 
   useEffect(() => {
     actionState !== null ? setErrorMessage(true) : setErrorMessage(false);
-    console.log(actionState);
-    console.log(isErrorMessage);
   }, [actionState]);
 
   return (

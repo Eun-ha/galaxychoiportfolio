@@ -1,5 +1,5 @@
 import { IoMdClose } from "react-icons/io";
 
 export default function CloseIcon() {
-  return <IoMdClose size={30} />;
+  return <IoMdClose size={14} />;
 }
