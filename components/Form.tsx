@@ -1,46 +1,78 @@
 "use client";
 
 import { sendEmail } from "@/lib/formAction";
-import { useActionState } from "react";
+import { useActionState, useEffect, useState } from "react";
 
 export default function Form() {
   const [actionState, formAction] = useActionState(sendEmail, null);
+  const [isErrorMessage, setErrorMessage] = useState(false);
 
-  console.log("폼=======");
-  console.log(typeof actionState);
-  console.log(actionState);
+  useEffect(() => {
+    actionState !== null ? setErrorMessage(true) : setErrorMessage(false);
+    console.log(actionState);
+    console.log(isErrorMessage);
+  }, [actionState]);
 
   return (
     <form action={formAction}>
-      <div className="flex flex-col gap-4">
-        <div>
-          <label htmlFor="name">이름: </label>
+      <div className="w-full">
+        <div className="w-full flex mb-3">
+          <label
+            htmlFor="name"
+            className="flex-shrink-0 min-w-[80px] text-left"
+          >
+            이름
+          </label>
           <input
             type="text"
             id="name"
             name="name"
             placeholder="이름을 적어주세요."
+            className="w-full flex-shrink h-[45px] indent-[15px]"
           />
         </div>
-        <div>
-          <label htmlFor="email">이메일: </label>
+        <div className="w-full flex mb-3">
+          <label
+            htmlFor="email"
+            className="flex-shrink-0 min-w-[80px] text-left"
+          >
+            이메일
+          </label>
           <input
             type="email"
             id="email"
             name="email"
             placeholder="이메일을 적어주세요."
+            className="w-full flex-shrink h-[45px] indent-[15px]"
           />
         </div>
-        <div>
-          <label htmlFor="textarea">문의 내용: </label>
+        <div className="w-full flex mb-3">
+          <label
+            htmlFor="textarea"
+            className="flex-shrink-0 min-w-[80px] text-left"
+          >
+            문의 내용
+          </label>
           <textarea
             id="textarea"
             name="textarea"
             placeholder="문의 내용을 적어주세요."
+            className="w-full flex-shrink h-[300px] indent-[15px]"
           />
         </div>
       </div>
-      <button type="submit">전송</button>
+      {isErrorMessage ? (
+        <span className="block text-point-red">{actionState}</span>
+      ) : (
+        ""
+      )}
+
+      <button
+        type="submit"
+        className="text-base inline-block mt-6 p-2 bg-slate-500"
+      >
+        전송
+      </button>
     </form>
   );
 }
