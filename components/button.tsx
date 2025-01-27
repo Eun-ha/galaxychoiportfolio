@@ -27,11 +27,7 @@ export const Button = ({
       className={clsx(
         "inline-block py-4 lg:pl-4 lg:block lg:rounded-lg lg:hover:bg-bg-hover",
         {
-          "lg:bg-bg-active": isActive,
-          "text-point-red ": isActive && checkCategory === "descriptions",
-          "text-point-green ": isActive && checkCategory === "experiences",
-          "text-point-orange": isActive && checkCategory === "educations",
-          "text-point-blue": isActive && checkCategory === "certificates",
+          "lg:bg-bg-active text-point-red": isActive,
         }
       )}
     >
