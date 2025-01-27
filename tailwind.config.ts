@@ -75,6 +75,7 @@ export default {
         sm: "12px",
         default: "14px",
         lg: "24px",
+        xl: "36px",
       },
 
       keyframes: ({ theme }) => ({

@@ -367,7 +367,7 @@ export function getWorks(): Work[] {
  * api에 필요한 데이터
  */
 
-export const certificates = [
+export const certificates: Certificate[] = [
   {
     name: "정보처리기사",
     date: "2015-07-31",
@@ -428,7 +428,7 @@ export const educations = [
   },
 ];
 
-export const experiences = [
+export const experiences: Experience[] = [
   {
     company: "Samsung Electronics",
     title: "Software Engineer",
@@ -480,7 +480,7 @@ export const experiences = [
   },
 ];
 
-export const descriptions = [
+export const descriptions: Description[] = [
   {
     title: "엔씨소프트 블레이드&소울 2 랭킹 신규 페이지 UI 개발",
     date: "2023.6 ~ 2 주(실작업 및 검수 1 주 + 기획팀 및 디자인팀 피드백 반영 1 주)",

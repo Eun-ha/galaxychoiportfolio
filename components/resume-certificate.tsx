@@ -3,8 +3,6 @@ import { Certificate } from "@/data/resume";
 import { BoundaryResume } from "./boundary-resume";
 
 export const ResumeCertificate = ({ data }: { data: Certificate[] }) => {
-  console.log(data);
-
   return (
     <>
       {data.map((data, index) => (

@@ -19,8 +19,6 @@ export const Button = ({
     segment === category.segment ||
     segment === category.slug;
 
-  const checkCategory = category.button;
-
   return (
     <Link
       href={href}

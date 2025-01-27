@@ -3,8 +3,6 @@ import { Education } from "@/data/resume";
 import { BoundaryResume } from "./boundary-resume";
 
 export const ResumeEducation = ({ data }: { data: Education[] }) => {
-  console.log(data);
-
   return (
     <>
       {data.map((data, index) => (

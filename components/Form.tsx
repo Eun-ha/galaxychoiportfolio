@@ -8,7 +8,9 @@ export default function Form() {
   const [isErrorMessage, setErrorMessage] = useState(false);
 
   useEffect(() => {
-    actionState !== null ? setErrorMessage(true) : setErrorMessage(false);
+    return actionState !== null
+      ? setErrorMessage(true)
+      : setErrorMessage(false);
   }, [actionState]);
 
   return (
@@ -60,7 +62,9 @@ export default function Form() {
         </div>
       </div>
       {isErrorMessage ? (
-        <span className="block text-point-red">{actionState}</span>
+        <span className="block text-point-red">
+          {typeof actionState === "string" ? actionState : actionState?.message}
+        </span>
       ) : (
         ""
       )}

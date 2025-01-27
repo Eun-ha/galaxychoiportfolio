@@ -5,7 +5,6 @@ import { ResumeEducation } from "./resume-education";
 import { ResumeExperience } from "./resume-experience";
 import { ResumeCertificate } from "./resume-certificate";
 import { ResumeDescription } from "./resume-description";
-import { Boundary } from "./boundary";
 import { notFound } from "next/navigation";
 
 interface Props {

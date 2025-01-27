@@ -1,10 +1,8 @@
-import { getWorks } from "@/data/resume";
 import MultiCarousel from "./multi-carousel";
 import { CarouselCard } from "./carousel-card";
+import { Work } from "@/data/work";
 
-export function Carousel() {
-  const data = getWorks();
-
+export async function Carousel({ data }: { data: Work[] }) {
   return (
     <section>
       <MultiCarousel>

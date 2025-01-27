@@ -1,9 +1,8 @@
 "use client";
 import { Description } from "@/data/resume";
 import { BoundaryResume } from "./boundary-resume";
-export const ResumeDescription = ({ data }: { data: Description[] }) => {
-  console.log(data);
 
+export const ResumeDescription = ({ data }: { data: Description[] }) => {
   return (
     <>
       {data.map((data, index) => (
