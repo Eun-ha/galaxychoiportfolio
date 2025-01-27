@@ -18,27 +18,25 @@ export const ResumeContents = (props: Props) => {
   return (
     <section>
       <article className={clsx("mb-2 lg:mb-4")}>
-        <Boundary category={slug}>
-          {slug === "educations" ? (
-            <Suspense fallback={<div>Education 로딩중...</div>}>
-              <ResumeEducation data={data as Education[]} />
-            </Suspense>
-          ) : slug === "experiences" ? (
-            <Suspense fallback={<div>Experience 로딩중...</div>}>
-              <ResumeExperience data={data as Experience[]} />
-            </Suspense>
-          ) : slug === "certificates" ? (
-            <Suspense fallback={<div>Certificate 로딩중...</div>}>
-              <ResumeCertificate data={data as Certificate[]} />
-            </Suspense>
-          ) : slug === "descriptions" ? (
-            <Suspense fallback={<div>Descriptions 로딩중...</div>}>
-              <ResumeDescription data={data as Description[]} />
-            </Suspense>
-          ) : (
-            notFound()
-          )}
-        </Boundary>
+        {slug === "educations" ? (
+          <Suspense fallback={<div>Education 로딩중...</div>}>
+            <ResumeEducation data={data as Education[]} />
+          </Suspense>
+        ) : slug === "experiences" ? (
+          <Suspense fallback={<div>Experience 로딩중...</div>}>
+            <ResumeExperience data={data as Experience[]} />
+          </Suspense>
+        ) : slug === "certificates" ? (
+          <Suspense fallback={<div>Certificate 로딩중...</div>}>
+            <ResumeCertificate data={data as Certificate[]} />
+          </Suspense>
+        ) : slug === "descriptions" ? (
+          <Suspense fallback={<div>Descriptions 로딩중...</div>}>
+            <ResumeDescription data={data as Description[]} />
+          </Suspense>
+        ) : (
+          notFound()
+        )}
       </article>
     </section>
   );
