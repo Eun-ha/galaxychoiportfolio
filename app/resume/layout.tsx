@@ -6,7 +6,7 @@ export default async function Layout({
   children: React.ReactNode;
 }>) {
   return (
-    <div className="my-[20px] mx-[8px] lg:flex lg:items-start lg:my-[50px] lg:mx-[50px]">
+    <div className="my-[20px] mx-[8px] lg:flex lg:items-start lg:my-[50px] lg:mx-[120px]">
       <ResumeAside />
       {children}
     </div>

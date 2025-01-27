@@ -13,7 +13,8 @@ export type Education = {
 
 export type Certificate = {
   name: string;
-  level: number;
+  date: string;
+  authority: string;
 };
 
 export type Description = {
@@ -158,28 +159,34 @@ export const resume: Resume[] = [
     ],
     certificates: [
       {
-        name: "Java",
-        level: 4,
+        name: "정보처리기사",
+        date: "2015-07-31",
+        authority: "한국산업인력공단",
       },
       {
-        name: "Kotlin",
-        level: 4,
+        name: "웹디자인기능사",
+        date: "2014-06-27",
+        authority: "한국산업인력공단",
       },
       {
-        name: "Android",
-        level: 4,
+        name: "GTQ포토샵1급",
+        date: "2014-04-11",
+        authority: "한국생산성본부",
       },
       {
-        name: "Java",
-        level: 4,
+        name: "사무자동화산업기사",
+        date: "2008-11-10",
+        authority: "한국산업인력공단",
       },
       {
-        name: "Kotlin",
-        level: 4,
+        name: "컴퓨터활용능력2급",
+        date: "2008-08-12",
+        authority: "대한상공회의소",
       },
       {
-        name: "Android",
-        level: 4,
+        name: "OPIC(IM2)",
+        date: "2024-06-01",
+        authority: "ACTFLOPIc",
       },
     ],
     descriptions: [
@@ -362,48 +369,62 @@ export function getWorks(): Work[] {
 
 export const certificates = [
   {
-    name: "Java1",
-    level: 1,
+    name: "정보처리기사",
+    date: "2015-07-31",
+    authority: "한국산업인력공단",
   },
   {
-    name: "Kotlin2",
-    level: 4,
+    name: "웹디자인기능사",
+    date: "2014-06-27",
+    authority: "한국산업인력공단",
   },
   {
-    name: "Android3",
-    level: 4,
+    name: "GTQ포토샵1급",
+    date: "2014-04-11",
+    authority: "한국생산성본부",
   },
   {
-    name: "Java4",
-    level: 4,
+    name: "사무자동화산업기사",
+    date: "2008-11-10",
+    authority: "한국산업인력공단",
+  },
+  {
+    name: "컴퓨터활용능력2급",
+    date: "2008-08-12",
+    authority: "대한상공회의소",
+  },
+  {
+    name: "OPIC(IM2)",
+    date: "2024-06-01",
+    authority: "ACTFLOPIc",
   },
 ];
 
 export const educations = [
   {
-    school: "University of California, San Diego",
-    degree: "Bachelor of Science in Computer Science",
-    date: "2014.09 - 2018.06",
+    school: "남서울대학교",
+    degree: "보건행정학과",
+    date: "2006.03 - 2010.02",
   },
   {
-    school: "University of California, San Diego",
-    degree: "Bachelor of Science in Computer Science",
-    date: "2014.09 - 2018.06",
+    school: "부평여자고등학교",
+    degree: "인문계",
+    date: "2003.03 - 2006.02",
   },
   {
-    school: "University of California, San Diego",
-    degree: "Bachelor of Science in Computer Science",
-    date: "2014.09 - 2018.06",
+    school: "Dublin City University Language school",
+    degree: "영어회화 과정 수료",
+    date: "2018.10 - 2019.04",
   },
   {
-    school: "University of California, San Diego",
-    degree: "Bachelor of Science in Computer Science",
-    date: "2014.09 - 2018.06",
+    school: "인천중앙직업전문학교",
+    degree: "Eclipse를 활용한 안드로이드 프로그래밍 (JAVA)",
+    date: "2015.03 - 2015.07",
   },
   {
-    school: "University of California, San Diego",
-    degree: "Bachelor of Science in Computer Science",
-    date: "2014.09 - 2018.06",
+    school: "서울현대직업전문학교",
+    degree: "웹디자인을 위한 HTML+CSS3",
+    date: "2014.01 - 2014.06",
   },
 ];
 

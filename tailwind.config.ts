@@ -21,6 +21,7 @@ export default {
           default: "var(--bg-default)",
           hover: "var(--bg-hover)",
           active: "var(--bg-active)",
+          emphasis: "var(--bg-emphasis)",
         },
         border: "var(--border)",
         point: {

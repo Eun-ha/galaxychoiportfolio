@@ -35,6 +35,7 @@
   --bg-default: rgb(255, 255, 255);
   --bg-hover: rgba(129, 139, 152, 0.1);
   --bg-active: rgba(123, 139, 152, 0.15);
+  --bg-emphasis: rgb(246, 248, 250);
   --border: rgb(209, 217, 224);
 }
 
@@ -44,6 +45,7 @@ body.dark {
   --bg-default: rgb(13, 17, 23);
   --bg-hover: rgba(101, 108, 118, 0.2);
   --bg-active: rgba(101, 108, 118, 0.1);
+  --bg-emphasis: rgb(1, 4, 9);
   --border: rgb(61, 68, 77);
 }
 
