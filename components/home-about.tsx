@@ -3,37 +3,9 @@ import Image from "next/image";
 import * as motion from "motion/react-client";
 import { BoundaryMain } from "./boundary-main";
 import { BoundaryButton } from "./boundary-button";
+import { effectsX, effectsY } from "@/lib/motions";
 
 export default function HomeAbout() {
-  const effectsY = {
-    offscreen: (index: number) => ({
-      opacity: 0,
-      y: index * 3,
-    }),
-    onscreen: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        type: "linear",
-        duration: 0.8,
-      },
-    },
-  };
-  const effectsX = {
-    offscreen: (index: number) => ({
-      opacity: 0,
-      x: index,
-    }),
-    onscreen: {
-      opacity: 1,
-      x: 0,
-      transition: {
-        type: "linear",
-        duration: 0.8,
-      },
-    },
-  };
-
   return (
     <div className="lg:flex">
       <motion.div

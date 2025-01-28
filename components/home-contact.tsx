@@ -1,22 +1,9 @@
 "use client";
 import { motion } from "motion/react";
 import Form from "./Form";
+import { effectsY } from "@/lib/motions";
 
 export default function HomeContact() {
-  const effectsY = {
-    offscreen: (index: number) => ({
-      opacity: 0,
-      y: index * 3,
-    }),
-    onscreen: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        type: "linear",
-        duration: 0.8,
-      },
-    },
-  };
   return (
     <div className="h-[800px] text-center">
       <motion.h3

@@ -1,40 +1,10 @@
 "use client";
 
+import { container, effectsY, listItem } from "@/lib/motions";
 import { Chart } from "./chart";
 import { motion } from "motion/react";
 
 export default function HomeSkills() {
-  const effectsY = {
-    offscreen: (index: number) => ({
-      opacity: 0,
-      y: index * 3,
-    }),
-    onscreen: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        type: "linear",
-        duration: 0.8,
-      },
-    },
-  };
-
-  const container = {
-    hidden: { opacity: 0 },
-    show: {
-      opacity: 1,
-      transition: {
-        type: "linear",
-        staggerChildren: 0.2,
-      },
-    },
-  };
-
-  const listItem = {
-    hidden: { opacity: 0, y: 20 },
-    show: { opacity: 1, y: 0 },
-  };
-
   const data = [
     {
       color: 1,
