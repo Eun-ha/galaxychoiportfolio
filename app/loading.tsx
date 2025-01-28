@@ -3,7 +3,7 @@ import { useState } from "react";
 import { BeatLoader } from "react-spinners";
 
 export default function Loading() {
-  let [loading, setLoading] = useState(true);
+  const [loading] = useState(true);
   return (
     <div className="space-y-4 text-center mt-[35%]">
       <BeatLoader

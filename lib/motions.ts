@@ -43,3 +43,31 @@ export const listItem = {
   hidden: { opacity: 0, y: 20 },
   show: { opacity: 1, y: 0 },
 };
+
+export const bounceTransition = {
+  y: {
+    duration: 4.0,
+    repeat: Infinity,
+    ease: ["easeIn", "easeOut"],
+  },
+};
+export const bounceTransition2 = {
+  y: {
+    duration: 6.0,
+    repeat: Infinity,
+    ease: ["easeOut", "easeIn"],
+  },
+};
+
+export const fadeIn = {
+  offscreen: {
+    opacity: 0,
+  },
+  onscreen: {
+    opacity: 1,
+    transition: {
+      type: "linear",
+      duration: 5.0,
+    },
+  },
+};

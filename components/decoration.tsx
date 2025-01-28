@@ -3,36 +3,10 @@
 import GithubIcon from "@/icons/githubIcon";
 import Html5Icon from "@/icons/html5Icon";
 import JavascriptIcon from "@/icons/javascriptIcon";
+import { bounceTransition, bounceTransition2, fadeIn } from "@/lib/motions";
 import * as motion from "motion/react-client";
 
 export default function Decoration() {
-  const bounceTransition = {
-    y: {
-      duration: 4.0,
-      repeat: Infinity,
-      ease: ["easeIn", "easeOut"],
-    },
-  };
-  const bounceTransition2 = {
-    y: {
-      duration: 6.0,
-      repeat: Infinity,
-      ease: ["easeOut", "easeIn"],
-    },
-  };
-
-  const fadeIn = {
-    offscreen: {
-      opacity: 0,
-    },
-    onscreen: {
-      opacity: 1,
-      transition: {
-        type: "linear",
-        duration: 5.0,
-      },
-    },
-  };
   return (
     <div>
       <motion.span
