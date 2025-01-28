@@ -24,7 +24,7 @@ export default function HomeContact() {
         initial="offscreen"
         whileInView="onscreen"
         variants={effectsY}
-        className="inline-block text-4xl lg:text-6xl text-point-red"
+        className="inline-block text-xl text-point-red"
       >
         Contact Me!
       </motion.h3>

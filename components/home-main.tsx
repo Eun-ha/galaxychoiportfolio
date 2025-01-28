@@ -1,6 +1,8 @@
 "use client";
 import Image from "next/image";
 import * as motion from "motion/react-client";
+import { BoundaryMain } from "./boundary-main";
+import { BoundaryButton } from "./boundary-button";
 
 export default function HomeMain() {
   const effectsY = {
@@ -35,61 +37,60 @@ export default function HomeMain() {
   return (
     <div className="lg:flex">
       <div className="pr-0 lg:pr-5">
-        <motion.h3
-          custom={-5}
-          initial="offscreen"
-          whileInView="onscreen"
-          variants={effectsY}
-          className="text-4xl lg:text-6xl text-point-red"
-        >
-          Hello, It&apos;s Me
-        </motion.h3>
-        <motion.p
-          custom={-10}
-          initial="offscreen"
-          whileInView="onscreen"
-          variants={effectsY}
-          className="text-3xl lg:text-5xl mt-6"
-        >
-          EunHa Choi
-        </motion.p>
-        <motion.p
-          custom={-15}
-          initial="offscreen"
-          whileInView="onscreen"
-          variants={effectsY}
-          className="text-2xl lg:text-4xl mt-6"
-        >
-          and I&apos;m a front end engineer
-        </motion.p>
-        <motion.p
-          custom={-20}
-          initial="offscreen"
-          whileInView="onscreen"
-          variants={effectsY}
-          className="text-base lg:text-xl mt-6"
-        >
-          Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum
-          dolor sit ametLorem ipsum dolor sit ametLorem ipsum dolor sit
-          ametLorem ipsum dolor sit ametLorem ipsum dolor sit ametLorem ipsum
-          dolor sit ametLorem ipsum dolor sit ametLorem ipsum dolor sit
-          ametLorem ipsum dolor sit ametLorem ipsum dolor sit ametLorem ipsum
-          dolor sit ametLorem ipsum dolor sit ametLorem ipsum dolor sit
-          ametLorem ipsum dolor sit ametLorem ipsum dolor sit ametLorem ipsum
-          dolor sit ametLorem ipsum dolor sit ametLorem ipsum dolor sit
-          ametLorem ipsum dolor sit ametLorem ipsum dolor sit amet
-        </motion.p>
-        <motion.span
-          custom={-25}
-          initial="offscreen"
-          whileInView="onscreen"
-          variants={effectsY}
-          className="text-base inline-block mt-6 p-2 bg-slate-500"
-        >
-          <a href="files/CV.pdf" download>
+        <BoundaryMain>
+          <motion.h2
+            custom={-5}
+            initial="offscreen"
+            whileInView="onscreen"
+            variants={effectsY}
+          >
+            Hello, It&apos;s Me
+          </motion.h2>
+          <motion.h3
+            custom={-10}
+            initial="offscreen"
+            whileInView="onscreen"
+            variants={effectsY}
+          >
+            EunHa Choi
+          </motion.h3>
+          <motion.h3
+            custom={-15}
+            initial="offscreen"
+            whileInView="onscreen"
+            variants={effectsY}
+          >
+            and I&apos;m a front end engineer
+          </motion.h3>
+          <motion.p
+            custom={-20}
+            initial="offscreen"
+            whileInView="onscreen"
+            variants={effectsY}
+          >
+            Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum
+            dolor sit ametLorem ipsum dolor sit ametLorem ipsum dolor sit
+            ametLorem ipsum dolor sit ametLorem ipsum dolor sit ametLorem ipsum
+            dolor sit ametLorem ipsum dolor sit ametLorem ipsum dolor sit
+            ametLorem ipsum dolor sit ametLorem ipsum dolor sit ametLorem ipsum
+            dolor sit ametLorem ipsum dolor sit ametLorem ipsum dolor sit
+            ametLorem ipsum dolor sit ametLorem ipsum dolor sit ametLorem ipsum
+            dolor sit ametLorem ipsum dolor sit ametLorem ipsum dolor sit
+            ametLorem ipsum dolor sit ametLorem ipsum dolor sit amet
+          </motion.p>
+        </BoundaryMain>
+        <BoundaryButton>
+          <motion.a
+            custom={-25}
+            initial="offscreen"
+            whileInView="onscreen"
+            variants={effectsY}
+            href="files/CV.pdf"
+            download
+          >
             Download CV
-          </a>
-        </motion.span>
+          </motion.a>
+        </BoundaryButton>
       </div>
       <motion.div
         className="relative w-full lg:w-[500px] h-[400px] shrink-0 mt-6 lg:mt-0"

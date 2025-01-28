@@ -2,6 +2,7 @@
 
 import { sendEmail } from "@/lib/formAction";
 import { useActionState, useEffect, useState } from "react";
+import { BoundaryButton } from "./boundary-button";
 
 export default function Form() {
   const [actionState, formAction] = useActionState(sendEmail, null);
@@ -69,12 +70,9 @@ export default function Form() {
         ""
       )}
 
-      <button
-        type="submit"
-        className="text-base inline-block mt-6 p-2 bg-slate-500"
-      >
-        전송
-      </button>
+      <BoundaryButton>
+        <button type="submit">전송</button>
+      </BoundaryButton>
     </form>
   );
 }

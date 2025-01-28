@@ -61,25 +61,25 @@ export default function HomeSkills() {
       angle: 230,
     },
     {
-      color: 1,
+      color: 5,
       skills: 80,
       name: "HTML5",
       angle: 200,
     },
     {
-      color: 2,
+      color: 3,
       skills: 70,
       name: "CSS3",
       angle: 300,
     },
     {
-      color: 3,
+      color: 1,
       skills: 60,
       name: "React",
       angle: 270,
     },
     {
-      color: 4,
+      color: 2,
       skills: 70,
       name: "Nextjs",
       angle: 230,
@@ -93,7 +93,7 @@ export default function HomeSkills() {
         initial="offscreen"
         whileInView="onscreen"
         variants={effectsY}
-        className="inline-block text-4xl lg:text-6xl text-point-red"
+        className="inline-block text-xl text-point-red"
       >
         My Skills
       </motion.h3>

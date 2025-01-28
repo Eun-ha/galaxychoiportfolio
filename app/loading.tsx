@@ -1,12 +1,14 @@
+"use client";
+import { useState } from "react";
 import { BeatLoader } from "react-spinners";
 
 export default function Loading() {
+  let [loading, setLoading] = useState(true);
   return (
-    <div className="space-y-4 text-center mt-[25%]">
+    <div className="space-y-4 text-center mt-[35%]">
       <BeatLoader
         color="#f85149"
-        cssOverride={{}}
-        loading
+        loading={loading}
         margin={3}
         size={12}
         speedMultiplier={1}

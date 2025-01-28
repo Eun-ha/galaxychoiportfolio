@@ -1,6 +1,8 @@
 "use client";
 import Image from "next/image";
 import * as motion from "motion/react-client";
+import { BoundaryMain } from "./boundary-main";
+import { BoundaryButton } from "./boundary-button";
 
 export default function HomeAbout() {
   const effectsY = {
@@ -51,60 +53,60 @@ export default function HomeAbout() {
           className="object-cover"
         />
       </motion.div>
+
       <div className="pl-0 lg:pl-5 mt-6 lg:mt-0">
-        <motion.span
-          custom={25}
-          initial="offscreen"
-          whileInView="onscreen"
-          variants={effectsY}
-          className="text-sm lg:text-xl"
-        >
-          Let me introduce myself
-        </motion.span>
-        <motion.h3
-          custom={20}
-          initial="offscreen"
-          whileInView="onscreen"
-          variants={effectsY}
-          className="text-4xl lg:text-6xl mt-6 text-point-red"
-        >
-          About Me
-        </motion.h3>
-        <motion.p
-          custom={15}
-          initial="offscreen"
-          whileInView="onscreen"
-          variants={effectsY}
-          className="text-3xl lg:text-5xl mt-6"
-        >
-          Frontend Developer
-        </motion.p>
-        <motion.p
-          custom={10}
-          initial="offscreen"
-          whileInView="onscreen"
-          variants={effectsY}
-          className="text-base lg:text-xl mt-6"
-        >
-          Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum
-          dolor sit ametLorem ipsum dolor sit ametLorem ipsum dolor sit
-          ametLorem ipsum dolor sit ametLorem ipsum dolor sit ametLorem ipsum
-          dolor sit ametLorem ipsum dolor sit ametLorem ipsum dolor sit
-          ametLorem ipsum dolor sit ametLorem ipsum dolor sit ametLorem ipsum
-          dolor sit ametLorem ipsum dolor sit ametLorem ipsum dolor sit
-          ametLorem ipsum dolor sit ametLorem ipsum dolor sit ametLorem ipsum
-          dolor sit ametLorem ipsum dolor sit ametLorem ipsum dolor sit
-          ametLorem ipsum dolor sit ametLorem ipsum dolor sit amet
-        </motion.p>
-        <motion.button
-          custom={5}
-          initial="offscreen"
-          whileInView="onscreen"
-          variants={effectsY}
-          className="text-base mt-6 p-2 bg-slate-500"
-        >
-          Read More!
-        </motion.button>
+        <BoundaryMain>
+          <motion.span
+            custom={25}
+            initial="offscreen"
+            whileInView="onscreen"
+            variants={effectsY}
+          >
+            Let me introduce myself
+          </motion.span>
+          <motion.h2
+            custom={20}
+            initial="offscreen"
+            whileInView="onscreen"
+            variants={effectsY}
+          >
+            About Me
+          </motion.h2>
+          <motion.h3
+            custom={15}
+            initial="offscreen"
+            whileInView="onscreen"
+            variants={effectsY}
+          >
+            Frontend Developer
+          </motion.h3>
+          <motion.p
+            custom={10}
+            initial="offscreen"
+            whileInView="onscreen"
+            variants={effectsY}
+          >
+            Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum
+            dolor sit ametLorem ipsum dolor sit ametLorem ipsum dolor sit
+            ametLorem ipsum dolor sit ametLorem ipsum dolor sit ametLorem ipsum
+            dolor sit ametLorem ipsum dolor sit ametLorem ipsum dolor sit
+            ametLorem ipsum dolor sit ametLorem ipsum dolor sit ametLorem ipsum
+            dolor sit ametLorem ipsum dolor sit ametLorem ipsum dolor sit
+            ametLorem ipsum dolor sit ametLorem ipsum dolor sit ametLorem ipsum
+            dolor sit ametLorem ipsum dolor sit ametLorem ipsum dolor sit
+            ametLorem ipsum dolor sit ametLorem ipsum dolor sit amet
+          </motion.p>
+        </BoundaryMain>
+        <BoundaryButton>
+          <motion.button
+            custom={5}
+            initial="offscreen"
+            whileInView="onscreen"
+            variants={effectsY}
+          >
+            Read more
+          </motion.button>
+        </BoundaryButton>
       </div>
     </div>
   );
