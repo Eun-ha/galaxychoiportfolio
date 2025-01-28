@@ -43,10 +43,12 @@ export default {
           "4": "hsl(var(--chart-4))",
           "5": "hsl(var(--chart-5))",
         },
-        DarkOnly: {
+        darkOnly: {
           text: "rgb(240, 246, 252)",
-          bg: "rgb(13, 17, 23);",
-          sub: "rgba(101, 108, 118, 0.1)",
+          bg: "rgb(13, 17, 23)",
+          hover: "rgba(101, 108, 118, 0.2)",
+          active: "rgba(101, 108, 118, 0.1)",
+          emphasis: "rgb(1, 4, 9)",
           border: "rgb(61, 68, 77)",
         },
       },

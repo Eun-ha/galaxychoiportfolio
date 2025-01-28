@@ -11,7 +11,7 @@ export const BoundaryMain = (Props: Category) => {
   return (
     <div
       className={clsx(
-        "[&_h2]:text-xl [&_h2]:text-point-red [&_h3]:text-lg [&_h3]:mt-4 [&_p]:mt-4 [&_span]:text-sm",
+        "text-darkOnly-text [&_h2]:text-xl [&_h2]:text-point-red [&_h3]:text-lg [&_h3]:mt-4 [&_p]:mt-4 [&_span]:text-sm",
         {}
       )}
     >

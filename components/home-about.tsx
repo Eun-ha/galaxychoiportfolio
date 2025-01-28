@@ -69,7 +69,7 @@ export default function HomeAbout() {
             ametLorem ipsum dolor sit ametLorem ipsum dolor sit amet
           </motion.p>
         </BoundaryMain>
-        <BoundaryButton>
+        <BoundaryButton theme="dark">
           <motion.button
             custom={5}
             initial="offscreen"

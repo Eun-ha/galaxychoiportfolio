@@ -51,7 +51,7 @@ export default function HomeMain() {
             ametLorem ipsum dolor sit ametLorem ipsum dolor sit amet
           </motion.p>
         </BoundaryMain>
-        <BoundaryButton>
+        <BoundaryButton theme="dark">
           <motion.a
             custom={-25}
             initial="offscreen"
