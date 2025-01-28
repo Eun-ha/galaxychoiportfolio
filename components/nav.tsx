@@ -77,14 +77,14 @@ export function Nav() {
   return (
     <div
       className={clsx({
-        "fixed top-0 right-0 w-full h-full z-20 bg-bg-default p-5 overflow-y-hidden":
+        "fixed top-0 right-0 w-full h-full z-20 bg-bg-default p-5 overflow-y-hidden text-right":
           isOpen && isMobile,
       })}
     >
       <button
         className={clsx({
           hidden: !isMobile,
-          block: isMobile,
+          "inline-block": isMobile,
         })}
         onClick={() => setIsOpen(!isOpen)}
       >

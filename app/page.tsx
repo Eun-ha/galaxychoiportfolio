@@ -11,6 +11,7 @@ export default function Home() {
     <div className="relative z-0 mx-4 lg:mx-[80px]">
       <div id="00" className="lg:min-h-screen py-10 lg:px-[80px] lg:py-[150px]">
         <HomeMain />
+        <HomeParticles />
       </div>
       <div id="01" className="lg:min-h-screen py-10 lg:px-[80px] lg:py-[150px]">
         <HomeAbout />
@@ -23,7 +24,6 @@ export default function Home() {
       </div>
       <ScrollTrackerNav />
       <Decoration />
-      <HomeParticles />
     </div>
   );
 }
