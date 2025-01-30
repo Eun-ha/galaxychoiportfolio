@@ -6,7 +6,7 @@ export const ResumeCertificate = ({ data }: { data: Certificate[] }) => {
   return (
     <>
       {data.map((data, index) => (
-        <div key={index} className="mb-4">
+        <article key={index}>
           <BoundaryResume>
             <h3>{data.name}</h3>
             <div>
@@ -18,7 +18,7 @@ export const ResumeCertificate = ({ data }: { data: Certificate[] }) => {
               <p>{data.authority}</p>
             </div>
           </BoundaryResume>
-        </div>
+        </article>
       ))}
     </>
   );

@@ -45,7 +45,7 @@ export function Chart(Props: Skills) {
           gridType="circle"
           radialLines={false}
           stroke="none"
-          className="first:fill-muted last:fill-background"
+          className="first:fill-darkOnly-hover last:fill-darkOnly-bg"
           polarRadius={[86, 74]}
         />
         <RadialBar dataKey="skills" background cornerRadius={10} />
@@ -63,14 +63,14 @@ export function Chart(Props: Skills) {
                     <tspan
                       x={viewBox.cx}
                       y={viewBox.cy}
-                      className="fill-foreground text-lg font-bold"
+                      className="fill-darkOnly-text text-lg font-bold"
                     >
                       {chartData[0].skills.toLocaleString()}
                     </tspan>
                     <tspan
                       x={viewBox.cx}
                       y={(viewBox.cy || 0) + 24}
-                      className="fill-muted-foreground text-sm"
+                      className="fill-darkOnly-subtext text-sm"
                     >
                       {name}
                     </tspan>

@@ -1,4 +1,5 @@
 import { ResumeAside } from "@/components/resume-aside";
+import { ToggleButton } from "@/components/toggle-button";
 
 export default async function Layout({
   children,
@@ -6,9 +7,10 @@ export default async function Layout({
   children: React.ReactNode;
 }>) {
   return (
-    <div className="my-[20px] mx-[8px] lg:flex lg:items-start lg:my-[50px] lg:mx-[120px]">
+    <div className="px-4 py-4 lg:flex lg:items-start lg:px-[120px] lg:py-[80px]">
       <ResumeAside />
       {children}
+      <ToggleButton />
     </div>
   );
 }

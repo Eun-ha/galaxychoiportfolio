@@ -74,7 +74,11 @@ export default function HomeSkills() {
         className="flex flex-wrap justify-evenly mt-12 lg:mt-24"
       >
         {data.map((data, index) => (
-          <motion.li className="mb-8" key={index} variants={listItem}>
+          <motion.li
+            className="mb-8 basis-[50%] [&_div]:aspect-auto lg:basis-auto lg:[&_div]:aspect-video"
+            key={index}
+            variants={listItem}
+          >
             <Chart
               color={data.color}
               skills={data.skills}

@@ -7,7 +7,7 @@ export default async function Work() {
   const data = await fetchData(`${ApiUrl}/api/work`);
 
   return (
-    <main className="mx-2 my-6 lg:mx-[120px] lg:my-[100px]">
+    <main>
       <Carousel data={data} />
     </main>
   );

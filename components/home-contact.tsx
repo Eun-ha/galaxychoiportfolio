@@ -5,7 +5,7 @@ import { effectsY } from "@/lib/motions";
 
 export default function HomeContact() {
   return (
-    <div className="h-[800px] text-center">
+    <div className="text-center">
       <motion.h3
         custom={-5}
         initial="offscreen"

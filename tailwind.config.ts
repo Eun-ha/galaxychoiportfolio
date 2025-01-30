@@ -45,6 +45,7 @@ export default {
         },
         darkOnly: {
           text: "rgb(240, 246, 252)",
+          subtext: "rgb(145, 152, 161)",
           bg: "rgb(13, 17, 23)",
           hover: "rgba(101, 108, 118, 0.2)",
           active: "rgba(101, 108, 118, 0.1)",

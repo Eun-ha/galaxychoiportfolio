@@ -6,7 +6,7 @@ export const ResumeDescription = ({ data }: { data: Description[] }) => {
   return (
     <>
       {data.map((data, index) => (
-        <div key={index} className="mb-4">
+        <article key={index}>
           <BoundaryResume>
             <h3>{data.title}</h3>
             <div>
@@ -26,7 +26,7 @@ export const ResumeDescription = ({ data }: { data: Description[] }) => {
               <p>{data.skills}</p>
             </div>
           </BoundaryResume>
-        </div>
+        </article>
       ))}
     </>
   );

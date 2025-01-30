@@ -8,7 +8,7 @@ import * as motion from "motion/react-client";
 
 export default function Decoration() {
   return (
-    <div>
+    <div className="w-full h-full z-10">
       <motion.span
         initial={{ opacity: 0, scale: 0.5 }}
         animate={{ opacity: 1, scale: 1, y: [0, 50, 0] }}
