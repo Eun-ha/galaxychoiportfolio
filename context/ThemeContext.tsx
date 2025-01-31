@@ -87,7 +87,7 @@ export const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
 
   return (
     <ThemeContext.Provider value={{ theme, toggleTheme }}>
-      <div className={`w-full h-full`}>{children}</div>
+      <div>{children}</div>
     </ThemeContext.Provider>
   );
 };

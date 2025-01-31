@@ -8,18 +8,18 @@ import ScrollTrackerNav from "@/components/scroll-tracker-nav";
 
 export default function Home() {
   return (
-    <div className="Home bg-darkOnly-bg relative z-30 h-full px-4 py-4 lg:px-[100px] lg:py-[80px]">
-      <div id="00" className="py-10 lg:py-[150px]">
+    <div className="relative z-30 bg-darkOnly-bg h-full px-4 py-4 lg:px-[100px] lg:py-[80px]">
+      <div id="00" className="py-10 lg:py-[150px] bg-red-300">
         <HomeMain />
         <HomeParticles />
       </div>
-      <div id="01" className="py-10 lg:py-[150px]">
+      <div id="01" className="py-10 lg:py-[150px] bg-red-400">
         <HomeAbout />
       </div>
-      <div id="02" className="py-10 lg:py-[150px]">
+      <div id="02" className="py-10 lg:py-[150px] bg-red-500">
         <HomeSkills />
       </div>
-      <div id="03" className="py-10 lg:py-[150px]">
+      <div id="03" className="py-10 lg:py-[150px] bg-red-600">
         <HomeContact />
       </div>
       <ScrollTrackerNav />

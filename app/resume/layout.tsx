@@ -7,9 +7,11 @@ export default async function Layout({
   children: React.ReactNode;
 }>) {
   return (
-    <div className="px-4 py-4 lg:flex lg:items-start lg:px-[120px] lg:py-[80px]">
-      <ResumeAside />
-      {children}
+    <div className="px-4 py-4 lg:px-[120px] lg:py-[80px]">
+      <div className="lg:flex lg:items-start ">
+        <ResumeAside />
+        {children}
+      </div>
       <ToggleButton />
     </div>
   );

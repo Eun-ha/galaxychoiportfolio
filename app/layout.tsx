@@ -17,7 +17,7 @@ export default function RootLayout({
   return (
     <html lang="ko">
       <body
-        className={`${notoSansKR.className} antialiased w-full h-full overflow-x-hidden bg-bg-default`}
+        className={`${notoSansKR.className} antialiased w-full overflow-x-hidden bg-bg-default`}
       >
         <ThemeProvider>
           <CheckMain>

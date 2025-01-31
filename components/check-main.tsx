@@ -17,7 +17,7 @@ export function CheckMain({
 
   return (
     <div
-      className={clsx("z-0", {
+      className={clsx("", {
         Main: isMain,
         "bg-inherit": !isMain,
       })}

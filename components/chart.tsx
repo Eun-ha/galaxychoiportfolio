@@ -33,7 +33,7 @@ export function Chart(Props: Skills) {
   ];
 
   return (
-    <ChartContainer config={chartConfig} className="wi-[172px] h-[172px]">
+    <ChartContainer config={chartConfig} className="w-auto h-[172px]">
       <RadialBarChart
         data={chartData}
         startAngle={0}
