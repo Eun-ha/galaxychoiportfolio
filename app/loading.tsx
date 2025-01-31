@@ -5,12 +5,12 @@ import { BeatLoader } from "react-spinners";
 export default function Loading() {
   const [loading] = useState(true);
   return (
-    <div className="space-y-4 text-center mt-[35%]">
+    <div className="text-center mt-[25%] lg:mt-[20%]">
       <BeatLoader
         color="#f85149"
         loading={loading}
         margin={3}
-        size={12}
+        size={10}
         speedMultiplier={1}
       />
     </div>

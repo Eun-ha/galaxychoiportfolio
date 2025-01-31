@@ -12,7 +12,7 @@ export default function Error({ error, reset }: any) {
   return (
     <div className="mt-[15%] text-center">
       <ErrorIcon />
-      <h2 className="text-lg mt-2">Work 에러가 발생 하였습니다.</h2>
+      <h2 className="text-lg mt-2">Main 에러가 발생 하였습니다.</h2>
       <button onClick={() => reset()} className="mt-2">
         재시도 하기
         <RefreshIcon />

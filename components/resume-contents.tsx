@@ -6,6 +6,7 @@ import { ResumeExperience } from "./resume-experience";
 import { ResumeCertificate } from "./resume-certificate";
 import { ResumeDescription } from "./resume-description";
 import { notFound } from "next/navigation";
+import { SkeletonCard } from "./ui/skeleton-card";
 
 interface Props {
   slug: string;
@@ -17,19 +18,19 @@ export const ResumeContents = (props: Props) => {
   return (
     <section className={clsx("mb-2 lg:mb-4")}>
       {slug === "educations" ? (
-        <Suspense fallback={<div>Education 로딩중...</div>}>
+        <Suspense fallback={<SkeletonCard />}>
           <ResumeEducation data={data as Education[]} />
         </Suspense>
       ) : slug === "experiences" ? (
-        <Suspense fallback={<div>Experience 로딩중...</div>}>
+        <Suspense fallback={<SkeletonCard />}>
           <ResumeExperience data={data as Experience[]} />
         </Suspense>
       ) : slug === "certificates" ? (
-        <Suspense fallback={<div>Certificate 로딩중...</div>}>
+        <Suspense fallback={<SkeletonCard />}>
           <ResumeCertificate data={data as Certificate[]} />
         </Suspense>
       ) : slug === "descriptions" ? (
-        <Suspense fallback={<div>Descriptions 로딩중...</div>}>
+        <Suspense fallback={<SkeletonCard />}>
           <ResumeDescription data={data as Description[]} />
         </Suspense>
       ) : (

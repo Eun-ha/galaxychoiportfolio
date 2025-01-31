@@ -1,5 +1,7 @@
 "use client";
 
+import ErrorIcon from "@/icons/errorIcon";
+import RefreshIcon from "@/icons/refreshIcon";
 import React, { useEffect } from "react";
 /* eslint-disable  @typescript-eslint/no-explicit-any */
 export default function Error({ error, reset }: any) {
@@ -8,12 +10,13 @@ export default function Error({ error, reset }: any) {
   }, [error]);
 
   return (
-    <div className="space-y-4">
-      <h2 className="text-lg font-bold">resume 에러 발생</h2>
-      <p className="text-sm">{error?.message}</p>
-      <div>
-        <button onClick={() => reset()}>재시도 하기</button>
-      </div>
+    <div className="mt-[15%] text-center lg:text-initial lg:flex-grow">
+      <ErrorIcon />
+      <h2 className="text-lg mt-2">Resume 에러가 발생 하였습니다.</h2>
+      <button onClick={() => reset()} className="mt-2">
+        재시도 하기
+        <RefreshIcon />
+      </button>
     </div>
   );
 }
