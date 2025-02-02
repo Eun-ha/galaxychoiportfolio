@@ -1,4 +1,4 @@
-import { Carousel } from "@/components/carousel";
+import { Carousel } from "@/components/work/carousel";
 import { fetchData } from "@/lib/utils";
 export const dynamic = "force-dynamic";
 

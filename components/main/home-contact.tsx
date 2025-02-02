@@ -1,7 +1,7 @@
 "use client";
 import { motion } from "motion/react";
-import Form from "./Form";
 import { effectsY } from "@/lib/motions";
+import Form from "./Form";
 
 export default function HomeContact() {
   return (

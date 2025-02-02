@@ -2,8 +2,8 @@
 
 import { sendEmail } from "@/lib/formAction";
 import { useActionState, useEffect, useState } from "react";
-import { BoundaryButton } from "./boundary-button";
-import { BoundaryFrom } from "./boundary-form";
+import { BoundaryButton } from "../ui/boundary-button";
+import { BoundaryFrom } from "../ui/boundary-form";
 
 export default function Form() {
   const [actionState, formAction] = useActionState(sendEmail, null);

@@ -1,4 +1,4 @@
-import { ResumeAside } from "@/components/resume-aside";
+import { ResumeAside } from "@/components/resume/resume-aside";
 import { ToggleButton } from "@/components/toggle-button";
 
 export default async function Layout({

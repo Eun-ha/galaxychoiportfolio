@@ -1,7 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
-import { Button } from "./button";
 import clsx from "clsx";
+import { Button } from "./button";
 
 export type Categories = {
   button: string;

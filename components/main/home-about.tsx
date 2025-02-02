@@ -1,8 +1,8 @@
 "use client";
 import Image from "next/image";
 import * as motion from "motion/react-client";
-import { BoundaryMain } from "./boundary-main";
-import { BoundaryButton } from "./boundary-button";
+import { BoundaryMain } from "../ui/boundary-main";
+import { BoundaryButton } from "../ui/boundary-button";
 import { effectsX, effectsY } from "@/lib/motions";
 
 export default function HomeAbout() {

@@ -1,6 +1,6 @@
 "use client";
 import { Certificate } from "@/data/resume";
-import { BoundaryResume } from "./boundary-resume";
+import { BoundaryResume } from "../ui/boundary-resume";
 
 export const ResumeCertificate = ({ data }: { data: Certificate[] }) => {
   return (

@@ -1,12 +1,12 @@
 import { Suspense } from "react";
 import { Description, Education, Experience, Certificate } from "@/data/resume";
 import clsx from "clsx";
+import { notFound } from "next/navigation";
+import { SkeletonCard } from "../ui/skeleton-card";
 import { ResumeEducation } from "./resume-education";
 import { ResumeExperience } from "./resume-experience";
 import { ResumeCertificate } from "./resume-certificate";
 import { ResumeDescription } from "./resume-description";
-import { notFound } from "next/navigation";
-import { SkeletonCard } from "./ui/skeleton-card";
 
 interface Props {
   slug: string;

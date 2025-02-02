@@ -1,5 +1,5 @@
-import { ResumeContents } from "@/components/resume-contents";
-import { TitlesDescriptions } from "@/components/titles-descriptions";
+import { ResumeContents } from "@/components/resume/resume-contents";
+import { TitlesDescriptions } from "@/components/resume/titles-descriptions";
 import { fetchData } from "@/lib/utils";
 import React from "react";
 

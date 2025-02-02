@@ -1,10 +1,10 @@
-import Decoration from "@/components/decoration";
-import HomeAbout from "@/components/home-about";
-import HomeContact from "@/components/home-contact";
-import HomeMain from "@/components/home-main";
-import { HomeParticles } from "@/components/home-particles";
-import HomeSkills from "@/components/home-skills";
-import ScrollTrackerNav from "@/components/scroll-tracker-nav";
+import Decoration from "@/components/main/decoration";
+import HomeAbout from "@/components/main/home-about";
+import HomeContact from "@/components/main/home-contact";
+import HomeMain from "@/components/main/home-main";
+import { HomeParticles } from "@/components/main/home-particles";
+import HomeSkills from "@/components/main/home-skills";
+import ScrollTrackerNav from "@/components/main/scroll-tracker-nav";
 
 export default function Home() {
   return (

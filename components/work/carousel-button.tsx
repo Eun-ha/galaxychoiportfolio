@@ -1,4 +1,4 @@
-import { BoundaryButton } from "./boundary-button";
+import { BoundaryButton } from "../ui/boundary-button";
 
 type Props = {
   url: string;

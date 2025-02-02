@@ -1,6 +1,6 @@
 import { CarouselButton } from "./carousel-button";
 import { CarouselContent } from "./carousel-content";
-import { Images } from "./Images";
+import { Images } from "../Images";
 
 type Props = {
   title: string;

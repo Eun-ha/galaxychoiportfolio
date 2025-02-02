@@ -1,6 +1,6 @@
 "use client";
 import { Experience } from "@/data/resume";
-import { BoundaryResume } from "./boundary-resume";
+import { BoundaryResume } from "../ui/boundary-resume";
 
 export const ResumeExperience = ({ data }: { data: Experience[] }) => {
   return (
