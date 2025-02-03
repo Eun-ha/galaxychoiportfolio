@@ -4,7 +4,7 @@ import * as motion from "motion/react-client";
 import { BoundaryMain } from "../ui/boundary-main";
 import { BoundaryButton } from "../ui/boundary-button";
 import { effectsX, effectsY } from "@/lib/motions";
-import { Main } from "@/data/home";
+import { Main } from "@/data/main";
 
 interface Props {
   data: Main[];

@@ -1,4 +1,3 @@
-import { getData } from "@/backend/account-action";
 import Decoration from "@/components/main/decoration";
 import HomeAbout from "@/components/main/home-about";
 import HomeContact from "@/components/main/home-contact";
@@ -11,17 +10,19 @@ import { fetchData } from "@/lib/utils";
 export default async function Home() {
   const ApiUrl = process.env.API_URL;
   const data = await fetchData(`${ApiUrl}/api/main`);
+  const data2 = await fetchData(`${ApiUrl}/api/main/skills`);
+
   return (
     <div className="relative z-30 bg-darkOnly-bg h-full px-4 py-4 lg:px-[100px] lg:py-[80px]">
-      <div id="00" className="py-10 lg:py-[150px">
+      <div id="00" className="py-10 lg:py-[150px]">
         <HomeMain data={data} />
         <HomeParticles />
       </div>
-      <div id="01" className="py-10 lg:py-[150px">
+      <div id="01" className="py-10 lg:py-[150px]">
         <HomeAbout data={data} />
       </div>
       <div id="02" className="py-10 lg:py-[150px]">
-        <HomeSkills />
+        <HomeSkills data={data2} />
       </div>
       <div id="03" className="py-10 lg:py-[150px]">
         <HomeContact />

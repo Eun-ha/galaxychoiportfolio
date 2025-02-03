@@ -3,58 +3,13 @@
 import { container, effectsY, listItem } from "@/lib/motions";
 import { Chart } from "./chart";
 import { motion } from "motion/react";
+import { skill } from "@/data/main";
 
-export default function HomeSkills() {
-  const data = [
-    {
-      color: 1,
-      skills: 80,
-      name: "HTML5",
-      angle: 200,
-    },
-    {
-      color: 2,
-      skills: 70,
-      name: "CSS3",
-      angle: 300,
-    },
-    {
-      color: 3,
-      skills: 60,
-      name: "React",
-      angle: 270,
-    },
-    {
-      color: 4,
-      skills: 70,
-      name: "Nextjs",
-      angle: 230,
-    },
-    {
-      color: 5,
-      skills: 80,
-      name: "HTML5",
-      angle: 200,
-    },
-    {
-      color: 3,
-      skills: 70,
-      name: "CSS3",
-      angle: 300,
-    },
-    {
-      color: 1,
-      skills: 60,
-      name: "React",
-      angle: 270,
-    },
-    {
-      color: 2,
-      skills: 70,
-      name: "Nextjs",
-      angle: 230,
-    },
-  ];
+interface Props {
+  data: skill[];
+}
+export default function HomeSkills(props: Props) {
+  const { data } = props;
 
   return (
     <div className="text-center">
