@@ -6,16 +6,19 @@ import HomeMain from "@/components/main/home-main";
 import { HomeParticles } from "@/components/main/home-particles";
 import HomeSkills from "@/components/main/home-skills";
 import ScrollTrackerNav from "@/components/main/scroll-tracker-nav";
+import { fetchData } from "@/lib/utils";
 
 export default async function Home() {
+  const ApiUrl = process.env.API_URL;
+  const data = await fetchData(`${ApiUrl}/api/main`);
   return (
     <div className="relative z-30 bg-darkOnly-bg h-full px-4 py-4 lg:px-[100px] lg:py-[80px]">
       <div id="00" className="py-10 lg:py-[150px">
-        <HomeMain />
+        <HomeMain data={data} />
         <HomeParticles />
       </div>
       <div id="01" className="py-10 lg:py-[150px">
-        <HomeAbout />
+        <HomeAbout data={data} />
       </div>
       <div id="02" className="py-10 lg:py-[150px]">
         <HomeSkills />

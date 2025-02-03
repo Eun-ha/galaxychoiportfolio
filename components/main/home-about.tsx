@@ -4,8 +4,15 @@ import * as motion from "motion/react-client";
 import { BoundaryMain } from "../ui/boundary-main";
 import { BoundaryButton } from "../ui/boundary-button";
 import { effectsX, effectsY } from "@/lib/motions";
+import { Main } from "@/data/home";
 
-export default function HomeAbout() {
+interface Props {
+  data: Main[];
+}
+
+export default function HomeAbout(props: Props) {
+  const { title, content1, content2, description, button, image, alt } =
+    props.data[1];
   return (
     <div className="lg:flex">
       <motion.div
@@ -16,8 +23,8 @@ export default function HomeAbout() {
         variants={effectsX}
       >
         <Image
-          src={`/images/works/01.png`}
-          alt="main 이미지"
+          src={image}
+          alt={alt}
           width={0}
           height={0}
           fill
@@ -34,7 +41,7 @@ export default function HomeAbout() {
             whileInView="onscreen"
             variants={effectsY}
           >
-            Let me introduce myself
+            {content1}
           </motion.span>
           <motion.h2
             custom={20}
@@ -42,7 +49,7 @@ export default function HomeAbout() {
             whileInView="onscreen"
             variants={effectsY}
           >
-            About Me
+            {title}
           </motion.h2>
           <motion.h3
             custom={15}
@@ -50,7 +57,7 @@ export default function HomeAbout() {
             whileInView="onscreen"
             variants={effectsY}
           >
-            Frontend Developer
+            {content2}
           </motion.h3>
           <motion.p
             custom={10}
@@ -58,15 +65,7 @@ export default function HomeAbout() {
             whileInView="onscreen"
             variants={effectsY}
           >
-            Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum
-            dolor sit ametLorem ipsum dolor sit ametLorem ipsum dolor sit
-            ametLorem ipsum dolor sit ametLorem ipsum dolor sit ametLorem ipsum
-            dolor sit ametLorem ipsum dolor sit ametLorem ipsum dolor sit
-            ametLorem ipsum dolor sit ametLorem ipsum dolor sit ametLorem ipsum
-            dolor sit ametLorem ipsum dolor sit ametLorem ipsum dolor sit
-            ametLorem ipsum dolor sit ametLorem ipsum dolor sit ametLorem ipsum
-            dolor sit ametLorem ipsum dolor sit ametLorem ipsum dolor sit
-            ametLorem ipsum dolor sit ametLorem ipsum dolor sit amet
+            {description}
           </motion.p>
         </BoundaryMain>
         <BoundaryButton theme="dark">
@@ -76,7 +75,7 @@ export default function HomeAbout() {
             whileInView="onscreen"
             variants={effectsY}
           >
-            Read more
+            {button}
           </motion.button>
         </BoundaryButton>
       </div>

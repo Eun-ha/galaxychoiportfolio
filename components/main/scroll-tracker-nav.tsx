@@ -10,9 +10,6 @@ export default function ScrollTrackerNav() {
 
   const overTop = UseOverTop(80);
 
-  console.log("overTop");
-  console.log(overTop);
-
   const isActiveCategory = UseActiveCategory();
 
   const effectsY = {

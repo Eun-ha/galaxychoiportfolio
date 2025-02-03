@@ -4,8 +4,14 @@ import * as motion from "motion/react-client";
 import { effectsX, effectsY } from "@/lib/motions";
 import { BoundaryMain } from "../ui/boundary-main";
 import { BoundaryButton } from "../ui/boundary-button";
+import { Main } from "@/data/home";
 
-export default function HomeMain() {
+interface Props {
+  data: Main[];
+}
+
+export default function HomeMain(props: Props) {
+  const { title, content1, content2, description, image, alt } = props.data[0];
   return (
     <div className="lg:flex">
       <div className="pr-0 lg:pr-5">
@@ -16,7 +22,7 @@ export default function HomeMain() {
             whileInView="onscreen"
             variants={effectsY}
           >
-            Hello, It&apos;s Me
+            {title}
           </motion.h2>
           <motion.h3
             custom={-10}
@@ -24,7 +30,7 @@ export default function HomeMain() {
             whileInView="onscreen"
             variants={effectsY}
           >
-            EunHa Choi
+            {content1}
           </motion.h3>
           <motion.h3
             custom={-15}
@@ -32,7 +38,7 @@ export default function HomeMain() {
             whileInView="onscreen"
             variants={effectsY}
           >
-            and I&apos;m a front end engineer
+            {content2}
           </motion.h3>
           <motion.p
             custom={-20}
@@ -40,15 +46,7 @@ export default function HomeMain() {
             whileInView="onscreen"
             variants={effectsY}
           >
-            Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum
-            dolor sit ametLorem ipsum dolor sit ametLorem ipsum dolor sit
-            ametLorem ipsum dolor sit ametLorem ipsum dolor sit ametLorem ipsum
-            dolor sit ametLorem ipsum dolor sit ametLorem ipsum dolor sit
-            ametLorem ipsum dolor sit ametLorem ipsum dolor sit ametLorem ipsum
-            dolor sit ametLorem ipsum dolor sit ametLorem ipsum dolor sit
-            ametLorem ipsum dolor sit ametLorem ipsum dolor sit ametLorem ipsum
-            dolor sit ametLorem ipsum dolor sit ametLorem ipsum dolor sit
-            ametLorem ipsum dolor sit ametLorem ipsum dolor sit amet
+            {description}
           </motion.p>
         </BoundaryMain>
         <BoundaryButton theme="dark">
@@ -57,10 +55,10 @@ export default function HomeMain() {
             initial="offscreen"
             whileInView="onscreen"
             variants={effectsY}
-            href="files/CV.pdf"
+            href="files/Resume.pdf"
             download
           >
-            Download CV
+            Download Resume
           </motion.a>
         </BoundaryButton>
       </div>
@@ -72,8 +70,8 @@ export default function HomeMain() {
         variants={effectsX}
       >
         <Image
-          src={`/images/works/01.png`}
-          alt="main 이미지"
+          src={image}
+          alt={alt}
           width={0}
           height={0}
           fill
