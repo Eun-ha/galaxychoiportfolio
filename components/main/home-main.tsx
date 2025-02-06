@@ -4,14 +4,16 @@ import * as motion from "motion/react-client";
 import { effectsX, effectsY } from "@/lib/motions";
 import { BoundaryMain } from "../ui/boundary-main";
 import { BoundaryButton } from "../ui/boundary-button";
-import { Main } from "@/data/main";
+import { Home } from "@/data/main";
 
-interface Props {
-  data: Main[];
-}
+type Props = {
+  data: Pick<Home, "home">[];
+};
 
 export default function HomeMain(props: Props) {
-  const { title, content1, content2, description, image, alt } = props.data[0];
+  const { title, content1, content2, description, button, path, alt } =
+    props.data[0].home[0];
+
   return (
     <div className="lg:flex">
       <div className="pr-0 lg:pr-5">
@@ -58,7 +60,7 @@ export default function HomeMain(props: Props) {
             href="files/Resume.pdf"
             download
           >
-            Download Resume
+            {button}
           </motion.a>
         </BoundaryButton>
       </div>
@@ -70,7 +72,7 @@ export default function HomeMain(props: Props) {
         variants={effectsX}
       >
         <Image
-          src={image}
+          src={`/images/main/${path}.jpeg`}
           alt={alt}
           width={0}
           height={0}

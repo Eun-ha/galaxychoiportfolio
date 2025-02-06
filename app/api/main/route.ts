@@ -1,8 +1,8 @@
-import { main } from "@/data/main";
+import { home } from "@/data/main";
 import { NextResponse } from "next/server";
 
 export async function GET() {
-  const data = await main;
+  const data = await home;
   if (!data) {
     return new NextResponse("Bad Request", { status: 400 });
   }

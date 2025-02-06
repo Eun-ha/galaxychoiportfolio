@@ -41,7 +41,7 @@ export default function Decoration() {
         initial="offscreen"
         whileInView="onscreen"
         variants={fadeIn}
-        className="block absolute right-24 top-1/4 mt-[300px] -z-10 -rotate-12"
+        className="block absolute right-20 top-1/4 mt-[250px] -z-10 -rotate-12"
       >
         <JavascriptIcon />
       </motion.span>
@@ -50,7 +50,7 @@ export default function Decoration() {
         initial="offscreen"
         whileInView="onscreen"
         variants={fadeIn}
-        className="block absolute -left-24 top-1/2 -z-10 rotate-12"
+        className="block absolute -left-24 top-[48%] -z-10 rotate-12"
       >
         <Html5Icon />
       </motion.span>
@@ -59,7 +59,7 @@ export default function Decoration() {
         initial="offscreen"
         whileInView="onscreen"
         variants={fadeIn}
-        className="block absolute right-4 bottom-40 -z-10 -rotate-6"
+        className="block absolute right-4 bottom-[20%] -z-10 -rotate-6"
       >
         <GithubIcon />
       </motion.span>

@@ -3,13 +3,13 @@
 import { container, effectsY, listItem } from "@/lib/motions";
 import { Chart } from "./chart";
 import { motion } from "motion/react";
-import { skill } from "@/data/main";
+import { Home } from "@/data/main";
 
 interface Props {
-  data: skill[];
+  data: Pick<Home, "skills">[];
 }
 export default function HomeSkills(props: Props) {
-  const { data } = props;
+  const data = props.data[0].skills;
 
   return (
     <div className="text-center">
@@ -26,7 +26,7 @@ export default function HomeSkills(props: Props) {
         variants={container}
         initial="hidden"
         whileInView="show"
-        className="flex flex-wrap justify-evenly mt-12 lg:mt-24"
+        className="flex flex-wrap justify-evenly mt-12 lg:mt-24 max-w-[1024px] mx-auto"
       >
         {data.map((data, index) => (
           <motion.li

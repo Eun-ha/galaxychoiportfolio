@@ -4,15 +4,15 @@ import * as motion from "motion/react-client";
 import { BoundaryMain } from "../ui/boundary-main";
 import { BoundaryButton } from "../ui/boundary-button";
 import { effectsX, effectsY } from "@/lib/motions";
-import { Main } from "@/data/main";
+import { Home } from "@/data/main";
 
 interface Props {
-  data: Main[];
+  data: Pick<Home, "home">[];
 }
 
 export default function HomeAbout(props: Props) {
-  const { title, content1, content2, description, button, image, alt } =
-    props.data[1];
+  const { title, content1, content2, description, button, path, alt } =
+    props.data[0].home[1];
   return (
     <div className="lg:flex">
       <motion.div
@@ -23,7 +23,7 @@ export default function HomeAbout(props: Props) {
         variants={effectsX}
       >
         <Image
-          src={image}
+          src={`/images/main/${path}.jpeg`}
           alt={alt}
           width={0}
           height={0}

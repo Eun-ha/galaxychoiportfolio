@@ -19,35 +19,35 @@ export const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
   useEffect(() => {
     const savedTheme = localStorage.getItem("theme");
     if (savedTheme) {
-      console.log("savedTheme");
-      console.log(savedTheme);
+      //console.log("savedTheme");
+      //console.log(savedTheme);
       window.document.body.classList.add(savedTheme);
       setTheme(savedTheme);
     }
 
     const isDarkMode = window.navigator.userAgent.includes("{isDark property}");
     if (isDarkMode) {
-      console.log("isDarkMode");
-      console.log(isDarkMode);
+      //console.log("isDarkMode");
+      //console.log(isDarkMode);
       window.document.body.classList.add("dark");
       setTheme("dark");
     }
 
     if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
-      console.log("prefers-color-scheme");
+      //console.log("prefers-color-scheme");
       window.document.body.classList.add("dark");
       setTheme("dark");
     }
     const mediaQueryList = window.matchMedia("(prefers-color-scheme: dark)");
     mediaQueryList.addEventListener("change", (e) => {
       if (e.matches) {
-        console.log("mediaQueryList");
-        console.log(mediaQueryList);
+        //console.log("mediaQueryList");
+        //console.log(mediaQueryList);
         window.document.body.classList.add("dark");
         setTheme("dark");
       } else {
-        console.log("mediaQueryList");
-        console.log(mediaQueryList);
+        //console.log("mediaQueryList");
+        //console.log(mediaQueryList);
         window.document.body.classList.remove("dark");
         setTheme("light");
       }
