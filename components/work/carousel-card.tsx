@@ -9,6 +9,7 @@ type Props = {
   path: string;
   url: string;
   download: string;
+  git: string;
   index: string;
 };
 

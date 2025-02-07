@@ -3,10 +3,11 @@ import { BoundaryButton } from "../ui/boundary-button";
 type Props = {
   url: string;
   download: string;
+  git: string;
 };
 
 export function CarouselButton({ content }: { content: Props }) {
-  const { url, download } = content;
+  const { url, download, git } = content;
   return (
     <div className="border-t-[1px] border-border pt-6 mt-6">
       <BoundaryButton>
@@ -18,6 +19,7 @@ export function CarouselButton({ content }: { content: Props }) {
         ) : (
           ""
         )}
+        {git ? <a href={git}>깃허브</a> : ""}
       </BoundaryButton>
     </div>
   );
