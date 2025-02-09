@@ -6,7 +6,7 @@ export function cn(...inputs: ClassValue[]) {
 }
 
 export async function fetchData(url: string) {
-  const response = await fetch(url);
+  const response = await fetch(url, { cache: "force-cache" });
   if (!response.ok) {
     throw new Error("데이터 로드 실패");
   }

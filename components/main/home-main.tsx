@@ -1,10 +1,10 @@
 "use client";
 import Image from "next/image";
-import * as motion from "motion/react-client";
 import { effectsX, effectsY } from "@/lib/motions";
 import { BoundaryMain } from "../ui/boundary-main";
 import { BoundaryButton } from "../ui/boundary-button";
 import { Home } from "@/data/main";
+import { motion } from "motion/react";
 
 type Props = {
   data: Pick<Home, "home">[];
@@ -13,7 +13,7 @@ type Props = {
 export default function HomeMain(props: Props) {
   const { title, content1, content2, description, button, path, alt } =
     props.data[0].home[0];
-
+  console.log("HomeMain");
   return (
     <div className="lg:flex">
       <div className="pr-0 lg:pr-5">
@@ -72,13 +72,14 @@ export default function HomeMain(props: Props) {
         variants={effectsX}
       >
         <Image
-          src={`/images/main/${path}.jpeg`}
+          src={`/images/main/${path}.webp`}
           alt={alt}
           width={0}
           height={0}
           fill
           sizes="100% auto"
           className="object-cover"
+          priority={true}
         />
       </motion.div>
     </div>

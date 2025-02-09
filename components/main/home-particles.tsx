@@ -34,6 +34,8 @@ export const HomeParticles = () => {
     console.log(container);
   };
 
+  console.log("HomeParticles");
+
   const options: ISourceOptions = useMemo(
     () => ({
       background: {

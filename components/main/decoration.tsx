@@ -1,5 +1,5 @@
 "use client";
-
+import Image from "next/image";
 import GithubIcon from "@/icons/githubIcon";
 import Html5Icon from "@/icons/html5Icon";
 import JavascriptIcon from "@/icons/javascriptIcon";
@@ -7,6 +7,7 @@ import { bounceTransition, bounceTransition2, fadeIn } from "@/lib/motions";
 import * as motion from "motion/react-client";
 
 export default function Decoration() {
+  console.log("Decoration");
   return (
     <div className="w-full h-full z-10">
       <motion.span
@@ -34,8 +35,18 @@ export default function Decoration() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 0.5, y: [0, 70, 0] }}
         transition={bounceTransition2}
-        className="block absolute left-[10%] lg:left-[30%] top-[140px] -z-10 w-[400px] h-[400px] bg-[url('/images/astronaut.png')] bg-repeat bg-left-top bg-cover"
-      ></motion.span>
+        className="block absolute left-[10%] lg:left-[30%] top-[140px] -z-10 w-[400px] h-[400px]"
+      >
+        <Image
+          src="/images/astronaut.webp"
+          alt="astronaut"
+          width={0}
+          height={0}
+          fill
+          sizes="100% auto"
+          priority={true}
+        />
+      </motion.span>
 
       <motion.span
         initial="offscreen"

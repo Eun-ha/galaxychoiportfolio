@@ -11,7 +11,13 @@ export function CarouselButton({ content }: { content: Props }) {
   return (
     <div className="border-t-[1px] border-border pt-6 mt-6">
       <BoundaryButton>
-        {url ? <a href={url}>경로</a> : ""}
+        {url ? (
+          <a href={url} target="_blank">
+            경로
+          </a>
+        ) : (
+          ""
+        )}
         {download ? (
           <a href={download} download>
             다운로드
@@ -19,7 +25,13 @@ export function CarouselButton({ content }: { content: Props }) {
         ) : (
           ""
         )}
-        {git ? <a href={git}>깃허브</a> : ""}
+        {git ? (
+          <a href={git} target="_blank">
+            깃허브
+          </a>
+        ) : (
+          ""
+        )}
       </BoundaryButton>
     </div>
   );

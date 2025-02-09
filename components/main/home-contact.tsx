@@ -1,9 +1,11 @@
 "use client";
-import { motion } from "motion/react";
+
 import { effectsY } from "@/lib/motions";
 import Form from "./Form";
+import { motion } from "motion/react";
 
 export default function HomeContact() {
+  console.log("HomeContact");
   return (
     <div className="text-center">
       <motion.h3

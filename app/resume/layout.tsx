@@ -1,5 +1,4 @@
 import { ResumeAside } from "@/components/resume/resume-aside";
-import { ToggleButton } from "@/components/toggle-button";
 
 export default async function Layout({
   children,
@@ -12,7 +11,6 @@ export default async function Layout({
         <ResumeAside />
         {children}
       </div>
-      <ToggleButton />
     </div>
   );
 }

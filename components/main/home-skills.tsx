@@ -2,15 +2,15 @@
 
 import { container, effectsY, listItem } from "@/lib/motions";
 import { Chart } from "./chart";
-import { motion } from "motion/react";
 import { Home } from "@/data/main";
+import { motion } from "motion/react";
 
 interface Props {
   data: Pick<Home, "skills">[];
 }
 export default function HomeSkills(props: Props) {
   const data = props.data[0].skills;
-
+  console.log("HomeSkills");
   return (
     <div className="text-center">
       <motion.h3
