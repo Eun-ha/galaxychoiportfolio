@@ -32,7 +32,7 @@ export default function HomeAbout(props: Props) {
           fill
           sizes="100% auto"
           className="object-cover"
-          priority={true}
+          loading="lazy"
         />
       </motion.div>
 

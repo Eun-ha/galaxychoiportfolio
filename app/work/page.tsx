@@ -1,6 +1,5 @@
 import { Carousel } from "@/components/work/carousel";
 import { fetchData } from "@/lib/utils";
-export const dynamic = "force-dynamic";
 
 export default async function Work() {
   const data = await getProjects();
