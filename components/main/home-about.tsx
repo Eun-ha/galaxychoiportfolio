@@ -1,17 +1,17 @@
 "use client";
 import Image from "next/image";
 import { BoundaryMain } from "../ui/boundary-main";
-import { BoundaryButton } from "../ui/boundary-button";
 import { effectsX, effectsY } from "@/lib/motions";
 import { Home } from "@/data/main";
 import { motion } from "motion/react";
+import Portal from "../portal/Portal";
 
 interface Props {
   data: Pick<Home, "home">[];
 }
 
 export default function HomeAbout(props: Props) {
-  const { title, content1, content2, description, button, path, alt } =
+  const { title, content1, content2, description, path, alt } =
     props.data[0].home[1];
 
   console.log("HomeAbout");
@@ -71,16 +71,14 @@ export default function HomeAbout(props: Props) {
             {description}
           </motion.p>
         </BoundaryMain>
-        <BoundaryButton theme="dark">
-          <motion.button
-            custom={5}
-            initial="offscreen"
-            whileInView="onscreen"
-            variants={effectsY}
-          >
-            {button}
-          </motion.button>
-        </BoundaryButton>
+        <motion.div
+          custom={5}
+          initial="offscreen"
+          whileInView="onscreen"
+          variants={effectsY}
+        >
+          <Portal {...props} />
+        </motion.div>
       </div>
     </div>
   );

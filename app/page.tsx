@@ -11,10 +11,6 @@ import { useEffect, useState } from "react";
 import Loading from "./loading";
 import React from "react";
 
-//const HomeAbout = React.lazy(() => import("@/components/main/home-about"));
-////const HomeSkills = React.lazy(() => import("@/components/main/home-skills"));
-//const HomeContact = React.lazy(() => import("@/components/main/home-contact"));
-
 export default function Home() {
   const [mainData, setMainData] = useState(null);
 

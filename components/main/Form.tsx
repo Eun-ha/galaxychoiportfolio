@@ -10,9 +10,17 @@ export default function Form() {
   const [isErrorMessage, setErrorMessage] = useState(false);
 
   useEffect(() => {
-    return actionState !== null
-      ? setErrorMessage(true)
-      : setErrorMessage(false);
+    if (actionState !== null) {
+      setErrorMessage(true);
+
+      const timer = setTimeout(() => {
+        setErrorMessage(false);
+      }, 3000);
+
+      return () => clearTimeout(timer);
+    } else {
+      setErrorMessage(false);
+    }
   }, [actionState]);
 
   return (
@@ -54,7 +62,6 @@ export default function Form() {
       ) : (
         ""
       )}
-
       <BoundaryButton theme="dark">
         <button type="submit">전송</button>
       </BoundaryButton>

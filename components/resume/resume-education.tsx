@@ -14,8 +14,8 @@ export const ResumeEducation = ({ data }: { data: Education[] }) => {
               <p>{data.date}</p>
             </div>
             <div>
-              <h4>전공/교육내용</h4>
-              <p>{data.degree}</p>
+              <h4>{data.degree ? "전공" : "교육내용"}</h4>
+              <p>{data.degree || data.institution}</p>
             </div>
           </BoundaryResume>
         </article>

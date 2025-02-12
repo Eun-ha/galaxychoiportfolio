@@ -8,6 +8,7 @@ export type Experience = {
 export type Education = {
   school: string;
   degree: string;
+  institution: string;
   date: string;
 };
 
@@ -134,26 +135,31 @@ export const resume: Resume[] = [
       {
         school: "University of California, San Diego",
         degree: "Bachelor of Science in Computer Science",
+        institution: "University of California, San Diego",
         date: "2014.09 - 2018.06",
       },
       {
         school: "University of California, San Diego",
         degree: "Bachelor of Science in Computer Science",
+        institution: "University of California, San Diego",
         date: "2014.09 - 2018.06",
       },
       {
         school: "University of California, San Diego",
         degree: "Bachelor of Science in Computer Science",
+        institution: "University of California, San Diego",
         date: "2014.09 - 2018.06",
       },
       {
         school: "University of California, San Diego",
         degree: "Bachelor of Science in Computer Science",
+        institution: "University of California, San Diego",
         date: "2014.09 - 2018.06",
       },
       {
         school: "University of California, San Diego",
         degree: "Bachelor of Science in Computer Science",
+        institution: "University of California, San Diego",
         date: "2014.09 - 2018.06",
       },
     ],
@@ -404,33 +410,38 @@ export const educations = [
   {
     school: "남서울대학교",
     degree: "보건행정학과",
+    institution: "",
     date: "2006.03 - 2010.02",
   },
   {
     school: "부평여자고등학교",
     degree: "인문계",
+    institution: "",
     date: "2003.03 - 2006.02",
   },
   {
     school: "Dublin City University Language School",
-    degree: "영어회화 과정 수료",
+    degree: "",
+    institution: "영어회화 과정 수료",
     date: "2018.10 - 2019.04",
   },
   {
     school: "인천중앙직업전문학교",
-    degree: "Eclipse를 활용한 안드로이드 프로그래밍(JAVA) 과정 수료",
+    degree: "",
+    institution: "Eclipse를 활용한 안드로이드 프로그래밍(JAVA) 과정 수료",
     date: "2015.03 - 2015.07",
   },
   {
     school: "서울현대직업전문학교",
-    degree: "웹디자인을 위한 HTML+CSS3 과정 수료",
+    degree: "",
+    institution: "웹디자인을 위한 HTML+CSS3 과정 수료",
     date: "2014.01 - 2014.06",
   },
 ];
 
 export const experiences: Experience[] = [
   {
-    company: "엔씨 소프트",
+    company: "엔씨소프트",
     title: "UI & FE Developer",
     date: "2021.03 - 2024.06",
     description:
