@@ -406,7 +406,7 @@ export const certificates: Certificate[] = [
   },
 ];
 
-export const educations = [
+export const educations: Education[] = [
   {
     school: "남서울대학교",
     degree: "보건행정학과",
@@ -637,3 +637,30 @@ export const descriptions: Description[] = [
     skills: "Html, Css, Jquery",
   },
 ];
+
+/**
+ * meta에 필요한 데이터
+ */
+
+export type Meta = {
+  title: string;
+  description: string;
+};
+
+export const certificatesMeta: Meta = {
+  title: "자격증",
+  description: "보유 자격증 리스트",
+};
+
+export const educationsMeta: Meta = {
+  title: "교육",
+  description: "학력 및 전공, 교육 과정에 대한 정보",
+};
+export const experiencesMeta: Meta = {
+  title: "경력 사항",
+  description: "경력 사항과 주요 업무",
+};
+export const descriptionsMeta: Meta = {
+  title: "경력 기술서",
+  description: "경력과 프로젝트 경험, 기술 스택 소개",
+};

@@ -1,9 +1,41 @@
 import { ResumeContents } from "@/components/resume/resume-contents";
 import { TitlesDescriptions } from "@/components/resume/titles-descriptions";
 import { fetchData } from "@/lib/utils";
+import { Metadata, ResolvingMetadata } from "next";
 import React from "react";
 
 type tParams = Promise<{ slug: string }>;
+
+type Props = {
+  params: Promise<{ slug: string }>;
+};
+
+export async function generateMetadata(
+  { params }: Props,
+  parent: ResolvingMetadata
+): Promise<Metadata> {
+  const ApiUrl = process.env.API_URL;
+  // read route params
+  const slug = (await params).slug;
+
+  // fetch data
+  const product = await fetch(`${ApiUrl}/api/meta/${slug}`).then((res) =>
+    res.json()
+  );
+
+  console.log(product);
+
+  // optionally access and extend (rather than replace) parent metadata
+  const previousImages = (await parent).openGraph?.images || [];
+
+  return {
+    title: product.title,
+    description: product.description,
+    openGraph: {
+      images: ["/some-specific-page-image.jpg", ...previousImages],
+    },
+  };
+}
 
 export default async function Page(props: { params: tParams }) {
   const { slug } = await props.params;
