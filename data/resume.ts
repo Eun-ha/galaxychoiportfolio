@@ -56,26 +56,26 @@ export const resume: Resume[] = [
   {
     contents: [
       {
-        title: "경력기술서 타이틀 입니다.",
-        desc: "경력기술서 설명 입니다.",
+        title: "경력 기술서",
+        desc: "경력과 프로젝트 경험, 기술 스택을 기술합니다",
         slug: "descriptions",
         button: "descriptions",
       },
       {
-        title: "경험 타이틀 입니다.",
-        desc: "경험 설명 입니다.",
+        title: "경력 사항",
+        desc: "경력 사항과 주요 업무 내역을 기술합니다.",
         slug: "experiences",
         button: "experiences",
       },
       {
-        title: "교육 타이틀 입니다.",
-        desc: "교육 설명 입니다.",
+        title: "교육",
+        desc: "학력 및 전공, 교육 과정에 대한 정보를 기술합니다.",
         slug: "educations",
         button: "educations",
       },
       {
-        title: "자격증 타이틀 입니다.",
-        desc: "자격증 설명 입니다.",
+        title: "자격증",
+        desc: "보유 자격증을 기술합니다.",
         slug: "certificates",
         button: "certificates",
       },
