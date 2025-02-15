@@ -1,8 +1,14 @@
 "use client";
-import { Education } from "@/data/resume";
+import { EducationsMeta } from "@/data/resume";
 import { BoundaryResume } from "../ui/boundary-resume";
 
-export const ResumeEducation = ({ data }: { data: Education[] }) => {
+interface Props {
+  data: EducationsMeta[];
+}
+
+export const ResumeEducation = (props: Props) => {
+  const data = props.data[0].contents;
+
   return (
     <>
       {data.map((data, index) => (

@@ -1,8 +1,14 @@
 "use client";
-import { Certificate } from "@/data/resume";
+import { CertificateMeta } from "@/data/resume";
 import { BoundaryResume } from "../ui/boundary-resume";
 
-export const ResumeCertificate = ({ data }: { data: Certificate[] }) => {
+interface Props {
+  data: CertificateMeta[];
+}
+
+export const ResumeCertificate = (props: Props) => {
+  const data = props.data[0].contents;
+
   return (
     <>
       {data.map((data, index) => (

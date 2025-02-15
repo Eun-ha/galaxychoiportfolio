@@ -1,8 +1,13 @@
 "use client";
-import { Description } from "@/data/resume";
+import { DescriptionMeta } from "@/data/resume";
 import { BoundaryResume } from "../ui/boundary-resume";
 
-export const ResumeDescription = ({ data }: { data: Description[] }) => {
+interface Props {
+  data: DescriptionMeta[];
+}
+
+export const ResumeDescription = (props: Props) => {
+  const data = props.data[0].contents;
   return (
     <>
       {data.map((data, index) => (

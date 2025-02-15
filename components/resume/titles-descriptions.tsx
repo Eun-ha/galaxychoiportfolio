@@ -1,21 +1,25 @@
-import { getContents } from "@/data/resume";
+import {
+  CertificateMeta,
+  DescriptionMeta,
+  EducationsMeta,
+  ExperiencesMeta,
+} from "@/data/resume";
 
-interface Category {
-  category: string;
+interface Props {
+  data:
+    | DescriptionMeta[]
+    | ExperiencesMeta[]
+    | EducationsMeta[]
+    | CertificateMeta[];
 }
 
-export const TitlesDescriptions = (Props: Category) => {
-  const { category } = Props;
-  const content = getContents(category);
+export const TitlesDescriptions = (props: Props) => {
+  const { title, description } = props.data[0].meta;
 
   return (
-    <>
-      {content.map((content, index) => (
-        <section key={index} className="my-5 lg:mt-0">
-          <h2 className="text-lg font-medium">{content.title}</h2>
-          <p className="text-text-emphasis">{content.desc}</p>
-        </section>
-      ))}
-    </>
+    <section className="my-5 lg:mt-0">
+      <h2 className="text-lg font-medium">{title}</h2>
+      <p className="text-text-emphasis">{description}</p>
+    </section>
   );
 };

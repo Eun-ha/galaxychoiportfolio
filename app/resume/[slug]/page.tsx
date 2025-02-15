@@ -19,11 +19,9 @@ export async function generateMetadata(
   const slug = (await params).slug;
 
   // fetch data
-  const product = await fetch(`${ApiUrl}/api/meta/${slug}`).then((res) =>
-    res.json()
-  );
-
-  console.log(product);
+  const product = await fetchData(`${ApiUrl}/api/resume/${slug}`)
+    .then((res) => res.length && res[0].meta)
+    .catch((error) => console.log(error));
 
   // optionally access and extend (rather than replace) parent metadata
   const previousImages = (await parent).openGraph?.images || [];
@@ -44,7 +42,7 @@ export default async function Page(props: { params: tParams }) {
 
   return (
     <main className="block w-full lg:w-[calc(100%-16px)] lg:ml-[16px]">
-      <TitlesDescriptions category={slug} />
+      <TitlesDescriptions data={data} />
       <ResumeContents slug={slug} data={data} />
     </main>
   );

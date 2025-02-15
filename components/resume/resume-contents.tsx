@@ -1,5 +1,10 @@
 import { Suspense } from "react";
-import { Description, Education, Experience, Certificate } from "@/data/resume";
+import {
+  CertificateMeta,
+  EducationsMeta,
+  ExperiencesMeta,
+  DescriptionMeta,
+} from "@/data/resume";
 import clsx from "clsx";
 import { notFound } from "next/navigation";
 import { SkeletonCard } from "../ui/skeleton-card";
@@ -10,7 +15,11 @@ import { ResumeDescription } from "./resume-description";
 
 interface Props {
   slug: string;
-  data: Description[] | Education[] | Experience[] | Certificate[];
+  data:
+    | DescriptionMeta[]
+    | EducationsMeta[]
+    | ExperiencesMeta[]
+    | CertificateMeta[];
 }
 
 export const ResumeContents = (props: Props) => {
@@ -19,19 +28,19 @@ export const ResumeContents = (props: Props) => {
     <section className={clsx("mb-2 lg:mb-4")}>
       {slug === "educations" ? (
         <Suspense fallback={<SkeletonCard />}>
-          <ResumeEducation data={data as Education[]} />
+          <ResumeEducation data={data as EducationsMeta[]} />
         </Suspense>
       ) : slug === "experiences" ? (
         <Suspense fallback={<SkeletonCard />}>
-          <ResumeExperience data={data as Experience[]} />
+          <ResumeExperience data={data as ExperiencesMeta[]} />
         </Suspense>
       ) : slug === "certificates" ? (
         <Suspense fallback={<SkeletonCard />}>
-          <ResumeCertificate data={data as Certificate[]} />
+          <ResumeCertificate data={data as CertificateMeta[]} />
         </Suspense>
       ) : slug === "descriptions" ? (
         <Suspense fallback={<SkeletonCard />}>
-          <ResumeDescription data={data as Description[]} />
+          <ResumeDescription data={data as DescriptionMeta[]} />
         </Suspense>
       ) : (
         notFound()

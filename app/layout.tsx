@@ -4,11 +4,15 @@ import { Header } from "@/components/header";
 import { notoSansKR } from "@/styles/fonts";
 
 export const metadata: Metadata = {
+  metadataBase: new URL(`${process.env.API_URL}`),
   title: {
     template: "%s | 최은하의 포트폴리오 사이트",
     default: "최은하의 포트폴리오 사이트",
   },
   description: "최은하의 포트폴리오 사이트입니다.",
+  openGraph: {
+    images: "/opengraph-image.jpg",
+  },
 };
 
 export default function RootLayout({
