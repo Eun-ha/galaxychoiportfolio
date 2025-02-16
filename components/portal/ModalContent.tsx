@@ -16,6 +16,7 @@ export default function ModalContent(props: Props) {
           <button
             className="modalCloseBtn inline-block"
             onClick={props.onClose}
+            aria-label="모달 닫기 버튼"
           >
             <CloseIcon />
           </button>

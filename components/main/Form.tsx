@@ -63,7 +63,9 @@ export default function Form() {
         ""
       )}
       <BoundaryButton theme="dark">
-        <button type="submit">전송</button>
+        <button type="submit" aria-label="폼 전송 버튼">
+          전송
+        </button>
       </BoundaryButton>
     </form>
   );

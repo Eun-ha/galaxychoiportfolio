@@ -13,7 +13,11 @@ export default function Error({ error, reset }: any) {
     <div className="mt-[15%] text-center">
       <ErrorIcon />
       <h2 className="text-lg mt-2">Work 에러가 발생 하였습니다.</h2>
-      <button onClick={() => reset()} className="mt-2">
+      <button
+        onClick={() => reset()}
+        className="mt-2"
+        aria-label="재시도 하기 버튼"
+      >
         재시도 하기
         <RefreshIcon />
       </button>

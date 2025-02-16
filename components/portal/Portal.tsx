@@ -15,7 +15,9 @@ export default function Portal(props: Props) {
   return (
     <>
       <BoundaryButton theme="dark">
-        <button onClick={() => setShowModal(true)}>Read More</button>
+        <button onClick={() => setShowModal(true)} aria-label="더 읽기 버튼">
+          Read More
+        </button>
       </BoundaryButton>
 
       {showModal &&

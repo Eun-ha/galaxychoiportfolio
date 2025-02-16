@@ -87,6 +87,7 @@ export function Nav() {
           "inline-block": isMobile,
         })}
         onClick={() => setIsOpen(!isOpen)}
+        aria-label="네비 메뉴 보기 버튼"
       >
         {isOpen ? <CloseIcon /> : <HamIcon />}
       </button>
