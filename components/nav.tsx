@@ -109,6 +109,7 @@ export function Nav() {
                 "text-point-red": segment === item.slug,
               }
             )}
+            aria-label={`Link to ${item.slug === null ? "Home" : item.slug}`}
           >
             <span className="text-text-emphasis">{item.icon}</span>
             <p className="pl-1">{item.text}</p>

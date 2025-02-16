@@ -28,6 +28,7 @@ export const Button = ({
           "lg:bg-bg-active text-point-red": isActive,
         }
       )}
+      aria-label={`Link to ${category.slug}`}
     >
       {category.button}
     </Link>
