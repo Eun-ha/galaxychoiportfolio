@@ -57,7 +57,6 @@ export default function HomeMain(props: Props) {
             initial="offscreen"
             whileInView="onscreen"
             variants={effectsY}
-            href="files/Resume.pdf"
             download
           >
             {button}

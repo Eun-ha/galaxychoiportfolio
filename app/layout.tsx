@@ -13,6 +13,10 @@ export const metadata: Metadata = {
   openGraph: {
     images: "/opengraph-image.jpg",
   },
+  robots: {
+    follow: true,
+    index: true,
+  },
 };
 
 export default function RootLayout({
