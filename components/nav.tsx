@@ -104,16 +104,22 @@ export function Nav() {
             key={index}
             href={item.url}
             onClick={close}
-            className={clsx(
-              "mt-5 flex items-center justify-center lg:mt-0 lg:pl-6 hover:text-point-red",
-              {
-                "text-point-red": segment === item.slug,
-              }
-            )}
+            className={clsx("mt-5 lg:mt-0 lg:pl-6 hover:text-point-red", {
+              "text-point-red": segment === item.slug,
+            })}
             aria-label={`Link to ${item.slug === null ? "Home" : item.slug}`}
           >
-            <span className="text-text-emphasis">{item.icon}</span>
-            <p className="pl-1">{item.text}</p>
+            <span
+              className={clsx(
+                "flex items-center justify-center p-2 rounded-md",
+                {
+                  "  bg-amber-950 ": segment === item.slug,
+                }
+              )}
+            >
+              <span className="text-text-emphasis">{item.icon}</span>
+              <p className="pl-1">{item.text}</p>
+            </span>
           </Link>
         ))}
       </nav>

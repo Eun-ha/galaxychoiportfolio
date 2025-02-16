@@ -30,7 +30,13 @@ export const Button = ({
       )}
       aria-label={`Link to ${category.slug}`}
     >
-      {category.button}
+      <span
+        className={clsx({
+          "p-2 rounded-md bg-amber-950 lg:p-0 lg:bg-transparent": isActive,
+        })}
+      >
+        {category.button}
+      </span>
     </Link>
   );
 };
