@@ -72,8 +72,8 @@ export const works: Work[] = [
     path: "06",
     url: "",
     download:
-      "https://github.com/Eun-ha/my-work-samples/blob/master/The_working_site_of_Minstry_of_Public_Administration_and_Security.zip",
-    git: "",
+      "files/The_working_site_of_Minstry_of_Public_Administration_and_Security.zip",
+    git: "https://github.com/Eun-ha/my-work-samples/blob/master/The_working_site_of_Minstry_of_Public_Administration_and_Security.zip",
     index: "06",
   },
   {
@@ -83,14 +83,13 @@ export const works: Work[] = [
     skill: "HTML5, CSS3, Jquery",
     path: "07",
     url: "",
-    download:
-      "https://github.com/Eun-ha/my-work-samples/blob/master/EMR_of_the_horse_hospital.zip",
-    git: "",
+    download: "files/EMR_of_the_horse_hospital.zip",
+    git: "https://github.com/Eun-ha/my-work-samples/blob/master/EMR_of_the_horse_hospital.zip",
     index: "07",
   },
   {
     title: "운전연수 예약 미니 프로젝트",
-    desc: "Next.js를 사용하여 SSR을 적용하고, redux-toolkit을 사용하여 상태관리를 하였습니다. 반응형 디자인을 적용하였으며, Figma를 활용하여 디자인을 구현하였습니다. Git을 통한 협업과 Jira를 통한 작업 스케줄 관리를 수행했습니다.",
+    desc: "Next.js를 사용하여 SSR을 적용하고, redux-toolkit을 사용하여 CRUD 기능을 상태관리를 하였습니다.",
     skill: "React, Next.js, redux-toolkit",
     path: "08",
     url: "https://booking-drivinglesson.vercel.app/",

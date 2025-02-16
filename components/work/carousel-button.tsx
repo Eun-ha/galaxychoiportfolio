@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { BoundaryButton } from "../ui/boundary-button";
 
 type Props = {
@@ -12,23 +13,31 @@ export function CarouselButton({ content }: { content: Props }) {
     <div className="border-t-[1px] border-border pt-6 mt-6">
       <BoundaryButton>
         {url ? (
-          <a href={url} target="_blank">
+          <Link
+            href={url}
+            aria-label="작업물 경로 새창 열기 버튼"
+            target="_blank"
+          >
             경로
-          </a>
+          </Link>
         ) : (
           ""
         )}
         {download ? (
-          <a href={download} download>
+          <a href={download} aria-label="작업물 다운로드 버튼" download>
             다운로드
           </a>
         ) : (
           ""
         )}
         {git ? (
-          <a href={git} target="_blank">
+          <Link
+            href={git}
+            aria-label="작업물 깃허브 저장소 새창 열기 버튼"
+            target="_blank"
+          >
             깃허브
-          </a>
+          </Link>
         ) : (
           ""
         )}

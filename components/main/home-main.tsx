@@ -2,7 +2,6 @@
 import Image from "next/image";
 import { effectsX, effectsY } from "@/lib/motions";
 import { BoundaryMain } from "../ui/boundary-main";
-import { BoundaryButton } from "../ui/boundary-button";
 import { Home } from "@/data/main";
 import { motion } from "motion/react";
 
@@ -11,7 +10,7 @@ type Props = {
 };
 
 export default function HomeMain(props: Props) {
-  const { title, content1, content2, description, button, path, alt } =
+  const { title, content1, content2, description, path, alt } =
     props.data[0].home[0];
   console.log("HomeMain");
   return (
@@ -51,17 +50,6 @@ export default function HomeMain(props: Props) {
             {description}
           </motion.p>
         </BoundaryMain>
-        <BoundaryButton theme="dark">
-          <motion.a
-            custom={-25}
-            initial="offscreen"
-            whileInView="onscreen"
-            variants={effectsY}
-            download
-          >
-            {button}
-          </motion.a>
-        </BoundaryButton>
       </div>
       <motion.div
         className="relative w-full lg:w-[500px] h-[400px] shrink-0 mt-6 lg:mt-0"
