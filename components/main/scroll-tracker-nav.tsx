@@ -31,7 +31,7 @@ export default function ScrollTrackerNav() {
       whileInView="onscreen"
       variants={effectsY}
       className={clsx("none", {
-        "fixed bottom-4 left-1/2 w-[280px] -ml-[140px] flex justify-evenly  rounded-lg border border-darkOnly-border bg-darkOnly-emphasis":
+        "fixed bottom-4 left-1/2 w-[280px] -ml-[140px] flex justify-evenly rounded-lg border border-darkOnly-border bg-darkOnly-emphasis":
           overTop,
       })}
     >

@@ -8,7 +8,9 @@ export function Logo() {
       className="flex items-center justify-center"
       aria-label="Link to Home"
     >
-      <SpaceIcon />
+      <span className="text-text-emphasis">
+        <SpaceIcon />
+      </span>
       <h1 className="font-medium pl-2 hidden lg:block">Galaxy</h1>
     </Link>
   );

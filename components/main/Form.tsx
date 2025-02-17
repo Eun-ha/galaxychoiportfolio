@@ -10,6 +10,7 @@ export default function Form() {
   const [isErrorMessage, setErrorMessage] = useState(false);
 
   useEffect(() => {
+    console.log(formAction);
     if (actionState !== null) {
       setErrorMessage(true);
 

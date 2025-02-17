@@ -113,7 +113,7 @@ export function Nav() {
               className={clsx(
                 "flex items-center justify-center p-2 rounded-md",
                 {
-                  "  bg-amber-950 ": segment === item.slug,
+                  "  bg-amber-950": segment === item.slug,
                 }
               )}
             >

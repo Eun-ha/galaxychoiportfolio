@@ -11,7 +11,7 @@ export default function ModalContent(props: Props) {
 
   return (
     <div className="modal w-full h-full fixed top-0 left-0 z-50 bg-neutral-900/70">
-      <div className="h-[85%] mt-[15%] mx-4 p-5 overflow-y-scroll bg-neutral-900 md:h-[60%] md:mx-[250px] xl:mx-[450px] ">
+      <div className="h-[85%] mt-[15%] mx-4 p-5 overflow-y-scroll  bg-neutral-900 md:max-w-[500px] md:max-h-[650px] md:h-[60%] md:w-1/2 md:mx-auto">
         <div className="text-right">
           <button
             className="modalCloseBtn inline-block"
