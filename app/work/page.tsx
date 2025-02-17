@@ -12,11 +12,10 @@ export const metadata: Metadata = {
 
 export default async function Work() {
   const data = await getProjects();
-  console.log("Work");
   return (
-    <main>
+    <>
       <Carousel data={data} />
-    </main>
+    </>
   );
 }
 

@@ -32,18 +32,18 @@ export default function Home() {
 
   return (
     <div className="relative z-30 bg-darkOnly-bg h-full px-4 py-4 lg:px-[100px] lg:py-[80px]">
-      <div id="00" className="py-10 lg:py-[150px]">
+      <section id="00" className="py-10 lg:py-[150px]">
         <HomeMain data={mainData} />
-      </div>
-      <div id="01" className="py-10 lg:py-[150px]">
+      </section>
+      <section id="01" className="py-10 lg:py-[150px]">
         <HomeAbout data={mainData} />
-      </div>
-      <div id="02" className="py-10 lg:py-[150px]">
+      </section>
+      <section id="02" className="py-10 lg:py-[150px]">
         <HomeSkills data={mainData} />
-      </div>
-      <div id="03" className="py-10 lg:py-[150px]">
+      </section>
+      <section id="03" className="py-10 lg:py-[150px]">
         <HomeContact />
-      </div>
+      </section>
       <ScrollTrackerNav />
       <Decoration />
       <HomeParticles />
