@@ -10,7 +10,7 @@ export function Images({ path, title }: { path: string; title: string }) {
         height={0}
         fill
         sizes="100% 300px"
-        className="object-cover"
+        className="object-cover rounded-md"
       />
     </div>
   );

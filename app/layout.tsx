@@ -10,6 +10,9 @@ export const metadata: Metadata = {
     default: "최은하의 포트폴리오 사이트",
   },
   description: "최은하의 포트폴리오 사이트입니다.",
+  icons: {
+    icon: "/favicon.ico",
+  },
   openGraph: {
     images: "/opengraph-image.jpg",
   },

@@ -443,7 +443,7 @@ export const educations: EducationsMeta[] = [
   {
     meta: {
       title: "교육",
-      description: "학력 및 전공, 교육 과정에 대한 정보",
+      description: "학력 및 전공, 수료 교육 과정에 대한 정보를 기술합니다.",
     },
     contents: [
       {
@@ -484,7 +484,7 @@ export const experiences: ExperiencesMeta[] = [
   {
     meta: {
       title: "경력 사항",
-      description: "경력 사항과 주요 업무",
+      description: "경력 사항과 주요 업무 내역을 기술합니다.",
     },
     contents: [
       {
@@ -530,7 +530,7 @@ export const descriptions: DescriptionMeta[] = [
   {
     meta: {
       title: "경력 기술서",
-      description: "경력과 프로젝트 경험, 기술 스택 소개",
+      description: "경력과 프로젝트 경험, 기술 스택을 기술합니다.",
     },
     contents: [
       {
