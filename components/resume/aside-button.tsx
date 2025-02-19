@@ -2,9 +2,9 @@
 import clsx from "clsx";
 import Link from "next/link";
 import { useSelectedLayoutSegment } from "next/navigation";
-import { Categories } from "./button-list";
+import { Categories } from "./aside-button-list";
 
-export const Button = ({
+export const AsideButton = ({
   path,
   category,
 }: {

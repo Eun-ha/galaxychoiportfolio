@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { MARGINOFERROR } from "@/lib/constants";
 
 export function UseActiveCategory() {
   const [isActiveCategory, setIsActiveCategory] = useState(0);
@@ -13,8 +14,6 @@ export function UseActiveCategory() {
     aboutRef.current = document.getElementById("01");
     skillsRef.current = document.getElementById("02");
     contactRef.current = document.getElementById("03");
-
-    const MARGINOFERROR = 150;
 
     const about = aboutRef.current;
     const skills = skillsRef.current;

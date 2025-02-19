@@ -1,7 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
 import clsx from "clsx";
-import { Button } from "./button";
+import { AsideButton } from "./aside-button";
 
 export type Categories = {
   button: string;
@@ -9,7 +9,7 @@ export type Categories = {
   segment?: string;
 };
 
-export const ButtonList = ({
+export const AsideButtonList = ({
   path,
   categories,
 }: {
@@ -43,7 +43,11 @@ export const ButtonList = ({
       )}
     >
       {categories.map((category) => (
-        <Button key={path + category.slug} category={category} path={path} />
+        <AsideButton
+          key={path + category.slug}
+          category={category}
+          path={path}
+        />
       ))}
     </aside>
   );

@@ -1,11 +1,11 @@
 import { getAll } from "@/data/resume";
-import { ButtonList } from "./button-list";
+import { AsideButtonList } from "./aside-button-list";
 
 export function ResumeAside() {
   const content = getAll();
   return (
     <>
-      <ButtonList
+      <AsideButtonList
         path="/resume"
         categories={[
           ...content.map((x) => ({

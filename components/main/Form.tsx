@@ -62,7 +62,7 @@ export default function Form() {
       ) : (
         ""
       )}
-      <Button type="submit" aria-label="폼 전송 버튼" disabled={isPending}>
+      <Button type="submit" aria-label="폼 전송 버튼" aria-disabled={isPending}>
         {isPending ? "전송중..." : "전송"}
       </Button>
     </form>
