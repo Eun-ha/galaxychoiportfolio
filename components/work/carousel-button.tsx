@@ -24,9 +24,9 @@ export function CarouselButton({ content }: { content: Props }) {
           ""
         )}
         {download ? (
-          <a href={download} aria-label="작업물 다운로드 버튼" download>
+          <Link href={download} aria-label="작업물 다운로드 버튼" download>
             다운로드
-          </a>
+          </Link>
         ) : (
           ""
         )}

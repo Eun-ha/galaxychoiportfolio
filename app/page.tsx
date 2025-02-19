@@ -28,8 +28,6 @@ export default function Home() {
     return <Loading />;
   }
 
-  console.log("Home");
-
   return (
     <div className="relative z-30 bg-darkOnly-bg h-full px-4 py-4 lg:px-[100px] lg:py-[80px]">
       <section id="00" className="py-10 lg:py-[150px]">
@@ -53,6 +51,5 @@ export default function Home() {
 
 async function getProjects() {
   const mainData = await fetchData(`/api/main`);
-  console.log("getProjects");
   return mainData;
 }

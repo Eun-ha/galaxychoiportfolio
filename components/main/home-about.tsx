@@ -14,7 +14,6 @@ export default function HomeAbout(props: Props) {
   const { title, content1, content2, description, path, alt } =
     props.data[0].home[1];
 
-  console.log("HomeAbout");
   return (
     <div className="lg:flex">
       <motion.div

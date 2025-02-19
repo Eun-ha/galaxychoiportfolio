@@ -22,6 +22,5 @@ export default async function Work() {
 async function getProjects() {
   const ApiUrl = process.env.API_URL;
   const data = await fetchData(`${ApiUrl}/api/work`);
-  console.log("getProjects");
   return data;
 }

@@ -2,21 +2,20 @@
 
 import { sendEmail } from "@/lib/formAction";
 import { useActionState, useEffect, useState } from "react";
-import { BoundaryButton } from "../ui/boundary-button";
 import { BoundaryFrom } from "../ui/boundary-form";
+import { Button } from "../button";
 
 export default function Form() {
-  const [actionState, formAction] = useActionState(sendEmail, null);
+  const [actionState, formAction, isPending] = useActionState(sendEmail, null);
   const [isErrorMessage, setErrorMessage] = useState(false);
 
   useEffect(() => {
-    console.log(formAction);
     if (actionState !== null) {
       setErrorMessage(true);
 
       const timer = setTimeout(() => {
         setErrorMessage(false);
-      }, 3000);
+      }, 2500);
 
       return () => clearTimeout(timer);
     } else {
@@ -57,17 +56,15 @@ export default function Form() {
         </BoundaryFrom>
       </div>
       {isErrorMessage ? (
-        <span className="block text-point-red">
+        <span className="block text-point-red mb-3">
           {typeof actionState === "string" ? actionState : actionState?.message}
         </span>
       ) : (
         ""
       )}
-      <BoundaryButton theme="dark">
-        <button type="submit" aria-label="폼 전송 버튼">
-          전송
-        </button>
-      </BoundaryButton>
+      <Button type="submit" aria-label="폼 전송 버튼" disabled={isPending}>
+        {isPending ? "전송중..." : "전송"}
+      </Button>
     </form>
   );
 }

@@ -10,7 +10,7 @@ interface Props {
 }
 export default function HomeSkills(props: Props) {
   const data = props.data[0].skills;
-  console.log("HomeSkills");
+
   return (
     <div className="text-center">
       <motion.h3

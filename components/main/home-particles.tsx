@@ -12,7 +12,6 @@ import {
 import { loadBasic } from "@tsparticles/basic"; // if you are going to use `loadBasic`, install the "@tsparticles/basic" package too.
 
 export default function HomeParticles() {
-  console.log("HomeParticles=================");
   const [init, setInit] = useState(false);
 
   // this should be run only once per application lifetime

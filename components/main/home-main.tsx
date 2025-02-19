@@ -12,7 +12,7 @@ type Props = {
 export default function HomeMain(props: Props) {
   const { title, content1, content2, description, path, alt } =
     props.data[0].home[0];
-  console.log("HomeMain");
+
   return (
     <div className="lg:flex">
       <div className="pr-0 lg:pr-5">

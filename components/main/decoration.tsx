@@ -7,7 +7,6 @@ import { bounceTransition, bounceTransition2, fadeIn } from "@/lib/motions";
 import * as motion from "motion/react-client";
 
 export default function Decoration() {
-  console.log("Decoration");
   return (
     <div className="w-full h-full z-10">
       <motion.span

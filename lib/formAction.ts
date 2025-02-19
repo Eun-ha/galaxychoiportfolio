@@ -54,8 +54,9 @@ export const sendEmail = async (prevState: any, formData: FormData) => {
     });
 
     console.log("이메일 전송 성공");
-    return { message: "이메일 전송 성공!!" };
+    return { success: true, message: "이메일 전송 성공!" };
   } catch (error) {
     console.error(error);
+    return { success: false, message: "이메일 전송 실패..." };
   }
 };
