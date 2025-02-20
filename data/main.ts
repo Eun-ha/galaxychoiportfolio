@@ -8,6 +8,7 @@ export type Main = {
   button: string;
   path: string;
   alt: string;
+  url?: string;
 };
 
 export type Skill = {
@@ -31,9 +32,10 @@ export const home: Home[] = [
         content2: "I'm a front end engineer.",
         description:
           "저는 쇼핑몰 에이전시, SI 프로젝트 에이전시, 프리랜서, 게임회사들에서 UI & FE 개발을 담당 하였습니다. Javascript 및 그 기반으로 하는 reactjs, nextjs, typescript와 같은 플러그인 및 프레임워크 들을 다루어 본 경험이 있으며, tailwind, styled-component, scss 등을 사용해보았습니다. 현재는 좀더 정교한 UI 컴포넌트 단위 개발을 위한 storyboard와 웹 개발의 성능 측정, 최적화, SEO등을 좀더 효율적으로 관리할수 있는 Nextjs 공부를 꾸준히 하고 있습니다.",
-        button: "Download Resume",
+        button: "Go to portfolio repository",
         path: "01",
         alt: "아이슬란드 다이아몬드 비치에서 빙하 조각을 들고 웃고 있는 사진 입니다.",
+        url: "https://github.com/Eun-ha/galaxychoiportfolio",
       },
       {
         title: "About Me",

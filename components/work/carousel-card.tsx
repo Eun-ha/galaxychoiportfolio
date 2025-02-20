@@ -18,7 +18,7 @@ export function CarouselCard({ content }: { content: Props }) {
   return (
     <article className="lg:flex lg:flex-row-reverse">
       <Images path={path} title={title} />
-      <div className="mt-12 lg:mr-12">
+      <div className="mt-4 lg:mr-12">
         <CarouselContent content={content} />
         <CarouselButton content={content} />
       </div>

@@ -11,7 +11,7 @@ type Props = {
 export function CarouselButton({ content }: { content: Props }) {
   const { url, download, git } = content;
   return (
-    <div className="border-t-[1px] border-border pt-6 mt-6">
+    <div className="border-t-[1px] border-border pt-2 mt-6">
       <BoundaryButton>
         {url ? (
           <ExternalLink href={url} label="작업물 경로 새창 열기 버튼">

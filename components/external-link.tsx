@@ -1,6 +1,6 @@
 interface LinkProps {
   children: React.ReactNode;
-  href: string;
+  href?: string;
   label: string;
 }
 

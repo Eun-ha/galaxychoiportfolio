@@ -4,13 +4,15 @@ import { effectsX, effectsY } from "@/lib/motions";
 import { BoundaryMain } from "../ui/boundary-main";
 import { Home } from "@/data/main";
 import { motion } from "motion/react";
+import { BoundaryButton } from "../ui/boundary-button";
+import { ExternalLink } from "../external-link";
 
 type Props = {
   data: Pick<Home, "home">[];
 };
 
 export default function HomeMain(props: Props) {
-  const { title, content1, content2, description, path, alt } =
+  const { title, content1, content2, description, path, alt, button, url } =
     props.data[0].home[0];
 
   return (
@@ -49,6 +51,18 @@ export default function HomeMain(props: Props) {
           >
             {description}
           </motion.p>
+          <motion.div
+            custom={-25}
+            initial="offscreen"
+            whileInView="onscreen"
+            variants={effectsY}
+          >
+            <BoundaryButton>
+              <ExternalLink href={url} label="작업물 경로 새창 열기 버튼">
+                {button}
+              </ExternalLink>
+            </BoundaryButton>
+          </motion.div>
         </BoundaryMain>
       </div>
       <motion.div
