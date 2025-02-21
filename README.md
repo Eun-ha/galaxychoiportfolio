@@ -2,6 +2,17 @@
 
 이 프로젝트는 Next.js 및 React.js 기술을 탐구하고 최은하의 포트폴리오를 위하여 제작되었습니다.
 
+## 🎯 스택
+
+<img src="https://img.shields.io/badge/html5-E34F26?style=for-the-badge&logo=html5&logoColor=white">
+<img src="https://img.shields.io/badge/css-1572B6?style=for-the-badge&logo=CSS3&logoColor=white">
+<img src="https://img.shields.io/badge/tailwind CSS-FF6D70?style=for-the-badge&logo=tailwindcss&logoColor=white">
+<img src="https://img.shields.io/badge/javascript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black">
+<img src="https://img.shields.io/badge/typescript-7033FD?style=for-the-badge&logo=typescript&logoColor=white">
+<img src="https://img.shields.io/badge/react-61DAFB?style=for-the-badge&logo=react&logoColor=black">
+<img src="https://img.shields.io/badge/next.js-E50914?style=for-the-badge&logo=nextdotjs&logoColor=white">
+<img src="https://img.shields.io/badge/github-181717?style=for-the-badge&logo=github&logoColor=white">
+
 ## 🚀 시작하기
 
 이 프로젝트를 로컬 환경에서 실행하려면 아래의 단계를 따라 주세요.
@@ -19,8 +30,6 @@ cd galaxychoiportfolio
 ```
 
 #### 3. 의존성 설치
-
-먼저 레포지토리를 클론합니다
 
 ```bash
 npm install
@@ -69,7 +78,7 @@ npmr run start
   </tr>
 </table>
 
-#### 2. [<img src="https://img.shields.io/badge/Resume-EB0000?style=flat&logo=stardock&logoColor=white"/>](https://galaxychoiportfolio-git-main-eunhas-projects.vercel.app/resume/descriptions) 페이지는 AsideButton 및 contents 섹션으로 나누어집니다. 주요 참고 내용은 아래 표와 같습니다.
+#### 2. [<img src="https://img.shields.io/badge/Resume-EB0000?style=flat&logo=stardock&logoColor=white"/>](https://galaxychoiportfolio-git-main-eunhas-projects.vercel.app/resume/descriptions) 페이지는 AsideButton 및 Contents 섹션으로 나누어집니다. 주요 참고 내용은 아래 표와 같습니다.
 
 <table style="width:100%; border: 1px solid #000; background-color: #101010">
   <tr>
@@ -80,7 +89,7 @@ npmr run start
   <td style="border-right: 1px solid #303030"> AsideButton </td>
     <td> useSelectedLayoutSegment 훅을 사용하여 segment 값을 가져오고, <br>그 값을 동적라우트의 slug 값과 비교하여 현재 페이지를 인식하여 활성화 UI 적용 </td>
   </tr>
-  <td style="border-right: 1px solid #303030"> contents </td>
+  <td style="border-right: 1px solid #303030"> Contents </td>
     <td>- asideButton 컴포넌트 안의 버튼 클릭시 동적라우트의 slug 값을 기반으로 한 4개의 컴포넌트(resume-description, resume-experience, resume-education, resume-certificate) 동적 로딩<br> - suspense 사용하여 로딩 지연시 SkeletonCard 컴포넌트를 노출하여 사용자 경험 향상<br> - titles-descriptions 컴포넌트를 사용하여 slug 별 타이틀과 간략한 설명 동적 적용
  </td>
   </tr>
@@ -95,7 +104,7 @@ npmr run start
   </tr>
   <tr>
   <td style="border-right: 1px solid #303030"> Common </td>
-    <td> - Carousel을 사용하여 유저와 상호작용 적인 인터렉션 구현<br> - 컨텐츠, 이미지, 버튼 영역(CarouselButton)컴포넌트를 조합하여 페이지를 구성 <br> - CarouselButton 컴포넌트의 경우 데이터(url,download,git) 유무에 따라 동적으로 버튼 생성
+    <td> - 컨텐츠, 이미지, 버튼 영역(CarouselButton)컴포넌트를 조합하여 페이지를 구성 <br> - CarouselButton 컴포넌트의 경우 데이터(url,download,git) 유무에 따라 동적으로 버튼 생성
   </td>
   </tr>
 </table>
