@@ -15,9 +15,9 @@ export type Work = {
 
 export const works: Work[] = [
   {
-    title: "블레이드&소울 2 랭킹 신규 페이지 UI 개발",
-    desc: "반응형 디자인과 다크모드를 적용하였으며, 데이터 케이스별 React-select UI를 개발하였고, Styled-components 및 시맨틱 마크업을 적용하였습니다. Figma 협업으로 기획 및 디자인팀과 원활하게 소통했습니다. Git을 통한 FE/BE 협업과 Jira를 통한 작업 스케줄 관리를 수행했습니다.",
-    skill: "Semantic Markup, Styled-component, Pure css, React-select, React",
+    title: "블레이드&소울 2 랭킹 신규 페이지 UI 개발(현재 서비스 종료)",
+    desc: "반응형 디자인과 다크모드를 적용하였으며, 데이터 케이스별 React-select UI를 개발하였고, Styled-components 및 시맨틱 마크업을 적용하였습니다. SEO 향상을 위한 Metadata 및 소셜미디어 opengraph 이미지 적용하였고, Figma 협업으로 기획 및 디자인팀과 원활하게 소통했습니다. Git을 통한 FE/BE 협업과 Jira를 통한 작업 스케줄 관리를 수행했습니다.",
+    skill: "Semantic Markup, Styled-component, SCSS, React-select, React",
     path: "01",
     url: "",
     download: "",
@@ -26,8 +26,8 @@ export const works: Work[] = [
   },
   {
     title: "쓰론 앤 리버티 일정표 신규 페이지 UI 개발",
-    desc: "반응형 디자인, 다크모드, 스크롤 반응 UI를 구현했습니다. 기획 및 디자인팀과 Figma 협업을 진행하고, Git과 Jira를 통해 프로젝트를 관리하며, Javascript를 활용해 스크롤 반응형 UI 작업을 수행했습니다.",
-    skill: "Semantic Markup, tailwind css, pure css, Javascript, React",
+    desc: "반응형 디자인, 다크모드, Javascript를 활용하여 브라우저 스크롤에 반응하는 UI를 구현했습니다. 기획 및 디자인팀과 Figma 협업을 진행하고, Git과 Jira를 통해 프로젝트를 관리하였으며, SEO 향상을 위한 Metadata 및 소셜미디어 opengraph 이미지를 적용하였습니다.",
+    skill: "Semantic Markup, tailwind CSS, SCSS, Javascript, React",
     path: "02",
     url: "https://tl.plaync.com/ko-kr/schedule/index",
     download: "",
@@ -36,7 +36,7 @@ export const works: Work[] = [
   },
   {
     title: "리니지 W 사전 상세보기 팝업 내 공유하기 기능 개발",
-    desc: "모바일과 PC 환경에서 공유 기능을 구분 개발. 모바일에서는 window.navigator.share API, PC에서는 navigator.clipboard.writeText로 URL 복사 기능 구현. 디바이스별 테스트를 통해 최적화했습니다.",
+    desc: "모바일과 PC 환경에서 공유 기능을 분기하여 개발. 모바일에서는 window.navigator.share API, PC에서는 navigator.clipboard.writeText로 URL 복사 기능 구현. 단축 URL 호출 및 디바이스별 테스트를 통해 최적화했습니다.",
     skill: "Javascript, React, Typescript",
     path: "03",
     url: "https://lineagew.plaync.com/kr/info/item/?detail=item_907139",
@@ -48,7 +48,7 @@ export const works: Work[] = [
     title:
       "공식홈페이지 공통배너 고도화 및 예약 기능 개발(영상배너, 이미지배너, 토스트배너, 띠배너 등)",
     desc: "사내 운영툴을 사용한 데이터 스키마 생성 및 데이터 연동. 통합 배너 기능 개발: JavaScript 클래스를 사용한 객체 생성 방식으로 공통 배너 기능 구축. 예약 설정 기능 개발: Date() 함수를 활용하여 예약 기능 구현. Jest를 활용한 컴포넌트 테스트 및 사용 가이드 문서 작성 적용 및 사용 가이드 문서 작성",
-    skill: "Javascript, Typescript, Pure css",
+    skill: "Javascript, Typescript, SCSS",
     path: "04",
     url: "https://bns2.plaync.com/ko-kr/index?redirect=false",
     download: "",
@@ -58,7 +58,7 @@ export const works: Work[] = [
   {
     title: "아이온 신규 복귀 리뉴얼 페이지 UI 개발",
     desc: "시멘틱 마크업 및 반응형 디자인 적용. 스크롤 반응형 Navigation UI 동작을 위한 JavaScript 작업. Slick 플러그인 활용한 슬라이더 UI 개발",
-    skill: "Javascript, Typescript, Slick, Pure css",
+    skill: "Javascript, Typescript, Slick, SCSS",
     path: "05",
     url: "https://aion.plaync.com/guide/home",
     download: "",
@@ -88,8 +88,8 @@ export const works: Work[] = [
     index: "07",
   },
   {
-    title: "운전연수 예약 미니 프로젝트",
-    desc: "Next.js를 사용하여 SSR을 적용하고, redux-toolkit을 사용하여 CRUD 기능을 상태관리를 하였습니다.",
+    title: "운전연수 예약 사이드 프로젝트",
+    desc: "redux-toolkit을 사용하여 CRUD 기능을 설계 및 구현",
     skill: "React, Next.js, redux-toolkit",
     path: "08",
     url: "https://booking-drivinglesson.vercel.app/",

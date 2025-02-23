@@ -11,7 +11,7 @@
 <img src="https://img.shields.io/badge/typescript-7033FD?style=for-the-badge&logo=typescript&logoColor=white">
 <img src="https://img.shields.io/badge/react-61DAFB?style=for-the-badge&logo=react&logoColor=black">
 <img src="https://img.shields.io/badge/next.js-E50914?style=for-the-badge&logo=nextdotjs&logoColor=white">
-<img src="https://img.shields.io/badge/github-181717?style=for-the-badge&logo=github&logoColor=white">
+<img src="https://img.shields.io/badge/github-006600?style=for-the-badge&logo=github&logoColor=white">
 
 ## 🚀 시작하기
 

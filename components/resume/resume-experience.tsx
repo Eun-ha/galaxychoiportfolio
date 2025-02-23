@@ -21,11 +21,15 @@ export const ResumeExperience = (props: Props) => {
             </div>
             <div>
               <h4>업무내용</h4>
-              <p>{data.description}</p>
+              <ul>
+                {data.description.map((data, index) => (
+                  <li key={index}>{data}</li>
+                ))}
+              </ul>
             </div>
             <div>
-              <h4>직책</h4>
-              <p>{data.title}</p>
+              <h4>직책&역할</h4>
+              <p>사원 / {data.title}</p>
             </div>
           </BoundaryResume>
         </article>

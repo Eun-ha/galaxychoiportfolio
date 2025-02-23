@@ -17,8 +17,8 @@ export const ResumeDescription = (props: Props) => {
             <div>
               <h4>성과</h4>
               <ul>
-                {data.performance.map((y, index) => (
-                  <li key={index}>{y}</li>
+                {data.performance.map((data, index) => (
+                  <li key={index}>{data}</li>
                 ))}
               </ul>
             </div>
