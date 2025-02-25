@@ -7,6 +7,6 @@ export async function getData() {
   const sql = neon(process.env.DATABASE_URL);
   const data = await sql`SELECT * user;`;
 
-  console.log(data);
+  //console.log(data);
   return data;
 }

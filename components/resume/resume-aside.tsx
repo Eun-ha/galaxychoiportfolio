@@ -6,10 +6,6 @@ export async function ResumeAside() {
   const ApiUrl = process.env.API_URL;
   const data = await fetchData(`${ApiUrl}/api/resume/aside`);
 
-  console.log(data);
-  console.log(...data);
-  console.log(ApiUrl);
-
   return (
     <>
       <AsideButtonList

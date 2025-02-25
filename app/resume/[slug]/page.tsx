@@ -5,7 +5,6 @@ import { Metadata, ResolvingMetadata } from "next";
 import React from "react";
 
 type tParams = Promise<{ slug: string }>;
-
 type Props = {
   params: Promise<{ slug: string }>;
 };

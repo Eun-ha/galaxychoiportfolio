@@ -14,7 +14,7 @@ import { ResumeCertificate } from "./resume-certificate";
 import { ResumeDescription } from "./resume-description";
 
 interface Props {
-  slug: string;
+  slug?: string;
   data:
     | DescriptionMeta[]
     | EducationsMeta[]
