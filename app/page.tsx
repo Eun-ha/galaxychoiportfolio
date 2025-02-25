@@ -16,7 +16,7 @@ export default function Home() {
 
   useEffect(() => {
     const fetchProjects = async () => {
-      const data = await getProjects();
+      const data = await fetchData(`/api/main`);
       setMainData(data);
     };
 
@@ -47,9 +47,4 @@ export default function Home() {
       <HomeParticles />
     </div>
   );
-}
-
-async function getProjects() {
-  const mainData = await fetchData(`/api/main`);
-  return mainData;
 }

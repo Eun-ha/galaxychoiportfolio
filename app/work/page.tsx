@@ -2,8 +2,6 @@ import { Carousel } from "@/components/work/carousel";
 import { fetchData } from "@/lib/utils";
 import { Metadata } from "next";
 
-export const dynamic = "force-dynamic";
-
 export const metadata: Metadata = {
   title: "작업물",
   description:
@@ -11,16 +9,11 @@ export const metadata: Metadata = {
 };
 
 export default async function Work() {
-  const data = await getProjects();
+  const ApiUrl = process.env.API_URL;
+  const data = await fetchData(`${ApiUrl}/api/work`);
   return (
     <>
       <Carousel data={data} />
     </>
   );
-}
-
-async function getProjects() {
-  const ApiUrl = process.env.API_URL;
-  const data = await fetchData(`${ApiUrl}/api/work`);
-  return data;
 }

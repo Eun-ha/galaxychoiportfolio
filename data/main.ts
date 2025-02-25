@@ -23,6 +23,10 @@ export type Home = {
   skills: Skill[];
 };
 
+/**
+ * api에 필요한 데이터
+ */
+
 export const home: Home[] = [
   {
     home: [
