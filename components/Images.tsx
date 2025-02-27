@@ -11,6 +11,7 @@ export function Images({ path, title }: { path: string; title: string }) {
         fill
         sizes="100% 300px"
         className="object-cover rounded-md"
+        priority={true}
       />
     </div>
   );

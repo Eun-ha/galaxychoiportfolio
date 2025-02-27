@@ -3,8 +3,10 @@ import { AsideButtonList } from "./aside-button-list";
 import { Aside } from "@/data/resume";
 
 export async function ResumeAside() {
-  const ApiUrl = process.env.API_URL;
+  const ApiUrl = process.env.PRODUCTION_URL;
   const data = await fetchData(`${ApiUrl}/api/resume/aside`);
+
+  console.log("resume-aside-server");
 
   return (
     <>

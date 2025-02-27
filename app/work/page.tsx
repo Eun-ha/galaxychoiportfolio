@@ -9,11 +9,10 @@ export const metadata: Metadata = {
 };
 
 export default async function Work() {
-  const ApiUrl = process.env.API_URL;
+  const ApiUrl = process.env.PRODUCTION_URL;
   const data = await fetchData(`${ApiUrl}/api/work`);
-  return (
-    <>
-      <Carousel data={data} />
-    </>
-  );
+
+  console.log("work-page-server");
+
+  return <Carousel data={data} />;
 }

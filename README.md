@@ -122,7 +122,7 @@ npmr run start
     - typescript를 통한 타입 안정성 확보 및 런타임 에러 방지<br>
     - error, not-found 컴포넌트를 사용하여 예외 상황 처리<br>
 - loading 컴포넌트를 사용하여 지연시 상태를 알려 사용자 경험 향상<br>
-- 컨텐츠 내용에 적용 상이하 컴포넌트에 template & boundary 기능을 사용하여 공통 UI 적용<br>
+- 컨텐츠 내용이 상이한 컴포넌트에 template & boundary 기능을 사용하여 공통 UI 적용<br>
 - 반응형 웹 적용<br>
 - SEO 최적화를 위한 metadata 적용, 소셜미디어 공유를 위한 opengraph 이미지 추가, robots, sitemap 생성<br>
 - 시멘틱 태그 사용 및 접근성 속성(aria-label) 적용<br>

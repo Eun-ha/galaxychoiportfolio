@@ -9,8 +9,10 @@ import { fetchData } from "@/lib/utils";
 import React from "react";
 
 export default async function Home() {
-  const ApiUrl = process.env.API_URL;
+  const ApiUrl = process.env.PRODUCTION_URL;
   const mainData = await fetchData(`${ApiUrl}/api/main`);
+
+  console.log("home-page-server");
 
   return (
     <div className="relative z-30 bg-darkOnly-bg h-full px-4 py-4 lg:px-[100px] lg:py-[80px]">

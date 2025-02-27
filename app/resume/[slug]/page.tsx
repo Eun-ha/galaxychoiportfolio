@@ -13,11 +13,9 @@ export async function generateMetadata(
   { params }: Props,
   parent: ResolvingMetadata
 ): Promise<Metadata> {
-  const ApiUrl = process.env.API_URL;
-  // read route params
+  const ApiUrl = process.env.PRODUCTION_URL;
   const slug = (await params).slug;
 
-  // fetch data
   const product = await fetchData(`${ApiUrl}/api/resume/${slug}`)
     .then((res) => res.length && res[0].meta)
     .catch((error) => console.log(error));
@@ -36,8 +34,10 @@ export async function generateMetadata(
 
 export default async function Page(props: { params: tParams }) {
   const { slug } = await props.params;
-  const ApiUrl = process.env.API_URL;
+  const ApiUrl = process.env.PRODUCTION_URL;
   const data = await fetchData(`${ApiUrl}/api/resume/${slug}`);
+
+  console.log("resume-page-server");
 
   return (
     <main className="block w-full lg:w-[calc(100%-16px)] lg:ml-[16px]">

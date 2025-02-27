@@ -1,4 +1,3 @@
-"use client";
 import { EducationsMeta } from "@/data/resume";
 import { BoundaryResume } from "../ui/boundary-resume";
 
