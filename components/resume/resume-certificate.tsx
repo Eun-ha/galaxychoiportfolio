@@ -1,3 +1,4 @@
+"use client";
 import { CertificateMeta } from "@/data/resume";
 import { BoundaryResume } from "../ui/boundary-resume";
 
