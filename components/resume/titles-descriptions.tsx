@@ -1,25 +1,15 @@
-import {
-  CertificateMeta,
-  DescriptionMeta,
-  EducationsMeta,
-  ExperiencesMeta,
-} from "@/data/resume";
+import { TitleAndDescription } from "@/data/resume";
 
-interface Props {
-  data:
-    | DescriptionMeta[]
-    | ExperiencesMeta[]
-    | EducationsMeta[]
-    | CertificateMeta[];
-}
+type Props = {
+  slug: string;
+};
 
 export const TitlesDescriptions = (props: Props) => {
-  const { title, description } = props.data[0].meta;
-
+  const data = TitleAndDescription.find((e) => e.slug === props.slug);
   return (
     <section className="my-5 lg:mt-0">
-      <h2 className="text-lg font-medium">{title}</h2>
-      <p className="text-text-emphasis">{description}</p>
+      <h2 className="text-lg font-medium">{data?.title}</h2>
+      <p className="text-text-emphasis">{data?.description}</p>
     </section>
   );
 };

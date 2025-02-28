@@ -1,9 +1,9 @@
 import clsx from "clsx";
 import React from "react";
 
-interface Category {
+type Category = {
   children: React.ReactNode;
-}
+};
 
 export const BoundaryFrom = (Props: Category) => {
   const { children } = Props;

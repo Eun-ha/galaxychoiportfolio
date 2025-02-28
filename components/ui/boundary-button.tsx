@@ -1,13 +1,13 @@
 import clsx from "clsx";
 import React from "react";
 
-interface Category {
+type Category = {
   children: React.ReactNode;
   theme?: "dark" | "default";
-}
+};
 
 export const BoundaryButton = (Props: Category) => {
-  const { children, theme = "default" } = Props;
+  const { children, theme = "dark" } = Props;
 
   return (
     <div

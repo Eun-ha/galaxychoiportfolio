@@ -1,12 +1,12 @@
 import clsx from "clsx";
 import React from "react";
 
-interface Category {
+type Category = {
   children: React.ReactNode;
   size?: "small" | "default";
   animateRerendering?: boolean;
   category?: string;
-}
+};
 
 export const Boundary = (Props: Category) => {
   const {

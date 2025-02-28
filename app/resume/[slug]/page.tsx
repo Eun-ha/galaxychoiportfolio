@@ -41,7 +41,7 @@ export default async function Page(props: { params: tParams }) {
 
   return (
     <main className="block w-full lg:w-[calc(100%-16px)] lg:ml-[16px]">
-      <TitlesDescriptions data={data} />
+      <TitlesDescriptions slug={slug} />
       <ResumeContents slug={slug} data={data} />
     </main>
   );
