@@ -6,9 +6,9 @@ import { Home } from "@/data/main";
 import ModalContent from "./ModalContent";
 import { Button } from "../button";
 
-interface Props {
+type Props = {
   data: Pick<Home, "home">[];
-}
+};
 
 export default function Portal(props: Props) {
   const [showModal, setShowModal] = useState(false);

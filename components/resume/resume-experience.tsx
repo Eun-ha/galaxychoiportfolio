@@ -2,9 +2,9 @@
 import { ExperiencesMeta } from "@/data/resume";
 import { BoundaryResume } from "../ui/boundary-resume";
 
-interface Props {
+type Props = {
   data: ExperiencesMeta[];
-}
+};
 
 export const ResumeExperience = (props: Props) => {
   const data = props.data[0].contents;

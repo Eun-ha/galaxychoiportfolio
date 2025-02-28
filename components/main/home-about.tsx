@@ -6,9 +6,9 @@ import { Home } from "@/data/main";
 import { motion } from "motion/react";
 import Portal from "../portal/Portal";
 
-interface Props {
+type Props = {
   data: Pick<Home, "home">[];
-}
+};
 
 export default function HomeAbout(props: Props) {
   const { title, content1, content2, description, path, alt } =

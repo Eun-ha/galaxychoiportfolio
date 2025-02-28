@@ -1,8 +1,8 @@
-interface LinkProps {
+type LinkProps = {
   children: React.ReactNode;
   href?: string;
   label: string;
-}
+};
 
 export function ExternalLink({ children, href, label }: LinkProps) {
   return (

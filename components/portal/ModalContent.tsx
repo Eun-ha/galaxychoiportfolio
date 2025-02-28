@@ -1,10 +1,10 @@
 import { Home } from "@/data/main";
 import CloseIcon from "@/icons/closeIcon";
 
-interface Props {
+type Props = {
   data: Pick<Home, "home">[];
   onClose: () => void;
-}
+};
 
 export default function ModalContent(props: Props) {
   const { description, description2, description3 } = props.data[0].home[1];

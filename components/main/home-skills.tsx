@@ -5,9 +5,9 @@ import { Chart } from "./chart";
 import { Home } from "@/data/main";
 import { motion } from "motion/react";
 
-interface Props {
+type Props = {
   data: Pick<Home, "skills">[];
-}
+};
 export default function HomeSkills(props: Props) {
   const data = props.data[0].skills;
 

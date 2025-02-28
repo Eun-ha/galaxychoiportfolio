@@ -13,14 +13,14 @@ import { ResumeExperience } from "./resume-experience";
 import { ResumeCertificate } from "./resume-certificate";
 import { ResumeDescription } from "./resume-description";
 
-interface Props {
+type Props = {
   slug: string;
   data:
     | DescriptionMeta[]
     | EducationsMeta[]
     | ExperiencesMeta[]
     | CertificateMeta[];
-}
+};
 
 export const ResumeContents = (props: Props) => {
   const { slug, data } = props;
