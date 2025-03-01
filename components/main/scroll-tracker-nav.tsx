@@ -9,7 +9,6 @@ export default function ScrollTrackerNav() {
   const data = ["Main", "About", "Skills", "Contact"];
 
   const overTop = UseOverTop(80);
-
   const isActiveCategory = UseActiveCategory();
 
   const effectsY = {

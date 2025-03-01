@@ -1,10 +1,11 @@
 "use client";
+import { UseHoverEffect } from "@/hooks/use-hover-effect";
 import AstronautIcon from "@/icons/astronautIcon";
 import CloseIcon from "@/icons/closeIcon";
 import HamIcon from "@/icons/hamIcon";
 import MoonIcon from "@/icons/moonIcon";
 import StarIcon from "@/icons/starIcon";
-
+import { STANDARDSIZE } from "@/lib/constants";
 import clsx from "clsx";
 import Link from "next/link";
 import { useSelectedLayoutSegment } from "next/navigation";
@@ -41,6 +42,11 @@ export function Nav() {
     },
   ];
 
+  const hoverEffect = UseHoverEffect();
+
+  console.log("========hoverEffect=====");
+  console.log(hoverEffect);
+
   const useWindowSize = () => {
     const [windowSize, setWindowSize] = useState({
       width: 0,
@@ -70,7 +76,7 @@ export function Nav() {
   };
 
   const { width } = useWindowSize();
-  const isMobile = width < 1024;
+  const isMobile = width < STANDARDSIZE;
 
   const segment = useSelectedLayoutSegment();
 
@@ -93,7 +99,7 @@ export function Nav() {
       </button>
 
       <nav
-        className={clsx("flex justify-evenly", {
+        className={clsx("menu-container relative flex justify-evenly", {
           block: !isMobile,
           hidden: !isOpen && isMobile,
           "flex-col items-start": isOpen && isMobile,
@@ -104,16 +110,18 @@ export function Nav() {
             key={index}
             href={item.url}
             onClick={close}
-            className={clsx("mt-5 lg:mt-0 lg:pl-6 hover:text-point-red", {
+            className={clsx("menu-item mt-5 lg:mt-0 lg:px-3", {
               "text-point-red": segment === item.slug,
+              "lg:transition-all lg:duration-[0.3s] lg:ease-linear":
+                hoverEffect !== undefined,
             })}
             aria-label={`Link to ${item.slug === null ? "Home" : item.slug}`}
           >
             <span
               className={clsx(
-                "flex items-center justify-center p-2 rounded-md",
+                "flex items-center justify-center p-2 rounded-md hover:bg-amber-950",
                 {
-                  "  bg-amber-950": segment === item.slug,
+                  " bg-amber-950": segment === item.slug,
                 }
               )}
             >
@@ -122,6 +130,12 @@ export function Nav() {
             </span>
           </Link>
         ))}
+        <span
+          className={clsx("", {
+            "highlight hidden lg:block lg:absolute lg:left-0 lg:top-0 lg:h-full lg:-z-10 lg:transition-all lg:duration-[0.3s] lg:ease-linear lg:bg-amber-950 lg:rounded-md":
+              hoverEffect !== undefined,
+          })}
+        ></span>
       </nav>
     </div>
   );

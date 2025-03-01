@@ -79,7 +79,7 @@ export default function HomeMain(props: Props) {
           height={0}
           fill
           sizes="100% auto"
-          className="object-cover"
+          className="object-cover rounded-md"
           priority={true}
         />
       </motion.div>
