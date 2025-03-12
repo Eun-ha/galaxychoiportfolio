@@ -15,7 +15,7 @@ export type Work = {
 
 export const works: Work[] = [
   {
-    title: "블레이드&소울 2 랭킹 신규 페이지 UI 개발(현재 서비스 종료)",
+    title: "블레이드&소울 2 랭킹 신규 페이지 UI 개발(현재 서비스 종료됨)",
     desc: "반응형 디자인과 다크모드를 적용하였으며, 데이터 케이스별 React-select UI를 개발하였고, Styled-components 및 시맨틱 마크업을 적용하였습니다. SEO 향상을 위한 Metadata 및 소셜미디어 opengraph 이미지를 적용하였고, Figma로 기획 및 디자인팀과 원활하게 소통했습니다. Git을 통한 FE/BE 협업과 Jira를 통한 작업 스케줄 관리를 수행했습니다.",
     skill: "Semantic Markup, Styled-component, SCSS, React-select, React",
     path: "01",
