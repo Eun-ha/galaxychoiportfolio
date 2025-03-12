@@ -200,7 +200,7 @@ export const descriptions: DescriptionMeta[] = [
     contents: [
       {
         title: "엔씨소프트 블레이드&소울 2 랭킹 신규 페이지 UI 설계 및 구현",
-        date: "2023.6 ~ 2 주(실작업 및 검수 1 주 + 기획팀 및 디자인팀 피드백 반영 1 주)",
+        date: "2023.6 ~ 2 주(실작업 및 검수 1 주 + 기획팀 및 디자인팀 피드백 반영 1주)",
         performance: [
           "컴포넌트 별 UI 설계 및 구현",
           "데이터 케이스별 react-select UI 설계 및 구현",
@@ -209,8 +209,8 @@ export const descriptions: DescriptionMeta[] = [
           "시멘틱 마크업 작업",
           "SEO 향상을 위한 Metadata 및 소셜미디어 opengraph 이미지 적용",
           "Figma 를 활용한 기획팀 및 디자인팀 협업",
-          "Git 을 통한 FE, BE 협업",
-          "Jira 를 통한 작업 스케줄 관리",
+          "Git을 통한 FE, BE 협업",
+          "Jira를 통한 작업 스케줄 관리",
         ],
         role: "마크업 및 UI 개발",
         skills:
