@@ -399,7 +399,7 @@ export const TitleAndDescription: TitleDescription[] = [
   {
     slug: "educations",
     title: "교육",
-    description: "학력 및 전공, 수료 교육 과정에 대한 정보를 기술 합니다.",
+    description: "학력 및 전공, 수료 교육 과정에 대한 정보를 기술합니다.",
   },
   {
     slug: "certificates",
