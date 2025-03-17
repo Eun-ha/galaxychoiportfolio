@@ -1,5 +1,6 @@
 import { AsideButtonList } from "./aside-button-list";
-import { Aside, asideButtons } from "@/data/resume";
+import { Aside } from "@/types/resume";
+import { asideButtons } from "@/data/resume";
 
 export async function ResumeAside() {
   console.log("resume-aside-server");

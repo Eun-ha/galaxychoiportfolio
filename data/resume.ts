@@ -1,67 +1,11 @@
-export type Experience = {
-  company: string;
-  title: string;
-  date: string;
-  description: string[];
-};
-
-export type Education = {
-  school: string;
-  degree: string;
-  institution: string;
-  date: string;
-};
-
-export type Certificate = {
-  name: string;
-  date: string;
-  authority: string;
-};
-
-export type Description = {
-  title: string;
-  date: string;
-  performance: string[];
-  role: string;
-  skills: string;
-};
-
-export type Meta = {
-  title: string;
-  description: string;
-};
-
-export type Aside = {
-  slug: string;
-  button: string;
-};
-
-export type CertificateMeta = {
-  meta: Meta;
-  contents: Certificate[];
-};
-
-export type EducationsMeta = {
-  meta: Meta;
-  contents: Education[];
-};
-
-export type ExperiencesMeta = {
-  meta: Meta;
-  contents: Experience[];
-};
-
-export type DescriptionMeta = {
-  meta: Meta;
-  contents: Description[];
-};
-
-export type TitleDescription = {
-  slug: string;
-  title: string;
-  description: string;
-};
-
+import {
+  CertificateMeta,
+  EducationsMeta,
+  ExperiencesMeta,
+  DescriptionMeta,
+  Aside,
+  TitleDescription,
+} from "@/types/resume";
 /**
  * api에 필요한 데이터
  */
@@ -122,7 +66,7 @@ export const educations: EducationsMeta[] = [
       },
       {
         school: "부평여자고등학교",
-        degree: "인문계",
+        degree: "문과",
         institution: "",
         date: "2003.03 - 2006.02",
       },
@@ -159,33 +103,29 @@ export const experiences: ExperiencesMeta[] = [
         company: "엔씨소프트",
         title: "UI & FE Developer",
         date: "2021.03 - 2024.06",
-        description: [
+        description:
           "경력내용 공식 홈페이지 유지보수 및 이에 필요한 UI&FE 기능 개발 담당하였습니다. Spring 기반의 환경에서 Thymeleaf 문법을 활용하여 사내에서 사용하는 운영툴을 연동하여 유지보수 작업에 대응 했고, front, backend, CI/CD 영역이 서로 유기적으로 연결되어 있는 대규모 웹 개발 환경에서 근무하였습니다. UI 파트의 경우 기본적으로 SCSS를 사용하였고, 디자인시스템 가이드를 기반으로 한 각 IP 별로 공통 디자인을 적용하는 작업을 하였습니다. (다크모드, 공통배너, 반응형 디자인 등) 또한 분리된 프로젝트의 경우 Styled-component, Tailwind css 등을 사용하였습니다. FE 파트의 경우는 기본적으로 javascript와 typescript를 기반으로 작업하였고, 분리된 프로젝트의 경우 react 및 next.js를 사용하였습니다. 브라우저 scroll에 반응하는 UI 적용을 위한 Javascript 설계 및 구현, tab, swipe, tooltip, react-select 등 front 쪽의 라이브러리 활용 경험도 다수 있습니다. 또한 하나의 기능을 여러 IP에서 공통으로 사용할수 있도록 자바스크립트 클래스의 객체생성을 활용하여 개발한 경험이 있고, 랜덤 흑토끼 아이콘 수집이벤트에서는 케이스별 API를 호출하고 그 결과를 DB에 업데이트 하여, 유저에게 최신 정보를 제공했고. Try catch로 에러 처리를 핸들링하여 사용자 경험을 향상 시켰습니다. User-agent 분기에 따른 인게임 웹뷰 적용 경험도 있습니다. SEO 향상을 위한 Metadata 및 소셜미디어 opengraph 이미지를 적용한 경험이 있으며, 스프라이트 이미지, webp 사용하여 이미지 로딩 속도 이슈에 대응하였습니다. 크롬 Lighthouse를 활용하여 웹 성능 최적화 및 SEO를 향상하였습니다. Figma를 활용하여 기획팀 및 디자인팀과 협업 하였으며, Git을 통한 FE, BE 협업 및 Jira를 통해 작업 스케줄 관리를 하였습니다.",
-        ],
       },
       {
         company: "넥슨 코리아",
         title: "UI & FE Developer",
         date: "2019.10 - 2020.10",
-        description: [
+        description:
           "IP 별로 매주 유저에게 제공되는 이벤트 페이지 작업을 하였습니다. 유저에게 재미를 줄수 있는 다양한 효과를 사용해 볼수 있었습니다. 예를 들면, 동적인 효과를 위한 컨텐츠에 시간차를 두고 노출하는 TweenMax.js 사용 및 눈, 반짝이 효과를 주어 유저의 관심을 유발하는 Particle.js 사용 , Css animation을 활용한 폭죽 효과 등과 기본적으로 브라우저에서 사용되는 Tab, Swipe, scroll, tooltip 등을 사용하여 유저와 상호작용하는 웹 컨텐츠를 안정적으로 제공하였습니다. 그리고 git, sourcetree, tortoise svn을 사용하여 코드 관리 및 동료들과 협업을 하였습니다.",
-        ],
       },
       {
         company: "이니셔티브식스",
         title: "Markup & UI Developer",
         date: "2016.12 - 2017.10",
-        description: [
+        description:
           "SI 프로젝트를 하는 웹에이전시에서 고객사의 요구에 맞춰 새로운 시스템을 구축하거나 기존 시스템을 연동하는 작업을 주로 담당하였습니다. 주니어 퍼블리셔로 프로젝트를 지원하는 역할을 하였고, 주로 하드코딩으로 시맨틱 마크업, CSS3, Jquery를 사용하여 적응형 웹 구현 및 스타일 작업을 하였습니다. 초기 프로젝트 셋팅부터 프로젝트 완료 후 유지보수 지원 업무까지 하나의 프로젝트의 시작부터 끝까지인 전체 프로세스를 경험하였습니다. 금융권 ODS 프로젝트의 경우 기준 타블렛사이즈를 타겟으로 하여 적응형 작업을 하드코딩 하였고, 하나캐피탈 적응형 웹, 모바일 리뉴얼 시에는 CSS3 Media-queries 사용하여 적응형 웹을 설계하고 브라우저 사이즈에 대응하여 스타일 작업을 하였습니다.",
-        ],
       },
       {
         company: "디앤디랩",
         title: "Markup & UI Developer",
         date: "2016.01 - 2016.08",
-        description: [
+        description:
           "고도몰 솔루션을 기반으로 통합 쇼핑몰 서비스를 제공하는 웹에이전시에서 pc, mobile 퍼블리싱을 담당하였습니다. 고도몰의 베이스 코드를 기반으로 시맨틱 마크업, CSS3, Jquery를 활용하여 브랜드 사이트, 메인 페이지, 소개페이지 , 서브 정보 페이지, 주문 페이지 등을 퍼블리싱 하였습니다.",
-        ],
       },
     ],
   },

@@ -1,13 +1,13 @@
 "use client";
-import { EducationsMeta } from "@/data/resume";
+import { Education } from "@/types/resume";
 import { BoundaryResume } from "../ui/boundary-resume";
 
 type Props = {
-  data: EducationsMeta[];
+  data: Education[];
 };
 
 export const ResumeEducation = (props: Props) => {
-  const data = props.data[0].contents;
+  const data = props.data;
 
   return (
     <>

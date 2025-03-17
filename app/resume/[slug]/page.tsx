@@ -4,6 +4,20 @@ import { fetchData } from "@/lib/utils";
 import { Metadata, ResolvingMetadata } from "next";
 import React from "react";
 
+import {
+  getCertificatesData,
+  getDescriptionsData,
+  getExperiencesData,
+  getEducationsData,
+} from "@/backend/resume";
+
+import {
+  Certificate,
+  Education,
+  Experience,
+  Description,
+} from "@/types/resume";
+
 type tParams = Promise<{ slug: string }>;
 type Props = {
   params: Promise<{ slug: string }>;
@@ -34,10 +48,20 @@ export async function generateMetadata(
 
 export default async function Page(props: { params: tParams }) {
   const { slug } = await props.params;
-  const ApiUrl = process.env.PRODUCTION_URL;
-  const data = await fetchData(`${ApiUrl}/api/resume/${slug}`);
+  //const ApiUrl = process.env.PRODUCTION_URL;
+  //const data = await fetchData(`${ApiUrl}/api/resume/${slug}`);
 
-  console.log("resume-page-server");
+  let data: Description[] | Education[] | Experience[] | Certificate[] = [];
+
+  if (slug === "certificates") {
+    data = await getCertificatesData();
+  } else if (slug === "descriptions") {
+    data = await getDescriptionsData();
+  } else if (slug === "experiences") {
+    data = await getExperiencesData();
+  } else if (slug === "educations") {
+    data = await getEducationsData();
+  }
 
   return (
     <main className="block w-full lg:w-[calc(100%-16px)] lg:ml-[16px]">

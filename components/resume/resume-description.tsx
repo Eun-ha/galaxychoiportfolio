@@ -1,13 +1,13 @@
 "use client";
-import { DescriptionMeta } from "@/data/resume";
+import { Description } from "@/types/resume";
 import { BoundaryResume } from "../ui/boundary-resume";
 
 type Props = {
-  data: DescriptionMeta[];
+  data: Description[];
 };
 
 export const ResumeDescription = (props: Props) => {
-  const data = props.data[0].contents;
+  const data = props.data;
   return (
     <>
       {data.map((data, index) => (

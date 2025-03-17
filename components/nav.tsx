@@ -44,9 +44,6 @@ export function Nav() {
 
   const hoverEffect = UseHoverEffect();
 
-  console.log("========hoverEffect=====");
-  console.log(hoverEffect);
-
   const useWindowSize = () => {
     const [windowSize, setWindowSize] = useState({
       width: 0,

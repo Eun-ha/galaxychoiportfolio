@@ -1,13 +1,13 @@
 "use client";
-import { ExperiencesMeta } from "@/data/resume";
+import { Experience } from "@/types/resume";
 import { BoundaryResume } from "../ui/boundary-resume";
 
 type Props = {
-  data: ExperiencesMeta[];
+  data: Experience[];
 };
 
 export const ResumeExperience = (props: Props) => {
-  const data = props.data[0].contents;
+  const data = props.data;
 
   return (
     <>
@@ -21,11 +21,7 @@ export const ResumeExperience = (props: Props) => {
             </div>
             <div>
               <h4>업무내용</h4>
-              <ul>
-                {data.description.map((data, index) => (
-                  <li key={index}>{data}</li>
-                ))}
-              </ul>
+              <p>{data.description}</p>
             </div>
             <div>
               <h4>직책&역할</h4>
