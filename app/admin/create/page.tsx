@@ -58,7 +58,7 @@ export default function Page() {
         ""
       )}
       <Button type="submit" aria-label="폼 전송 버튼" aria-disabled={isPending}>
-        {isPending ? "대기중..." : "전송"}
+        {isPending ? "대기중..." : "완료"}
       </Button>
     </form>
   );

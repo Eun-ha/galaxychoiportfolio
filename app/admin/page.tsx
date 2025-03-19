@@ -1,6 +1,6 @@
 import { getCertificatesData } from "@/backend/resume-actions";
+import { CreateData, DeleteData, EditData } from "@/components/admin/buttons";
 import { BoundaryButton } from "@/components/ui/boundary-button";
-import Link from "next/link";
 
 export default async function Page() {
   const data = await getCertificatesData();
@@ -10,9 +10,7 @@ export default async function Page() {
     <div>
       <div>
         <BoundaryButton>
-          <Link href="/admin/create" aria-label="Link to create form">
-            create
-          </Link>
+          <CreateData />
         </BoundaryButton>
       </div>
       <div className="overflow-x-auto">
@@ -48,12 +46,8 @@ export default async function Page() {
 
                 <td>
                   <BoundaryButton>
-                    <Link
-                      href={`/admin/${data.id}`}
-                      aria-label={`Link to ${data.id}`}
-                    >
-                      수정
-                    </Link>
+                    {data.id && <EditData id={data.id} />}
+                    {data.id && <DeleteData id={data.id} />}
                   </BoundaryButton>
                 </td>
               </tr>

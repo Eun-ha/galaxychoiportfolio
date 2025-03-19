@@ -6,7 +6,9 @@ import {
   Education,
 } from "@/types/resume";
 import { sql } from "@vercel/postgres";
+import { revalidatePath } from "next/cache";
 import { z } from "zod";
+import { redirect } from "next/navigation";
 
 export async function getCertificatesData(): Promise<Certificate[]> {
   try {
@@ -101,7 +103,6 @@ export async function createDescription(
     }
   } catch (error) {
     return {
-      error: error,
       message: "Database error during Description validation",
     };
   }
@@ -116,7 +117,6 @@ export async function createDescription(
     };
   } catch (error) {
     return {
-      error: error,
       message: "Failed to create Description",
     };
   }
@@ -164,7 +164,6 @@ export async function createCertificate(
     }
   } catch (error) {
     return {
-      error: error,
       message: "Database error during Certificate validation",
     };
   }
@@ -179,8 +178,24 @@ export async function createCertificate(
     };
   } catch (error) {
     return {
-      error: error,
       message: "Failed to create Certificate",
+    };
+  }
+
+  revalidatePath("/admin");
+  redirect("/admin");
+}
+
+export async function deleteCertificate(id: string) {
+  try {
+    await sql`DELETE FROM certificates_contents WHERE id = ${id};`;
+    revalidatePath("/admin");
+    return {
+      message: "Certificate deleted successfully",
+    };
+  } catch (error) {
+    return {
+      message: "Failed to delete Certificate",
     };
   }
 }
