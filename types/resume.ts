@@ -13,12 +13,14 @@ export type Education = {
 };
 
 export type Certificate = {
+  id?: string;
   name: string;
   date: string;
   authority: string;
 };
 
 export type Description = {
+  id?: string;
   title: string;
   date: string;
   performance: string[];

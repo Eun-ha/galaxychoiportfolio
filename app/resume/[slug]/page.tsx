@@ -9,7 +9,7 @@ import {
   getDescriptionsData,
   getExperiencesData,
   getEducationsData,
-} from "@/backend/resume";
+} from "@/backend/resume-actions";
 
 import {
   Certificate,
