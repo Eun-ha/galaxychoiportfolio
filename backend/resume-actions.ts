@@ -173,16 +173,13 @@ export async function createCertificate(
       INSERT INTO certificates_contents (name, date, authority)
       VALUES (${validatedFields.data.name}, ${validatedFields.data.date}, ${validatedFields.data.authority});
     `;
-    return {
-      message: "Certificate created successfully",
-    };
+    revalidatePath("/admin");
   } catch (error) {
     return {
       message: "Failed to create Certificate",
     };
   }
 
-  revalidatePath("/admin");
   redirect("/admin");
 }
 
@@ -198,4 +195,37 @@ export async function deleteCertificate(id: string) {
       message: "Failed to delete Certificate",
     };
   }
+}
+
+export async function editCertificate(
+  id: string | undefined,
+  preState: CertificateState,
+  formData: FormData
+) {
+  if (id === undefined) window.confirm("id is undefined");
+  const validatedFields = CreateCertificateSchema.safeParse({
+    name: formData.get("name"),
+    date: formData.get("date"),
+    authority: formData.get("authority"),
+  });
+
+  if (!validatedFields.success) {
+    return {
+      error: validatedFields.error.flatten().fieldErrors,
+      message: "Invalid fields",
+    };
+  }
+
+  try {
+    await sql`
+      UPDATE certificates_contents SET name = ${validatedFields.data.name}, date = ${validatedFields.data.date}, authority = ${validatedFields.data.authority} WHERE id = ${id}
+    `;
+    revalidatePath("/admin");
+  } catch (error) {
+    console.log(error);
+    return {
+      message: "Failed to edit Certificate",
+    };
+  }
+  redirect("/admin");
 }

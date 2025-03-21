@@ -14,7 +14,7 @@ export function CreateData() {
 export function EditData({ id }: { id: string }) {
   const url = id;
   return (
-    <Link href={`/admin/${url}`} aria-label={`Link to ${url}`}>
+    <Link href={`/admin/${url}/edit`} aria-label={`Link to ${url}`}>
       Edit
     </Link>
   );

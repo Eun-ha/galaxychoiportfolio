@@ -5,7 +5,6 @@ import { BoundaryButton } from "@/components/ui/boundary-button";
 export default async function Page() {
   const data = await getCertificatesData();
 
-  console.log(data);
   return (
     <div>
       <div>

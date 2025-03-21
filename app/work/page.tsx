@@ -14,7 +14,5 @@ export default async function Work() {
   const ApiUrl = process.env.PRODUCTION_URL;
   const data = await fetchData(`${ApiUrl}/api/work`);
 
-  console.log("work-page-server");
-
   return <Carousel data={data} />;
 }
