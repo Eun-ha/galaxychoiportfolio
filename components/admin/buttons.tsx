@@ -3,18 +3,26 @@
 import Link from "next/link";
 import { deleteCertificate } from "@/backend/resume-actions";
 
-export function CreateData() {
+type PropsData = {
+  slug: string;
+};
+export function CreateData(props: PropsData) {
+  const { slug } = props;
   return (
-    <Link href="/admin/create" aria-label="Link to create form">
+    <Link href={`/admin/${slug}/create`} aria-label="Link to create form">
       Create
     </Link>
   );
 }
 
-export function EditData({ id }: { id: string }) {
-  const url = id;
+type Props = {
+  slug: string;
+  id: string;
+};
+export function EditData(props: Props) {
+  const { slug, id } = props;
   return (
-    <Link href={`/admin/${url}/edit`} aria-label={`Link to ${url}`}>
+    <Link href={`/admin/${slug}/${id}/edit`} aria-label={`Link to ${id}`}>
       Edit
     </Link>
   );

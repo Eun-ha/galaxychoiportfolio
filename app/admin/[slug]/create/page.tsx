@@ -1,6 +1,6 @@
 "use client";
 
-import { createDescription } from "@/backend/resume-actions";
+import { createCertificate } from "@/backend/resume-actions";
 import { Button } from "@/components/button";
 import { BoundaryFrom } from "@/components/ui/boundary-form";
 import { useActionState, useEffect, useState } from "react";
@@ -8,7 +8,7 @@ import { useActionState, useEffect, useState } from "react";
 export default function Page() {
   const initialState = { errors: {}, message: "" };
   const [actionState, formAction, isPending] = useActionState(
-    createDescription,
+    createCertificate,
     initialState
   );
   const [isErrorMessage, setErrorMessage] = useState(false);
@@ -32,29 +32,21 @@ export default function Page() {
       <div className="w-full">
         <BoundaryFrom>
           <div className="w-full flex mb-3">
-            <label htmlFor="title">title</label>
-            <input type="text" id="title" name="title" placeholder="title" />
+            <label htmlFor="name">name</label>
+            <input type="text" id="name" name="name" placeholder="name" />
           </div>
           <div className="w-full flex mb-3">
             <label htmlFor="date">date</label>
             <input type="text" id="date" name="date" placeholder="date" />
           </div>
           <div className="w-full flex mb-3">
-            <label htmlFor="performance">performance</label>
+            <label htmlFor="authority">authority</label>
             <input
               type="text"
-              id="performance"
-              name="performance"
-              placeholder="performance"
+              id="authority"
+              name="authority"
+              placeholder="authority"
             />
-          </div>
-          <div className="w-full flex mb-3">
-            <label htmlFor="role">role</label>
-            <input type="text" id="role" name="role" placeholder="role" />
-          </div>
-          <div className="w-full flex mb-3">
-            <label htmlFor="skills">skills</label>
-            <input type="text" id="skills" name="skills" placeholder="skills" />
           </div>
         </BoundaryFrom>
       </div>

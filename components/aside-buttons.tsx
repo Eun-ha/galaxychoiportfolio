@@ -8,6 +8,7 @@ type Props = {
 
 export async function AsideButtons(props: Props) {
   const path = props.path;
+  console.log(path);
   return (
     <>
       <AsideButtonList

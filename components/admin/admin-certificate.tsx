@@ -1,19 +1,22 @@
-import { getCertificatesData } from "@/backend/resume-actions";
-import { CreateData, DeleteData, EditData } from "@/components/admin/buttons";
-import { BoundaryButton } from "@/components/ui/boundary-button";
+"use client";
+import { Certificate } from "@/types/resume";
+import { BoundaryButton } from "../ui/boundary-button";
+import { DeleteData, EditData } from "./buttons";
 
-export default async function Page() {
-  const data = await getCertificatesData();
+type Props = {
+  slug: string;
+  data: Certificate[];
+};
+
+export const AdminCertificate = (props: Props) => {
+  const { slug, data } = props;
+
+  console.log(slug);
+  console.log(data);
 
   return (
-    <div>
-      <div>
-        <BoundaryButton>
-          <CreateData />
-        </BoundaryButton>
-      </div>
+    <>
       <div className="overflow-x-auto">
-        <p>descriptions</p>
         <table className="min-w-full">
           <thead>
             <tr>
@@ -46,7 +49,7 @@ export default async function Page() {
 
                 <td>
                   <BoundaryButton>
-                    {data.id && <EditData id={data.id} />}
+                    {data.id && <EditData slug={slug} id={data.id} />}
                     {data.id && <DeleteData id={data.id} />}
                   </BoundaryButton>
                 </td>
@@ -55,6 +58,6 @@ export default async function Page() {
           </tbody>
         </table>
       </div>
-    </div>
+    </>
   );
-}
+};

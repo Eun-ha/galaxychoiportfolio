@@ -122,6 +122,10 @@ export async function createDescription(
   }
 }
 
+/**
+ * Certificates
+ */
+
 const CreateCertificateSchema = z.object({
   name: z.string().nonempty({ message: "Name is required" }),
   date: z.string().nonempty({ message: "Date is required" }),
@@ -173,20 +177,20 @@ export async function createCertificate(
       INSERT INTO certificates_contents (name, date, authority)
       VALUES (${validatedFields.data.name}, ${validatedFields.data.date}, ${validatedFields.data.authority});
     `;
-    revalidatePath("/admin");
+    revalidatePath("/admin/certificates");
   } catch (error) {
     return {
       message: "Failed to create Certificate",
     };
   }
 
-  redirect("/admin");
+  redirect("/admin/certificates");
 }
 
 export async function deleteCertificate(id: string) {
   try {
     await sql`DELETE FROM certificates_contents WHERE id = ${id};`;
-    revalidatePath("/admin");
+    revalidatePath("/admin/certificates");
     return {
       message: "Certificate deleted successfully",
     };
@@ -220,12 +224,12 @@ export async function editCertificate(
     await sql`
       UPDATE certificates_contents SET name = ${validatedFields.data.name}, date = ${validatedFields.data.date}, authority = ${validatedFields.data.authority} WHERE id = ${id}
     `;
-    revalidatePath("/admin");
+    revalidatePath("/admin/certificates");
   } catch (error) {
     console.log(error);
     return {
       message: "Failed to edit Certificate",
     };
   }
-  redirect("/admin");
+  redirect("/admin/certificates");
 }
