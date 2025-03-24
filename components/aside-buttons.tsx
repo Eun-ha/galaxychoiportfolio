@@ -1,14 +1,17 @@
-import { AsideButtonList } from "./aside-button-list";
+import { AsideButtonList } from "./resume/aside-button-list";
 import { Aside } from "@/types/resume";
 import { asideButtons } from "@/data/resume";
 
-export async function ResumeAside() {
-  console.log("resume-aside-server");
+type Props = {
+  path: string;
+};
 
+export async function AsideButtons(props: Props) {
+  const path = props.path;
   return (
     <>
       <AsideButtonList
-        path="/resume"
+        path={path}
         categories={[
           ...asideButtons.map((x: Aside) => ({
             button: x.button,
