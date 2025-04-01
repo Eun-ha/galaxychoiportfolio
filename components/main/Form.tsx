@@ -34,6 +34,7 @@ export default function Form() {
               id="name"
               name="name"
               placeholder="이름을 적어주세요."
+              required
             />
           </div>
           <div className="w-full flex mb-3">
@@ -43,6 +44,7 @@ export default function Form() {
               id="email"
               name="email"
               placeholder="이메일을 적어주세요."
+              required
             />
           </div>
           <div className="w-full flex mb-3">
@@ -51,6 +53,7 @@ export default function Form() {
               id="textarea"
               name="textarea"
               placeholder="문의 내용을 적어주세요."
+              required
             />
           </div>
         </BoundaryFrom>

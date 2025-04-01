@@ -16,6 +16,7 @@ export default function EditCertificateForm({
    * 동적 라우팅에서 받은 id에 매칭되는 데이터를 DB에서 받아옵니다.
    * 추출 된 값을 editCertificate 함수에 바인딩하여 해당 데이터를 수정합니다.
    */
+
   const editCertificateWithId = editCertificate.bind(null, project.id);
 
   const [actionState, formAction, isPending] = useActionState(

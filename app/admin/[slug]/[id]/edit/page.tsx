@@ -8,6 +8,8 @@ type tParams = Promise<{ id: string }>;
 export default async function Page(props: { params: tParams }) {
   const { id } = await props.params;
 
+  console.log("id", id);
+
   let project;
 
   try {

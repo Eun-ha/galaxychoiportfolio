@@ -1,4 +1,5 @@
 "use server";
+
 import {
   Certificate,
   Description,
@@ -62,7 +63,7 @@ const CreateDescriptionSchema = z.object({
   role: z.string(),
   skills: z.string(),
 });
-
+/*
 export type DescriptionState = {
   errors?: {
     title?: string[];
@@ -72,7 +73,7 @@ export type DescriptionState = {
     skills?: string[];
   };
   message?: string;
-};
+};*/
 
 export async function createDescription(
   preState: DescriptionState,
@@ -188,6 +189,8 @@ export async function createCertificate(
 }
 
 export async function deleteCertificate(id: string) {
+  console.log("deleteCertificate");
+  console.log(typeof id);
   try {
     await sql`DELETE FROM certificates_contents WHERE id = ${id};`;
     revalidatePath("/admin/certificates");
@@ -232,4 +235,43 @@ export async function editCertificate(
     };
   }
   redirect("/admin/certificates");
+}
+
+export type ExperienceState = {
+  errors?: {
+    name?: string[];
+    date?: string[];
+    authority?: string[];
+  };
+  message?: string;
+};
+
+export type EducationState = {
+  errors?: {
+    name?: string[];
+    date?: string[];
+    authority?: string[];
+  };
+  message?: string;
+};
+
+export type DescriptionState = {
+  errors?: {
+    name?: string[];
+    date?: string[];
+    authority?: string[];
+  };
+  message?: string;
+};
+
+export async function createDescriptions() {
+  console.log("createDescriptions");
+}
+
+export async function createExperiences() {
+  console.log("createExperiences");
+}
+
+export async function createEducations() {
+  console.log("createEducations");
 }
