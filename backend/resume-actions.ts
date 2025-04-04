@@ -34,7 +34,7 @@ export async function getDescriptionsData(): Promise<Description[]> {
 export async function getExperiencesData(): Promise<Experience[]> {
   try {
     const { rows }: { rows: Experience[] } =
-      await sql`SELECT company, title, date, description FROM experiences_contents;`;
+      await sql`SELECT id, company, title, date, description FROM experiences_contents;`;
     return rows;
   } catch (error) {
     throw new Error("Failed to fetch posts data");
@@ -44,7 +44,7 @@ export async function getExperiencesData(): Promise<Experience[]> {
 export async function getEducationsData(): Promise<Education[]> {
   try {
     const { rows }: { rows: Education[] } =
-      await sql`SELECT school, degree, institution, date FROM educations_contents;`;
+      await sql`SELECT id, school, degree, institution, date FROM educations_contents;`;
     return rows;
   } catch (error) {
     throw new Error("Failed to fetch posts data");
@@ -178,6 +178,8 @@ export async function createCertificate(
       INSERT INTO certificates_contents (name, date, authority)
       VALUES (${validatedFields.data.name}, ${validatedFields.data.date}, ${validatedFields.data.authority});
     `;
+    console.log("createCertificate 호출됨");
+
     revalidatePath("/admin/certificates");
   } catch (error) {
     return {
@@ -237,16 +239,110 @@ export async function editCertificate(
   redirect("/admin/certificates");
 }
 
-export type ExperienceState = {
+/**
+ * Educations
+ */
+
+const CreateEducationsSchema = z.object({
+  school: z.string().nonempty({ message: "school is required" }),
+  degree: z.string().nonempty({ message: "degree is required" }),
+  institution: z.string().nonempty({ message: "institution is required" }),
+  date: z.string().nonempty({ message: "date is required" }),
+});
+
+export type EducationState = {
   errors?: {
-    name?: string[];
+    school?: string[];
+    degree?: string[];
+    institution?: string[];
     date?: string[];
-    authority?: string[];
   };
   message?: string;
 };
 
-export type EducationState = {
+export async function createEducations(
+  preState: EducationState,
+  formData: FormData
+) {
+  const validatedFields = CreateEducationsSchema.safeParse({
+    school: formData.get("school"),
+    degree: formData.get("degree"),
+    institution: formData.get("institution"),
+    date: formData.get("date"),
+  });
+
+  if (!validatedFields.success) {
+    return {
+      error: validatedFields.error.flatten().fieldErrors,
+      message: "Invalid fields",
+    };
+  }
+
+  try {
+    const existingEducation =
+      await sql`SELECT * FROM educations_contents WHERE school = ${validatedFields.data.school};`;
+    if (existingEducation.rows.length > 0) {
+      return {
+        message: "Education already exists",
+      };
+    }
+  } catch (error) {
+    console.log(error);
+    return {
+      message: "Database error during Education validation",
+    };
+  }
+
+  try {
+    await sql`
+      INSERT INTO educations_contents (school, degree, institution, date)
+      VALUES (${validatedFields.data.school}, ${validatedFields.data.degree}, ${validatedFields.data.institution}, ${validatedFields.data.date});
+    `;
+    revalidatePath("/admin/educations");
+    console.log("createEducations 호출됨");
+  } catch (error) {
+    return {
+      message: "Failed to create Education",
+    };
+  }
+  redirect("/admin/educations");
+}
+
+export async function editEducations(
+  id: string | undefined,
+  preState: EducationState,
+  formData: FormData
+) {
+  if (id === undefined) window.confirm("id is undefined");
+  const validatedFields = CreateEducationsSchema.safeParse({
+    school: formData.get("school"),
+    degree: formData.get("degree"),
+    institution: formData.get("institution"),
+    date: formData.get("date"),
+  });
+
+  if (!validatedFields.success) {
+    return {
+      error: validatedFields.error.flatten().fieldErrors,
+      message: "Invalid fields",
+    };
+  }
+
+  try {
+    await sql`
+      UPDATE educations_contents SET name = ${validatedFields.data.school}, ${validatedFields.data.degree}, date = ${validatedFields.data.institution}, authority = ${validatedFields.data.date} WHERE id = ${id}
+    `;
+    revalidatePath("/admin/educations");
+  } catch (error) {
+    console.log(error);
+    return {
+      message: "Failed to edit educations",
+    };
+  }
+  redirect("/admin/educations");
+}
+
+export type ExperienceState = {
   errors?: {
     name?: string[];
     date?: string[];
@@ -270,8 +366,4 @@ export async function createDescriptions() {
 
 export async function createExperiences() {
   console.log("createExperiences");
-}
-
-export async function createEducations() {
-  console.log("createEducations");
 }

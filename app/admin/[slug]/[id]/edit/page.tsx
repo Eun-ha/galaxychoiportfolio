@@ -3,17 +3,15 @@ import EditCertificateForm from "@/components/admin/edit-form";
 import { notFound } from "next/navigation";
 import React from "react";
 
-type tParams = Promise<{ id: string }>;
+type tParams = Promise<{ slug: string; id: string }>;
 
 export default async function Page(props: { params: tParams }) {
   const { id } = await props.params;
 
-  console.log("id", id);
-
   let project;
 
   try {
-    project = await fetchProjectById(id);
+    project = await fetchProjectById(id); // fetchProjectById 함수를 호출하여 프로젝트를 가져옵니다.
     if (!project) {
       notFound();
       return; // 프로젝트가 없으면 함수를 종료합니다.
