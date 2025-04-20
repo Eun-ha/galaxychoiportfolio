@@ -190,9 +190,10 @@ export async function createCertificate(
   redirect("/admin/certificates");
 }
 
-export async function deleteCertificate(id: string) {
+export async function deleteCertificate(id: string): Promise<{
+  message: string;
+}> {
   console.log("deleteCertificate");
-  console.log(typeof id);
   try {
     await sql`DELETE FROM certificates_contents WHERE id = ${id};`;
     revalidatePath("/admin/certificates");
@@ -340,6 +341,23 @@ export async function editEducations(
     };
   }
   redirect("/admin/educations");
+}
+
+export async function deleteEducation(id: string): Promise<{
+  message: string;
+}> {
+  console.log("deleteEducation");
+  try {
+    await sql`DELETE FROM educations_contents WHERE id = ${id};`;
+    revalidatePath("/admin/educations");
+    return {
+      message: "Education deleted successfully",
+    };
+  } catch (error) {
+    return {
+      message: "Failed to delete Education",
+    };
+  }
 }
 
 export type ExperienceState = {

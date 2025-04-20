@@ -47,7 +47,7 @@ export const AdminCertificate = (props: Props) => {
                 <td>
                   <BoundaryButton>
                     {data.id && <EditData slug={slug} id={data.id} />}
-                    {data.id && <DeleteData id={data.id} />}
+                    {data.id && <DeleteData slug={slug} id={data.id} />}
                   </BoundaryButton>
                 </td>
               </tr>

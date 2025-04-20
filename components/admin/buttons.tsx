@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { deleteCertificate } from "@/backend/resume-actions";
+import { deleteCertificate, deleteEducation } from "@/backend/resume-actions";
 
 type PropsData = {
   slug: string;
@@ -28,10 +28,22 @@ export function EditData(props: Props) {
   );
 }
 
-export function DeleteData({ id }: { id: string }) {
+export function DeleteData(props: Props) {
+  const { slug, id } = props;
+
+  let deleteProject: (arg0: string) => Promise<{
+    message: string;
+  }>;
+
+  if (slug === "certificates") {
+    deleteProject = deleteCertificate;
+  } else if (slug === "educations") {
+    deleteProject = deleteEducation;
+  }
+
   const deleteProjectWithId = async () => {
     if (window.confirm("이 데이터를 정말 삭제하시겠습니까?")) {
-      await deleteCertificate(id);
+      await deleteProject(id);
     }
   };
 
