@@ -104,7 +104,7 @@ export default function CreateForm(props: Props) {
                 />
               </div>
             </>
-          ) : (
+          ) : slug === "educations" ? (
             <>
               <div className="w-full flex mb-3">
                 <label htmlFor="name">school</label>
@@ -147,6 +147,51 @@ export default function CreateForm(props: Props) {
                 />
               </div>
             </>
+          ) : slug === "experiences" ? (
+            <>
+              <div className="w-full flex mb-3">
+                <label htmlFor="company">company</label>
+                <input
+                  type="text"
+                  id="company"
+                  name="company"
+                  placeholder="company"
+                  required
+                />
+              </div>
+              <div className="w-full flex mb-3">
+                <label htmlFor="title">title</label>
+                <input
+                  type="text"
+                  id="title"
+                  name="title"
+                  placeholder="title"
+                  required
+                />
+              </div>
+              <div className="w-full flex mb-3">
+                <label htmlFor="date">date</label>
+                <input
+                  type="text"
+                  id="date"
+                  name="date"
+                  placeholder="date"
+                  required
+                />
+              </div>
+              <div className="w-full flex mb-3">
+                <label htmlFor="description">description</label>
+                <input
+                  type="text"
+                  id="description"
+                  name="description"
+                  placeholder="description"
+                  required
+                />
+              </div>
+            </>
+          ) : (
+            <></>
           )}
         </BoundaryFrom>
       </div>

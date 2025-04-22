@@ -1,7 +1,11 @@
 "use client";
 
 import Link from "next/link";
-import { deleteCertificate, deleteEducation } from "@/backend/resume-actions";
+import {
+  deleteCertificate,
+  deleteEducation,
+  deleteExperience,
+} from "@/backend/resume-actions";
 
 type PropsData = {
   slug: string;
@@ -39,6 +43,8 @@ export function DeleteData(props: Props) {
     deleteProject = deleteCertificate;
   } else if (slug === "educations") {
     deleteProject = deleteEducation;
+  } else if (slug === "experiences") {
+    deleteProject = deleteExperience;
   }
 
   const deleteProjectWithId = async () => {

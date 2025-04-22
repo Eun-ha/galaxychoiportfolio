@@ -1,17 +1,21 @@
 "use client";
 
-import { editCertificate, editEducations } from "@/backend/resume-actions";
+import {
+  editCertificate,
+  editEducations,
+  editExperiences,
+} from "@/backend/resume-actions";
 import { Button } from "@/components/button";
 import { useActionState, useEffect, useState } from "react";
 import { BoundaryFrom } from "../ui/boundary-form";
-import { Certificate, Education } from "@/types/resume";
-import { isCertificate, isEducation } from "@/types/admin";
+import { Certificate, Education, Experience } from "@/types/resume";
+import { isCertificate, isEducation, isExperience } from "@/types/admin";
 
 export default function EditForm({
   project,
   slug,
 }: {
-  project: Certificate | Education;
+  project: Certificate | Education | Experience;
   slug: string;
 }) {
   const initialState = { message: "", errors: {} };
@@ -23,6 +27,7 @@ export default function EditForm({
   const getEditFunction = () => {
     if (slug === "certificates") return editCertificate.bind(null, project.id);
     if (slug === "educations") return editEducations.bind(null, project.id);
+    if (slug === "experiences") return editExperiences.bind(null, project.id);
     return null;
   };
 
@@ -131,6 +136,51 @@ export default function EditForm({
                     name="date"
                     defaultValue={project.date}
                     placeholder="date"
+                  />
+                </div>
+              </>
+            )
+          ) : slug === "experiences" ? (
+            isExperience(project) && (
+              <>
+                <div className="w-full flex mb-3">
+                  <label htmlFor="company">company</label>
+                  <input
+                    type="text"
+                    id="company"
+                    name="company"
+                    defaultValue={project.company}
+                    placeholder="company"
+                  />
+                </div>
+                <div className="w-full flex mb-3">
+                  <label htmlFor="title">title</label>
+                  <input
+                    type="text"
+                    id="title"
+                    name="title"
+                    defaultValue={project.title}
+                    placeholder="title"
+                  />
+                </div>
+                <div className="w-full flex mb-3">
+                  <label htmlFor="date">date</label>
+                  <input
+                    type="text"
+                    id="date"
+                    name="date"
+                    defaultValue={project.date}
+                    placeholder="date"
+                  />
+                </div>
+                <div className="w-full flex mb-3">
+                  <label htmlFor="description">description</label>
+                  <input
+                    type="text"
+                    id="description"
+                    name="description"
+                    defaultValue={project.description}
+                    placeholder="description"
                   />
                 </div>
               </>

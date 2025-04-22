@@ -178,7 +178,6 @@ export async function createCertificate(
       INSERT INTO certificates_contents (name, date, authority)
       VALUES (${validatedFields.data.name}, ${validatedFields.data.date}, ${validatedFields.data.authority});
     `;
-    console.log("createCertificate 호출됨");
 
     revalidatePath("/admin/certificates");
   } catch (error) {
@@ -193,7 +192,6 @@ export async function createCertificate(
 export async function deleteCertificate(id: string): Promise<{
   message: string;
 }> {
-  console.log("deleteCertificate");
   try {
     await sql`DELETE FROM certificates_contents WHERE id = ${id};`;
     revalidatePath("/admin/certificates");
@@ -360,14 +358,122 @@ export async function deleteEducation(id: string): Promise<{
   }
 }
 
+/**
+ * Experience
+ */
+
+const CreateExperienceSchema = z.object({
+  company: z.string().nonempty({ message: "company is required" }),
+  title: z.string().nonempty({ message: "title is required" }),
+  date: z.string().nonempty({ message: "Date is required" }),
+  description: z.string().nonempty({ message: "description is required" }),
+});
+
 export type ExperienceState = {
   errors?: {
-    name?: string[];
+    company?: string[];
+    title?: string[];
     date?: string[];
-    authority?: string[];
+    description?: string[];
   };
   message?: string;
 };
+
+export async function createExperiences(
+  preState: ExperienceState,
+  formData: FormData
+) {
+  const validatedFields = CreateExperienceSchema.safeParse({
+    company: formData.get("company"),
+    title: formData.get("title"),
+    date: formData.get("date"),
+    description: formData.get("description"),
+  });
+
+  if (!validatedFields.success) {
+    return {
+      error: validatedFields.error.flatten().fieldErrors,
+      message: "Invalid fields",
+    };
+  }
+
+  try {
+    const existingExperience =
+      await sql`SELECT * FROM experiences_contents WHERE company = ${validatedFields.data.company};`;
+    if (existingExperience.rows.length > 0) {
+      return {
+        message: "Experience already exists",
+      };
+    }
+  } catch (error) {
+    console.log(error);
+    return {
+      message: "Database error during Experience validation",
+    };
+  }
+
+  try {
+    await sql`
+      INSERT INTO experiences_contents (company, title, date, description)
+      VALUES (${validatedFields.data.company}, ${validatedFields.data.title}, ${validatedFields.data.date}, ${validatedFields.data.description});
+    `;
+    revalidatePath("/admin/experiences");
+  } catch (error) {
+    return {
+      message: "Failed to create Experience",
+    };
+  }
+  redirect("/admin/experiences");
+}
+
+export async function editExperiences(
+  id: string | undefined,
+  preState: ExperienceState,
+  formData: FormData
+) {
+  if (id === undefined) window.confirm("id is undefined");
+  const validatedFields = CreateExperienceSchema.safeParse({
+    company: formData.get("company"),
+    title: formData.get("title"),
+    date: formData.get("date"),
+    description: formData.get("description"),
+  });
+
+  if (!validatedFields.success) {
+    return {
+      error: validatedFields.error.flatten().fieldErrors,
+      message: "Invalid fields",
+    };
+  }
+
+  try {
+    await sql`
+      UPDATE experiences_contents SET company = ${validatedFields.data.company}, title = ${validatedFields.data.title}, date = ${validatedFields.data.date}, description = ${validatedFields.data.description} WHERE id = ${id}
+    `;
+    revalidatePath("/admin/experiences");
+  } catch (error) {
+    console.log(error);
+    return {
+      message: "Failed to edit Experience",
+    };
+  }
+  redirect("/admin/experiences");
+}
+export async function deleteExperience(id: string): Promise<{
+  message: string;
+}> {
+  try {
+    await sql`DELETE FROM experiences_contents WHERE id = ${id};`;
+    revalidatePath("/admin/experiences");
+    return {
+      message: "Experience deleted successfully",
+    };
+  } catch (error) {
+    return {
+      message: "Failed to delete Experience",
+    };
+  }
+}
 
 export type DescriptionState = {
   errors?: {
@@ -380,8 +486,4 @@ export type DescriptionState = {
 
 export async function createDescriptions() {
   console.log("createDescriptions");
-}
-
-export async function createExperiences() {
-  console.log("createExperiences");
 }
