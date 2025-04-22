@@ -45,9 +45,6 @@ export default function CreateForm(props: Props) {
     throw new Error(`No action function found for slug: ${slug}`);
   }
 
-  console.log("actionFunction");
-  console.log(actionFunction);
-
   const initialState = { errors: {}, message: "" };
   const [actionState, formAction, isPending] = useActionState(
     actionFunction,

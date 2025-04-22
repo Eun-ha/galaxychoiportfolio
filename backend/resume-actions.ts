@@ -246,8 +246,8 @@ export async function editCertificate(
 
 const CreateEducationsSchema = z.object({
   school: z.string().nonempty({ message: "school is required" }),
-  degree: z.string().nonempty({ message: "degree is required" }),
-  institution: z.string().nonempty({ message: "institution is required" }),
+  degree: z.string(),
+  institution: z.string(),
   date: z.string().nonempty({ message: "date is required" }),
 });
 
@@ -331,7 +331,7 @@ export async function editEducations(
 
   try {
     await sql`
-      UPDATE educations_contents SET name = ${validatedFields.data.school}, ${validatedFields.data.degree}, date = ${validatedFields.data.institution}, authority = ${validatedFields.data.date} WHERE id = ${id}
+      UPDATE educations_contents SET school = ${validatedFields.data.school}, degree = ${validatedFields.data.degree}, institution = ${validatedFields.data.institution}, date = ${validatedFields.data.date} WHERE id = ${id}
     `;
     revalidatePath("/admin/educations");
   } catch (error) {

@@ -1,15 +1,18 @@
 "use client";
 
-import { editCertificate } from "@/backend/resume-actions";
+import { editCertificate, editEducations } from "@/backend/resume-actions";
 import { Button } from "@/components/button";
 import { useActionState, useEffect, useState } from "react";
 import { BoundaryFrom } from "../ui/boundary-form";
-import { Certificate } from "@/types/resume";
+import { Certificate, Education } from "@/types/resume";
+import { isCertificate, isEducation } from "@/types/admin";
 
-export default function EditCertificateForm({
+export default function EditForm({
   project,
+  slug,
 }: {
-  project: Certificate;
+  project: Certificate | Education;
+  slug: string;
 }) {
   const initialState = { message: "", errors: {} };
   /**
@@ -17,10 +20,19 @@ export default function EditCertificateForm({
    * 추출 된 값을 editCertificate 함수에 바인딩하여 해당 데이터를 수정합니다.
    */
 
-  const editCertificateWithId = editCertificate.bind(null, project.id);
+  const getEditFunction = () => {
+    if (slug === "certificates") return editCertificate.bind(null, project.id);
+    if (slug === "educations") return editEducations.bind(null, project.id);
+    return null;
+  };
 
+  const editProject = getEditFunction();
+
+  if (!editProject) {
+    throw new Error(`No edit function found for slug: ${slug}`);
+  }
   const [actionState, formAction, isPending] = useActionState(
-    editCertificateWithId,
+    editProject,
     initialState
   );
   const [isErrorMessage, setErrorMessage] = useState(false);
@@ -43,36 +55,89 @@ export default function EditCertificateForm({
     <form action={formAction}>
       <div className="w-full">
         <BoundaryFrom>
-          <div className="w-full flex mb-3">
-            <label htmlFor="name">name</label>
-            <input
-              type="text"
-              id="name"
-              name="name"
-              defaultValue={project.name}
-              placeholder="name"
-            />
-          </div>
-          <div className="w-full flex mb-3">
-            <label htmlFor="date">date</label>
-            <input
-              type="text"
-              id="date"
-              name="date"
-              defaultValue={project.date}
-              placeholder="date"
-            />
-          </div>
-          <div className="w-full flex mb-3">
-            <label htmlFor="authority">authority</label>
-            <input
-              type="text"
-              id="authority"
-              name="authority"
-              defaultValue={project.authority}
-              placeholder="authority"
-            />
-          </div>
+          {slug === "certificates" ? (
+            isCertificate(project) && (
+              <>
+                <div className="w-full flex mb-3">
+                  <label htmlFor="name">name</label>
+                  <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    defaultValue={project.name}
+                    placeholder="name"
+                  />
+                </div>
+                <div className="w-full flex mb-3">
+                  <label htmlFor="date">date</label>
+                  <input
+                    type="text"
+                    id="date"
+                    name="date"
+                    defaultValue={project.date}
+                    placeholder="date"
+                  />
+                </div>
+                <div className="w-full flex mb-3">
+                  <label htmlFor="authority">authority</label>
+                  <input
+                    type="text"
+                    id="authority"
+                    name="authority"
+                    defaultValue={project.authority}
+                    placeholder="authority"
+                  />
+                </div>
+              </>
+            )
+          ) : slug === "educations" ? (
+            isEducation(project) && (
+              <>
+                <div className="w-full flex mb-3">
+                  <label htmlFor="school">school</label>
+                  <input
+                    type="text"
+                    id="school"
+                    name="school"
+                    defaultValue={project.school}
+                    placeholder="school"
+                  />
+                </div>
+                <div className="w-full flex mb-3">
+                  <label htmlFor="degree">degree</label>
+                  <input
+                    type="text"
+                    id="degree"
+                    name="degree"
+                    defaultValue={project.degree}
+                    placeholder="degree"
+                  />
+                </div>
+                <div className="w-full flex mb-3">
+                  <label htmlFor="institution">institution</label>
+                  <input
+                    type="text"
+                    id="institution"
+                    name="institution"
+                    defaultValue={project.institution}
+                    placeholder="institution"
+                  />
+                </div>
+                <div className="w-full flex mb-3">
+                  <label htmlFor="date">date</label>
+                  <input
+                    type="text"
+                    id="date"
+                    name="date"
+                    defaultValue={project.date}
+                    placeholder="date"
+                  />
+                </div>
+              </>
+            )
+          ) : (
+            <></>
+          )}
         </BoundaryFrom>
       </div>
       {isErrorMessage ? (

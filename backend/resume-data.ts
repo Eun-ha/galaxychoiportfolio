@@ -1,20 +1,54 @@
-import { Certificate } from "@/types/resume";
+import { Certificate, Education } from "@/types/resume";
 import { sql } from "@vercel/postgres";
 import { unstable_noStore as noStore } from "next/cache";
 
-export async function fetchProjectById(id: string) {
+export async function fetchProjectById(
+  slug: string,
+  id: string
+): Promise<Certificate | Education> {
+  console.log("slug", slug);
+  console.log("id", id);
   noStore();
 
-  try {
-    const data = await sql<Certificate>`
+  if (!slug) {
+    throw new Error("Invalid slug");
+  }
+  if (!id) {
+    throw new Error("Invalid id");
+  }
+
+  let data = null;
+  if (slug === "certificates") {
+    data = await sql<Certificate>`
       SELECT
-        certificates_contents.id,
-        certificates_contents.name,
-        certificates_contents.date,
-        certificates_contents.authority
+        id,
+        name,
+        date,
+        authority
       FROM certificates_contents
       WHERE certificates_contents.id = ${id};
     `;
+  } else if (slug === "educations") {
+    data = await sql<Education>`
+      SELECT
+        id,
+        school,
+        degree,
+        institution,
+        date
+      FROM educations_contents
+      WHERE educations_contents.id = ${id};
+    `;
+  } else {
+    throw new Error("Invalid slug");
+  }
+
+  console.log("data00", data);
+
+  try {
+    if (!data || data.rowCount === 0) {
+      throw new Error("No data found");
+    }
 
     const project = data.rows.map((project) => ({
       ...project,
