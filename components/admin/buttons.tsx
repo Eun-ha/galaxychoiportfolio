@@ -3,6 +3,7 @@
 import Link from "next/link";
 import {
   deleteCertificate,
+  deleteDescriptions,
   deleteEducation,
   deleteExperience,
 } from "@/backend/resume-actions";
@@ -45,6 +46,8 @@ export function DeleteData(props: Props) {
     deleteProject = deleteEducation;
   } else if (slug === "experiences") {
     deleteProject = deleteExperience;
+  } else if (slug === "descriptions") {
+    deleteProject = deleteDescriptions;
   }
 
   const deleteProjectWithId = async () => {

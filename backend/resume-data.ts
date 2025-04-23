@@ -1,13 +1,16 @@
-import { Certificate, Education, Experience } from "@/types/resume";
+import {
+  Certificate,
+  Description,
+  Education,
+  Experience,
+} from "@/types/resume";
 import { sql } from "@vercel/postgres";
 import { unstable_noStore as noStore } from "next/cache";
 
 export async function fetchProjectById(
   slug: string,
   id: string
-): Promise<Certificate | Education | Experience | null> {
-  console.log("slug", slug);
-  console.log("id", id);
+): Promise<Certificate | Education | Experience | Description | null> {
   noStore();
 
   if (!slug) {
@@ -49,6 +52,18 @@ export async function fetchProjectById(
         description
       FROM experiences_contents
       WHERE experiences_contents.id = ${id};
+    `;
+  } else if (slug === "descriptions") {
+    data = await sql<Description>`
+      SELECT
+        id,
+        title,
+        date,
+        performance,
+        role,
+        skills
+      FROM descriptions_contents
+      WHERE descriptions_contents.id = ${id};
     `;
   } else {
     throw new Error("Invalid slug");

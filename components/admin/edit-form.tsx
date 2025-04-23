@@ -2,20 +2,31 @@
 
 import {
   editCertificate,
+  editDescriptions,
   editEducations,
   editExperiences,
 } from "@/backend/resume-actions";
 import { Button } from "@/components/button";
 import { useActionState, useEffect, useState } from "react";
 import { BoundaryFrom } from "../ui/boundary-form";
-import { Certificate, Education, Experience } from "@/types/resume";
-import { isCertificate, isEducation, isExperience } from "@/types/admin";
+import {
+  Certificate,
+  Description,
+  Education,
+  Experience,
+} from "@/types/resume";
+import {
+  isCertificate,
+  isDescription,
+  isEducation,
+  isExperience,
+} from "@/types/admin";
 
 export default function EditForm({
   project,
   slug,
 }: {
-  project: Certificate | Education | Experience;
+  project: Certificate | Education | Experience | Description;
   slug: string;
 }) {
   const initialState = { message: "", errors: {} };
@@ -28,6 +39,7 @@ export default function EditForm({
     if (slug === "certificates") return editCertificate.bind(null, project.id);
     if (slug === "educations") return editEducations.bind(null, project.id);
     if (slug === "experiences") return editExperiences.bind(null, project.id);
+    if (slug === "descriptions") return editDescriptions.bind(null, project.id);
     return null;
   };
 
@@ -181,6 +193,64 @@ export default function EditForm({
                     name="description"
                     defaultValue={project.description}
                     placeholder="description"
+                  />
+                </div>
+              </>
+            )
+          ) : slug === "descriptions" ? (
+            isDescription(project) && (
+              <>
+                <div className="w-full flex mb-3">
+                  <label htmlFor="title">title</label>
+                  <input
+                    type="text"
+                    id="title"
+                    name="title"
+                    defaultValue={project.title}
+                    placeholder="title"
+                  />
+                </div>
+                <div className="w-full flex mb-3">
+                  <label htmlFor="date">date</label>
+                  <input
+                    type="text"
+                    id="date"
+                    name="date"
+                    defaultValue={project.date}
+                    placeholder="date"
+                  />
+                </div>
+                <div className="w-full flex mb-3">
+                  <label htmlFor="performance">performance</label>
+                  {project.performance.map((item, index) => (
+                    <input
+                      key={index}
+                      type="text"
+                      id="performance"
+                      name="performance"
+                      defaultValue={item}
+                      placeholder="performance"
+                    />
+                  ))}
+                </div>
+                <div className="w-full flex mb-3">
+                  <label htmlFor="role">role</label>
+                  <input
+                    type="text"
+                    id="role"
+                    name="role"
+                    defaultValue={project.role}
+                    placeholder="role"
+                  />
+                </div>
+                <div className="w-full flex mb-3">
+                  <label htmlFor="skills">skills</label>
+                  <input
+                    type="text"
+                    id="skills"
+                    name="skills"
+                    defaultValue={project.skills}
+                    placeholder="skills"
                   />
                 </div>
               </>

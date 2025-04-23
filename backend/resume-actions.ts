@@ -50,78 +50,6 @@ export async function getEducationsData(): Promise<Education[]> {
     throw new Error("Failed to fetch posts data");
   }
 }
-/**
- * Create a new Description
- * @param preState - The previous state of the Description  form  state
- * @param formData - The form data to create a new Description
- * @returns The new state of the Description form state and a message to display  to the user
- */
-const CreateDescriptionSchema = z.object({
-  title: z.string(),
-  date: z.string(),
-  performance: z.string(),
-  role: z.string(),
-  skills: z.string(),
-});
-/*
-export type DescriptionState = {
-  errors?: {
-    title?: string[];
-    date?: string[];
-    performance?: string[];
-    role?: string[];
-    skills?: string[];
-  };
-  message?: string;
-};*/
-
-export async function createDescription(
-  preState: DescriptionState,
-  formData: FormData
-) {
-  const validatedFields = CreateDescriptionSchema.safeParse({
-    title: formData.get("title"),
-    date: formData.get("date"),
-    performance: formData.get("performance"),
-    role: formData.get("role"),
-    skills: formData.get("skills"),
-  });
-
-  if (!validatedFields.success) {
-    return {
-      error: validatedFields.error.flatten().fieldErrors,
-      message: "Invalid fields",
-    };
-  }
-
-  try {
-    const existingDescription =
-      await sql`SELECT * FROM descriptions_contents WHERE title = ${validatedFields.data.title};`;
-    if (existingDescription.rows.length > 0) {
-      return {
-        message: "Description already exists",
-      };
-    }
-  } catch (error) {
-    return {
-      message: "Database error during Description validation",
-    };
-  }
-
-  try {
-    await sql`
-      INSERT INTO descriptions_contents (title, date, performance, role, skills)
-      VALUES (${validatedFields.data.title}, ${validatedFields.data.date}, ${validatedFields.data.performance}, ${validatedFields.data.role}, ${validatedFields.data.skills});
-    `;
-    return {
-      message: "Description created successfully",
-    };
-  } catch (error) {
-    return {
-      message: "Failed to create Description",
-    };
-  }
-}
 
 /**
  * Certificates
@@ -475,15 +403,127 @@ export async function deleteExperience(id: string): Promise<{
   }
 }
 
+/**
+ * descriptions
+ */
+
+const CreateDescriptionSchema = z.object({
+  title: z.string().nonempty({ message: "title is required" }),
+  date: z.string().nonempty({ message: "Date is required" }),
+  performance: z
+    .array(z.string())
+    .min(1, { message: "At least one tag is required" }),
+  role: z.string().nonempty({ message: "role is required" }),
+  skills: z.string().nonempty({ message: "skills is required" }),
+});
+
 export type DescriptionState = {
   errors?: {
-    name?: string[];
+    title?: string[];
     date?: string[];
-    authority?: string[];
+    performance?: string[];
+    role?: string[];
+    skills?: string[];
   };
   message?: string;
 };
 
-export async function createDescriptions() {
-  console.log("createDescriptions");
+export async function createDescriptions(
+  preState: DescriptionState,
+  formData: FormData
+) {
+  const validatedFields = CreateDescriptionSchema.safeParse({
+    title: formData.get("title"),
+    date: formData.get("date"),
+    performance: formData.getAll("performance"),
+    role: formData.get("role"),
+    skills: formData.get("skills"),
+  });
+
+  if (!validatedFields.success) {
+    return {
+      error: validatedFields.error.flatten().fieldErrors,
+      message: "Invalid fields",
+    };
+  }
+
+  try {
+    const existingDescription =
+      await sql`SELECT * FROM descriptions_contents WHERE title = ${validatedFields.data.title};`;
+    if (existingDescription.rows.length > 0) {
+      return {
+        message: "Description already exists",
+      };
+    }
+  } catch (error) {
+    return {
+      message: "Database error during Description validation",
+    };
+  }
+
+  try {
+    const performanceArray = validatedFields.data.performance;
+    const formattedArray = `{${performanceArray.map((item) => `"${item}"`).join(",")}}`;
+    await sql`
+      INSERT INTO descriptions_contents (title, date, performance, role, skills)
+      VALUES (${validatedFields.data.title}, ${validatedFields.data.date}, ${formattedArray}, ${validatedFields.data.role}, ${validatedFields.data.skills});
+    `;
+    revalidatePath("/admin/descriptions");
+  } catch (error) {
+    return {
+      message: "Failed to create Description",
+    };
+  }
+  redirect("/admin/descriptions");
+}
+export async function editDescriptions(
+  id: string | undefined,
+  preState: DescriptionState,
+  formData: FormData
+) {
+  if (id === undefined) window.confirm("id is undefined");
+  const validatedFields = CreateDescriptionSchema.safeParse({
+    title: formData.get("title"),
+    date: formData.get("date"),
+    performance: formData.getAll("performance"),
+    role: formData.get("role"),
+    skills: formData.get("skills"),
+  });
+
+  if (!validatedFields.success) {
+    return {
+      error: validatedFields.error.flatten().fieldErrors,
+      message: "Invalid fields",
+    };
+  }
+
+  try {
+    const performanceArray = validatedFields.data.performance;
+    const formattedArray = `{${performanceArray.map((item) => `"${item}"`).join(",")}}`;
+    await sql`
+      UPDATE descriptions_contents SET title = ${validatedFields.data.title}, date = ${validatedFields.data.date}, performance = ${formattedArray}, role = ${validatedFields.data.role}, skills = ${validatedFields.data.skills} WHERE id = ${id}
+    `;
+    revalidatePath("/admin/descriptions");
+  } catch (error) {
+    return {
+      message: "Failed to edit Description",
+    };
+  }
+  redirect("/admin/descriptions");
+}
+
+export async function deleteDescriptions(id: string): Promise<{
+  message: string;
+}> {
+  try {
+    await sql`DELETE FROM descriptions_contents WHERE id = ${id};`;
+    revalidatePath("/admin/descriptions");
+    return {
+      message: "Description deleted successfully",
+    };
+  } catch (error) {
+    return {
+      message: "Failed to delete Description",
+    };
+  }
 }

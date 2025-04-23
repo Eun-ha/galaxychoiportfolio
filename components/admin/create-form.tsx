@@ -67,6 +67,24 @@ export default function CreateForm(props: Props) {
     }
   }, [actionState]);
 
+  const [inputs, setInputs] = useState<string[]>([]);
+
+  const addInput = () => {
+    setInputs([...inputs, ""]); // 새 인풋 추가
+  };
+
+  const removeInput = (index: number) => {
+    const newInputs = [...inputs];
+    newInputs.splice(index, 1); // 해당 인덱스의 input 제거
+    setInputs(newInputs);
+  };
+
+  const handleChange = (index: number, value: string) => {
+    const newInputs = [...inputs];
+    newInputs[index] = value;
+    setInputs(newInputs);
+  };
+
   return (
     <form action={formAction}>
       <div className="w-full">
@@ -191,7 +209,85 @@ export default function CreateForm(props: Props) {
               </div>
             </>
           ) : (
-            <></>
+            <>
+              <div className="w-full flex mb-3">
+                <label htmlFor="title">title</label>
+                <input
+                  type="text"
+                  id="title"
+                  name="title"
+                  placeholder="title"
+                  required
+                />
+              </div>
+              <div className="w-full flex mb-3">
+                <label htmlFor="date">date</label>
+                <input
+                  type="text"
+                  id="date"
+                  name="date"
+                  placeholder="date"
+                  required
+                />
+              </div>
+
+              <div className="w-full flex mb-3">
+                <label htmlFor="performance">performance</label>
+                <input
+                  type="text"
+                  id="performance"
+                  name="performance"
+                  placeholder="performance"
+                  required
+                />
+                <button
+                  onClick={addInput}
+                  className="bg-blue-500 text-white px-4 py-2 rounded mb-4"
+                >
+                  입력 추가
+                </button>
+
+                {inputs.map((value, index) => (
+                  <div key={index} className="flex items-center mb-2">
+                    <input
+                      type="text"
+                      value={value}
+                      onChange={(e) => handleChange(index, e.target.value)}
+                      className="border border-gray-300 px-2 py-1 rounded mr-2"
+                      id="performance"
+                      name="performance"
+                      placeholder="performance"
+                    />
+                    <button
+                      onClick={() => removeInput(index)}
+                      className="bg-red-500 text-white px-2 py-1 rounded"
+                    >
+                      제거
+                    </button>
+                  </div>
+                ))}
+              </div>
+              <div className="w-full flex mb-3">
+                <label htmlFor="role">role</label>
+                <input
+                  type="text"
+                  id="role"
+                  name="role"
+                  placeholder="role"
+                  required
+                />
+              </div>
+              <div className="w-full flex mb-3">
+                <label htmlFor="skills">skills</label>
+                <input
+                  type="text"
+                  id="skills"
+                  name="skills"
+                  placeholder="skills"
+                  required
+                />
+              </div>
+            </>
           )}
         </BoundaryFrom>
       </div>
