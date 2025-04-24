@@ -241,6 +241,7 @@ export default function CreateForm(props: Props) {
                   required
                 />
                 <button
+                  type="button"
                   onClick={addInput}
                   className="bg-blue-500 text-white px-4 py-2 rounded mb-4"
                 >
@@ -259,6 +260,7 @@ export default function CreateForm(props: Props) {
                       placeholder="performance"
                     />
                     <button
+                      type="button"
                       onClick={() => removeInput(index)}
                       className="bg-red-500 text-white px-2 py-1 rounded"
                     >
