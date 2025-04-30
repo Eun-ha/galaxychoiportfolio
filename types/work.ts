@@ -1,6 +1,7 @@
 export type Work = {
+  id?: string;
   title: string;
-  desc: string;
+  description: string;
   skill: string;
   path: string;
   url: string;

@@ -4,6 +4,7 @@ import {
   getEducationsData,
   getExperiencesData,
 } from "@/backend/resume-actions";
+import { getWorksData } from "@/backend/work-actions";
 import { AdminContents } from "@/components/admin/admin-contents";
 import { CreateData } from "@/components/admin/buttons";
 import { BoundaryButton } from "@/components/ui/boundary-button";
@@ -13,13 +14,19 @@ import {
   Education,
   Experience,
 } from "@/types/resume";
+import { Work } from "@/types/work";
 
 type tParams = Promise<{ slug: string }>;
 
 export default async function Page(props: { params: tParams }) {
   const { slug } = await props.params;
 
-  let data: Description[] | Education[] | Experience[] | Certificate[] = [];
+  let data:
+    | Description[]
+    | Education[]
+    | Experience[]
+    | Certificate[]
+    | Work[] = [];
 
   if (slug === "certificates") {
     data = await getCertificatesData();
@@ -29,10 +36,12 @@ export default async function Page(props: { params: tParams }) {
     data = await getExperiencesData();
   } else if (slug === "educations") {
     data = await getEducationsData();
+  } else if (slug === "work") {
+    data = await getWorksData();
   }
 
   return (
-    <div>
+    <div className="overflow-x-scroll">
       <div>
         <BoundaryButton>
           <CreateData slug={slug} />

@@ -18,6 +18,7 @@ export async function AsideButtons(props: Props) {
             button: x.button,
             slug: x.slug,
           })),
+          ...(path === "/admin" ? [{ button: "work", slug: "work" }] : []),
         ]}
       />
     </>

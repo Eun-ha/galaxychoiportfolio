@@ -4,7 +4,7 @@ import { Images } from "../Images";
 
 type Props = {
   title: string;
-  desc: string;
+  description: string;
   skill: string;
   path: string;
   url: string;

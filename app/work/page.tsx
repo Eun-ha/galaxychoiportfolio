@@ -1,6 +1,8 @@
 import { Carousel } from "@/components/work/carousel";
-import { fetchData } from "@/lib/utils";
 import { Metadata } from "next";
+
+import type { Work } from "@/types/work";
+import { getWorksData } from "@/backend/work-actions";
 
 export const metadata: Metadata = {
   title: "작업물",
@@ -11,8 +13,11 @@ export const metadata: Metadata = {
 export const revalidate = 3;
 
 export default async function Work() {
-  const ApiUrl = process.env.PRODUCTION_URL;
-  const data = await fetchData(`${ApiUrl}/api/work`);
+  //const ApiUrl = process.env.PRODUCTION_URL;
+  //const data = await fetchData(`${ApiUrl}/api/work`);
+
+  let data: Work[] = [];
+  data = await getWorksData();
 
   return <Carousel data={data} />;
 }
