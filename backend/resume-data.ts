@@ -4,13 +4,14 @@ import {
   Education,
   Experience,
 } from "@/types/resume";
+import { Work } from "@/types/work";
 import { sql } from "@vercel/postgres";
 import { unstable_noStore as noStore } from "next/cache";
 
 export async function fetchProjectById(
   slug: string,
   id: string
-): Promise<Certificate | Education | Experience | Description | null> {
+): Promise<Certificate | Education | Experience | Description | Work | null> {
   noStore();
 
   if (!slug) {
@@ -64,6 +65,21 @@ export async function fetchProjectById(
         skills
       FROM descriptions_contents
       WHERE descriptions_contents.id = ${id};
+    `;
+  } else if (slug === "work") {
+    data = await sql<Work>`
+      SELECT
+        id,
+        title,
+        description,
+        skill,
+        path,
+        url,
+        download,
+        git,
+        index
+      FROM works_contents
+      WHERE works_contents.id = ${id};
     `;
   } else {
     throw new Error("Invalid slug");

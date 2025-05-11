@@ -10,9 +10,9 @@ import {
   EducationState,
   ExperienceState,
 } from "@/backend/resume-actions";
+import { createWork, WorkState } from "@/backend/work-actions";
 import { Button } from "@/components/button";
 import { BoundaryFrom } from "@/components/ui/boundary-form";
-
 import { useActionState, useEffect, useState } from "react";
 
 type Props = {
@@ -22,24 +22,41 @@ type Props = {
 export default function CreateForm(props: Props) {
   const { slug } = props;
 
-  // slug 값에 따라 액션 함수 선택
-  const getActionFunction = (): ((
-    state:
-      | CertificateState
-      | ExperienceState
-      | EducationState
-      | DescriptionState,
-    payload: FormData
-    /* eslint-disable  @typescript-eslint/no-explicit-any */
-  ) => Promise<any>) => {
-    if (slug === "certificates") return createCertificate;
-    if (slug === "experiences") return createExperiences;
-    if (slug === "educations") return createEducations;
+  type Slug =
+    | "certificates"
+    | "experiences"
+    | "educations"
+    | "work"
+    | "descriptions";
 
-    return createDescriptions;
+  type StateMap = {
+    certificates: CertificateState;
+    experiences: ExperienceState;
+    educations: EducationState;
+    work: WorkState;
+    descriptions: DescriptionState;
   };
 
-  const actionFunction = getActionFunction(); // 선택된 함수 할당
+  function getActionFunction<K extends Slug>(
+    slug: K
+  ): (state: StateMap[K], payload: FormData) => Promise<StateMap[K]> {
+    const map: {
+      [key in Slug]: (
+        state: StateMap[key],
+        payload: FormData
+      ) => Promise<StateMap[key]>;
+    } = {
+      certificates: createCertificate,
+      experiences: createExperiences,
+      educations: createEducations,
+      work: createWork,
+      descriptions: createDescriptions,
+    };
+
+    return map[slug];
+  }
+
+  const actionFunction = getActionFunction(slug as Slug);
 
   if (!actionFunction) {
     throw new Error(`No action function found for slug: ${slug}`);
@@ -208,7 +225,7 @@ export default function CreateForm(props: Props) {
                 />
               </div>
             </>
-          ) : (
+          ) : slug === "descriptions" ? (
             <>
               <div className="w-full flex mb-3">
                 <label htmlFor="title">title</label>
@@ -290,6 +307,83 @@ export default function CreateForm(props: Props) {
                 />
               </div>
             </>
+          ) : slug === "work" ? (
+            <>
+              <div className="w-full flex mb-3">
+                <label htmlFor="title">title</label>
+                <input
+                  type="text"
+                  id="title"
+                  name="title"
+                  placeholder="title"
+                  required
+                />
+              </div>
+              <div className="w-full flex mb-3">
+                <label htmlFor="description">description</label>
+                <input
+                  type="text"
+                  id="description"
+                  name="description"
+                  placeholder="description"
+                  required
+                />
+              </div>
+              <div className="w-full flex mb-3">
+                <label htmlFor="skill">skill</label>
+                <input
+                  type="text"
+                  id="skill"
+                  name="skill"
+                  placeholder="skill"
+                  required
+                />
+              </div>
+              <div className="w-full flex mb-3">
+                <label htmlFor="path">path</label>
+                <input
+                  type="text"
+                  id="path"
+                  name="path"
+                  placeholder="path"
+                  required
+                />
+              </div>
+              <div className="w-full flex mb-3">
+                <label htmlFor="url">url</label>
+                <input
+                  type="text"
+                  id="url"
+                  name="url"
+                  placeholder="url"
+                  required
+                />
+              </div>
+              <div className="w-full flex mb-3">
+                <label htmlFor="download">download</label>
+                <input
+                  type="text"
+                  id="download"
+                  name="download"
+                  placeholder="download"
+                />
+              </div>
+              <div className="w-full flex mb-3">
+                <label htmlFor="git">git</label>
+                <input type="text" id="git" name="git" placeholder="git" />
+              </div>
+              <div className="w-full flex mb-3">
+                <label htmlFor="index">index</label>
+                <input
+                  type="text"
+                  id="index"
+                  name="index"
+                  placeholder="index"
+                />
+              </div>
+            </>
+          ) : (
+            <></>
           )}
         </BoundaryFrom>
       </div>
