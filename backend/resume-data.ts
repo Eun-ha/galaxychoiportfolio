@@ -1,3 +1,4 @@
+import { Main } from "@/types/main";
 import {
   Certificate,
   Description,
@@ -11,7 +12,9 @@ import { unstable_noStore as noStore } from "next/cache";
 export async function fetchProjectById(
   slug: string,
   id: string
-): Promise<Certificate | Education | Experience | Description | Work | null> {
+): Promise<
+  Certificate | Education | Experience | Description | Work | Main | null
+> {
   noStore();
 
   if (!slug) {
@@ -80,6 +83,23 @@ export async function fetchProjectById(
         index
       FROM works_contents
       WHERE works_contents.id = ${id};
+    `;
+  } else if (slug === "main") {
+    data = await sql<Main>`
+      SELECT
+        id,
+        title,
+        content1,
+        content2,
+        description,
+        description2,
+        description3,
+        button,
+        path,
+        alt,
+        url
+      FROM main_contents
+      WHERE main_contents.id = ${id};
     `;
   } else {
     throw new Error("Invalid slug");

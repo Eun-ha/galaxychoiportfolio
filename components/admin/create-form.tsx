@@ -1,5 +1,6 @@
 "use client";
 
+import { createMain, MainState } from "@/backend/main-actions";
 import {
   CertificateState,
   createCertificate,
@@ -27,7 +28,8 @@ export default function CreateForm(props: Props) {
     | "experiences"
     | "educations"
     | "work"
-    | "descriptions";
+    | "descriptions"
+    | "main";
 
   type StateMap = {
     certificates: CertificateState;
@@ -35,6 +37,7 @@ export default function CreateForm(props: Props) {
     educations: EducationState;
     work: WorkState;
     descriptions: DescriptionState;
+    main: MainState;
   };
 
   function getActionFunction<K extends Slug>(
@@ -51,6 +54,7 @@ export default function CreateForm(props: Props) {
       educations: createEducations,
       work: createWork,
       descriptions: createDescriptions,
+      main: createMain,
     };
 
     return map[slug];
@@ -380,6 +384,97 @@ export default function CreateForm(props: Props) {
                   name="index"
                   placeholder="index"
                 />
+              </div>
+            </>
+          ) : slug === "main" ? (
+            <>
+              <div className="w-full flex mb-3">
+                <label htmlFor="title">title</label>
+                <input
+                  type="text"
+                  id="title"
+                  name="title"
+                  placeholder="title"
+                  required
+                />
+              </div>
+              <div className="w-full flex mb-3">
+                <label htmlFor="content1">content1</label>
+                <input
+                  type="text"
+                  id="content1"
+                  name="content1"
+                  placeholder="content1"
+                  required
+                />
+              </div>
+              <div className="w-full flex mb-3">
+                <label htmlFor="content2">content2</label>
+                <input
+                  type="text"
+                  id="content2"
+                  name="content2"
+                  placeholder="content2"
+                  required
+                />
+              </div>
+              <div className="w-full flex mb-3">
+                <label htmlFor="description">description</label>
+                <input
+                  type="text"
+                  id="description"
+                  name="description"
+                  placeholder="description"
+                  required
+                />
+              </div>
+              <div className="w-full flex mb-3">
+                <label htmlFor="description2">description2</label>
+                <input
+                  type="text"
+                  id="description2"
+                  name="description2"
+                  placeholder="description2"
+                  required
+                />
+              </div>
+              <div className="w-full flex mb-3">
+                <label htmlFor="description3">description3</label>
+                <input
+                  type="text"
+                  id="description3"
+                  name="description3"
+                  placeholder="description3"
+                  required
+                />
+              </div>
+              <div className="w-full flex mb-3">
+                <label htmlFor="button">button</label>
+                <input
+                  type="text"
+                  id="button"
+                  name="button"
+                  placeholder="button"
+                  required
+                />
+              </div>
+              <div className="w-full flex mb-3">
+                <label htmlFor="path">path</label>
+                <input
+                  type="text"
+                  id="path"
+                  name="path"
+                  placeholder="path"
+                  required
+                />
+              </div>
+              <div className="w-full flex mb-3">
+                <label htmlFor="alt">alt</label>
+                <input type="text" id="alt" name="alt" placeholder="alt" />
+              </div>
+              <div className="w-full flex mb-3">
+                <label htmlFor="url">url</label>
+                <input type="text" id="url" name="url" placeholder="url" />
               </div>
             </>
           ) : (

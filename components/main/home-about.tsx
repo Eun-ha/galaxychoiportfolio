@@ -2,17 +2,16 @@
 import Image from "next/image";
 import { BoundaryMain } from "../ui/boundary-main";
 import { effectsX, effectsY } from "@/lib/motions";
-import { Home } from "@/data/main";
 import { motion } from "motion/react";
 import Portal from "../portal/Portal";
+import { Main } from "@/types/main";
 
 type Props = {
-  data: Pick<Home, "home">[];
+  data: Main[];
 };
 
 export default function HomeAbout(props: Props) {
-  const { title, content1, content2, description, path, alt } =
-    props.data[0].home[1];
+  const { title, content1, content2, description, path, alt } = props.data[1];
 
   return (
     <div className="lg:flex">

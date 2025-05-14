@@ -2,18 +2,18 @@
 import Image from "next/image";
 import { effectsX, effectsY } from "@/lib/motions";
 import { BoundaryMain } from "../ui/boundary-main";
-import { Home } from "@/data/main";
 import { motion } from "motion/react";
 import { BoundaryButton } from "../ui/boundary-button";
 import { ExternalLink } from "../external-link";
+import { Main } from "@/types/main";
 
 type Props = {
-  data: Pick<Home, "home">[];
+  data: Main[];
 };
 
 export default function HomeMain(props: Props) {
   const { title, content1, content2, description, path, alt, button, url } =
-    props.data[0].home[0];
+    props.data[0];
 
   return (
     <div className="lg:flex">

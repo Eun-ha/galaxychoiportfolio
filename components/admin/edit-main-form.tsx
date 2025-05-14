@@ -3,15 +3,14 @@
 import { Button } from "@/components/button";
 import { useActionState, useEffect, useState } from "react";
 import { BoundaryFrom } from "../ui/boundary-form";
+import { Main } from "@/types/main";
+import { editMain } from "@/backend/main-actions";
 
-import { Work } from "@/types/work";
-import { editWork } from "@/backend/work-actions";
-
-export default function EditWorkForm({
+export default function EditMainForm({
   project,
   slug,
 }: {
-  project: Work;
+  project: Main;
   slug: string;
 }) {
   const initialState = { message: "", errors: {} };
@@ -20,7 +19,7 @@ export default function EditWorkForm({
    * 추출 된 값을 editCertificate 함수에 바인딩하여 해당 데이터를 수정합니다.
    */
 
-  const editProject = editWork.bind(null, project.id);
+  const editProject = editMain.bind(null, project.id);
 
   if (!editProject) {
     throw new Error(`No edit function found for slug: ${slug}`);
@@ -46,6 +45,8 @@ export default function EditWorkForm({
     }
   }, [actionState]);
 
+  console.log("edit");
+
   return (
     <form action={formAction}>
       <div className="w-full">
@@ -62,6 +63,26 @@ export default function EditWorkForm({
               />
             </div>
             <div className="w-full flex mb-3">
+              <label htmlFor="content1">content1</label>
+              <input
+                type="text"
+                id="content1"
+                name="content1"
+                defaultValue={project.content1}
+                placeholder="content1"
+              />
+            </div>
+            <div className="w-full flex mb-3">
+              <label htmlFor="content2">content2</label>
+              <input
+                type="text"
+                id="content2"
+                name="content2"
+                defaultValue={project.content2}
+                placeholder="content2"
+              />
+            </div>
+            <div className="w-full flex mb-3">
               <label htmlFor="description">description</label>
               <input
                 type="text"
@@ -72,13 +93,33 @@ export default function EditWorkForm({
               />
             </div>
             <div className="w-full flex mb-3">
-              <label htmlFor="skill">skill</label>
+              <label htmlFor="description2">description2</label>
               <input
                 type="text"
-                id="skill"
-                name="skill"
-                defaultValue={project.skill}
-                placeholder="skill"
+                id="description2"
+                name="description2"
+                defaultValue={project.description2}
+                placeholder="description2"
+              />
+            </div>
+            <div className="w-full flex mb-3">
+              <label htmlFor="description3">description3</label>
+              <input
+                type="text"
+                id="description3"
+                name="description3"
+                defaultValue={project.description3}
+                placeholder="description3"
+              />
+            </div>
+            <div className="w-full flex mb-3">
+              <label htmlFor="button">button</label>
+              <input
+                type="text"
+                id="button"
+                name="button"
+                defaultValue={project.button}
+                placeholder="button"
               />
             </div>
             <div className="w-full flex mb-3">
@@ -91,44 +132,15 @@ export default function EditWorkForm({
                 placeholder="path"
               />
             </div>
+
             <div className="w-full flex mb-3">
-              <label htmlFor="url">url</label>
+              <label htmlFor="alt">alt</label>
               <input
                 type="text"
-                id="url"
-                name="url"
-                defaultValue={project.url}
-                placeholder="url"
-              />
-            </div>
-            <div className="w-full flex mb-3">
-              <label htmlFor="download">download</label>
-              <input
-                type="text"
-                id="download"
-                name="download"
-                defaultValue={project.download}
-                placeholder="download"
-              />
-            </div>
-            <div className="w-full flex mb-3">
-              <label htmlFor="git">git</label>
-              <input
-                type="text"
-                id="git"
-                name="git"
-                defaultValue={project.git}
-                placeholder="git"
-              />
-            </div>
-            <div className="w-full flex mb-3">
-              <label htmlFor="index">index</label>
-              <input
-                type="text"
-                id="index"
-                name="index"
-                defaultValue={project.index}
-                placeholder="index"
+                id="alt"
+                name="alt"
+                defaultValue={project.alt}
+                placeholder="alt"
               />
             </div>
           </>

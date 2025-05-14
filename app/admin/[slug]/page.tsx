@@ -1,3 +1,4 @@
+import { getMainData } from "@/backend/main-actions";
 import {
   getCertificatesData,
   getDescriptionsData,
@@ -8,6 +9,7 @@ import { getWorksData } from "@/backend/work-actions";
 import { AdminContents } from "@/components/admin/admin-contents";
 import { CreateData } from "@/components/admin/buttons";
 import { BoundaryButton } from "@/components/ui/boundary-button";
+import { Main } from "@/types/main";
 import {
   Certificate,
   Description,
@@ -26,7 +28,8 @@ export default async function Page(props: { params: tParams }) {
     | Education[]
     | Experience[]
     | Certificate[]
-    | Work[] = [];
+    | Work[]
+    | Main[] = [];
 
   if (slug === "certificates") {
     data = await getCertificatesData();
@@ -38,6 +41,8 @@ export default async function Page(props: { params: tParams }) {
     data = await getEducationsData();
   } else if (slug === "work") {
     data = await getWorksData();
+  } else if (slug === "main") {
+    data = await getMainData();
   }
 
   return (

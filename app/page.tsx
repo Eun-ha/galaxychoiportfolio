@@ -1,3 +1,4 @@
+import { getMainData } from "@/backend/main-actions";
 import Decoration from "@/components/main/decoration";
 import HomeAbout from "@/components/main/home-about";
 import HomeContact from "@/components/main/home-contact";
@@ -12,13 +13,17 @@ export default async function Home() {
   const ApiUrl = process.env.PRODUCTION_URL;
   const mainData = await fetchData(`${ApiUrl}/api/main`);
 
+  const main = await getMainData();
+
+  console.log(main);
+
   return (
     <div className="relative z-30 bg-darkOnly-bg h-full px-4 py-4 lg:px-[100px] lg:py-[80px]">
       <section id="00" className="py-10 lg:py-[150px]">
-        <HomeMain data={mainData} />
+        <HomeMain data={main} />
       </section>
       <section id="01" className="py-10 lg:py-[150px]">
-        <HomeAbout data={mainData} />
+        <HomeAbout data={main} />
       </section>
       <section id="02" className="py-10 lg:py-[150px]">
         <HomeSkills data={mainData} />

@@ -1,13 +1,13 @@
-import { Home } from "@/data/main";
 import CloseIcon from "@/icons/closeIcon";
+import { Main } from "@/types/main";
 
 type Props = {
-  data: Pick<Home, "home">[];
+  data: Main[];
   onClose: () => void;
 };
 
 export default function ModalContent(props: Props) {
-  const { description, description2, description3 } = props.data[0].home[1];
+  const { description, description2, description3 } = props.data[1];
 
   return (
     <div className="modal w-full h-full fixed top-0 left-0 z-50 bg-neutral-900/70">

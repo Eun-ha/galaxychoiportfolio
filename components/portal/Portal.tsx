@@ -2,12 +2,12 @@
 
 import { useState } from "react";
 import { createPortal } from "react-dom";
-import { Home } from "@/data/main";
 import ModalContent from "./ModalContent";
 import { Button } from "../button";
+import { Main } from "@/types/main";
 
 type Props = {
-  data: Pick<Home, "home">[];
+  data: Main[];
 };
 
 export default function Portal(props: Props) {

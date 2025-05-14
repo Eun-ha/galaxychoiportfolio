@@ -1,4 +1,5 @@
 export type Main = {
+  id?: string;
   title: string;
   content1: string;
   content2: string;

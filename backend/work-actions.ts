@@ -56,7 +56,7 @@ export async function createWork(preState: WorkState, formData: FormData) {
   });
   if (!validatedFields.success) {
     return {
-      error: validatedFields.error.flatten().fieldErrors,
+      errors: validatedFields.error.flatten().fieldErrors,
       message: "Invalid fields",
     };
   }
@@ -116,6 +116,7 @@ export async function editWork(
     index: formData.get("index"),
   });
   if (!validatedFields.success) {
+    console.log(validatedFields.error.flatten().fieldErrors);
     return {
       error: validatedFields.error.flatten().fieldErrors,
       message: "Invalid fields",
