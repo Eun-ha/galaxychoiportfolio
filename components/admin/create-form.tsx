@@ -1,6 +1,11 @@
 "use client";
 
-import { createMain, MainState } from "@/backend/main-actions";
+import {
+  createMain,
+  createSkill,
+  MainState,
+  SkillState,
+} from "@/backend/main-actions";
 import {
   CertificateState,
   createCertificate,
@@ -29,6 +34,7 @@ export default function CreateForm(props: Props) {
     | "educations"
     | "work"
     | "descriptions"
+    | "skill"
     | "main";
 
   type StateMap = {
@@ -38,6 +44,7 @@ export default function CreateForm(props: Props) {
     work: WorkState;
     descriptions: DescriptionState;
     main: MainState;
+    skill: SkillState;
   };
 
   function getActionFunction<K extends Slug>(
@@ -55,6 +62,7 @@ export default function CreateForm(props: Props) {
       work: createWork,
       descriptions: createDescriptions,
       main: createMain,
+      skill: createSkill,
     };
 
     return map[slug];
@@ -475,6 +483,49 @@ export default function CreateForm(props: Props) {
               <div className="w-full flex mb-3">
                 <label htmlFor="url">url</label>
                 <input type="text" id="url" name="url" placeholder="url" />
+              </div>
+            </>
+          ) : slug === "skill" ? (
+            <>
+              <div className="w-full flex mb-3">
+                <label htmlFor="name">name</label>
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  placeholder="name"
+                  required
+                />
+              </div>
+              <div className="w-full flex mb-3">
+                <label htmlFor="color">color</label>
+                <input
+                  type="text"
+                  id="color"
+                  name="color"
+                  placeholder="color"
+                  required
+                />
+              </div>
+              <div className="w-full flex mb-3">
+                <label htmlFor="skills">skills</label>
+                <input
+                  type="text"
+                  id="skills"
+                  name="skills"
+                  placeholder="skills"
+                  required
+                />
+              </div>
+              <div className="w-full flex mb-3">
+                <label htmlFor="angle">angle</label>
+                <input
+                  type="text"
+                  id="angle"
+                  name="angle"
+                  placeholder="angle"
+                  required
+                />
               </div>
             </>
           ) : (

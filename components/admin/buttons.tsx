@@ -8,7 +8,7 @@ import {
   deleteExperience,
 } from "@/backend/resume-actions";
 import { deleteWork } from "@/backend/work-actions";
-import { deleteMain } from "@/backend/main-actions";
+import { deleteMain, deleteSkill } from "@/backend/main-actions";
 
 type PropsData = {
   slug: string;
@@ -54,6 +54,8 @@ export function DeleteData(props: Props) {
     deleteProject = deleteWork;
   } else if (slug === "main") {
     deleteProject = deleteMain;
+  } else if (slug === "skill") {
+    deleteProject = deleteSkill;
   }
 
   const deleteProjectWithId = async () => {

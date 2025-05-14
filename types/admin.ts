@@ -5,16 +5,30 @@ import {
   Experience,
 } from "@/types/resume";
 import { Work } from "@/types/work";
-import { Main } from "@/types/main";
+import { Main, Skill } from "@/types/main";
 
 export function isCertificate(
-  project: Certificate | Education | Experience | Description | Work | Main
+  project:
+    | Certificate
+    | Education
+    | Experience
+    | Description
+    | Work
+    | Main
+    | Skill
 ): project is Certificate {
   return "name" in project && "date" in project && "authority" in project;
 }
 
 export function isEducation(
-  project: Certificate | Education | Experience | Description | Work | Main
+  project:
+    | Certificate
+    | Education
+    | Experience
+    | Description
+    | Work
+    | Main
+    | Skill
 ): project is Education {
   return (
     "school" in project &&
@@ -25,7 +39,14 @@ export function isEducation(
 }
 
 export function isExperience(
-  project: Certificate | Education | Experience | Description | Work | Main
+  project:
+    | Certificate
+    | Education
+    | Experience
+    | Description
+    | Work
+    | Main
+    | Skill
 ): project is Experience {
   return (
     "company" in project &&
@@ -36,7 +57,14 @@ export function isExperience(
 }
 
 export function isDescription(
-  project: Certificate | Education | Experience | Description | Work | Main
+  project:
+    | Certificate
+    | Education
+    | Experience
+    | Description
+    | Work
+    | Main
+    | Skill
 ): project is Description {
   return (
     "title" in project &&
@@ -48,7 +76,14 @@ export function isDescription(
 }
 
 export function isWork(
-  project: Certificate | Education | Experience | Description | Work | Main
+  project:
+    | Certificate
+    | Education
+    | Experience
+    | Description
+    | Work
+    | Main
+    | Skill
 ): project is Work {
   return (
     "title" in project &&
@@ -63,7 +98,14 @@ export function isWork(
 }
 
 export function isMain(
-  project: Certificate | Education | Experience | Description | Work | Main
+  project:
+    | Certificate
+    | Education
+    | Experience
+    | Description
+    | Work
+    | Main
+    | Skill
 ): project is Main {
   return (
     "title" in project &&
@@ -76,5 +118,23 @@ export function isMain(
     "path" in project &&
     "alt" in project &&
     "url" in project
+  );
+}
+
+export function isSkill(
+  project:
+    | Certificate
+    | Education
+    | Experience
+    | Description
+    | Work
+    | Main
+    | Skill
+): project is Skill {
+  return (
+    "color" in project &&
+    "skills" in project &&
+    "name" in project &&
+    "angle" in project
   );
 }

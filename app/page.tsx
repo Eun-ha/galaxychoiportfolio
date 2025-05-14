@@ -1,4 +1,4 @@
-import { getMainData } from "@/backend/main-actions";
+import { getMainData, getSkillData } from "@/backend/main-actions";
 import Decoration from "@/components/main/decoration";
 import HomeAbout from "@/components/main/home-about";
 import HomeContact from "@/components/main/home-contact";
@@ -6,16 +6,14 @@ import HomeMain from "@/components/main/home-main";
 import HomeParticles from "@/components/main/home-particles";
 import HomeSkills from "@/components/main/home-skills";
 import ScrollTrackerNav from "@/components/main/scroll-tracker-nav";
-import { fetchData } from "@/lib/utils";
 import React from "react";
 
 export default async function Home() {
-  const ApiUrl = process.env.PRODUCTION_URL;
-  const mainData = await fetchData(`${ApiUrl}/api/main`);
+  //const ApiUrl = process.env.PRODUCTION_URL;
+  //const mainData = await fetchData(`${ApiUrl}/api/main`);
 
   const main = await getMainData();
-
-  console.log(main);
+  const skill = await getSkillData();
 
   return (
     <div className="relative z-30 bg-darkOnly-bg h-full px-4 py-4 lg:px-[100px] lg:py-[80px]">
@@ -26,7 +24,7 @@ export default async function Home() {
         <HomeAbout data={main} />
       </section>
       <section id="02" className="py-10 lg:py-[150px]">
-        <HomeSkills data={mainData} />
+        <HomeSkills data={skill} />
       </section>
       <section id="03" className="py-10 lg:py-[150px]">
         <HomeContact />

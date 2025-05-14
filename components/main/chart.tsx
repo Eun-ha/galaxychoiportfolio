@@ -19,6 +19,7 @@ type Skills = {
 
 export function Chart(Props: Skills) {
   const { color, skills, angle, name } = Props;
+
   const chartConfig = {
     skills: {
       label: "Skills",

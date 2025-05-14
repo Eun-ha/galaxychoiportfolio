@@ -14,8 +14,9 @@ import { AdminExperience } from "./admin-experience";
 import { AdminEducation } from "./admin-education";
 import { Work } from "@/types/work";
 import { AdminWork } from "./admin-work";
-import { Main } from "@/types/main";
+import { Main, Skill } from "@/types/main";
 import { AdminMain } from "./admin-main";
+import { AdminSkill } from "./admin-skill";
 
 type Props = {
   slug: string;
@@ -25,6 +26,7 @@ type Props = {
     | Experience[]
     | Certificate[]
     | Work[]
+    | Skill[]
     | Main[];
 };
 
@@ -55,6 +57,10 @@ export const AdminContents = (props: Props) => {
       ) : slug === "main" ? (
         <Suspense fallback={<SkeletonCard />}>
           <AdminMain slug={slug} data={data as Main[]} />
+        </Suspense>
+      ) : slug === "skill" ? (
+        <Suspense fallback={<SkeletonCard />}>
+          <AdminSkill slug={slug} data={data as Skill[]} />
         </Suspense>
       ) : (
         notFound()

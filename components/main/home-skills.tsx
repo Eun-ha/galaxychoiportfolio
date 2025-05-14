@@ -2,14 +2,14 @@
 
 import { container, effectsY, listItem } from "@/lib/motions";
 import { Chart } from "./chart";
-import { Home } from "@/data/main";
 import { motion } from "motion/react";
+import { Skill } from "@/types/main";
 
 type Props = {
-  data: Pick<Home, "skills">[];
+  data: Skill[];
 };
 export default function HomeSkills(props: Props) {
-  const data = props.data[0].skills;
+  const data = props.data;
 
   return (
     <div className="text-center">

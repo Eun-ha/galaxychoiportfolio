@@ -22,6 +22,7 @@ export async function AsideButtons(props: Props) {
             ? [
                 { button: "work", slug: "work" },
                 { button: "main", slug: "main" },
+                { button: "skill", slug: "skill" },
               ]
             : []),
         ]}

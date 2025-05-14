@@ -13,6 +13,7 @@ export type Main = {
 };
 
 export type Skill = {
+  id?: string;
   color: number;
   skills: number;
   name: string;

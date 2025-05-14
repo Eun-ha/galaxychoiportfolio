@@ -1,4 +1,4 @@
-import { Main } from "@/types/main";
+import { Main, Skill } from "@/types/main";
 import {
   Certificate,
   Description,
@@ -13,7 +13,14 @@ export async function fetchProjectById(
   slug: string,
   id: string
 ): Promise<
-  Certificate | Education | Experience | Description | Work | Main | null
+  | Certificate
+  | Education
+  | Experience
+  | Description
+  | Work
+  | Main
+  | Skill
+  | null
 > {
   noStore();
 
@@ -84,22 +91,16 @@ export async function fetchProjectById(
       FROM works_contents
       WHERE works_contents.id = ${id};
     `;
-  } else if (slug === "main") {
-    data = await sql<Main>`
+  } else if (slug === "skill") {
+    data = await sql<Skill>`
       SELECT
         id,
-        title,
-        content1,
-        content2,
-        description,
-        description2,
-        description3,
-        button,
-        path,
-        alt,
-        url
-      FROM main_contents
-      WHERE main_contents.id = ${id};
+        color,
+        skills,
+        name,
+        angle
+      FROM skill_contents
+      WHERE skill_contents.id = ${id};
     `;
   } else {
     throw new Error("Invalid slug");

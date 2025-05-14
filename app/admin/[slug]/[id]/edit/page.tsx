@@ -4,6 +4,7 @@ import EditDescriptionForm from "@/components/admin/edit-description-form";
 import EditEducationForm from "@/components/admin/edit-education-form";
 import EditExperienceForm from "@/components/admin/edit-experience-form";
 import EditMainForm from "@/components/admin/edit-main-form";
+import EditSkillForm from "@/components/admin/edit-skill-form";
 import EditWorkForm from "@/components/admin/edit-work-form";
 import {
   isCertificate,
@@ -11,6 +12,7 @@ import {
   isEducation,
   isExperience,
   isMain,
+  isSkill,
   isWork,
 } from "@/types/admin";
 import { notFound } from "next/navigation";
@@ -56,6 +58,9 @@ export default async function Page(props: { params: tParams }) {
   }
   if (slug === "main" && isMain(project)) {
     return <EditMainForm project={project} slug={slug} />;
+  }
+  if (slug === "skill" && isSkill(project)) {
+    return <EditSkillForm project={project} slug={slug} />;
   }
   return null;
 }

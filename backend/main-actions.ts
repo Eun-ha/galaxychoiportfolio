@@ -4,7 +4,7 @@ import { sql } from "@vercel/postgres";
 import { revalidatePath } from "next/cache";
 import { z } from "zod";
 import { redirect } from "next/navigation";
-import { Main } from "@/types/main";
+import { Main, Skill } from "@/types/main";
 
 /**
  * Main
@@ -32,6 +32,7 @@ const CreateMainSchema = z.object({
   alt: z.string().nonempty({ message: "alt is required" }),
   url: z.string().optional().nullable(),
 });
+
 export type MainState = {
   errors?: {
     title?: string[];
@@ -47,6 +48,7 @@ export type MainState = {
   };
   message?: string;
 };
+
 export async function createMain(preState: MainState, formData: FormData) {
   const validatedFields = CreateMainSchema.safeParse({
     title: formData.get("title"),
@@ -144,4 +146,120 @@ export async function editMain(
     };
   }
   redirect("/admin/main");
+}
+
+/**
+ * Skills
+ */
+
+export async function getSkillData(): Promise<Skill[]> {
+  try {
+    const { rows }: { rows: Skill[] } =
+      await sql`SELECT id, color::int, skills::int, name, angle::int FROM skill_contents;`;
+    return rows;
+  } catch (error) {
+    throw new Error("Failed to fetch getSkillData data");
+  }
+}
+
+const CreateSkillSchema = z.object({
+  color: z.string().nonempty({ message: "color is required" }),
+  skills: z.string().nonempty({ message: "skills is required" }),
+  name: z.string().nonempty({ message: "name is required" }),
+  angle: z.string().nonempty({ message: "angle is required" }),
+});
+export type SkillState = {
+  errors?: {
+    color?: string[];
+    skills?: string[];
+    name?: string[];
+    angle?: string[];
+  };
+  message?: string;
+};
+export async function createSkill(preState: SkillState, formData: FormData) {
+  const validatedFields = CreateSkillSchema.safeParse({
+    color: formData.get("color"),
+    skills: formData.get("skills"),
+    name: formData.get("name"),
+    angle: formData.get("angle"),
+  });
+  if (!validatedFields.success) {
+    console.log(validatedFields.error.flatten().fieldErrors);
+    return {
+      errors: validatedFields.error.flatten().fieldErrors,
+      message: "Invalid fields",
+    };
+  }
+  try {
+    const existingWork =
+      await sql`SELECT * FROM skill_contents WHERE name = ${validatedFields.data.name};`;
+    if (existingWork.rows.length > 0) {
+      return {
+        message: "Skill already exists",
+      };
+    }
+  } catch (error) {
+    return {
+      message: "Database error during Skill validation",
+    };
+  }
+  try {
+    await sql`
+      INSERT INTO skill_contents (color, skills, name, angle)
+      VALUES (${validatedFields.data.color}, ${validatedFields.data.skills}, ${validatedFields.data.name}, ${validatedFields.data.angle});
+    `;
+    revalidatePath("/admin/skill");
+  } catch (error) {
+    return {
+      message: "Failed to create Skill",
+    };
+  }
+  redirect("/admin/skill");
+}
+export async function deleteSkill(id: string): Promise<{ message: string }> {
+  try {
+    await sql`DELETE FROM skill_contents WHERE id = ${id};`;
+    revalidatePath("/admin/skill");
+    return {
+      message: "Skill deleted successfully",
+    };
+  } catch (error) {
+    return {
+      message: "Failed to delete Skill",
+    };
+  }
+}
+export async function editSkill(
+  id: string | undefined,
+  preState: SkillState,
+  formData: FormData
+) {
+  if (id === undefined) window.confirm("id is undefined");
+
+  const validatedFields = CreateSkillSchema.safeParse({
+    color: formData.get("color"),
+    skills: formData.get("skills"),
+    name: formData.get("name"),
+    angle: formData.get("angle"),
+  });
+  if (!validatedFields.success) {
+    console.log(validatedFields.error.flatten().fieldErrors);
+    return {
+      errors: validatedFields.error.flatten().fieldErrors,
+      message: "Invalid fields",
+    };
+  }
+  try {
+    await sql`
+      UPDATE skill_contents SET color = ${validatedFields.data.color}, skills = ${validatedFields.data.skills}, name = ${validatedFields.data.name}, angle = ${validatedFields.data.angle} WHERE id = ${id}
+    `;
+    revalidatePath("/admin/skill");
+  } catch (error) {
+    console.log(error);
+    return {
+      message: "Failed to edit Skill",
+    };
+  }
+  redirect("/admin/skill");
 }
