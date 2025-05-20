@@ -150,3 +150,7 @@ body {
 .react-multiple-carousel__arrow--right::before {
   content: "\e825";
 }
+
+input {
+  color: #171717;
+}
