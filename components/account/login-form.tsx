@@ -5,6 +5,7 @@ import { useFormStatus } from "react-dom";
 import { authenticate } from "@/backend/account-actions";
 import { Button } from "../button";
 import React from "react";
+import Link from "next/link";
 
 export default function LoginForm() {
   const [email, setEmail] = useState("");
@@ -20,60 +21,77 @@ export default function LoginForm() {
     if (signup === "success" && signupEmail) setEmail(signupEmail);
   }, [signup, signupEmail]);
 
-  const inputStyle =
-    "peer block w-full rounded-md border border-gray-200 py-[9px] pl-10 text-sm outline-2 placeholder:text-gray-500";
-
   return (
-    <form action={dispatch} className="space-y-3">
-      <div>
-        {signup === "success" && (
-          <div>회원가입이 정상적으로 완료되었습니다.</div>
-        )}
-
-        <h1>운영툴을 이용하기 위해 로그인을 해주세요.</h1>
-        <div className="w-full">
-          <label htmlFor="email">이메일</label>
+    <div className="min-h-screen flex items-center justify-center">
+      <div className="bg-gray-800 p-8 rounded-lg shadow-lg w-full max-w-md">
+        <h1 className="text-2xl  text-white mb-6 text-center">
+          운영툴을 이용하기 위해 <br />
+          로그인을 해주세요.
+        </h1>
+        <form action={dispatch} className="space-y-5">
           <div>
-            <input
-              className={inputStyle}
-              type="email"
-              id="email"
-              name="email"
-              placeholder="Enter your email address"
-              required
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-            />
-          </div>
+            {signup === "success" && (
+              <div>회원가입이 정상적으로 완료되었습니다.</div>
+            )}
 
-          <label htmlFor="password">비밀번호</label>
-          <div>
-            <input
-              className={inputStyle}
-              type="password"
-              id="password"
-              name="password"
-              placeholder="Enter your password"
-              required
-              minLength={6}
-            />
+            <div>
+              <label className="block text-gray-300 mb-1" htmlFor="email">
+                이메일
+              </label>
+              <input
+                className="w-full px-4 py-2 rounded bg-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+                type="email"
+                id="email"
+                name="email"
+                placeholder="Enter your email address"
+                required
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              />
+            </div>
+
+            <div>
+              <label className="block text-gray-300 mb-1" htmlFor="password">
+                비밀번호
+              </label>
+              <input
+                className="w-full px-4 py-2 rounded bg-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+                type="password"
+                id="password"
+                name="password"
+                placeholder="Enter your password"
+                required
+                minLength={6}
+              />
+            </div>
+            <LoginButton />
+            {errorMessage && (
+              <>
+                <p>{errorMessage}</p>
+              </>
+            )}
           </div>
+        </form>
+        <div className="flex justify-between mt-4 text-sm">
+          {/* <Link href="/signup" className="text-gray-400 hover:text-white">
+            회원가입
+          </Link> */}
+          <Link href="/" className="text-gray-400 hover:text-white">
+            메인 페이지로 돌아가기
+          </Link>
         </div>
-        <LoginButton />
-        {errorMessage && (
-          <>
-            <p>{errorMessage}</p>
-          </>
-        )}
       </div>
-    </form>
+    </div>
   );
 }
 
 function LoginButton() {
   const { pending } = useFormStatus();
   return (
-    <Button className="w-full mt-4" aria-disabled={pending}>
+    <Button
+      className="w-full py-2 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded transition-colors"
+      aria-disabled={pending}
+    >
       로그인
     </Button>
   );

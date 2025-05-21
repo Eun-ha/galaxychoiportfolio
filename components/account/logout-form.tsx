@@ -2,8 +2,9 @@ import { signOut } from "@/auth";
 import { Button } from "../button";
 
 export default function LogoutForm() {
+  console.log("LogoutForm");
   return (
-    <div className="mb-6">
+    <>
       <form
         action={async () => {
           "use server";
@@ -11,14 +12,15 @@ export default function LogoutForm() {
         }}
       >
         <Button className=" text-sm font-medium text-white bg-blue-500 rounded-lg">
-          <div className="hidden md:block">로그아웃</div>
+          로그아웃
         </Button>
       </form>
-    </div>
+    </>
   );
 }
 
 export function LogoutButton() {
+  console.log("LogoutButton");
   return (
     <form
       action={async () => {

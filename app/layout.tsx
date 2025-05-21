@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import "@/styles/globals.css";
-import { Header } from "@/components/header";
 import { notoSansKR } from "@/styles/fonts";
+import HeaderController from "@/components/HeaderController";
 
 export const metadata: Metadata = {
   metadataBase: new URL(`${process.env.PRODUCTION_URL}`),
@@ -32,7 +32,7 @@ export default function RootLayout({
       <body
         className={`${notoSansKR.className} antialiased w-full overflow-x-hidden bg-bg-default`}
       >
-        <Header />
+        <HeaderController />
         {children}
       </body>
     </html>

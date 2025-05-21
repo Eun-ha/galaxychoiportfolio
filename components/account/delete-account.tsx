@@ -8,12 +8,15 @@ export default function DeleteAccount({
   deleteEmail: string;
 }) {
   const router = useRouter();
+  console.log("DeleteAccount");
 
   const handleDeleteAccount = async () => {
     if (
       window.confirm("계정을 삭제하시겠습니까? 이 작업은 취소할 수 없습니다.")
     ) {
       const response = await deleteUser(deleteEmail);
+
+      console.log(response);
       if (response.message === "Deleted User.") {
         console.info(response.message);
         await performLogout();

@@ -1,5 +1,6 @@
 "use client";
 import { UseHoverEffect } from "@/hooks/use-hover-effect";
+import AdminIcon from "@/icons/adminIcon";
 import AstronautIcon from "@/icons/astronautIcon";
 import CloseIcon from "@/icons/closeIcon";
 import HamIcon from "@/icons/hamIcon";
@@ -39,6 +40,12 @@ export function Nav() {
       text: "Work",
       icon: <AstronautIcon />,
       slug: "work",
+    },
+    {
+      url: "/admin",
+      text: "Admin",
+      icon: <AdminIcon />,
+      slug: "admin",
     },
   ];
 
