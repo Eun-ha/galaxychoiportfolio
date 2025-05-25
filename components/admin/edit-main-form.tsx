@@ -130,7 +130,6 @@ export default function EditMainForm({
                 placeholder="path"
               />
             </div>
-
             <div className="w-full flex mb-3">
               <label htmlFor="alt">alt</label>
               <input
@@ -139,6 +138,16 @@ export default function EditMainForm({
                 name="alt"
                 defaultValue={project.alt}
                 placeholder="alt"
+              />
+            </div>
+            <div className="w-full flex mb-3">
+              <label htmlFor="url">url</label>
+              <input
+                type="text"
+                id="url"
+                name="url"
+                defaultValue={project.url}
+                placeholder="url"
               />
             </div>
           </>
