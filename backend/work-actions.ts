@@ -79,6 +79,7 @@ export async function createWork(preState: WorkState, formData: FormData) {
       VALUES (${validatedFields.data.title}, ${validatedFields.data.description}, ${validatedFields.data.skill}, ${validatedFields.data.path}, ${validatedFields.data.url}, ${validatedFields.data.download}, ${validatedFields.data.git}, ${validatedFields.data.index});
     `;
     revalidatePath("/admin/work");
+    revalidatePath("/work");
   } catch (error) {
     return {
       message: "Failed to create Work",
@@ -90,6 +91,8 @@ export async function deleteWork(id: string): Promise<{ message: string }> {
   try {
     await sql`DELETE FROM works_contents WHERE id = ${id};`;
     revalidatePath("/admin/work");
+    revalidatePath("/work");
+
     return {
       message: "Work deleted successfully",
     };
@@ -127,6 +130,7 @@ export async function editWork(
       UPDATE works_contents SET title = ${validatedFields.data.title}, description = ${validatedFields.data.description}, skill = ${validatedFields.data.skill}, path = ${validatedFields.data.path}, url = ${validatedFields.data.url}, download = ${validatedFields.data.download}, git = ${validatedFields.data.git}, index = ${validatedFields.data.index} WHERE id = ${id}
     `;
     revalidatePath("/admin/work");
+    revalidatePath("/work");
   } catch (error) {
     console.log(error);
     return {

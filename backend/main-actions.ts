@@ -88,6 +88,7 @@ export async function createMain(preState: MainState, formData: FormData) {
       VALUES (${validatedFields.data.title}, ${validatedFields.data.content1}, ${validatedFields.data.content2}, ${validatedFields.data.description}, ${validatedFields.data.description2}, ${validatedFields.data.description3}, ${validatedFields.data.button}, ${validatedFields.data.path}, ${validatedFields.data.alt}, ${validatedFields.data.url});
     `;
     revalidatePath("/admin/main");
+    revalidatePath("/");
   } catch (error) {
     return {
       message: "Failed to create Main",
@@ -99,6 +100,7 @@ export async function deleteMain(id: string): Promise<{ message: string }> {
   try {
     await sql`DELETE FROM main_contents WHERE id = ${id};`;
     revalidatePath("/admin/main");
+    revalidatePath("/");
     return {
       message: "Main deleted successfully",
     };
@@ -139,6 +141,7 @@ export async function editMain(
       UPDATE main_contents SET title = ${validatedFields.data.title}, content1 = ${validatedFields.data.content1}, content2 = ${validatedFields.data.content2}, description = ${validatedFields.data.description}, description2 = ${validatedFields.data.description2}, description3 = ${validatedFields.data.description3}, button = ${validatedFields.data.button}, path = ${validatedFields.data.path}, alt = ${validatedFields.data.alt}, url = ${validatedFields.data.url} WHERE id = ${id}
     `;
     revalidatePath("/admin/main");
+    revalidatePath("/");
   } catch (error) {
     console.log(error);
     return {
@@ -210,6 +213,7 @@ export async function createSkill(preState: SkillState, formData: FormData) {
       VALUES (${validatedFields.data.color}, ${validatedFields.data.skills}, ${validatedFields.data.name}, ${validatedFields.data.angle});
     `;
     revalidatePath("/admin/skill");
+    revalidatePath("/");
   } catch (error) {
     return {
       message: "Failed to create Skill",
@@ -221,6 +225,7 @@ export async function deleteSkill(id: string): Promise<{ message: string }> {
   try {
     await sql`DELETE FROM skill_contents WHERE id = ${id};`;
     revalidatePath("/admin/skill");
+    revalidatePath("/");
     return {
       message: "Skill deleted successfully",
     };
@@ -255,6 +260,7 @@ export async function editSkill(
       UPDATE skill_contents SET color = ${validatedFields.data.color}, skills = ${validatedFields.data.skills}, name = ${validatedFields.data.name}, angle = ${validatedFields.data.angle} WHERE id = ${id}
     `;
     revalidatePath("/admin/skill");
+    revalidatePath("/");
   } catch (error) {
     console.log(error);
     return {

@@ -10,7 +10,6 @@ import { sql } from "@vercel/postgres";
 import { revalidatePath } from "next/cache";
 import { z } from "zod";
 import { redirect } from "next/navigation";
-import { Work } from "@/types/work";
 
 export async function getCertificatesData(): Promise<Certificate[]> {
   try {
@@ -109,6 +108,7 @@ export async function createCertificate(
     `;
 
     revalidatePath("/admin/certificates");
+    revalidatePath("/resume/certificates");
   } catch (error) {
     return {
       message: "Failed to create Certificate",
@@ -124,6 +124,8 @@ export async function deleteCertificate(id: string): Promise<{
   try {
     await sql`DELETE FROM certificates_contents WHERE id = ${id};`;
     revalidatePath("/admin/certificates");
+    revalidatePath("/resume/certificates");
+
     return {
       message: "Certificate deleted successfully",
     };
@@ -158,6 +160,7 @@ export async function editCertificate(
       UPDATE certificates_contents SET name = ${validatedFields.data.name}, date = ${validatedFields.data.date}, authority = ${validatedFields.data.authority} WHERE id = ${id}
     `;
     revalidatePath("/admin/certificates");
+    revalidatePath("/resume/certificates");
   } catch (error) {
     console.log(error);
     return {
@@ -227,7 +230,7 @@ export async function createEducations(
       VALUES (${validatedFields.data.school}, ${validatedFields.data.degree}, ${validatedFields.data.institution}, ${validatedFields.data.date});
     `;
     revalidatePath("/admin/educations");
-    console.log("createEducations 호출됨");
+    revalidatePath("/resume/educations");
   } catch (error) {
     return {
       message: "Failed to create Education",
@@ -261,6 +264,7 @@ export async function editEducations(
       UPDATE educations_contents SET school = ${validatedFields.data.school}, degree = ${validatedFields.data.degree}, institution = ${validatedFields.data.institution}, date = ${validatedFields.data.date} WHERE id = ${id}
     `;
     revalidatePath("/admin/educations");
+    revalidatePath("/resume/educations");
   } catch (error) {
     console.log(error);
     return {
@@ -277,6 +281,7 @@ export async function deleteEducation(id: string): Promise<{
   try {
     await sql`DELETE FROM educations_contents WHERE id = ${id};`;
     revalidatePath("/admin/educations");
+    revalidatePath("/resume/educations");
     return {
       message: "Education deleted successfully",
     };
@@ -347,6 +352,7 @@ export async function createExperiences(
       VALUES (${validatedFields.data.company}, ${validatedFields.data.title}, ${validatedFields.data.date}, ${validatedFields.data.description});
     `;
     revalidatePath("/admin/experiences");
+    revalidatePath("/resume/experiences");
   } catch (error) {
     return {
       message: "Failed to create Experience",
@@ -380,6 +386,7 @@ export async function editExperiences(
       UPDATE experiences_contents SET company = ${validatedFields.data.company}, title = ${validatedFields.data.title}, date = ${validatedFields.data.date}, description = ${validatedFields.data.description} WHERE id = ${id}
     `;
     revalidatePath("/admin/experiences");
+    revalidatePath("/resume/experiences");
   } catch (error) {
     console.log(error);
     return {
@@ -394,6 +401,8 @@ export async function deleteExperience(id: string): Promise<{
   try {
     await sql`DELETE FROM experiences_contents WHERE id = ${id};`;
     revalidatePath("/admin/experiences");
+    revalidatePath("/resume/experiences");
+
     return {
       message: "Experience deleted successfully",
     };
@@ -470,6 +479,7 @@ export async function createDescriptions(
       VALUES (${validatedFields.data.title}, ${validatedFields.data.date}, ${formattedArray}, ${validatedFields.data.role}, ${validatedFields.data.skills});
     `;
     revalidatePath("/admin/descriptions");
+    revalidatePath("/resume/descriptions");
   } catch (error) {
     return {
       message: "Failed to create Description",
@@ -505,6 +515,7 @@ export async function editDescriptions(
       UPDATE descriptions_contents SET title = ${validatedFields.data.title}, date = ${validatedFields.data.date}, performance = ${formattedArray}, role = ${validatedFields.data.role}, skills = ${validatedFields.data.skills} WHERE id = ${id}
     `;
     revalidatePath("/admin/descriptions");
+    revalidatePath("/resume/descriptions");
   } catch (error) {
     return {
       message: "Failed to edit Description",
@@ -519,6 +530,8 @@ export async function deleteDescriptions(id: string): Promise<{
   try {
     await sql`DELETE FROM descriptions_contents WHERE id = ${id};`;
     revalidatePath("/admin/descriptions");
+    revalidatePath("/resume/descriptions");
+
     return {
       message: "Description deleted successfully",
     };
