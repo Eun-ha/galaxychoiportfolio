@@ -16,7 +16,6 @@ export const AsideButtonList = ({
   path: string;
   categories: Categories[];
 }) => {
-  console.log(categories);
   const [stickyClass, setStickyClass] = useState(false);
 
   const stickNavbar = () => {

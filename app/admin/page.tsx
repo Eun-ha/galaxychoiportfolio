@@ -13,8 +13,6 @@ export default async function Page() {
   const email = session?.user?.email || "";
   const user = await fetchLoggedInUser(email);
 
-  console.log(user);
-
   return (
     <main>
       <div className="flex items-center justify-between w-full">

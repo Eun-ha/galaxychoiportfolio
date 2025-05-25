@@ -102,6 +102,23 @@ export async function fetchProjectById(
       FROM skill_contents
       WHERE skill_contents.id = ${id};
     `;
+  } else if (slug === "main") {
+    data = await sql<Main>`
+      SELECT
+        id,
+        title,
+        content1,
+        content2,
+        description,
+        description2,
+        description3,
+        button,
+        path,
+        alt,
+        url
+      FROM main_contents
+      WHERE main_contents.id = ${id};
+    `;
   } else {
     throw new Error("Invalid slug");
   }

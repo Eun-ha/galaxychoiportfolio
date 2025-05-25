@@ -15,8 +15,8 @@ import { AdminEducation } from "./admin-education";
 import { Work } from "@/types/work";
 import { AdminWork } from "./admin-work";
 import { Main, Skill } from "@/types/main";
-import { AdminMain } from "./admin-main";
 import { AdminSkill } from "./admin-skill";
+import { AdminMain } from "./admin-main";
 
 type Props = {
   slug: string;

@@ -45,8 +45,6 @@ export default function EditMainForm({
     }
   }, [actionState]);
 
-  console.log("edit");
-
   return (
     <form action={formAction}>
       <div className="w-full">

@@ -8,7 +8,6 @@ export default function DeleteAccount({
   deleteEmail: string;
 }) {
   const router = useRouter();
-  console.log("DeleteAccount");
 
   const handleDeleteAccount = async () => {
     if (

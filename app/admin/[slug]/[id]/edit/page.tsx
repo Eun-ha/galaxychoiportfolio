@@ -1,4 +1,4 @@
-import { fetchProjectById } from "@/backend/resume-data";
+import { fetchProjectById } from "@/backend/fetch-data";
 import EditCertificateForm from "@/components/admin/edit-certificate-form";
 import EditDescriptionForm from "@/components/admin/edit-description-form";
 import EditEducationForm from "@/components/admin/edit-education-form";
@@ -22,8 +22,6 @@ type tParams = Promise<{ slug: string; id: string }>;
 
 export default async function Page(props: { params: tParams }) {
   const { slug, id } = await props.params;
-
-  console.log("slug", slug);
 
   let project;
 

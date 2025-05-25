@@ -2,7 +2,6 @@ import { signOut } from "@/auth";
 import { Button } from "../button";
 
 export default function LogoutForm() {
-  console.log("LogoutForm");
   return (
     <>
       <form
@@ -20,7 +19,6 @@ export default function LogoutForm() {
 }
 
 export function LogoutButton() {
-  console.log("LogoutButton");
   return (
     <form
       action={async () => {

@@ -12,8 +12,6 @@ type Props = {
 export const AdminMain = (props: Props) => {
   const { slug, data } = props;
 
-  console.log(slug);
-
   return (
     <>
       <table className="min-w-full">
