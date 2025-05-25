@@ -64,22 +64,21 @@ export default function LoginForm() {
                 minLength={6}
               />
             </div>
-            <LoginButton />
-            {errorMessage && (
-              <>
-                <p>{errorMessage}</p>
-              </>
-            )}
+            <div className="flex justify-between items-baseline mt-4 text-sm">
+              <div>
+                <LoginButton />
+                {errorMessage && (
+                  <>
+                    <p>{errorMessage}</p>
+                  </>
+                )}
+              </div>
+              <Link href="/" className="text-gray-400 hover:text-white">
+                메인 페이지로 돌아가기
+              </Link>
+            </div>
           </div>
         </form>
-        <div className="flex justify-between mt-4 text-sm">
-          {/* <Link href="/signup" className="text-gray-400 hover:text-white">
-            회원가입
-          </Link> */}
-          <Link href="/" className="text-gray-400 hover:text-white">
-            메인 페이지로 돌아가기
-          </Link>
-        </div>
       </div>
     </div>
   );
