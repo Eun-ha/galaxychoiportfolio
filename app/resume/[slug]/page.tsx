@@ -17,10 +17,14 @@ import {
   Experience,
   Description,
 } from "@/types/resume";
+import { fetchProjectsPages } from "@/backend/fetch-data";
 
 type tParams = Promise<{ slug: string }>;
+type tSearchParams = Promise<{ query?: string; page?: string }>;
+
 type Props = {
   params: Promise<{ slug: string }>;
+  searchParams: Promise<{ query?: string; page?: string }>;
 };
 
 export async function generateMetadata(
@@ -46,17 +50,23 @@ export async function generateMetadata(
   };
 }
 
-export default async function Page(props: { params: tParams }) {
+export default async function Page(
+  props: { params: tParams } & { searchParams: tSearchParams }
+) {
   const { slug } = await props.params;
+  const searchParams = await props.searchParams;
   //const ApiUrl = process.env.PRODUCTION_URL;
   //const data = await fetchData(`${ApiUrl}/api/resume/${slug}`);
+
+  const currentPage = Number(searchParams?.page) || 1;
+  const AllDescription = await getDescriptionsData();
 
   let data: Description[] | Education[] | Experience[] | Certificate[] = [];
 
   if (slug === "certificates") {
     data = await getCertificatesData();
   } else if (slug === "descriptions") {
-    data = await getDescriptionsData();
+    data = await fetchProjectsPages(currentPage);
   } else if (slug === "experiences") {
     data = await getExperiencesData();
   } else if (slug === "educations") {
@@ -66,7 +76,7 @@ export default async function Page(props: { params: tParams }) {
   return (
     <main className="block w-full lg:w-[calc(100%-16px)] lg:ml-[16px]">
       <TitlesDescriptions slug={slug} />
-      <ResumeContents slug={slug} data={data} />
+      <ResumeContents slug={slug} data={data} allDesc={AllDescription} />
     </main>
   );
 }

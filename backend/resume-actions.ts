@@ -24,7 +24,7 @@ export async function getCertificatesData(): Promise<Certificate[]> {
 export async function getDescriptionsData(): Promise<Description[]> {
   try {
     const { rows }: { rows: Description[] } =
-      await sql`SELECT id, title, date, performance, role, skills FROM descriptions_contents ORDER BY date DESC;`;
+      await sql`SELECT id, title, date, performance, role, skills FROM descriptions_contents ORDER BY date DESC ;`;
     return rows;
   } catch (error) {
     throw new Error("Failed to fetch getDescriptionsData data");

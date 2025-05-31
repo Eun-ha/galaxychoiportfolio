@@ -16,10 +16,11 @@ import { ResumeDescription } from "./resume-description";
 type Props = {
   slug: string;
   data: Description[] | Education[] | Experience[] | Certificate[];
+  allDesc?: Description[];
 };
 
 export const ResumeContents = (props: Props) => {
-  const { slug, data } = props;
+  const { slug, data, allDesc } = props;
   return (
     <section className={clsx("mb-2 lg:mb-4")}>
       {slug === "educations" ? (
@@ -36,7 +37,10 @@ export const ResumeContents = (props: Props) => {
         </Suspense>
       ) : slug === "descriptions" ? (
         <Suspense fallback={<SkeletonCard />}>
-          <ResumeDescription data={data as Description[]} />
+          <ResumeDescription
+            data={data as Description[]}
+            allDesc={allDesc as Description[]}
+          />
         </Suspense>
       ) : (
         notFound()

@@ -1,19 +1,31 @@
 "use client";
 import { Description } from "@/types/resume";
 import { BoundaryResume } from "../ui/boundary-resume";
+import Pagination from "../ui/pagination";
 
 type Props = {
   data: Description[];
+  allDesc?: Description[];
 };
 
 export const ResumeDescription = (props: Props) => {
-  const data = props.data;
+  const { data, allDesc } = props;
+
+  const totalPages =
+    allDesc && allDesc.length > 0 ? Math.ceil(allDesc.length / 5) : 1;
+
+  console.log("totalPages", totalPages);
+
   return (
-    <>
+    <div className="w-full">
       {data.map((data, index) => (
         <article key={index}>
           <BoundaryResume>
             <h3>{data.title}</h3>
+            <div>
+              <h4>기간</h4>
+              <p>{data.date}</p>
+            </div>
             <div>
               <h4>성과</h4>
               <ul>
@@ -33,6 +45,9 @@ export const ResumeDescription = (props: Props) => {
           </BoundaryResume>
         </article>
       ))}
-    </>
+      <div className="flex justify-center w-full mt-5">
+        <Pagination totalPages={totalPages} />
+      </div>
+    </div>
   );
 };

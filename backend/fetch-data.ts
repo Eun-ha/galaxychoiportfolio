@@ -139,3 +139,19 @@ export async function fetchProjectById(
     throw new Error("Failed to fetch invoice.");
   }
 }
+
+const PROJECTS_PER_PAGE = 5;
+
+export async function fetchProjectsPages(
+  currentPage: number
+): Promise<Description[]> {
+  const offset = (currentPage - 1) * PROJECTS_PER_PAGE;
+
+  try {
+    const { rows }: { rows: Description[] } =
+      await sql`SELECT id, title, date, performance, role, skills FROM descriptions_contents ORDER BY date DESC LIMIT ${PROJECTS_PER_PAGE} OFFSET ${offset};`;
+    return rows;
+  } catch (error) {
+    throw new Error("Failed to fetch getDescriptionsData data");
+  }
+}
