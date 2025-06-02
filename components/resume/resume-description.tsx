@@ -12,7 +12,7 @@ export const ResumeDescription = (props: Props) => {
   const { data, allDesc } = props;
 
   const totalPages =
-    allDesc && allDesc.length > 0 ? Math.ceil(allDesc.length / 5) : 1;
+    allDesc && allDesc.length > 0 ? Math.ceil(allDesc.length / 4) : 1;
 
   console.log("totalPages", totalPages);
 
