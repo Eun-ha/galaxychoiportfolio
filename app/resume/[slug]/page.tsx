@@ -72,7 +72,6 @@ export default async function Page(
   } else if (slug === "educations") {
     data = await getEducationsData();
   }
-
   return (
     <main className="block w-full lg:w-[calc(100%-16px)] lg:ml-[16px]">
       <TitlesDescriptions slug={slug} />

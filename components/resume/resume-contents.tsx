@@ -10,8 +10,9 @@ import { notFound } from "next/navigation";
 import { SkeletonCard } from "../ui/skeleton-card";
 import { ResumeEducation } from "./resume-education";
 import { ResumeExperience } from "./resume-experience";
-import { ResumeCertificate } from "./resume-certificate";
 import { ResumeDescription } from "./resume-description";
+import React from "react";
+import { ResumeCertificate } from "./resume-certificate";
 
 type Props = {
   slug: string;
@@ -31,16 +32,16 @@ export const ResumeContents = (props: Props) => {
         <Suspense fallback={<SkeletonCard />}>
           <ResumeExperience data={data as Experience[]} />
         </Suspense>
-      ) : slug === "certificates" ? (
-        <Suspense fallback={<SkeletonCard />}>
-          <ResumeCertificate data={data as Certificate[]} />
-        </Suspense>
       ) : slug === "descriptions" ? (
         <Suspense fallback={<SkeletonCard />}>
           <ResumeDescription
             data={data as Description[]}
             allDesc={allDesc as Description[]}
           />
+        </Suspense>
+      ) : slug === "certificates" ? (
+        <Suspense fallback={<SkeletonCard />}>
+          <ResumeCertificate data={data as Certificate[]} />
         </Suspense>
       ) : (
         notFound()

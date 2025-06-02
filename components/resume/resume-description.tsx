@@ -2,6 +2,8 @@
 import { Description } from "@/types/resume";
 import { BoundaryResume } from "../ui/boundary-resume";
 import Pagination from "../ui/pagination";
+import { useIsMobile } from "@/hooks/use-is-mobile";
+import { SkeletonCard } from "../ui/skeleton-card";
 
 type Props = {
   data: Description[];
@@ -11,14 +13,22 @@ type Props = {
 export const ResumeDescription = (props: Props) => {
   const { data, allDesc } = props;
 
-  const totalPages =
-    allDesc && allDesc.length > 0 ? Math.ceil(allDesc.length / 4) : 1;
+  const isMobile = useIsMobile();
 
-  console.log("totalPages", totalPages);
+  const totalPages =
+    !isMobile && allDesc && allDesc.length > 0
+      ? Math.ceil(allDesc.length / 4)
+      : 1;
+
+  const listData = !isMobile ? data : allDesc;
+
+  if (!listData || listData.length === 0) {
+    return <SkeletonCard />;
+  }
 
   return (
     <div className="w-full">
-      {data.map((data, index) => (
+      {listData.map((data, index) => (
         <article key={index}>
           <BoundaryResume>
             <h3>{data.title}</h3>
@@ -45,9 +55,14 @@ export const ResumeDescription = (props: Props) => {
           </BoundaryResume>
         </article>
       ))}
-      <div className="flex justify-center w-full mt-5">
-        <Pagination totalPages={totalPages} />
-      </div>
+
+      {!isMobile ? (
+        <>
+          <div className="flex justify-center w-full mt-5">
+            <Pagination totalPages={totalPages} />
+          </div>
+        </>
+      ) : null}
     </div>
   );
 };

@@ -1,6 +1,7 @@
 "use client";
 import { Experience } from "@/types/resume";
 import { BoundaryResume } from "../ui/boundary-resume";
+import { SkeletonCard } from "../ui/skeleton-card";
 
 type Props = {
   data: Experience[];
@@ -8,6 +9,10 @@ type Props = {
 
 export const ResumeExperience = (props: Props) => {
   const data = props.data;
+
+  if (!data || data.length === 0) {
+    return <SkeletonCard />;
+  }
 
   return (
     <>

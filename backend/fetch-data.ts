@@ -147,6 +147,7 @@ export async function fetchProjectsPages(
 ): Promise<Description[]> {
   const offset = (currentPage - 1) * PROJECTS_PER_PAGE;
   console.log("fetchProjectsPages", offset);
+
   try {
     const { rows }: { rows: Description[] } =
       await sql`SELECT id, title, date, performance, role, skills FROM descriptions_contents ORDER BY date DESC LIMIT ${PROJECTS_PER_PAGE} OFFSET ${offset};`;
