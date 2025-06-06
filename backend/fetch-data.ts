@@ -146,11 +146,22 @@ export async function fetchProjectsPages(
   currentPage: number
 ): Promise<Description[]> {
   const offset = (currentPage - 1) * PROJECTS_PER_PAGE;
-  console.log("fetchProjectsPages", offset);
 
   try {
     const { rows }: { rows: Description[] } =
       await sql`SELECT id, title, date, performance, role, skills FROM descriptions_contents ORDER BY date DESC LIMIT ${PROJECTS_PER_PAGE} OFFSET ${offset};`;
+    return rows;
+  } catch (error) {
+    throw new Error("Failed to fetch getDescriptionsData data");
+  }
+}
+
+export async function fetchProjectsSlide(currentPage: number): Promise<Work[]> {
+  console.log("fetchProjectsSlide", currentPage);
+
+  try {
+    const { rows }: { rows: Work[] } =
+      await sql`SELECT id, title, description, skill, path, url, download, git, index FROM works_contents LIMIT 1 OFFSET ${currentPage};`;
     return rows;
   } catch (error) {
     throw new Error("Failed to fetch getDescriptionsData data");
