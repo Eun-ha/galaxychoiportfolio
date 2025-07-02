@@ -9,7 +9,7 @@ import StarIcon from "@/icons/starIcon";
 import { STANDARDSIZE } from "@/lib/constants";
 import clsx from "clsx";
 import Link from "next/link";
-import { useSelectedLayoutSegment } from "next/navigation";
+import { useSelectedLayoutSegments } from "next/navigation";
 import { JSX, useLayoutEffect, useState } from "react";
 
 export function Nav() {
@@ -27,7 +27,7 @@ export function Nav() {
       url: "/",
       text: "Home",
       icon: <StarIcon />,
-      slug: null,
+      slug: undefined,
     },
     {
       url: "/resume/descriptions",
@@ -42,7 +42,7 @@ export function Nav() {
       slug: "work",
     },
     {
-      url: "/admin",
+      url: "https://galaxychoiportfolio-admin.vercel.app/admin",
       text: "Admin",
       icon: <AdminIcon />,
       slug: "admin",
@@ -82,7 +82,7 @@ export function Nav() {
   const { width } = useWindowSize();
   const isMobile = width < STANDARDSIZE;
 
-  const segment = useSelectedLayoutSegment();
+  const segment = useSelectedLayoutSegments();
 
   return (
     <div
@@ -115,7 +115,7 @@ export function Nav() {
             href={item.url}
             onClick={close}
             className={clsx("menu-item mt-5 lg:mt-0 lg:px-3", {
-              "text-point-red": segment === item.slug,
+              "text-point-red": segment[1] === item.slug,
               "lg:transition-all lg:duration-[0.3s] lg:ease-linear":
                 hoverEffect !== undefined,
             })}
@@ -125,7 +125,7 @@ export function Nav() {
               className={clsx(
                 "flex items-center justify-center p-2 rounded-md hover:bg-amber-950",
                 {
-                  " bg-amber-950": segment === item.slug,
+                  " bg-amber-950": segment[1] === item.slug,
                 }
               )}
             >

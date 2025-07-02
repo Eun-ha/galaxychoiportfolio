@@ -19,7 +19,7 @@ import {
 } from "@/types/resume";
 import { fetchProjectsPages } from "@/backend/fetch-data";
 
-type tParams = Promise<{ slug: string }>;
+type tParams = Promise<{ locale: string; slug: string }>;
 type tSearchParams = Promise<{ query?: string; page?: string }>;
 
 type Props = {
@@ -53,8 +53,10 @@ export async function generateMetadata(
 export default async function Page(
   props: { params: tParams } & { searchParams: tSearchParams }
 ) {
-  const { slug } = await props.params;
+  const { locale, slug } = await props.params;
   const searchParams = await props.searchParams;
+
+  console.log("locale:", locale);
   //const ApiUrl = process.env.PRODUCTION_URL;
   //const data = await fetchData(`${ApiUrl}/api/resume/${slug}`);
 
@@ -64,7 +66,7 @@ export default async function Page(
   let data: Description[] | Education[] | Experience[] | Certificate[] = [];
 
   if (slug === "certificates") {
-    data = await getCertificatesData();
+    data = await getCertificatesData(locale);
   } else if (slug === "descriptions") {
     data = await fetchProjectsPages(currentPage);
   } else if (slug === "experiences") {
@@ -72,6 +74,7 @@ export default async function Page(
   } else if (slug === "educations") {
     data = await getEducationsData();
   }
+
   return (
     <main className="block w-full lg:w-[calc(100%-16px)] lg:ml-[16px]">
       <TitlesDescriptions slug={slug} />
