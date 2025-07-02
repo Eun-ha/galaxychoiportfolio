@@ -19,7 +19,7 @@ export default async function Work() {
   let data: Work[] = [];
   data = await getWorksData();
 
-  console.log("Work data:", data);
+  //console.log("Work data:", data);
 
   return (
     <>

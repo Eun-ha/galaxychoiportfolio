@@ -22,6 +22,7 @@ type Props = {
 
 export const ResumeContents = (props: Props) => {
   const { slug, data, allDesc } = props;
+
   return (
     <section className={clsx("mb-2 lg:mb-4")}>
       {slug === "educations" ? (

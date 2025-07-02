@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "@/styles/globals.css";
 import { notoSansKR } from "@/styles/fonts";
 import HeaderController from "@/components/HeaderController";
+import { LocaleProvider } from "@/context/LocaleContext";
 
 export const metadata: Metadata = {
   metadataBase: new URL(`${process.env.PRODUCTION_URL}`),
@@ -32,8 +33,10 @@ export default function RootLayout({
       <body
         className={`${notoSansKR.className} antialiased w-full overflow-x-hidden bg-bg-default`}
       >
-        <HeaderController />
-        {children}
+        <LocaleProvider>
+          <HeaderController />
+          {children}
+        </LocaleProvider>
       </body>
     </html>
   );
