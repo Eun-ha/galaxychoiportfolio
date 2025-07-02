@@ -87,10 +87,10 @@ npmr run start
   </tr>
   <tr>
   <td style="border-right: 1px solid #303030"> AsideButton </td>
-    <td> useSelectedLayoutSegment 훅을 사용하여 segment 값을 가져오고, <br>그 값을 동적라우트의 slug 값과 비교하여 현재 페이지를 인식하여 활성화 UI 적용 </td>
+    <td> useSelectedLayoutSegments 훅을 사용하여 segment 값을 가져오고, <br>그 값을 동적라우트의 slug 값과 비교하여 현재 페이지를 인식하여 활성화 UI 적용 </td>
   </tr>
   <td style="border-right: 1px solid #303030"> Contents </td>
-    <td>- asideButton 컴포넌트 안의 버튼 클릭시 동적라우트의 slug 값을 기반으로 한 4개의 컴포넌트(resume-description, resume-experience, resume-education, resume-certificate) 동적 로딩<br> - suspense 사용하여 로딩 지연시 SkeletonCard 컴포넌트를 노출하여 사용자 경험 향상<br> - titles-descriptions 컴포넌트를 사용하여 slug 별 타이틀과 간략한 설명 동적 적용
+    <td>- asideButton 컴포넌트 안의 버튼 클릭시 동적라우트의 slug 값을 기반으로 한 4개의 컴포넌트(resume-description, resume-experience, resume-education, resume-certificate) 동적 로딩<br> - suspense 사용하여 로딩 지연시 SkeletonCard 컴포넌트를 노출하여 사용자 경험 향상<br> - titles-descriptions 컴포넌트를 사용하여 slug 별 타이틀과 간략한 설명 동적 적용<br> - resume-description 페이징 기능 적용
  </td>
   </tr>
 </table>
@@ -104,7 +104,7 @@ npmr run start
   </tr>
   <tr>
   <td style="border-right: 1px solid #303030"> Common </td>
-    <td> - 컨텐츠, 이미지, 버튼 영역(CarouselButton)컴포넌트를 조합하여 페이지를 구성 <br> - CarouselButton 컴포넌트의 경우 데이터(url,download,git) 유무에 따라 동적으로 버튼 생성
+    <td> - 컨텐츠, 이미지, 버튼 영역(CarouselButton)컴포넌트를 조합하여 페이지를 구성 <br> - CarouselButton 컴포넌트의 경우 데이터(url,download,git) 유무에 따라 동적으로 버튼 생성 <br> - 각 슬라이드 페이지 공유하기 위한 pram 추가 <br> - suspense 사용하여 로딩 지연시 SkeletonCard 컴포넌트를 노출하여 사용자 경험 향상
   </td>
   </tr>
 </table>
@@ -130,7 +130,8 @@ npmr run start
     </td>
   </tr>
   <td style="border-right: 1px solid #303030"> 추가 개발 사항 </td>
-    <td> - 국제화<br> - 데이터 관련 API 설계 및 운영툴화<br> - 에러 및 버그 추적을 위한 로그적용<br> - 배포 브랜치 분리
+    <td> - 국제화 : Ing <br> - 데이터 관련 API 설계 및 운영툴화 : Done <br> ( admin Git URL : https://github.com/Eun-ha/galaxychoiportfolio-admin <br>
+admin production URL : https://galaxychoiportfolio-admin.vercel.app/admin ) <br> - 에러 및 버그 추적을 위한 로그적용 : To do<br> - 배포 브랜치 분리 : Done
  </td>
   </tr>
 </table>
