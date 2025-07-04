@@ -5,14 +5,14 @@ import { LocaleProvider } from "@/context/LocaleContext";
 import { Header } from "@/components/header";
 
 export const metadata: Metadata = {
-  metadataBase: new URL(`${process.env.PRODUCTION_URL}`),
+  metadataBase: new URL("https://galaxychoiportfolio.vercel.app"),
   title: {
     template: "%s | 최은하의 포트폴리오 사이트",
     default: "최은하의 포트폴리오 사이트",
   },
   description: "최은하의 포트폴리오 사이트입니다.",
   icons: {
-    icon: "app/favicon.ico",
+    icon: "/favicon.ico",
   },
   openGraph: {
     images: "/opengraph-image.jpg",
