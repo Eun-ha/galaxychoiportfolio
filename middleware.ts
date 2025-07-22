@@ -1,7 +1,9 @@
 import { NextRequest, NextResponse } from "next/server";
 
 export const config = {
-  matcher: ["/((?!api|_next/static|_next/image|.*\\.png$|.*\\.svg$).*)"],
+  matcher: [
+    "/((?!api|_next/static|_next/image|.*\\.png$|.*\\.svg$|favicon\\.ico$).*)",
+  ],
 };
 
 const SUPPORTED_LOCALES = ["ko", "en"];
