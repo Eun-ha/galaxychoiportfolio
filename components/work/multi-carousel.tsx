@@ -37,7 +37,7 @@ const CustomButtonGroup = ({
   const router = useRouter();
 
   const handleNext = () => {
-    const newSlide = Math.min((currentSlide || 0) + 1, 7);
+    const newSlide = Math.min((currentSlide || 0) + 1, 8);
     router.push(`?slide=${newSlide}`);
     next();
   };
@@ -60,7 +60,7 @@ const CustomButtonGroup = ({
       ) : (
         <></>
       )}
-      {currentSlide !== 7 ? (
+      {currentSlide !== 8 ? (
         <>
           <button
             onClick={handleNext}
