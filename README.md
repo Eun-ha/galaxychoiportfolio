@@ -131,7 +131,7 @@ npmr run start
   </tr>
   <td style="border-right: 1px solid #303030"> 추가 개발 사항 </td>
     <td> - 국제화 : Ing <br> - 데이터 관련 API 설계 및 운영툴화 : Done <br> ( admin Git URL : https://github.com/Eun-ha/galaxychoiportfolio-admin <br>
-admin production URL : https://galaxychoiportfolio-admin.vercel.app/admin ) <br> - 에러 및 버그 추적을 위한 로그적용 : To do<br> - 배포 브랜치 분리 : Done
+admin production URL : https://galaxychoiportfolio-admin.vercel.app/admin Storage : https://vercel.com/eunhas-projects/~/stores/integration/neon/store_uCYl56O7g2iAnB7a/guides) <br> - 에러 및 버그 추적을 위한 로그적용 : To do<br> - 배포 브랜치 분리 : Done
  </td>
   </tr>
 </table>
