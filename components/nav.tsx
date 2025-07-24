@@ -115,7 +115,7 @@ export function Nav() {
             href={item.url}
             onClick={close}
             className={clsx("menu-item mt-5 lg:mt-0 lg:px-3", {
-              "text-point-red": segment[1] === item.slug,
+              "text-point-red": segment[0] === item.slug,
               "lg:transition-all lg:duration-[0.3s] lg:ease-linear":
                 hoverEffect !== undefined,
             })}
@@ -125,7 +125,7 @@ export function Nav() {
               className={clsx(
                 "flex items-center justify-center p-2 rounded-md hover:bg-amber-950",
                 {
-                  " bg-amber-950": segment[1] === item.slug,
+                  " bg-amber-950": segment[0] === item.slug,
                 }
               )}
             >

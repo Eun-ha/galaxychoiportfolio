@@ -22,17 +22,12 @@ export async function getCertificatesData(): Promise<Certificate[]> {
   }
 }*/
 
-export async function getCertificatesData(
-  locale: string = "ko"
-): Promise<Certificate[]> {
+export async function getCertificatesData(): Promise<Certificate[]> {
   try {
     const { rows }: { rows: Certificate[] } = await sql`
-        SELECT c.id, c.date, t.name, t.authority
-        FROM certificates_contents c
-        JOIN certificate_translations t
-          ON c.id = t.certificate_id
-        WHERE t.locale = ${locale}
-        ORDER BY c.date DESC;
+        SELECT id, date, name, authority
+        FROM certificates_contents 
+        ORDER BY date DESC;
       `;
     return rows;
   } catch (error) {
