@@ -16,6 +16,7 @@ export async function getMainData(): Promise<Main[]> {
       await sql`SELECT id, title, content1, content2, description, description2, description3, button, path, alt, url FROM main_contents ORDER BY path ASC;`;
     return rows;
   } catch (error) {
+    console.log(error);
     throw new Error("Failed to fetch getMainData data");
   }
 }
