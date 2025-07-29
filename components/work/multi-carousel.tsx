@@ -27,17 +27,19 @@ type CustomButtonGroupProps = {
   next: () => void;
   previous: () => void;
   currentSlide: number;
+  totalSlides: number;
 };
 
 const CustomButtonGroup = ({
   next,
   previous,
   currentSlide,
+  totalSlides,
 }: CustomButtonGroupProps) => {
   const router = useRouter();
 
   const handleNext = () => {
-    const newSlide = Math.min((currentSlide || 0) + 1, 8);
+    const newSlide = Math.min((currentSlide || 0) + 1, totalSlides - 1);
     router.push(`?slide=${newSlide}`);
     next();
   };
@@ -60,7 +62,7 @@ const CustomButtonGroup = ({
       ) : (
         <></>
       )}
-      {currentSlide !== 8 ? (
+      {currentSlide !== totalSlides - 1 ? (
         <>
           <button
             onClick={handleNext}
@@ -80,6 +82,10 @@ type Props = {
 export default function MultiCarousel({ children }: Props) {
   const [currentSlide, setCurrentSlide] = useState(0);
   const carouselRef = useRef<Carousel | null>(null);
+
+  // children을 배열로 변환
+  const itemsArray = Array.isArray(children) ? children : [children];
+  const totalSlides = itemsArray.length;
 
   useEffect(() => {
     const searchParams = new URLSearchParams(window.location.search);
@@ -109,6 +115,7 @@ export default function MultiCarousel({ children }: Props) {
               carouselRef.current && carouselRef.current.previous(1)
             }
             currentSlide={currentSlide}
+            totalSlides={totalSlides}
           />
         }
         infinite={false}
