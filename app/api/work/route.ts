@@ -1,10 +1,15 @@
-import { works } from "@/data/work";
 import { NextResponse } from "next/server";
+import { getWorksData } from "@/backend/work-actions";
 
 export async function GET() {
-  const data = await works;
-  if (!data) {
-    return new NextResponse("Bad Request", { status: 400 });
+  try {
+    const data = await getWorksData();
+    return NextResponse.json(data);
+  } catch (err) {
+    console.error("Error fetching works data:", err);
+    return NextResponse.json(
+      { error: "Failed to fetch data" },
+      { status: 500 }
+    );
   }
-  return NextResponse.json(data);
 }

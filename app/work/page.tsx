@@ -1,8 +1,6 @@
 import { Carousel } from "@/components/work/carousel";
 import { Metadata } from "next";
-
 import type { Work } from "@/types/work";
-import { getWorksData } from "@/backend/work-actions";
 import { Suspense } from "react";
 import { SkeletonSlide } from "@/components/ui/skeleton-slide";
 
@@ -16,10 +14,12 @@ export default async function Work() {
   //const ApiUrl = process.env.PRODUCTION_URL;
   //const data = await fetchData(`${ApiUrl}/api/work`);
 
+  const ApiUrl = process.env.API_URL || "http://localhost:3000";
   let data: Work[] = [];
-  data = await getWorksData();
-
-  //console.log("Work data:", data);
+  const res = await fetch(`${ApiUrl}/api/work`, {
+    next: { revalidate: 60 }, // 60초마다 재생성
+  });
+  data = await res.json();
 
   return (
     <>
