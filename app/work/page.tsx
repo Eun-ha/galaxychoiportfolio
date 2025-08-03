@@ -14,7 +14,7 @@ export default async function Work() {
   //const ApiUrl = process.env.PRODUCTION_URL;
   //const data = await fetchData(`${ApiUrl}/api/work`);
 
-  const ApiUrl = process.env.API_URL || "http://localhost:3000";
+  const ApiUrl = process.env.API_URL;
   let data: Work[] = [];
   const res = await fetch(`${ApiUrl}/api/work`, {
     next: { revalidate: 60 }, // 60초마다 재생성

@@ -116,7 +116,7 @@ export function Nav() {
             onClick={close}
             className={clsx("menu-item mt-5 lg:mt-0 lg:px-3", {
               "text-point-red": segment[0] === item.slug,
-              "lg:transition-all lg:duration-[0.3s] lg:ease-linear":
+              "lg:transition-all lg:duration-[300ms] lg:ease-linear":
                 hoverEffect !== undefined,
             })}
             aria-label={`Link to ${item.slug === null ? "Home" : item.slug}`}
@@ -136,7 +136,7 @@ export function Nav() {
         ))}
         <span
           className={clsx("", {
-            "highlight hidden lg:block lg:absolute lg:left-0 lg:top-0 lg:h-full lg:-z-10 lg:transition-all lg:duration-[0.3s] lg:ease-linear lg:bg-amber-950 lg:rounded-md":
+            "highlight hidden lg:block lg:absolute lg:left-0 lg:top-0 lg:h-full lg:-z-10 lg:transition-all lg:duration-[300ms] lg:ease-linear lg:bg-amber-950 lg:rounded-md":
               hoverEffect !== undefined,
           })}
         ></span>
