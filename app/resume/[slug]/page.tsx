@@ -1,15 +1,8 @@
 import { ResumeContents } from "@/components/resume/resume-contents";
 import { TitlesDescriptions } from "@/components/resume/titles-descriptions";
-import { fetchData } from "@/lib/utils";
+import { apiUrl, fetchData } from "@/lib/utils";
 import { Metadata, ResolvingMetadata } from "next";
 import React from "react";
-
-import {
-  getCertificatesData,
-  getDescriptionsData,
-  getExperiencesData,
-  getEducationsData,
-} from "@/backend/resume-actions";
 
 import {
   Certificate,
@@ -56,23 +49,37 @@ export default async function Page(
   const { slug } = await props.params;
   const searchParams = await props.searchParams;
 
-  //const ApiUrl = process.env.PRODUCTION_URL;
-  //const data = await fetchData(`${ApiUrl}/api/resume/${slug}`);
-
   const currentPage = Number(searchParams?.page) || 1;
-  const AllDescription = await getDescriptionsData();
+
+  let AllDescription: Description[] = [];
+  const res = await fetch(`${apiUrl}/api/resume/descriptions`, {
+    next: { revalidate: 60 }, // 60초마다 재생성
+  });
+  AllDescription = await res.json();
 
   let data: Description[] | Education[] | Experience[] | Certificate[] = [];
 
   if (slug === "certificates") {
-    data = await getCertificatesData();
+    const response = await fetch(`${apiUrl}/api/resume/certificates`, {
+      next: { revalidate: 60 }, // 60초마다 재생성
+    });
+    data = await response.json();
   } else if (slug === "descriptions") {
     data = await fetchProjectsPages(currentPage);
   } else if (slug === "experiences") {
-    data = await getExperiencesData();
+    const response = await fetch(`${apiUrl}/api/resume/experiences`, {
+      next: { revalidate: 60 }, // 60초마다 재생성
+    });
+    data = await response.json();
   } else if (slug === "educations") {
-    data = await getEducationsData();
+    const response = await fetch(`${apiUrl}/api/resume/educations`, {
+      next: { revalidate: 60 }, // 60초마다 재생성
+    });
+    data = await response.json();
   }
+
+  console.log("Resume Data:", data); // Debugging log
+  console.log("All Description Data:", AllDescription); // Debugging log
 
   return (
     <main className="block w-full lg:w-[calc(100%-16px)] lg:ml-[16px]">
