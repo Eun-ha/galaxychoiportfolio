@@ -3,6 +3,7 @@ import { Metadata } from "next";
 import type { Work } from "@/types/work";
 import { Suspense } from "react";
 import { SkeletonSlide } from "@/components/ui/skeleton-slide";
+import { apiUrl } from "@/lib/utils";
 
 export const metadata: Metadata = {
   title: "작업물",
@@ -14,12 +15,15 @@ export default async function Work() {
   //const ApiUrl = process.env.PRODUCTION_URL;
   //const data = await fetchData(`${ApiUrl}/api/work`);
 
-  const ApiUrl = process.env.API_URL || "http://localhost:3000";
+  console.log("Work API URL:", apiUrl);
+
   let data: Work[] = [];
-  const res = await fetch(`${ApiUrl}/api/work`, {
+  const res = await fetch(`${apiUrl}/api/work`, {
     next: { revalidate: 60 }, // 60초마다 재생성
   });
   data = await res.json();
+
+  console.log("Work Data:", data);
 
   return (
     <>

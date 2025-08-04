@@ -6,5 +6,6 @@ const nextConfig: NextConfig = {
     formats: ["image/avif", "image/webp"],
   },
 };
+console.log("API_URL in next.config.js", process.env.API_URL);
 
 export default nextConfig;

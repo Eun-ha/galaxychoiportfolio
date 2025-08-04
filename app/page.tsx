@@ -6,14 +6,19 @@ import HomeMain from "@/components/main/home-main";
 import HomeParticles from "@/components/main/home-particles";
 import HomeSkills from "@/components/main/home-skills";
 import ScrollTrackerNav from "@/components/main/scroll-tracker-nav";
+import { apiUrl } from "@/lib/utils";
 import React from "react";
 
 export default async function Home() {
   //const ApiUrl = process.env.PRODUCTION_URL;
   //const mainData = await fetchData(`${ApiUrl}/api/main`);
 
+  console.log("Main API URL:", apiUrl);
+
   const main = await getMainData();
   const skill = await getSkillData();
+  console.log("Main Data:", main);
+  console.log("Skill Data:", skill);
 
   return (
     <div className="relative z-30 bg-darkOnly-bg h-full px-4 py-4 lg:px-[100px] lg:py-[80px]">
