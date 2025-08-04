@@ -1,7 +1,7 @@
 import { ResumeContents } from "@/components/resume/resume-contents";
 import { TitlesDescriptions } from "@/components/resume/titles-descriptions";
-import { apiUrl, fetchData } from "@/lib/utils";
-import { Metadata, ResolvingMetadata } from "next";
+import { apiUrl } from "@/lib/utils";
+//import { Metadata, ResolvingMetadata } from "next";
 import React from "react";
 
 import {
@@ -15,19 +15,21 @@ import { fetchProjectsPages } from "@/backend/fetch-data";
 type tParams = Promise<{ slug: string }>;
 type tSearchParams = Promise<{ query?: string; page?: string }>;
 
+/*
 type Props = {
   params: Promise<{ slug: string }>;
   searchParams: Promise<{ query?: string; page?: string }>;
-};
+};*/
 
+/*
 export async function generateMetadata(
   { params }: Props,
   parent: ResolvingMetadata
 ): Promise<Metadata> {
-  const ApiUrl = process.env.PRODUCTION_URL;
+  //const ApiUrl = process.env.PRODUCTION_URL;
   const slug = (await params).slug;
 
-  const product = await fetchData(`${ApiUrl}/api/resume/${slug}`)
+  const product = await fetchData(`${apiUrl}/api/resume/${slug}`)
     .then((res) => res.length && res[0].meta)
     .catch((error) => console.log(error));
 
@@ -41,7 +43,7 @@ export async function generateMetadata(
       images: ["/opengraph-image.jpg", ...previousImages],
     },
   };
-}
+}*/
 
 export default async function Page(
   props: { params: tParams } & { searchParams: tSearchParams }
