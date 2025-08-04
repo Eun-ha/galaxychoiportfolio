@@ -1,4 +1,3 @@
-import { getMainData, getSkillData } from "@/backend/main-actions";
 import Decoration from "@/components/main/decoration";
 import HomeAbout from "@/components/main/home-about";
 import HomeContact from "@/components/main/home-contact";
@@ -7,18 +6,21 @@ import HomeParticles from "@/components/main/home-particles";
 import HomeSkills from "@/components/main/home-skills";
 import ScrollTrackerNav from "@/components/main/scroll-tracker-nav";
 import { apiUrl } from "@/lib/utils";
+import { Main, Skill } from "@/types/main";
 import React from "react";
 
 export default async function Home() {
-  //const ApiUrl = process.env.PRODUCTION_URL;
-  //const mainData = await fetchData(`${ApiUrl}/api/main`);
+  let main: Main[] = [];
+  const res = await fetch(`${apiUrl}/api/main`, {
+    next: { revalidate: 60 }, // 60초마다 재생성
+  });
+  main = await res.json();
 
-  console.log("Main API URL:", apiUrl);
-
-  const main = await getMainData();
-  const skill = await getSkillData();
-  console.log("Main Data:", main);
-  console.log("Skill Data:", skill);
+  let skill: Skill[] = [];
+  const response = await fetch(`${apiUrl}/api/skill`, {
+    next: { revalidate: 60 }, // 60초마다 재생성
+  });
+  skill = await response.json();
 
   return (
     <div className="relative z-30 bg-darkOnly-bg h-full px-4 py-4 lg:px-[100px] lg:py-[80px]">

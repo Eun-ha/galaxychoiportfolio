@@ -12,18 +12,11 @@ export const metadata: Metadata = {
 };
 
 export default async function Work() {
-  //const ApiUrl = process.env.PRODUCTION_URL;
-  //const data = await fetchData(`${ApiUrl}/api/work`);
-
-  console.log("Work API URL:", apiUrl);
-
   let data: Work[] = [];
   const res = await fetch(`${apiUrl}/api/work`, {
     next: { revalidate: 60 }, // 60초마다 재생성
   });
   data = await res.json();
-
-  console.log("Work Data:", data);
 
   return (
     <>

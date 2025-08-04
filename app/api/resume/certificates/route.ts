@@ -1,10 +1,15 @@
-import { certificates } from "@/data/resume";
 import { NextResponse } from "next/server";
+import { getCertificatesData } from "@/backend/resume-actions";
 
 export async function GET() {
-  const data = await certificates;
-  if (!data) {
-    return new NextResponse("Bad Request", { status: 400 });
+  try {
+    const data = await getCertificatesData();
+    return NextResponse.json(data);
+  } catch (err) {
+    console.error("Error fetching certificate data:", err);
+    return NextResponse.json(
+      { error: "Failed to fetch data" },
+      { status: 500 }
+    );
   }
-  return NextResponse.json(data);
 }

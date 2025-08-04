@@ -1,10 +1,15 @@
-import { educations } from "@/data/resume";
 import { NextResponse } from "next/server";
+import { getEducationsData } from "@/backend/resume-actions";
 
 export async function GET() {
-  const data = await educations;
-  if (!data) {
-    return new NextResponse("Bad Request", { status: 400 });
+  try {
+    const data = await getEducationsData();
+    return NextResponse.json(data);
+  } catch (err) {
+    console.error("Error fetching works data:", err);
+    return NextResponse.json(
+      { error: "Failed to fetch data" },
+      { status: 500 }
+    );
   }
-  return NextResponse.json(data);
 }
