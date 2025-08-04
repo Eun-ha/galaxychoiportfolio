@@ -120,6 +120,8 @@ export function Nav() {
                 hoverEffect !== undefined,
             })}
             aria-label={`Link to ${item.slug === null ? "Home" : item.slug}`}
+            target={`${item.slug === "admin" ? "_blank" : "_self"}`}
+            rel={`${item.slug === "admin" ? "noopener noreferrer" : ""}`}
           >
             <span
               className={clsx(
