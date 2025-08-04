@@ -14,9 +14,12 @@ export default async function Work() {
   //const ApiUrl = process.env.PRODUCTION_URL;
   //const data = await fetchData(`${ApiUrl}/api/work`);
 
-  const ApiUrl = process.env.API_URL;
+  const apiUrl = process.env.API_URL;
+
+  console.log("Work API URL:", apiUrl);
+
   let data: Work[] = [];
-  const res = await fetch(`${ApiUrl}/api/work`, {
+  const res = await fetch(`${apiUrl}/api/work`, {
     next: { revalidate: 60 }, // 60초마다 재생성
   });
   data = await res.json();

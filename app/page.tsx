@@ -12,18 +12,21 @@ export default async function Home() {
   //const ApiUrl = process.env.PRODUCTION_URL;
   //const mainData = await fetchData(`${ApiUrl}/api/main`);
 
-  const ApiUrl = process.env.API_URL;
+  const apiUrl = process.env.API_URL;
+
+  console.log("Main API URL:", apiUrl);
+
   let main: Main[] = [];
-  const res = await fetch(`${ApiUrl}/api/main`, {
+  let skill: Skill[] = [];
+
+  const res = await fetch(`${apiUrl}/api/main`, {
     next: { revalidate: 60 }, // 60초마다 재생성
   });
   main = await res.json();
 
-  let skill: Skill[] = [];
-  const response = await fetch(`${ApiUrl}/api/skill`, {
+  const response = await fetch(`${apiUrl}/api/skill`, {
     next: { revalidate: 60 }, // 60초마다 재생성
   });
-
   skill = await response.json();
 
   return (
