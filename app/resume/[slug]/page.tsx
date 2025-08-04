@@ -80,9 +80,6 @@ export default async function Page(
     data = await response.json();
   }
 
-  console.log("Resume Data:", data); // Debugging log
-  console.log("All Description Data:", AllDescription); // Debugging log
-
   return (
     <main className="block w-full lg:w-[calc(100%-16px)] lg:ml-[16px]">
       <TitlesDescriptions slug={slug} />
