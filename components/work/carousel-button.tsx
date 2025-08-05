@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { BoundaryButton } from "../ui/boundary-button";
 import { ExternalLink } from "../external-link";
 
@@ -13,26 +12,20 @@ export function CarouselButton({ content }: { content: Props }) {
   return (
     <div className="border-t-[1px] border-border pt-2 mt-6">
       <BoundaryButton>
-        {url ? (
+        {url && (
           <ExternalLink href={url} label="작업물 경로 새창 열기 버튼">
             URL
           </ExternalLink>
-        ) : (
-          ""
         )}
-        {download ? (
-          <Link href={download} aria-label="작업물 다운로드 버튼" download>
+        {download && (
+          <a href={download} aria-label="작업물 다운로드 버튼" download>
             Download
-          </Link>
-        ) : (
-          ""
+          </a>
         )}
-        {git ? (
+        {git && (
           <ExternalLink href={git} label="작업물 깃허브 저장소 새창 열기 버튼">
             Github
           </ExternalLink>
-        ) : (
-          ""
         )}
       </BoundaryButton>
     </div>
