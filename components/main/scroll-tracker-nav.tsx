@@ -38,8 +38,9 @@ export default function ScrollTrackerNav() {
         <a
           href={`#0${index}`}
           key={index}
-          className={clsx("text-darkOnly-text", {
+          className={clsx("text-darkOnly-text p-2", {
             "text-point-red": isActiveCategory === index,
+            "hover:text-darkOnly-border": isActiveCategory !== index,
           })}
         >
           {data}

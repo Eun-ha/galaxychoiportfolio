@@ -26,7 +26,7 @@ export default function HomeSkills(props: Props) {
         variants={container}
         initial="hidden"
         whileInView="show"
-        className="flex flex-wrap justify-evenly mt-12 lg:mt-24 max-w-[1024px] mx-auto"
+        className="flex flex-wrap justify-evenly mt-12 lg:mt-24"
       >
         {data.map((data, index) => (
           <motion.li
