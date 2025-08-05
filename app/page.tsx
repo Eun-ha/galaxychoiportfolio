@@ -23,7 +23,7 @@ export default async function Home() {
   skill = await response.json();
 
   return (
-    <div className="relative z-30 bg-darkOnly-bg h-full px-4 py-4 lg:px-[100px] lg:py-[80px]">
+    <div className="relative z-30 bg-darkOnly-bg h-full px-4 py-4 lg:py-[80px] lg:max-w-[1280px] mx-auto">
       <section id="00" className="py-10 lg:py-[150px]">
         <HomeMain data={main} />
       </section>

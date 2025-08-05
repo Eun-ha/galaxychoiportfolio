@@ -2,7 +2,7 @@ import Image from "next/image";
 
 export function Images({ path, title }: { path: string; title: string }) {
   return (
-    <div className="relative h-[500px] lg:w-[500px] shrink-0">
+    <div className="relative h-[500px] lg:w-1/2 xl:w-2/5 shrink-0">
       <Image
         src={`/images/works/${path}.webp`}
         alt={title}
