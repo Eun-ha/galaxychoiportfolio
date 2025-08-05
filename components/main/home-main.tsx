@@ -66,7 +66,7 @@ export default function HomeMain(props: Props) {
         </BoundaryMain>
       </div>
       <motion.div
-        className="relative w-full lg:w-[500px] h-[400px] shrink-0 mt-6 lg:mt-0"
+        className="relative w-full h-[400px] lg:w-1/2 xl:w-2/5 shrink-0 mt-6 lg:mt-0"
         custom={20}
         initial="offscreen"
         whileInView="onscreen"

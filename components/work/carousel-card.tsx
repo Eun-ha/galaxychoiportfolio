@@ -16,7 +16,7 @@ type Props = {
 export function CarouselCard({ content }: { content: Props }) {
   const { title, path } = content;
   return (
-    <article className="lg:flex lg:flex-row-reverse">
+    <article className="lg:flex lg:justify-between lg:flex-row-reverse">
       <Images path={path} title={title} />
       <div className="mt-4 lg:mr-12">
         <CarouselContent content={content} />
