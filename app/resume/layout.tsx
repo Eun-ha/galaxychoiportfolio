@@ -6,7 +6,7 @@ export default async function Layout({
   children: React.ReactNode;
 }>) {
   return (
-    <div className="px-4 py-4 lg:px-[100px] lg:py-[80px]">
+    <div className="px-4 py-4 lg:py-[80px] lg: max-w-[1280px] mx-auto">
       <div className="lg:flex lg:items-start">
         <AsideButtons path="/resume" />
         {children}
