@@ -59,7 +59,7 @@ export function Chart(Props: Skills) {
                     x={viewBox.cx}
                     y={viewBox.cy}
                     textAnchor="middle"
-                    dominantBaseline="top"
+                    dominantBaseline="middle"
                   >
                     <tspan
                       x={viewBox.cx}
