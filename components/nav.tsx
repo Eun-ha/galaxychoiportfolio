@@ -1,5 +1,5 @@
 "use client";
-import { UseHoverEffect } from "@/hooks/use-hover-effect";
+import { useHoverEffect } from "@/hooks/use-hover-effect";
 import AdminIcon from "@/icons/adminIcon";
 import AstronautIcon from "@/icons/astronautIcon";
 import CloseIcon from "@/icons/closeIcon";
@@ -49,7 +49,7 @@ export function Nav() {
     },
   ];
 
-  const hoverEffect = UseHoverEffect();
+  const hoverEffect = useHoverEffect();
 
   const useWindowSize = () => {
     const [windowSize, setWindowSize] = useState({

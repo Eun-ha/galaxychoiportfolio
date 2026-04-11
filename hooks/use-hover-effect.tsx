@@ -1,7 +1,7 @@
 "use client";
 import { useLayoutEffect, useRef, useState } from "react";
 
-export function UseHoverEffect() {
+export function useHoverEffect() {
   const [isActiveItem, setIsActiveItem] = useState<HTMLElement | null>(null);
   const listItemsRef = useRef<NodeListOf<Element> | null>(null);
   const highlightRef = useRef<HTMLElement | null>(null);

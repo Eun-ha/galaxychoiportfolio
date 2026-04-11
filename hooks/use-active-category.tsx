@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { MARGINOFERROR } from "@/lib/constants";
 
-export function UseActiveCategory() {
+export function useActiveCategory() {
   const [isActiveCategory, setIsActiveCategory] = useState(0);
 
   useEffect(() => {
