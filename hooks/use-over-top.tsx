@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 
-export function UseOverTop(offset = 0) {
+export function useOverTop(offset = 0) {
   const [isOvertop, SetIsOvertop] = useState(false);
 
   useEffect(() => {
@@ -16,7 +16,7 @@ export function UseOverTop(offset = 0) {
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
-  }, [isOvertop]);
+  }, [offset]);
 
   return isOvertop;
 }

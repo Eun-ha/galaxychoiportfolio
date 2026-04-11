@@ -24,10 +24,10 @@ export const AsideButtonList = ({
   };
 
   useEffect(() => {
-    window.addEventListener("scroll", stickNavbar);
+    window.addEventListener("scroll", stickNavbar, { passive: true });
 
     return () => {
-      window.addEventListener("scroll", stickNavbar);
+      window.removeEventListener("scroll", stickNavbar);
     };
   }, []);
 

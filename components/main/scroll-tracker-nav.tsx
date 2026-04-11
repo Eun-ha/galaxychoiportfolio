@@ -1,15 +1,15 @@
 "use client";
 
-import { UseActiveCategory } from "@/hooks/use-active-category";
-import { UseOverTop } from "@/hooks/use-over-top";
+import { useActiveCategory } from "@/hooks/use-active-category";
+import { useOverTop } from "@/hooks/use-over-top";
 import clsx from "clsx";
 import { motion } from "motion/react";
 
 export default function ScrollTrackerNav() {
   const data = ["Main", "About", "Skills", "Contact"];
 
-  const overTop = UseOverTop(80);
-  const isActiveCategory = UseActiveCategory();
+  const overTop = useOverTop(80);
+  const isActiveCategory = useActiveCategory();
 
   const effectsY = {
     offscreen: {
