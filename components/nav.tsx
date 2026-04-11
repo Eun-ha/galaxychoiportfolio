@@ -1,5 +1,6 @@
 "use client";
 import { useHoverEffect } from "@/hooks/use-hover-effect";
+import { useIsMobile } from "@/hooks/use-is-mobile";
 import AdminIcon from "@/icons/adminIcon";
 import AstronautIcon from "@/icons/astronautIcon";
 import CloseIcon from "@/icons/closeIcon";
@@ -10,7 +11,7 @@ import { STANDARDSIZE } from "@/lib/constants";
 import clsx from "clsx";
 import Link from "next/link";
 import { useSelectedLayoutSegments } from "next/navigation";
-import { JSX, useLayoutEffect, useState } from "react";
+import { JSX, useState } from "react";
 
 export function Nav() {
   const [isOpen, setIsOpen] = useState(false);
@@ -50,37 +51,7 @@ export function Nav() {
   ];
 
   const hoverEffect = useHoverEffect();
-
-  const useWindowSize = () => {
-    const [windowSize, setWindowSize] = useState({
-      width: 0,
-      height: 0,
-    });
-
-    useLayoutEffect(() => {
-      if (typeof window !== "undefined") {
-        const handleResize = () => {
-          setWindowSize({
-            width: window.innerWidth,
-            height: window.innerHeight,
-          });
-        };
-
-        handleResize(); // 초기 크기 설정
-
-        window.addEventListener("resize", handleResize);
-
-        return () => {
-          window.removeEventListener("resize", handleResize);
-        };
-      }
-    }, []);
-
-    return windowSize;
-  };
-
-  const { width } = useWindowSize();
-  const isMobile = width < STANDARDSIZE;
+  const isMobile = useIsMobile(STANDARDSIZE);
 
   const segment = useSelectedLayoutSegments();
 
