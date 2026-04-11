@@ -60,6 +60,19 @@ export function UseHoverEffect() {
     });
     if (menuContainer)
       menuContainer.addEventListener("mouseleave", handleItemLeave);
+
+    return () => {
+      listItems.forEach((item) => {
+        (item as HTMLElement).removeEventListener("click", handleItemClick);
+        (item as HTMLElement).removeEventListener(
+          "mouseenter",
+          handleItemHover
+        );
+      });
+      if (menuContainer) {
+        menuContainer.removeEventListener("mouseleave", handleItemLeave);
+      }
+    };
   }, [isActiveItem]);
 
   return isActiveItem;

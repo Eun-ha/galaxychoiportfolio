@@ -1,31 +1,23 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { MARGINOFERROR } from "@/lib/constants";
 
 export function UseActiveCategory() {
   const [isActiveCategory, setIsActiveCategory] = useState(0);
 
-  const aboutRef = useRef<HTMLElement | null>(null);
-  const skillsRef = useRef<HTMLElement | null>(null);
-  const contactRef = useRef<HTMLElement | null>(null);
-
   useEffect(() => {
-    aboutRef.current = document.getElementById("01");
-    skillsRef.current = document.getElementById("02");
-    contactRef.current = document.getElementById("03");
-
-    const about = aboutRef.current;
-    const skills = skillsRef.current;
-    const contact = contactRef.current;
+    const about = document.getElementById("01");
+    const skills = document.getElementById("02");
+    const contact = document.getElementById("03");
 
     if (!about || !skills || !contact) return;
 
-    const topAbout = about.getBoundingClientRect().top + window.scrollY;
-    const topSkills = skills.getBoundingClientRect().top + window.scrollY;
-    const topContact = contact.getBoundingClientRect().top + window.scrollY;
-
     const handleScroll = () => {
+      const topAbout = about.getBoundingClientRect().top + window.scrollY;
+      const topSkills = skills.getBoundingClientRect().top + window.scrollY;
+      const topContact = contact.getBoundingClientRect().top + window.scrollY;
+
       /**
        * 0:main
        * 1:about
@@ -53,7 +45,7 @@ export function UseActiveCategory() {
       window.removeEventListener("scroll", handleScroll);
       window.removeEventListener("resize", handleScroll);
     };
-  }, [aboutRef.current, skillsRef.current, contactRef.current]);
+  }, []);
 
   return isActiveCategory;
 }
