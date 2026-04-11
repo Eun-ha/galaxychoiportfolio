@@ -16,7 +16,7 @@ export function UseOverTop(offset = 0) {
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
-  }, [isOvertop]);
+  }, [offset]);
 
   return isOvertop;
 }
