@@ -1,15 +1,6 @@
-import { NextResponse } from "next/server";
 import { getMainData } from "@/backend/main-actions";
+import { withApiHandler } from "@/lib/with-api-handler";
 
 export async function GET() {
-  try {
-    const data = await getMainData();
-    return NextResponse.json(data);
-  } catch (err) {
-    console.error("Error fetching main data:", err);
-    return NextResponse.json(
-      { error: "Failed to fetch data" },
-      { status: 500 }
-    );
-  }
+  return withApiHandler(getMainData, "Error fetching main data:");
 }
