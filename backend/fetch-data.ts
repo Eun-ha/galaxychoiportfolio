@@ -9,31 +9,29 @@ import { Work } from "@/types/work";
 import { sql } from "@vercel/postgres";
 import { unstable_noStore as noStore } from "next/cache";
 
-export async function fetchProjectById(
-  slug: string,
-  id: string
-): Promise<
+type ProjectData =
   | Certificate
   | Education
   | Experience
   | Description
   | Work
   | Main
-  | Skill
-  | null
-> {
-  noStore();
+  | Skill;
 
-  if (!slug) {
-    throw new Error("Invalid slug");
-  }
-  if (!id) {
-    throw new Error("Invalid id");
-  }
+type ProjectSlug =
+  | "certificates"
+  | "educations"
+  | "experiences"
+  | "descriptions"
+  | "work"
+  | "skill"
+  | "main";
 
-  let data = null;
-  if (slug === "certificates") {
-    data = await sql<Certificate>`
+type ProjectResolver = (id: string) => Promise<{ rows: ProjectData[]; rowCount: number | null }>;
+
+const projectResolverBySlug: Record<ProjectSlug, ProjectResolver> = {
+  certificates: (id) =>
+    sql<Certificate>`
       SELECT
         id,
         name,
@@ -41,9 +39,9 @@ export async function fetchProjectById(
         authority
       FROM certificates_contents
       WHERE certificates_contents.id = ${id};
-    `;
-  } else if (slug === "educations") {
-    data = await sql<Education>`
+    `,
+  educations: (id) =>
+    sql<Education>`
       SELECT
         id,
         school,
@@ -52,9 +50,9 @@ export async function fetchProjectById(
         date
       FROM educations_contents
       WHERE educations_contents.id = ${id};
-    `;
-  } else if (slug === "experiences") {
-    data = await sql<Experience>`
+    `,
+  experiences: (id) =>
+    sql<Experience>`
       SELECT
         id,
         company,
@@ -63,9 +61,9 @@ export async function fetchProjectById(
         description
       FROM experiences_contents
       WHERE experiences_contents.id = ${id};
-    `;
-  } else if (slug === "descriptions") {
-    data = await sql<Description>`
+    `,
+  descriptions: (id) =>
+    sql<Description>`
       SELECT
         id,
         title,
@@ -75,9 +73,9 @@ export async function fetchProjectById(
         skills
       FROM descriptions_contents
       WHERE descriptions_contents.id = ${id};
-    `;
-  } else if (slug === "work") {
-    data = await sql<Work>`
+    `,
+  work: (id) =>
+    sql<Work>`
       SELECT
         id,
         title,
@@ -90,9 +88,9 @@ export async function fetchProjectById(
         index
       FROM works_contents
       WHERE works_contents.id = ${id};
-    `;
-  } else if (slug === "skill") {
-    data = await sql<Skill>`
+    `,
+  skill: (id) =>
+    sql<Skill>`
       SELECT
         id,
         color,
@@ -101,9 +99,9 @@ export async function fetchProjectById(
         angle
       FROM skill_contents
       WHERE skill_contents.id = ${id};
-    `;
-  } else if (slug === "main") {
-    data = await sql<Main>`
+    `,
+  main: (id) =>
+    sql<Main>`
       SELECT
         id,
         title,
@@ -118,25 +116,38 @@ export async function fetchProjectById(
         url
       FROM main_contents
       WHERE main_contents.id = ${id};
-    `;
-  } else {
+    `,
+};
+
+function isProjectSlug(slug: string): slug is ProjectSlug {
+  return slug in projectResolverBySlug;
+}
+
+export async function fetchProjectById(
+  slug: string,
+  id: string
+): Promise<ProjectData | null> {
+  noStore();
+
+  if (!slug || !isProjectSlug(slug)) {
     throw new Error("Invalid slug");
   }
 
+  if (!id) {
+    throw new Error("Invalid id");
+  }
+
   try {
+    const data = await projectResolverBySlug[slug](id);
+
     if (!data || data.rowCount === 0) {
       throw new Error("No data found");
     }
 
-    const project = data.rows.map((project) => ({
-      ...project,
-    }));
-
-    console.log(project[0]);
-    return project[0];
+    return data.rows[0] ?? null;
   } catch (error) {
     console.error("Database Error:", error);
-    throw new Error("Failed to fetch invoice.");
+    throw new Error("Failed to fetch project data.");
   }
 }
 
@@ -157,8 +168,6 @@ export async function fetchProjectsPages(
 }
 
 export async function fetchProjectsSlide(currentPage: number): Promise<Work[]> {
-  console.log("fetchProjectsSlide", currentPage);
-
   try {
     const { rows }: { rows: Work[] } =
       await sql`SELECT id, title, description, skill, path, url, download, git, index FROM works_contents LIMIT 1 OFFSET ${currentPage};`;
