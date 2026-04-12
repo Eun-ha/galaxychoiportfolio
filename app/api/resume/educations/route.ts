@@ -1,15 +1,6 @@
-import { NextResponse } from "next/server";
 import { getEducationsData } from "@/backend/resume-actions";
+import { withApiHandler } from "@/lib/with-api-handler";
 
 export async function GET() {
-  try {
-    const data = await getEducationsData();
-    return NextResponse.json(data);
-  } catch (err) {
-    console.error("Error fetching works data:", err);
-    return NextResponse.json(
-      { error: "Failed to fetch data" },
-      { status: 500 }
-    );
-  }
+  return withApiHandler(getEducationsData, "Error fetching education data:");
 }

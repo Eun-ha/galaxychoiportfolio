@@ -55,6 +55,10 @@ export function Nav() {
 
   const segment = useSelectedLayoutSegments();
 
+  if (isMobile === null) {
+    return null;
+  }
+
   return (
     <div
       className={clsx({
