@@ -15,6 +15,10 @@ export const ResumeDescription = (props: Props) => {
 
   const isMobile = useIsMobile();
 
+  if (isMobile === null) {
+    return <SkeletonCard />;
+  }
+
   const totalPages =
     !isMobile && allDesc && allDesc.length > 0
       ? Math.ceil(allDesc.length / 4)
