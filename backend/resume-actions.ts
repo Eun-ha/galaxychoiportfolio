@@ -9,6 +9,7 @@ import {
   Education,
 } from "@/types/resume";
 import { CACHE_TAGS } from "@/lib/cache-tags";
+import { AppError, ERROR_CODES } from "@/lib/errors";
 
 export async function getCertificatesData(): Promise<Certificate[]> {
   const getCachedCertificatesData = unstable_cache(
@@ -30,7 +31,12 @@ export async function getCertificatesData(): Promise<Certificate[]> {
   try {
     return await getCachedCertificatesData();
   } catch (error) {
-    throw new Error("Failed to fetch getCertificatesData data");
+    throw new AppError({
+      code: ERROR_CODES.DB_QUERY_FAILED,
+      message: "Failed to fetch certificates data",
+      status: 500,
+      details: { source: "getCertificatesData" },
+    });
   }
 }
 
@@ -51,7 +57,12 @@ export async function getDescriptionsData(): Promise<Description[]> {
   try {
     return await getCachedDescriptionsData();
   } catch (error) {
-    throw new Error("Failed to fetch getDescriptionsData data");
+    throw new AppError({
+      code: ERROR_CODES.DB_QUERY_FAILED,
+      message: "Failed to fetch descriptions data",
+      status: 500,
+      details: { source: "getDescriptionsData" },
+    });
   }
 }
 
@@ -72,7 +83,12 @@ export async function getExperiencesData(): Promise<Experience[]> {
   try {
     return await getCachedExperiencesData();
   } catch (error) {
-    throw new Error("Failed to fetch getExperiencesData data");
+    throw new AppError({
+      code: ERROR_CODES.DB_QUERY_FAILED,
+      message: "Failed to fetch experiences data",
+      status: 500,
+      details: { source: "getExperiencesData" },
+    });
   }
 }
 
@@ -93,6 +109,11 @@ export async function getEducationsData(): Promise<Education[]> {
   try {
     return await getCachedEducationsData();
   } catch (error) {
-    throw new Error("Failed to fetch getEducationsData data");
+    throw new AppError({
+      code: ERROR_CODES.DB_QUERY_FAILED,
+      message: "Failed to fetch educations data",
+      status: 500,
+      details: { source: "getEducationsData" },
+    });
   }
 }

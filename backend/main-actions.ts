@@ -4,6 +4,7 @@ import { sql } from "@vercel/postgres";
 import { unstable_cache } from "next/cache";
 import { Main, Skill } from "@/types/main";
 import { CACHE_TAGS } from "@/lib/cache-tags";
+import { AppError, ERROR_CODES } from "@/lib/errors";
 
 /**
  * Main
@@ -23,8 +24,12 @@ export async function getMainData(): Promise<Main[]> {
   try {
     return await getCachedMainData();
   } catch (error) {
-    console.log(error);
-    throw new Error("Failed to fetch getMainData data");
+    throw new AppError({
+      code: ERROR_CODES.DB_QUERY_FAILED,
+      message: "Failed to fetch main data",
+      status: 500,
+      details: { source: "getMainData" },
+    });
   }
 }
 
@@ -46,6 +51,11 @@ export async function getSkillData(): Promise<Skill[]> {
   try {
     return await getCachedSkillData();
   } catch (error) {
-    throw new Error("Failed to fetch getSkillData data");
+    throw new AppError({
+      code: ERROR_CODES.DB_QUERY_FAILED,
+      message: "Failed to fetch skill data",
+      status: 500,
+      details: { source: "getSkillData" },
+    });
   }
 }
