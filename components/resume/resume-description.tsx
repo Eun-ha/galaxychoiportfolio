@@ -4,6 +4,13 @@ import { BoundaryResume } from "../ui/boundary-resume";
 import Pagination from "../ui/pagination";
 import { useIsMobile } from "@/hooks/use-is-mobile";
 import { SkeletonCard } from "../ui/skeleton-card";
+import {
+  usePathname,
+  useRouter,
+  useSearchParams,
+} from "next/navigation";
+import { useDebouncedCallback } from "use-debounce";
+import { useResumeDescriptionsQuery } from "@/hooks/use-resume-descriptions-query";
 
 type Props = {
   data: Description[];
@@ -12,26 +19,69 @@ type Props = {
 
 export const ResumeDescription = (props: Props) => {
   const { data, allDesc } = props;
+  const router = useRouter();
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
 
   const isMobile = useIsMobile();
+  const currentPage = Number(searchParams.get("page")) || 1;
+  const currentQuery = searchParams.get("query") ?? "";
+
+  const { data: queryData, isLoading } = useResumeDescriptionsQuery({
+    page: currentPage,
+    query: currentQuery,
+    pageSize: 4,
+    initialData: {
+      items: data,
+      totalCount: allDesc?.length ?? data.length,
+      totalPages: Math.max(1, Math.ceil((allDesc?.length ?? data.length) / 4)),
+      currentPage,
+    },
+  });
+
+  const onSearch = useDebouncedCallback((value: string) => {
+    const params = new URLSearchParams(searchParams.toString());
+
+    if (value) {
+      params.set("query", value);
+    } else {
+      params.delete("query");
+    }
+    params.set("page", "1");
+
+    router.replace(`${pathname}?${params.toString()}`);
+  }, 300);
 
   if (isMobile === null) {
     return <SkeletonCard />;
   }
 
-  const totalPages =
-    !isMobile && allDesc && allDesc.length > 0
-      ? Math.ceil(allDesc.length / 4)
-      : 1;
+  const totalPages = !isMobile ? queryData?.totalPages ?? 1 : 1;
 
-  const listData = !isMobile ? data : allDesc;
+  const listData = !isMobile ? queryData?.items ?? [] : allDesc;
 
-  if (!listData || listData.length === 0) {
+  if (isLoading) {
     return <SkeletonCard />;
   }
 
   return (
     <div className="w-full">
+      {!isMobile ? (
+        <div className="mb-4">
+          <input
+            defaultValue={currentQuery}
+            onChange={(e) => onSearch(e.target.value)}
+            placeholder="프로젝트/기술 검색"
+            aria-label="이력 검색"
+            className="w-full h-10 px-3 border border-border rounded-md bg-transparent"
+          />
+        </div>
+      ) : null}
+      {!listData || listData.length === 0 ? (
+        <BoundaryResume>
+          <p>조건에 맞는 이력이 없습니다.</p>
+        </BoundaryResume>
+      ) : null}
       {listData.map((data, index) => (
         <article key={index}>
           <BoundaryResume>
