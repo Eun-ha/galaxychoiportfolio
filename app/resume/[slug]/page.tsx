@@ -1,8 +1,13 @@
 import { ResumeContents } from "@/components/resume/resume-contents";
 import { TitlesDescriptions } from "@/components/resume/titles-descriptions";
-import { apiUrl } from "@/lib/utils";
 //import { Metadata, ResolvingMetadata } from "next";
 import React from "react";
+import {
+  getCertificatesData,
+  getDescriptionsData,
+  getEducationsData,
+  getExperiencesData,
+} from "@/backend/resume-actions";
 
 import {
   Certificate,
@@ -53,31 +58,18 @@ export default async function Page(
 
   const currentPage = Number(searchParams?.page) || 1;
 
-  let AllDescription: Description[] = [];
-  const res = await fetch(`${apiUrl}/api/resume/descriptions`, {
-    next: { revalidate: 60 }, // 60초마다 재생성
-  });
-  AllDescription = await res.json();
+  const AllDescription: Description[] = await getDescriptionsData();
 
   let data: Description[] | Education[] | Experience[] | Certificate[] = [];
 
   if (slug === "certificates") {
-    const response = await fetch(`${apiUrl}/api/resume/certificates`, {
-      next: { revalidate: 60 }, // 60초마다 재생성
-    });
-    data = await response.json();
+    data = await getCertificatesData();
   } else if (slug === "descriptions") {
     data = await fetchProjectsPages(currentPage);
   } else if (slug === "experiences") {
-    const response = await fetch(`${apiUrl}/api/resume/experiences`, {
-      next: { revalidate: 60 }, // 60초마다 재생성
-    });
-    data = await response.json();
+    data = await getExperiencesData();
   } else if (slug === "educations") {
-    const response = await fetch(`${apiUrl}/api/resume/educations`, {
-      next: { revalidate: 60 }, // 60초마다 재생성
-    });
-    data = await response.json();
+    data = await getEducationsData();
   }
 
   return (
