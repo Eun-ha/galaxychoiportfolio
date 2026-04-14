@@ -58,7 +58,9 @@ export const ResumeDescription = (props: Props) => {
 
   const totalPages = !isMobile ? queryData?.totalPages ?? 1 : 1;
 
-  const listData = !isMobile ? queryData?.items ?? [] : allDesc;
+  const listData: Description[] = !isMobile
+    ? queryData?.items ?? []
+    : allDesc ?? data;
 
   if (isLoading) {
     return <SkeletonCard />;
