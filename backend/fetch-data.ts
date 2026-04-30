@@ -160,6 +160,7 @@ export async function fetchProjectById(
 
     return data.rows[0] ?? null;
   } catch (error) {
+    if (error instanceof AppError) throw error;
     throw new AppError({
       code: ERROR_CODES.DB_QUERY_FAILED,
       message: "Failed to fetch project data.",
