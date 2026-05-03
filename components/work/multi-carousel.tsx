@@ -1,9 +1,8 @@
 "use client";
 import { useRouter } from "next/navigation";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
-import { useWorkCarouselStore } from "@/stores/work-carousel-store";
 
 const responsive = {
   superLargeDesktop: {
@@ -27,21 +26,21 @@ const responsive = {
 type CustomButtonGroupProps = {
   next: () => void;
   previous: () => void;
+  currentSlide: number;
+  totalSlides: number;
 };
 
-const CustomButtonGroup = ({ next, previous }: CustomButtonGroupProps) => {
+const CustomButtonGroup = ({ next, previous, currentSlide, totalSlides }: CustomButtonGroupProps) => {
   const router = useRouter();
-  const currentSlide = useWorkCarouselStore((state) => state.currentSlide);
-  const totalSlides = useWorkCarouselStore((state) => state.totalSlides);
 
   const handleNext = () => {
-    const newSlide = Math.min((currentSlide || 0) + 1, totalSlides - 1);
+    const newSlide = Math.min(currentSlide + 1, totalSlides - 1);
     router.push(`?slide=${newSlide}`);
     next();
   };
 
   const handlePrev = () => {
-    const newSlide = Math.max((currentSlide || 0) - 1, 0);
+    const newSlide = Math.max(currentSlide - 1, 0);
     router.push(`?slide=${newSlide}`);
     previous();
   };
@@ -76,34 +75,24 @@ type Props = {
   children: React.ReactNode;
 };
 export default function MultiCarousel({ children }: Props) {
-  const setCurrentSlide = useWorkCarouselStore((state) => state.setCurrentSlide);
-  const setTotalSlides = useWorkCarouselStore((state) => state.setTotalSlides);
-  const reset = useWorkCarouselStore((state) => state.reset);
+  const [currentSlide, setCurrentSlide] = useState(0);
   const carouselRef = useRef<Carousel | null>(null);
 
-  // children을 배열로 변환
   const itemsArray = Array.isArray(children) ? children : [children];
   const totalSlides = itemsArray.length;
 
   useEffect(() => {
-    setTotalSlides(totalSlides);
-
     const searchParams = new URLSearchParams(window.location.search);
     const slideParam = parseInt(searchParams.get("slide") || "0", 10);
-    const safeSlide = isNaN(slideParam) ? 0 : Math.max(0, slideParam);
+    const safeSlide = isNaN(slideParam) ? 0 : Math.max(0, Math.min(slideParam, totalSlides - 1));
     setCurrentSlide(safeSlide);
 
-    // ✅ Carousel이 mount된 후 슬라이드 이동
     setTimeout(() => {
       if (carouselRef.current) {
         carouselRef.current.goToSlide(safeSlide);
       }
     }, 0);
-
-    return () => {
-      reset();
-    };
-  }, [reset, setCurrentSlide, setTotalSlides, totalSlides]);
+  }, [totalSlides]);
 
   return (
     <div className="relative">
@@ -118,6 +107,8 @@ export default function MultiCarousel({ children }: Props) {
             previous={() =>
               carouselRef.current && carouselRef.current.previous(1)
             }
+            currentSlide={currentSlide}
+            totalSlides={totalSlides}
           />
         }
         infinite={false}
