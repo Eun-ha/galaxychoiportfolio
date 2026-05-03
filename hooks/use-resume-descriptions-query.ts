@@ -3,18 +3,13 @@
 import { Description } from "@/types/resume";
 import { useQuery } from "@tanstack/react-query";
 import { trackQueryMetric } from "@/lib/observability";
+import { getDescriptionsByQuery } from "@/actions/resume-descriptions";
 
 type DescriptionsQueryResponse = {
   items: Description[];
   totalCount: number;
   totalPages: number;
   currentPage: number;
-};
-
-type ApiSuccess<T> = {
-  success: true;
-  data: T;
-  requestId: string;
 };
 
 export function useResumeDescriptionsQuery({
@@ -32,18 +27,15 @@ export function useResumeDescriptionsQuery({
     queryKey: ["resume-descriptions", page, query, pageSize],
     queryFn: async () => {
       const start = performance.now();
-      const params = new URLSearchParams({
-        page: String(page),
-        pageSize: String(pageSize),
-      });
-
-      if (query.trim()) {
-        params.set("query", query.trim());
-      }
-
-      const response = await fetch(`/api/resume/descriptions?${params}`);
-
-      if (!response.ok) {
+      try {
+        const data = await getDescriptionsByQuery({ page, pageSize, query: query.trim() });
+        trackQueryMetric({
+          key: "resume-descriptions",
+          durationMs: performance.now() - start,
+          status: "success",
+        });
+        return data;
+      } catch {
         trackQueryMetric({
           key: "resume-descriptions",
           durationMs: performance.now() - start,
@@ -51,14 +43,6 @@ export function useResumeDescriptionsQuery({
         });
         throw new Error("Failed to fetch resume descriptions");
       }
-
-      const payload = (await response.json()) as ApiSuccess<DescriptionsQueryResponse>;
-      trackQueryMetric({
-        key: "resume-descriptions",
-        durationMs: performance.now() - start,
-        status: "success",
-      });
-      return payload.data;
     },
     initialData,
   });
