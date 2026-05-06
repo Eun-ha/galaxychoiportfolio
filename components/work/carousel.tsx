@@ -1,4 +1,4 @@
-import { Work } from "@/data/work";
+import { Work } from "@/types/work";
 import MultiCarousel from "./multi-carousel";
 import { CarouselCard } from "./carousel-card";
 
