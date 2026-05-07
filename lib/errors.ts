@@ -31,28 +31,3 @@ export class AppError extends Error {
     this.details = details;
   }
 }
-
-export function toAppError(
-  error: unknown,
-  fallback: { code: ErrorCode; message: string; status?: number }
-) {
-  if (error instanceof AppError) {
-    return error;
-  }
-
-  if (error instanceof Error) {
-    return new AppError({
-      code: fallback.code,
-      message: error.message || fallback.message,
-      status: fallback.status ?? 500,
-      details: { cause: error.name },
-    });
-  }
-
-  return new AppError({
-    code: fallback.code,
-    message: fallback.message,
-    status: fallback.status ?? 500,
-    details: { cause: "UnknownError" },
-  });
-}
