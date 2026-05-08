@@ -11,23 +11,23 @@ import {
 import { CACHE_TAGS } from "@/lib/cache-tags";
 import { AppError, ERROR_CODES } from "@/lib/errors";
 
-export async function getCertificatesData(): Promise<Certificate[]> {
-  const getCachedCertificatesData = unstable_cache(
-    async () => {
-      const { rows }: { rows: Certificate[] } = await sql`
-          SELECT id, date, name, authority
-          FROM certificates_contents 
-          ORDER BY date DESC;
-        `;
-      return rows;
-    },
-    ["resume-certificates-data"],
-    {
-      revalidate: 60,
-      tags: [CACHE_TAGS.resume.all, CACHE_TAGS.resume.certificates],
-    }
-  );
+const getCachedCertificatesData = unstable_cache(
+  async () => {
+    const { rows }: { rows: Certificate[] } = await sql`
+        SELECT id, date, name, authority
+        FROM certificates_contents
+        ORDER BY date DESC;
+      `;
+    return rows;
+  },
+  ["resume-certificates-data"],
+  {
+    revalidate: 60,
+    tags: [CACHE_TAGS.resume.all, CACHE_TAGS.resume.certificates],
+  }
+);
 
+export async function getCertificatesData(): Promise<Certificate[]> {
   try {
     return await getCachedCertificatesData();
   } catch (error) {
@@ -40,20 +40,20 @@ export async function getCertificatesData(): Promise<Certificate[]> {
   }
 }
 
-export async function getDescriptionsData(): Promise<Description[]> {
-  const getCachedDescriptionsData = unstable_cache(
-    async () => {
-      const { rows }: { rows: Description[] } =
-        await sql`SELECT id, title, date, performance, role, skills FROM descriptions_contents ORDER BY date DESC ;`;
-      return rows;
-    },
-    ["resume-descriptions-data"],
-    {
-      revalidate: 60,
-      tags: [CACHE_TAGS.resume.all, CACHE_TAGS.resume.descriptions],
-    }
-  );
+const getCachedDescriptionsData = unstable_cache(
+  async () => {
+    const { rows }: { rows: Description[] } =
+      await sql`SELECT id, title, date, performance, role, skills FROM descriptions_contents ORDER BY date DESC ;`;
+    return rows;
+  },
+  ["resume-descriptions-data"],
+  {
+    revalidate: 60,
+    tags: [CACHE_TAGS.resume.all, CACHE_TAGS.resume.descriptions],
+  }
+);
 
+export async function getDescriptionsData(): Promise<Description[]> {
   try {
     return await getCachedDescriptionsData();
   } catch (error) {
@@ -66,20 +66,20 @@ export async function getDescriptionsData(): Promise<Description[]> {
   }
 }
 
-export async function getExperiencesData(): Promise<Experience[]> {
-  const getCachedExperiencesData = unstable_cache(
-    async () => {
-      const { rows }: { rows: Experience[] } =
-        await sql`SELECT id, company, title, date, description FROM experiences_contents ORDER BY date DESC;`;
-      return rows;
-    },
-    ["resume-experiences-data"],
-    {
-      revalidate: 60,
-      tags: [CACHE_TAGS.resume.all, CACHE_TAGS.resume.experiences],
-    }
-  );
+const getCachedExperiencesData = unstable_cache(
+  async () => {
+    const { rows }: { rows: Experience[] } =
+      await sql`SELECT id, company, title, date, description FROM experiences_contents ORDER BY date DESC;`;
+    return rows;
+  },
+  ["resume-experiences-data"],
+  {
+    revalidate: 60,
+    tags: [CACHE_TAGS.resume.all, CACHE_TAGS.resume.experiences],
+  }
+);
 
+export async function getExperiencesData(): Promise<Experience[]> {
   try {
     return await getCachedExperiencesData();
   } catch (error) {
@@ -92,20 +92,20 @@ export async function getExperiencesData(): Promise<Experience[]> {
   }
 }
 
-export async function getEducationsData(): Promise<Education[]> {
-  const getCachedEducationsData = unstable_cache(
-    async () => {
-      const { rows }: { rows: Education[] } =
-        await sql`SELECT id, school, degree, institution, date FROM educations_contents ORDER BY date DESC;`;
-      return rows;
-    },
-    ["resume-educations-data"],
-    {
-      revalidate: 60,
-      tags: [CACHE_TAGS.resume.all, CACHE_TAGS.resume.educations],
-    }
-  );
+const getCachedEducationsData = unstable_cache(
+  async () => {
+    const { rows }: { rows: Education[] } =
+      await sql`SELECT id, school, degree, institution, date FROM educations_contents ORDER BY date DESC;`;
+    return rows;
+  },
+  ["resume-educations-data"],
+  {
+    revalidate: 60,
+    tags: [CACHE_TAGS.resume.all, CACHE_TAGS.resume.educations],
+  }
+);
 
+export async function getEducationsData(): Promise<Education[]> {
   try {
     return await getCachedEducationsData();
   } catch (error) {
