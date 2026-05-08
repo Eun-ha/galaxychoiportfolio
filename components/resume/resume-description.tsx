@@ -18,11 +18,9 @@ export const ResumeDescription = (props: Props) => {
 
   const isMobile = useIsMobile();
   const currentPage = Number(searchParams.get("page")) || 1;
-  const currentQuery = searchParams.get("query") ?? "";
 
   const { data: queryData, isLoading } = useResumeDescriptionsQuery({
     page: currentPage,
-    query: currentQuery,
     pageSize: 4,
     initialData: {
       items: data,

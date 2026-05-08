@@ -14,21 +14,19 @@ type DescriptionsQueryResponse = {
 
 export function useResumeDescriptionsQuery({
   page,
-  query,
   pageSize = 4,
   initialData,
 }: {
   page: number;
-  query: string;
   pageSize?: number;
   initialData?: DescriptionsQueryResponse;
 }) {
   return useQuery<DescriptionsQueryResponse>({
-    queryKey: ["resume-descriptions", page, query, pageSize],
+    queryKey: ["resume-descriptions", page, pageSize],
     queryFn: async () => {
       const start = performance.now();
       try {
-        const data = await getDescriptionsByQuery({ page, pageSize, query: query.trim() });
+        const data = await getDescriptionsByQuery({ page, pageSize });
         trackQueryMetric({
           key: "resume-descriptions",
           durationMs: performance.now() - start,
@@ -45,6 +43,6 @@ export function useResumeDescriptionsQuery({
       }
     },
     placeholderData: initialData,
-    enabled: !!query || page > 1,
+    enabled: page > 1,
   });
 }
