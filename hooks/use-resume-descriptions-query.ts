@@ -44,6 +44,7 @@ export function useResumeDescriptionsQuery({
         throw new Error("Failed to fetch resume descriptions");
       }
     },
-    initialData,
+    placeholderData: initialData,
+    enabled: !!query || page > 1,
   });
 }
