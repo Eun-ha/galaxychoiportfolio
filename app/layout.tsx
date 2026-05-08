@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "@/styles/globals.css";
 import { notoSansKR } from "@/styles/fonts";
 import { Header } from "@/components/header";
+import { QueryProvider } from "@/components/providers/query-provider";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://galaxychoiportfolio.vercel.app"),
@@ -32,8 +33,10 @@ export default function RootLayout({
       <body
         className={`${notoSansKR.className} antialiased w-full overflow-x-hidden bg-bg-default`}
       >
-        <Header />
-        {children}
+        <QueryProvider>
+          <Header />
+          {children}
+        </QueryProvider>
       </body>
     </html>
   );

@@ -7,33 +7,33 @@ import {
 } from "@/types/resume";
 import { Work } from "@/types/work";
 import { sql } from "@vercel/postgres";
-import { unstable_noStore as noStore } from "next/cache";
+import { unstable_cache, unstable_noStore as noStore } from "next/cache";
+import { CACHE_TAGS } from "@/lib/cache-tags";
+import { AppError, ERROR_CODES } from "@/lib/errors";
 
-export async function fetchProjectById(
-  slug: string,
-  id: string
-): Promise<
+type ProjectData =
   | Certificate
   | Education
   | Experience
   | Description
   | Work
   | Main
-  | Skill
-  | null
-> {
-  noStore();
+  | Skill;
 
-  if (!slug) {
-    throw new Error("Invalid slug");
-  }
-  if (!id) {
-    throw new Error("Invalid id");
-  }
+type ProjectSlug =
+  | "certificates"
+  | "educations"
+  | "experiences"
+  | "descriptions"
+  | "work"
+  | "skill"
+  | "main";
 
-  let data = null;
-  if (slug === "certificates") {
-    data = await sql<Certificate>`
+type ProjectResolver = (id: string) => Promise<{ rows: ProjectData[]; rowCount: number | null }>;
+
+const projectResolverBySlug: Record<ProjectSlug, ProjectResolver> = {
+  certificates: (id) =>
+    sql<Certificate>`
       SELECT
         id,
         name,
@@ -41,9 +41,9 @@ export async function fetchProjectById(
         authority
       FROM certificates_contents
       WHERE certificates_contents.id = ${id};
-    `;
-  } else if (slug === "educations") {
-    data = await sql<Education>`
+    `,
+  educations: (id) =>
+    sql<Education>`
       SELECT
         id,
         school,
@@ -52,9 +52,9 @@ export async function fetchProjectById(
         date
       FROM educations_contents
       WHERE educations_contents.id = ${id};
-    `;
-  } else if (slug === "experiences") {
-    data = await sql<Experience>`
+    `,
+  experiences: (id) =>
+    sql<Experience>`
       SELECT
         id,
         company,
@@ -63,9 +63,9 @@ export async function fetchProjectById(
         description
       FROM experiences_contents
       WHERE experiences_contents.id = ${id};
-    `;
-  } else if (slug === "descriptions") {
-    data = await sql<Description>`
+    `,
+  descriptions: (id) =>
+    sql<Description>`
       SELECT
         id,
         title,
@@ -75,9 +75,9 @@ export async function fetchProjectById(
         skills
       FROM descriptions_contents
       WHERE descriptions_contents.id = ${id};
-    `;
-  } else if (slug === "work") {
-    data = await sql<Work>`
+    `,
+  work: (id) =>
+    sql<Work>`
       SELECT
         id,
         title,
@@ -90,9 +90,9 @@ export async function fetchProjectById(
         index
       FROM works_contents
       WHERE works_contents.id = ${id};
-    `;
-  } else if (slug === "skill") {
-    data = await sql<Skill>`
+    `,
+  skill: (id) =>
+    sql<Skill>`
       SELECT
         id,
         color,
@@ -101,9 +101,9 @@ export async function fetchProjectById(
         angle
       FROM skill_contents
       WHERE skill_contents.id = ${id};
-    `;
-  } else if (slug === "main") {
-    data = await sql<Main>`
+    `,
+  main: (id) =>
+    sql<Main>`
       SELECT
         id,
         title,
@@ -118,52 +118,172 @@ export async function fetchProjectById(
         url
       FROM main_contents
       WHERE main_contents.id = ${id};
-    `;
-  } else {
-    throw new Error("Invalid slug");
+    `,
+};
+
+function isProjectSlug(slug: string): slug is ProjectSlug {
+  return slug in projectResolverBySlug;
+}
+
+export async function fetchProjectById(
+  slug: string,
+  id: string
+): Promise<ProjectData | null> {
+  noStore();
+
+  if (!slug || !isProjectSlug(slug)) {
+    throw new AppError({
+      code: ERROR_CODES.INVALID_PARAM,
+      message: "Invalid slug",
+      status: 400,
+    });
+  }
+
+  if (!id) {
+    throw new AppError({
+      code: ERROR_CODES.INVALID_PARAM,
+      message: "Invalid id",
+      status: 400,
+    });
   }
 
   try {
+    const data = await projectResolverBySlug[slug](id);
+
     if (!data || data.rowCount === 0) {
-      throw new Error("No data found");
+      throw new AppError({
+        code: ERROR_CODES.NOT_FOUND,
+        message: "No data found",
+        status: 404,
+      });
     }
 
-    const project = data.rows.map((project) => ({
-      ...project,
-    }));
-
-    console.log(project[0]);
-    return project[0];
+    return data.rows[0] ?? null;
   } catch (error) {
-    console.error("Database Error:", error);
-    throw new Error("Failed to fetch invoice.");
+    if (error instanceof AppError) throw error;
+    throw new AppError({
+      code: ERROR_CODES.DB_QUERY_FAILED,
+      message: "Failed to fetch project data.",
+      status: 500,
+      details: { source: "fetchProjectById" },
+    });
   }
 }
 
 const PROJECTS_PER_PAGE = 4;
+export type PaginatedDescriptions = {
+  items: Description[];
+  totalCount: number;
+  totalPages: number;
+  currentPage: number;
+};
 
 export async function fetchProjectsPages(
   currentPage: number
 ): Promise<Description[]> {
-  const offset = (currentPage - 1) * PROJECTS_PER_PAGE;
+  const getCachedProjectsPages = unstable_cache(
+    async (page: number) => {
+      const offset = (page - 1) * PROJECTS_PER_PAGE;
+
+      const { rows }: { rows: Description[] } =
+        await sql`SELECT id, title, date, performance, role, skills FROM descriptions_contents ORDER BY date DESC LIMIT ${PROJECTS_PER_PAGE} OFFSET ${offset};`;
+      return rows;
+    },
+    ["resume-project-pages"],
+    {
+      revalidate: 60,
+      tags: [CACHE_TAGS.resume.all, CACHE_TAGS.resume.descriptions],
+    }
+  );
 
   try {
-    const { rows }: { rows: Description[] } =
-      await sql`SELECT id, title, date, performance, role, skills FROM descriptions_contents ORDER BY date DESC LIMIT ${PROJECTS_PER_PAGE} OFFSET ${offset};`;
-    return rows;
+    return await getCachedProjectsPages(currentPage);
   } catch (error) {
-    throw new Error("Failed to fetch getDescriptionsData data");
+    throw new AppError({
+      code: ERROR_CODES.DB_QUERY_FAILED,
+      message: "Failed to fetch descriptions data",
+      status: 500,
+      details: { source: "fetchProjectsPages" },
+    });
+  }
+}
+
+export async function fetchDescriptionsByQuery({
+  currentPage,
+  pageSize = PROJECTS_PER_PAGE,
+  query,
+}: {
+  currentPage: number;
+  pageSize?: number;
+  query?: string;
+}): Promise<PaginatedDescriptions> {
+  const getCachedDescriptionsByQuery = unstable_cache(
+    async (page: number, limit: number, searchQuery: string) => {
+      const offset = (page - 1) * limit;
+      const term = `%${searchQuery}%`;
+
+      const { rows: countRows } = await sql<{ count: string }>`
+        SELECT COUNT(*)::text AS count
+        FROM descriptions_contents
+        WHERE
+          (${searchQuery} = '' OR title ILIKE ${term} OR skills ILIKE ${term});
+      `;
+
+      const count = countRows[0]?.count ?? "0";
+      const totalCount = Number(count ?? "0");
+      const totalPages = Math.max(1, Math.ceil(totalCount / limit));
+
+      const { rows }: { rows: Description[] } = await sql`
+        SELECT id, title, date, performance, role, skills
+        FROM descriptions_contents
+        WHERE
+          (${searchQuery} = '' OR title ILIKE ${term} OR skills ILIKE ${term})
+        ORDER BY date DESC
+        LIMIT ${limit}
+        OFFSET ${offset};
+      `;
+
+      return {
+        items: rows,
+        totalCount,
+        totalPages,
+        currentPage: page,
+      };
+    },
+    ["resume-descriptions-by-query"],
+    {
+      revalidate: 60,
+      tags: [CACHE_TAGS.resume.all, CACHE_TAGS.resume.descriptions],
+    }
+  );
+
+  try {
+    return await getCachedDescriptionsByQuery(
+      currentPage,
+      pageSize,
+      query?.trim() ?? ""
+    );
+  } catch (error) {
+    throw new AppError({
+      code: ERROR_CODES.DB_QUERY_FAILED,
+      message: "Failed to fetch descriptions with query",
+      status: 500,
+      details: { source: "fetchDescriptionsByQuery" },
+    });
   }
 }
 
 export async function fetchProjectsSlide(currentPage: number): Promise<Work[]> {
-  console.log("fetchProjectsSlide", currentPage);
-
   try {
     const { rows }: { rows: Work[] } =
       await sql`SELECT id, title, description, skill, path, url, download, git, index FROM works_contents LIMIT 1 OFFSET ${currentPage};`;
     return rows;
   } catch (error) {
-    throw new Error("Failed to fetch getDescriptionsData data");
+    throw new AppError({
+      code: ERROR_CODES.DB_QUERY_FAILED,
+      message: "Failed to fetch works slide data",
+      status: 500,
+      details: { source: "fetchProjectsSlide" },
+    });
   }
 }

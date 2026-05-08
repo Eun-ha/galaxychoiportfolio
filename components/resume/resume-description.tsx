@@ -4,6 +4,8 @@ import { BoundaryResume } from "../ui/boundary-resume";
 import Pagination from "../ui/pagination";
 import { useIsMobile } from "@/hooks/use-is-mobile";
 import { SkeletonCard } from "../ui/skeleton-card";
+import { useSearchParams } from "next/navigation";
+import { useResumeDescriptionsQuery } from "@/hooks/use-resume-descriptions-query";
 
 type Props = {
   data: Description[];
@@ -12,22 +14,46 @@ type Props = {
 
 export const ResumeDescription = (props: Props) => {
   const { data, allDesc } = props;
+  const searchParams = useSearchParams();
 
   const isMobile = useIsMobile();
+  const currentPage = Number(searchParams.get("page")) || 1;
+  const currentQuery = searchParams.get("query") ?? "";
 
-  const totalPages =
-    !isMobile && allDesc && allDesc.length > 0
-      ? Math.ceil(allDesc.length / 4)
-      : 1;
+  const { data: queryData, isLoading } = useResumeDescriptionsQuery({
+    page: currentPage,
+    query: currentQuery,
+    pageSize: 4,
+    initialData: {
+      items: data,
+      totalCount: allDesc?.length ?? data.length,
+      totalPages: Math.max(1, Math.ceil((allDesc?.length ?? data.length) / 4)),
+      currentPage,
+    },
+  });
 
-  const listData = !isMobile ? data : allDesc;
 
-  if (!listData || listData.length === 0) {
+  if (isMobile === null) {
+    return <SkeletonCard />;
+  }
+
+  const totalPages = !isMobile ? queryData?.totalPages ?? 1 : 1;
+
+  const listData: Description[] = !isMobile
+    ? queryData?.items ?? []
+    : allDesc ?? data;
+
+  if (isLoading) {
     return <SkeletonCard />;
   }
 
   return (
     <div className="w-full">
+      {!listData || listData.length === 0 ? (
+        <BoundaryResume>
+          <p>조건에 맞는 이력이 없습니다.</p>
+        </BoundaryResume>
+      ) : null}
       {listData.map((data, index) => (
         <article key={index}>
           <BoundaryResume>

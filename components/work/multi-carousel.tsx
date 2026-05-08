@@ -1,6 +1,6 @@
 "use client";
 import { useRouter } from "next/navigation";
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 
@@ -30,22 +30,17 @@ type CustomButtonGroupProps = {
   totalSlides: number;
 };
 
-const CustomButtonGroup = ({
-  next,
-  previous,
-  currentSlide,
-  totalSlides,
-}: CustomButtonGroupProps) => {
+const CustomButtonGroup = ({ next, previous, currentSlide, totalSlides }: CustomButtonGroupProps) => {
   const router = useRouter();
 
   const handleNext = () => {
-    const newSlide = Math.min((currentSlide || 0) + 1, totalSlides - 1);
+    const newSlide = Math.min(currentSlide + 1, totalSlides - 1);
     router.push(`?slide=${newSlide}`);
     next();
   };
 
   const handlePrev = () => {
-    const newSlide = Math.max((currentSlide || 0) - 1, 0);
+    const newSlide = Math.max(currentSlide - 1, 0);
     router.push(`?slide=${newSlide}`);
     previous();
   };
@@ -83,23 +78,21 @@ export default function MultiCarousel({ children }: Props) {
   const [currentSlide, setCurrentSlide] = useState(0);
   const carouselRef = useRef<Carousel | null>(null);
 
-  // children을 배열로 변환
   const itemsArray = Array.isArray(children) ? children : [children];
   const totalSlides = itemsArray.length;
 
   useEffect(() => {
     const searchParams = new URLSearchParams(window.location.search);
     const slideParam = parseInt(searchParams.get("slide") || "0", 10);
-    const safeSlide = isNaN(slideParam) ? 0 : Math.max(0, slideParam);
+    const safeSlide = isNaN(slideParam) ? 0 : Math.max(0, Math.min(slideParam, totalSlides - 1));
     setCurrentSlide(safeSlide);
 
-    // ✅ Carousel이 mount된 후 슬라이드 이동
     setTimeout(() => {
       if (carouselRef.current) {
         carouselRef.current.goToSlide(safeSlide);
       }
     }, 0);
-  }, []);
+  }, [totalSlides]);
 
   return (
     <div className="relative">

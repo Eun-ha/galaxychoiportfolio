@@ -1,7 +1,7 @@
 "use client";
 import { useLayoutEffect, useRef, useState } from "react";
 
-export function UseHoverEffect() {
+export function useHoverEffect() {
   const [isActiveItem, setIsActiveItem] = useState<HTMLElement | null>(null);
   const listItemsRef = useRef<NodeListOf<Element> | null>(null);
   const highlightRef = useRef<HTMLElement | null>(null);
@@ -60,6 +60,19 @@ export function UseHoverEffect() {
     });
     if (menuContainer)
       menuContainer.addEventListener("mouseleave", handleItemLeave);
+
+    return () => {
+      listItems.forEach((item) => {
+        (item as HTMLElement).removeEventListener("click", handleItemClick);
+        (item as HTMLElement).removeEventListener(
+          "mouseenter",
+          handleItemHover
+        );
+      });
+      if (menuContainer) {
+        menuContainer.removeEventListener("mouseleave", handleItemLeave);
+      }
+    };
   }, [isActiveItem]);
 
   return isActiveItem;
