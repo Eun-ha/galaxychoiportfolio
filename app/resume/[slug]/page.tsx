@@ -28,15 +28,15 @@ export default async function Page(
 
   const currentPage = Number(searchParams?.page) || 1;
 
-  const AllDescription: Description[] = await getDescriptionsData();
-
   let data: Description[] | Education[] | Experience[] | Certificate[] = [];
+  let allDesc: Description[] | undefined;
 
   if (slug === "certificates") {
     data = await getCertificatesData();
   } else if (slug === "descriptions") {
+    allDesc = await getDescriptionsData();
     const offset = (currentPage - 1) * DESCRIPTIONS_PAGE_SIZE;
-    data = AllDescription.slice(offset, offset + DESCRIPTIONS_PAGE_SIZE);
+    data = allDesc.slice(offset, offset + DESCRIPTIONS_PAGE_SIZE);
   } else if (slug === "experiences") {
     data = await getExperiencesData();
   } else if (slug === "educations") {
@@ -46,7 +46,7 @@ export default async function Page(
   return (
     <main className="block w-full lg:w-[calc(100%-16px)] lg:ml-[16px]">
       <TitlesDescriptions slug={slug} />
-      <ResumeContents slug={slug} data={data} allDesc={AllDescription} />
+      <ResumeContents slug={slug} data={data} allDesc={allDesc} />
     </main>
   );
 }
