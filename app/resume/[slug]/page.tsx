@@ -14,7 +14,8 @@ import {
   Experience,
   Description,
 } from "@/types/resume";
-import { fetchProjectsPages } from "@/backend/fetch-data";
+
+const DESCRIPTIONS_PAGE_SIZE = 4;
 
 type tParams = Promise<{ slug: string }>;
 type tSearchParams = Promise<{ query?: string; page?: string }>;
@@ -34,7 +35,8 @@ export default async function Page(
   if (slug === "certificates") {
     data = await getCertificatesData();
   } else if (slug === "descriptions") {
-    data = await fetchProjectsPages(currentPage);
+    const offset = (currentPage - 1) * DESCRIPTIONS_PAGE_SIZE;
+    data = AllDescription.slice(offset, offset + DESCRIPTIONS_PAGE_SIZE);
   } else if (slug === "experiences") {
     data = await getExperiencesData();
   } else if (slug === "educations") {
