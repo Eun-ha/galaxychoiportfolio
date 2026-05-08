@@ -178,35 +178,45 @@ export type PaginatedDescriptions = {
   currentPage: number;
 };
 
-export async function fetchProjectsPages(
-  currentPage: number
-): Promise<Description[]> {
-  const getCachedProjectsPages = unstable_cache(
-    async (page: number) => {
-      const offset = (page - 1) * PROJECTS_PER_PAGE;
+const getCachedDescriptionsByQuery = unstable_cache(
+  async (page: number, limit: number, searchQuery: string) => {
+    const offset = (page - 1) * limit;
+    const term = `%${searchQuery}%`;
 
-      const { rows }: { rows: Description[] } =
-        await sql`SELECT id, title, date, performance, role, skills FROM descriptions_contents ORDER BY date DESC LIMIT ${PROJECTS_PER_PAGE} OFFSET ${offset};`;
-      return rows;
-    },
-    ["resume-project-pages"],
-    {
-      revalidate: 60,
-      tags: [CACHE_TAGS.resume.all, CACHE_TAGS.resume.descriptions],
-    }
-  );
+    const { rows: countRows } = await sql<{ count: string }>`
+      SELECT COUNT(*)::text AS count
+      FROM descriptions_contents
+      WHERE
+        (${searchQuery} = '' OR title ILIKE ${term} OR skills ILIKE ${term});
+    `;
 
-  try {
-    return await getCachedProjectsPages(currentPage);
-  } catch (error) {
-    throw new AppError({
-      code: ERROR_CODES.DB_QUERY_FAILED,
-      message: "Failed to fetch descriptions data",
-      status: 500,
-      details: { source: "fetchProjectsPages" },
-    });
+    const count = countRows[0]?.count ?? "0";
+    const totalCount = Number(count ?? "0");
+    const totalPages = Math.max(1, Math.ceil(totalCount / limit));
+
+    const { rows }: { rows: Description[] } = await sql`
+      SELECT id, title, date, performance, role, skills
+      FROM descriptions_contents
+      WHERE
+        (${searchQuery} = '' OR title ILIKE ${term} OR skills ILIKE ${term})
+      ORDER BY date DESC
+      LIMIT ${limit}
+      OFFSET ${offset};
+    `;
+
+    return {
+      items: rows,
+      totalCount,
+      totalPages,
+      currentPage: page,
+    };
+  },
+  ["resume-descriptions-by-query"],
+  {
+    revalidate: 60,
+    tags: [CACHE_TAGS.resume.all, CACHE_TAGS.resume.descriptions],
   }
-}
+);
 
 export async function fetchDescriptionsByQuery({
   currentPage,
@@ -217,46 +227,6 @@ export async function fetchDescriptionsByQuery({
   pageSize?: number;
   query?: string;
 }): Promise<PaginatedDescriptions> {
-  const getCachedDescriptionsByQuery = unstable_cache(
-    async (page: number, limit: number, searchQuery: string) => {
-      const offset = (page - 1) * limit;
-      const term = `%${searchQuery}%`;
-
-      const { rows: countRows } = await sql<{ count: string }>`
-        SELECT COUNT(*)::text AS count
-        FROM descriptions_contents
-        WHERE
-          (${searchQuery} = '' OR title ILIKE ${term} OR skills ILIKE ${term});
-      `;
-
-      const count = countRows[0]?.count ?? "0";
-      const totalCount = Number(count ?? "0");
-      const totalPages = Math.max(1, Math.ceil(totalCount / limit));
-
-      const { rows }: { rows: Description[] } = await sql`
-        SELECT id, title, date, performance, role, skills
-        FROM descriptions_contents
-        WHERE
-          (${searchQuery} = '' OR title ILIKE ${term} OR skills ILIKE ${term})
-        ORDER BY date DESC
-        LIMIT ${limit}
-        OFFSET ${offset};
-      `;
-
-      return {
-        items: rows,
-        totalCount,
-        totalPages,
-        currentPage: page,
-      };
-    },
-    ["resume-descriptions-by-query"],
-    {
-      revalidate: 60,
-      tags: [CACHE_TAGS.resume.all, CACHE_TAGS.resume.descriptions],
-    }
-  );
-
   try {
     return await getCachedDescriptionsByQuery(
       currentPage,
