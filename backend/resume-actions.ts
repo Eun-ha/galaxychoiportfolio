@@ -4,7 +4,6 @@ import { sql } from "@vercel/postgres";
 import { unstable_cache } from "next/cache";
 import {
   Certificate,
-  Description,
   Experience,
   Education,
 } from "@/types/resume";
@@ -40,31 +39,6 @@ export async function getCertificatesData(): Promise<Certificate[]> {
   }
 }
 
-const getCachedDescriptionsData = unstable_cache(
-  async () => {
-    const { rows }: { rows: Description[] } =
-      await sql`SELECT id, title, date, performance, role, skills FROM descriptions_contents ORDER BY date DESC ;`;
-    return rows;
-  },
-  ["resume-descriptions-data"],
-  {
-    revalidate: 60,
-    tags: [CACHE_TAGS.resume.all, CACHE_TAGS.resume.descriptions],
-  }
-);
-
-export async function getDescriptionsData(): Promise<Description[]> {
-  try {
-    return await getCachedDescriptionsData();
-  } catch (error) {
-    throw new AppError({
-      code: ERROR_CODES.DB_QUERY_FAILED,
-      message: "Failed to fetch descriptions data",
-      status: 500,
-      details: { source: "getDescriptionsData" },
-    });
-  }
-}
 
 const getCachedExperiencesData = unstable_cache(
   async () => {

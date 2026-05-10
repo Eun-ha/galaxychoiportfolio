@@ -13,15 +13,16 @@ import { ResumeExperience } from "./resume-experience";
 import { ResumeDescription } from "./resume-description";
 import React from "react";
 import { ResumeCertificate } from "./resume-certificate";
+import { DescMeta } from "@/app/resume/[slug]/page";
 
 type Props = {
   slug: string;
   data: Description[] | Education[] | Experience[] | Certificate[];
-  allDesc?: Description[];
+  descMeta?: DescMeta;
 };
 
 export const ResumeContents = (props: Props) => {
-  const { slug, data, allDesc } = props;
+  const { slug, data, descMeta } = props;
 
   return (
     <section className={clsx("mb-2 lg:mb-4")}>
@@ -37,7 +38,7 @@ export const ResumeContents = (props: Props) => {
         <Suspense fallback={<SkeletonCard />}>
           <ResumeDescription
             data={data as Description[]}
-            allDesc={allDesc as Description[]}
+            descMeta={descMeta}
           />
         </Suspense>
       ) : slug === "certificates" ? (

@@ -1,11 +1,11 @@
 "use client";
 
 import { Description } from "@/types/resume";
-import { useQuery } from "@tanstack/react-query";
+import { useQuery, useInfiniteQuery } from "@tanstack/react-query";
 import { trackQueryMetric } from "@/lib/observability";
 import { getDescriptionsByQuery } from "@/actions/resume-descriptions";
 
-type DescriptionsQueryResponse = {
+export type DescriptionsQueryResponse = {
   items: Description[];
   totalCount: number;
   totalPages: number;
@@ -44,5 +44,42 @@ export function useResumeDescriptionsQuery({
     },
     placeholderData: initialData,
     enabled: page > 1,
+  });
+}
+
+export function useResumeDescriptionsInfiniteQuery({
+  pageSize = 4,
+  initialData,
+}: {
+  pageSize?: number;
+  initialData?: DescriptionsQueryResponse;
+}) {
+  return useInfiniteQuery<DescriptionsQueryResponse>({
+    queryKey: ["resume-descriptions-infinite", pageSize],
+    queryFn: async ({ pageParam }) => {
+      const start = performance.now();
+      try {
+        const data = await getDescriptionsByQuery({ page: pageParam as number, pageSize });
+        trackQueryMetric({
+          key: "resume-descriptions-infinite",
+          durationMs: performance.now() - start,
+          status: "success",
+        });
+        return data;
+      } catch {
+        trackQueryMetric({
+          key: "resume-descriptions-infinite",
+          durationMs: performance.now() - start,
+          status: "error",
+        });
+        throw new Error("Failed to fetch resume descriptions");
+      }
+    },
+    initialPageParam: 1,
+    getNextPageParam: (lastPage) =>
+      lastPage.currentPage < lastPage.totalPages ? lastPage.currentPage + 1 : undefined,
+    initialData: initialData
+      ? { pages: [initialData], pageParams: [1] }
+      : undefined,
   });
 }
