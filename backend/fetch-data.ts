@@ -213,7 +213,7 @@ const getCachedDescriptionsByQuery = unstable_cache(
   },
   ["resume-descriptions-by-query"],
   {
-    revalidate: 60,
+    revalidate: false,
     tags: [CACHE_TAGS.resume.all, CACHE_TAGS.resume.descriptions],
   }
 );

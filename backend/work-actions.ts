@@ -13,7 +13,7 @@ const getCachedWorksData = unstable_cache(
     return rows;
   },
   ["works-data"],
-  { revalidate: 60, tags: [CACHE_TAGS.work] }
+  { revalidate: false, tags: [CACHE_TAGS.work] }
 );
 
 export async function getWorksData(): Promise<Work[]> {
