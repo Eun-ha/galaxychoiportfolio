@@ -6,6 +6,7 @@ import { BoundaryResume } from "../ui/boundary-resume";
 import { SkeletonCard } from "../ui/skeleton-card";
 import { useResumeDescriptionsInfiniteQuery } from "@/hooks/use-resume-descriptions-query";
 import { DescMeta } from "@/app/resume/[slug]/page";
+import { DESCRIPTIONS_PAGE_SIZE } from "@/lib/constants";
 
 type Props = {
   data: Description[];
@@ -17,7 +18,7 @@ export const ResumeDescriptionMobile = ({ data, descMeta }: Props) => {
 
   const { data: infiniteData, fetchNextPage, hasNextPage, isFetchingNextPage } =
     useResumeDescriptionsInfiniteQuery({
-      pageSize: 4,
+      pageSize: DESCRIPTIONS_PAGE_SIZE,
       initialData: descMeta
         ? {
             items: data,

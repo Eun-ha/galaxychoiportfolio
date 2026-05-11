@@ -7,6 +7,7 @@ import { SkeletonCard } from "../ui/skeleton-card";
 import { useSearchParams } from "next/navigation";
 import { useResumeDescriptionsQuery } from "@/hooks/use-resume-descriptions-query";
 import { DescMeta } from "@/app/resume/[slug]/page";
+import { DESCRIPTIONS_PAGE_SIZE } from "@/lib/constants";
 
 type Props = {
   data: Description[];
@@ -19,11 +20,11 @@ export const ResumeDescriptionDesktop = ({ data, descMeta }: Props) => {
 
   const { data: queryData, isLoading } = useResumeDescriptionsQuery({
     page: currentPage,
-    pageSize: 4,
+    pageSize: DESCRIPTIONS_PAGE_SIZE,
     initialData: {
       items: data,
       totalCount: descMeta?.totalCount ?? data.length,
-      totalPages: descMeta?.totalPages ?? Math.max(1, Math.ceil(data.length / 4)),
+      totalPages: descMeta?.totalPages ?? Math.max(1, Math.ceil(data.length / DESCRIPTIONS_PAGE_SIZE)),
       currentPage: descMeta?.currentPage ?? currentPage,
     },
   });
