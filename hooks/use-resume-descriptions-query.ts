@@ -3,7 +3,7 @@
 import { Description } from "@/types/resume";
 import { useQuery, useInfiniteQuery } from "@tanstack/react-query";
 import { trackQueryMetric } from "@/lib/observability";
-import { getDescriptionsByQuery } from "@/actions/resume-descriptions";
+import { getDescriptions } from "@/actions/resume-descriptions";
 import { DESCRIPTIONS_PAGE_SIZE } from "@/lib/constants";
 
 export type DescriptionsQueryResponse = {
@@ -27,7 +27,7 @@ export function useResumeDescriptionsQuery({
     queryFn: async () => {
       const start = performance.now();
       try {
-        const data = await getDescriptionsByQuery({ page, pageSize });
+        const data = await getDescriptions({ page, pageSize });
         trackQueryMetric({
           key: "resume-descriptions",
           durationMs: performance.now() - start,
@@ -60,7 +60,7 @@ export function useResumeDescriptionsInfiniteQuery({
     queryFn: async ({ pageParam }) => {
       const start = performance.now();
       try {
-        const data = await getDescriptionsByQuery({ page: pageParam as number, pageSize });
+        const data = await getDescriptions({ page: pageParam as number, pageSize });
         trackQueryMetric({
           key: "resume-descriptions-infinite",
           durationMs: performance.now() - start,
