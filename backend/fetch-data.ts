@@ -10,6 +10,7 @@ import { sql } from "@vercel/postgres";
 import { unstable_cache, unstable_noStore as noStore } from "next/cache";
 import { CACHE_TAGS } from "@/lib/cache-tags";
 import { AppError, ERROR_CODES } from "@/lib/errors";
+import { DESCRIPTIONS_PAGE_SIZE } from "@/lib/constants";
 
 type ProjectData =
   | Certificate
@@ -170,7 +171,6 @@ export async function fetchProjectById(
   }
 }
 
-const PROJECTS_PER_PAGE = 4;
 export type PaginatedDescriptions = {
   items: Description[];
   totalCount: number;
@@ -220,7 +220,7 @@ const getCachedDescriptionsByQuery = unstable_cache(
 
 export async function fetchDescriptionsByQuery({
   currentPage,
-  pageSize = PROJECTS_PER_PAGE,
+  pageSize = DESCRIPTIONS_PAGE_SIZE,
   query,
 }: {
   currentPage: number;

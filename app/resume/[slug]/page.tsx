@@ -14,8 +14,7 @@ import {
   Experience,
   Description,
 } from "@/types/resume";
-
-const DESCRIPTIONS_PAGE_SIZE = 4;
+import { DESCRIPTIONS_PAGE_SIZE } from "@/lib/constants";
 
 type tParams = Promise<{ slug: string }>;
 type tSearchParams = Promise<{ query?: string; page?: string }>;

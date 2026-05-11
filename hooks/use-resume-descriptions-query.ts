@@ -4,6 +4,7 @@ import { Description } from "@/types/resume";
 import { useQuery, useInfiniteQuery } from "@tanstack/react-query";
 import { trackQueryMetric } from "@/lib/observability";
 import { getDescriptionsByQuery } from "@/actions/resume-descriptions";
+import { DESCRIPTIONS_PAGE_SIZE } from "@/lib/constants";
 
 export type DescriptionsQueryResponse = {
   items: Description[];
@@ -14,7 +15,7 @@ export type DescriptionsQueryResponse = {
 
 export function useResumeDescriptionsQuery({
   page,
-  pageSize = 4,
+  pageSize = DESCRIPTIONS_PAGE_SIZE,
   initialData,
 }: {
   page: number;
@@ -48,7 +49,7 @@ export function useResumeDescriptionsQuery({
 }
 
 export function useResumeDescriptionsInfiniteQuery({
-  pageSize = 4,
+  pageSize = DESCRIPTIONS_PAGE_SIZE,
   initialData,
 }: {
   pageSize?: number;
