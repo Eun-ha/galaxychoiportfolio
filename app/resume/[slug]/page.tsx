@@ -6,7 +6,7 @@ import {
   getEducationsData,
   getExperiencesData,
 } from "@/backend/resume-actions";
-import { fetchDescriptionsByQuery } from "@/backend/fetch-data";
+import { fetchDescriptions } from "@/backend/fetch-data";
 
 import {
   Certificate,
@@ -17,7 +17,7 @@ import {
 import { DESCRIPTIONS_PAGE_SIZE } from "@/lib/constants";
 
 type tParams = Promise<{ slug: string }>;
-type tSearchParams = Promise<{ query?: string; page?: string }>;
+type tSearchParams = Promise<{ page?: string }>;
 
 export type DescMeta = {
   totalCount: number;
@@ -39,10 +39,9 @@ export default async function Page(
   if (slug === "certificates") {
     data = await getCertificatesData();
   } else if (slug === "descriptions") {
-    const result = await fetchDescriptionsByQuery({
+    const result = await fetchDescriptions({
       currentPage,
       pageSize: DESCRIPTIONS_PAGE_SIZE,
-      query: "",
     });
     data = result.items;
     descMeta = {

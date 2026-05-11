@@ -1,9 +1,9 @@
 "use server";
 
-import { fetchDescriptionsByQuery } from "@/backend/fetch-data";
+import { fetchDescriptions } from "@/backend/fetch-data";
 import { DESCRIPTIONS_PAGE_SIZE } from "@/lib/constants";
 
-export async function getDescriptionsByQuery({
+export async function getDescriptions({
   page,
   pageSize = DESCRIPTIONS_PAGE_SIZE,
 }: {
@@ -13,9 +13,8 @@ export async function getDescriptionsByQuery({
   const normalizedPage = Number.isNaN(page) || page < 1 ? 1 : page;
   const normalizedPageSize = Number.isNaN(pageSize) || pageSize < 1 ? DESCRIPTIONS_PAGE_SIZE : pageSize;
 
-  return fetchDescriptionsByQuery({
+  return fetchDescriptions({
     currentPage: normalizedPage,
     pageSize: normalizedPageSize,
-    query: "",
   });
 }

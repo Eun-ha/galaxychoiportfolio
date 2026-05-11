@@ -178,16 +178,13 @@ export type PaginatedDescriptions = {
   currentPage: number;
 };
 
-const getCachedDescriptionsByQuery = unstable_cache(
-  async (page: number, limit: number, searchQuery: string) => {
+const getCachedDescriptions = unstable_cache(
+  async (page: number, limit: number) => {
     const offset = (page - 1) * limit;
-    const term = `%${searchQuery}%`;
 
     const { rows: countRows } = await sql<{ count: string }>`
       SELECT COUNT(*)::text AS count
-      FROM descriptions_contents
-      WHERE
-        (${searchQuery} = '' OR title ILIKE ${term} OR skills ILIKE ${term});
+      FROM descriptions_contents;
     `;
 
     const count = countRows[0]?.count ?? "0";
@@ -197,8 +194,6 @@ const getCachedDescriptionsByQuery = unstable_cache(
     const { rows }: { rows: Description[] } = await sql`
       SELECT id, title, date, performance, role, skills
       FROM descriptions_contents
-      WHERE
-        (${searchQuery} = '' OR title ILIKE ${term} OR skills ILIKE ${term})
       ORDER BY date DESC
       LIMIT ${limit}
       OFFSET ${offset};
@@ -211,49 +206,28 @@ const getCachedDescriptionsByQuery = unstable_cache(
       currentPage: page,
     };
   },
-  ["resume-descriptions-by-query"],
+  ["resume-descriptions"],
   {
     revalidate: false,
     tags: [CACHE_TAGS.resume.all, CACHE_TAGS.resume.descriptions],
   }
 );
 
-export async function fetchDescriptionsByQuery({
+export async function fetchDescriptions({
   currentPage,
   pageSize = DESCRIPTIONS_PAGE_SIZE,
-  query,
 }: {
   currentPage: number;
   pageSize?: number;
-  query?: string;
 }): Promise<PaginatedDescriptions> {
   try {
-    return await getCachedDescriptionsByQuery(
-      currentPage,
-      pageSize,
-      query?.trim() ?? ""
-    );
+    return await getCachedDescriptions(currentPage, pageSize);
   } catch (error) {
     throw new AppError({
       code: ERROR_CODES.DB_QUERY_FAILED,
-      message: "Failed to fetch descriptions with query",
+      message: "Failed to fetch descriptions",
       status: 500,
-      details: { source: "fetchDescriptionsByQuery" },
-    });
-  }
-}
-
-export async function fetchProjectsSlide(currentPage: number): Promise<Work[]> {
-  try {
-    const { rows }: { rows: Work[] } =
-      await sql`SELECT id, title, description, skill, path, url, download, git, index FROM works_contents LIMIT 1 OFFSET ${currentPage};`;
-    return rows;
-  } catch (error) {
-    throw new AppError({
-      code: ERROR_CODES.DB_QUERY_FAILED,
-      message: "Failed to fetch works slide data",
-      status: 500,
-      details: { source: "fetchProjectsSlide" },
+      details: { source: "fetchDescriptions" },
     });
   }
 }
