@@ -21,7 +21,7 @@ const getCachedCertificatesData = unstable_cache(
   },
   ["resume-certificates-data"],
   {
-    revalidate: 60,
+    revalidate: false,
     tags: [CACHE_TAGS.resume.all, CACHE_TAGS.resume.certificates],
   }
 );
@@ -48,7 +48,7 @@ const getCachedExperiencesData = unstable_cache(
   },
   ["resume-experiences-data"],
   {
-    revalidate: 60,
+    revalidate: false,
     tags: [CACHE_TAGS.resume.all, CACHE_TAGS.resume.experiences],
   }
 );
@@ -74,7 +74,7 @@ const getCachedEducationsData = unstable_cache(
   },
   ["resume-educations-data"],
   {
-    revalidate: 60,
+    revalidate: false,
     tags: [CACHE_TAGS.resume.all, CACHE_TAGS.resume.educations],
   }
 );

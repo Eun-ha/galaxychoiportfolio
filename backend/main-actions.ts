@@ -13,7 +13,7 @@ const getCachedMainData = unstable_cache(
     return rows;
   },
   ["main-data"],
-  { revalidate: 60, tags: [CACHE_TAGS.main] }
+  { revalidate: false, tags: [CACHE_TAGS.main] }
 );
 
 export async function getMainData(): Promise<Main[]> {
@@ -36,7 +36,7 @@ const getCachedSkillData = unstable_cache(
     return rows;
   },
   ["skill-data"],
-  { revalidate: 60, tags: [CACHE_TAGS.skill] }
+  { revalidate: false, tags: [CACHE_TAGS.skill] }
 );
 
 export async function getSkillData(): Promise<Skill[]> {

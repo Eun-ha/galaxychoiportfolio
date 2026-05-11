@@ -17,7 +17,9 @@ Phase 2 목표인 **도메인별 캐시 태그 도입 + 무효화 규칙 문서�
 
 ## 2) 읽기(조회) 규칙
 
-조회 함수는 `unstable_cache(..., { revalidate: 60, tags: [...] })`를 사용합니다.
+조회 함수는 `unstable_cache(..., { revalidate: false, tags: [...] })`를 사용합니다.
+
+> `revalidate: false` — 시간 기반 재조회 없이 태그 무효화(`revalidateTag`)만으로 캐시를 갱신합니다.
 
 - Main 목록 조회: `main`
 - Skill 목록 조회: `skill`
